@@ -7,7 +7,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -38,7 +38,7 @@ CREATE TABLE `actividad` (
   `precio` decimal(3,2) NOT NULL,
   PRIMARY KEY (`id_actividad`),
   UNIQUE KEY `nombre_UNIQUE` (`nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,6 +47,7 @@ CREATE TABLE `actividad` (
 
 LOCK TABLES `actividad` WRITE;
 /*!40000 ALTER TABLE `actividad` DISABLE KEYS */;
+INSERT INTO `actividad` VALUES (3,'futbol','aaa','aaa',1.00);
 /*!40000 ALTER TABLE `actividad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,33 +79,6 @@ LOCK TABLES `actividad_tiene_entrenador` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `actividad_tiene_usuario`
---
-
-DROP TABLE IF EXISTS `actividad_tiene_usuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `actividad_tiene_usuario` (
-  `id_actividad` int NOT NULL,
-  `id_usuario` int NOT NULL,
-  PRIMARY KEY (`id_actividad`,`id_usuario`),
-  KEY `fk_actividad_has_usuario_usuario1_idx` (`id_usuario`),
-  KEY `fk_actividad_has_usuario_actividad1_idx` (`id_actividad`),
-  CONSTRAINT `fk_actividad_tiene_usuario_actividad` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_actividad_tiene_usuario_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `actividad_tiene_usuario`
---
-
-LOCK TABLES `actividad_tiene_usuario` WRITE;
-/*!40000 ALTER TABLE `actividad_tiene_usuario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `actividad_tiene_usuario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `datos_sesion`
 --
 
@@ -112,12 +86,12 @@ DROP TABLE IF EXISTS `datos_sesion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `datos_sesion` (
-  `id_datos_sesion` int NOT NULL,
+  `id_usuario` int NOT NULL,
   `usuario` varchar(15) NOT NULL,
   `contrasena` varchar(20) NOT NULL,
-  PRIMARY KEY (`id_datos_sesion`),
+  PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `usuario_UNIQUE` (`usuario`),
-  CONSTRAINT `fk_usuario_datos_sesion` FOREIGN KEY (`id_datos_sesion`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_datos_sesion_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -142,7 +116,7 @@ CREATE TABLE `entrenador` (
   `nombre` varchar(20) NOT NULL,
   `apellido` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_entrenador`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,6 +129,105 @@ LOCK TABLES `entrenador` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `pago_usuario_paypal_actividad`
+--
+
+DROP TABLE IF EXISTS `pago_usuario_paypal_actividad`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pago_usuario_paypal_actividad` (
+  `id_pago_tarjeta` int NOT NULL AUTO_INCREMENT,
+  `fecha_pago` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `cantidad` decimal(3,2) NOT NULL,
+  `id_usuario` int NOT NULL,
+  `id_actividad` int NOT NULL,
+  `id_paypal` int NOT NULL,
+  PRIMARY KEY (`id_pago_tarjeta`),
+  KEY `fk_pago_usuario_tarjeta_actividad_usuario1_idx` (`id_usuario`),
+  KEY `fk_pago_usuario_tarjeta_actividad_actividad1_idx` (`id_actividad`),
+  KEY `fk_pago_usuario_tarjeta_actividad_paypal_idx` (`id_paypal`),
+  CONSTRAINT `fk_pago_usuario_paypa_actividad_actividad` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_pago_usuario_paypa_actividad_paypal` FOREIGN KEY (`id_paypal`) REFERENCES `paypal` (`id_paypal`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_pago_usuario_paypal_actividad_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pago_usuario_paypal_actividad`
+--
+
+LOCK TABLES `pago_usuario_paypal_actividad` WRITE;
+/*!40000 ALTER TABLE `pago_usuario_paypal_actividad` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pago_usuario_paypal_actividad` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pago_usuario_tarjeta_actividad`
+--
+
+DROP TABLE IF EXISTS `pago_usuario_tarjeta_actividad`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pago_usuario_tarjeta_actividad` (
+  `id_pago_tarjeta` int NOT NULL AUTO_INCREMENT,
+  `fecha_pago` datetime NOT NULL,
+  `cantidad` decimal(3,2) NOT NULL,
+  `id_usuario` int NOT NULL,
+  `id_actividad` int NOT NULL,
+  `id_tarjeta` int NOT NULL,
+  PRIMARY KEY (`id_pago_tarjeta`),
+  KEY `fk_pago_usuario_tarjeta_actividad_usuario1_idx` (`id_usuario`),
+  KEY `fk_pago_usuario_tarjeta_actividad_actividad1_idx` (`id_actividad`),
+  KEY `fk_pago_usuario_tarjeta_actividad_tarjeta1_idx` (`id_tarjeta`),
+  CONSTRAINT `fk_pago_usuario_tarjeta_actividad_actividad` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_pago_usuario_tarjeta_actividad_tarjeta` FOREIGN KEY (`id_tarjeta`) REFERENCES `tarjeta` (`id_tarjeta`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_pago_usuario_tarjeta_actividad_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pago_usuario_tarjeta_actividad`
+--
+
+LOCK TABLES `pago_usuario_tarjeta_actividad` WRITE;
+/*!40000 ALTER TABLE `pago_usuario_tarjeta_actividad` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pago_usuario_tarjeta_actividad` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pago_usuario_transferencia_actividad`
+--
+
+DROP TABLE IF EXISTS `pago_usuario_transferencia_actividad`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pago_usuario_transferencia_actividad` (
+  `id_pago_tarjeta` int NOT NULL AUTO_INCREMENT,
+  `fecha_pago` datetime NOT NULL,
+  `cantidad` decimal(3,2) NOT NULL,
+  `id_usuario` int NOT NULL,
+  `id_actividad` int NOT NULL,
+  `id_trasnferencia` int NOT NULL,
+  PRIMARY KEY (`id_pago_tarjeta`),
+  KEY `fk_pago_usuario_tarjeta_actividad_usuario1_idx` (`id_usuario`),
+  KEY `fk_pago_usuario_tarjeta_actividad_actividad1_idx` (`id_actividad`),
+  KEY `fk_pago_usuario_tarjeta_actividad_transferencia_idx` (`id_trasnferencia`),
+  CONSTRAINT `fk_pago_usuario_transferencia_actividad_actividad` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_pago_usuario_transferencia_actividad_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_pago_usuariotransferencia_actividad_transferencia` FOREIGN KEY (`id_trasnferencia`) REFERENCES `transferencia` (`id_transferencia`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pago_usuario_transferencia_actividad`
+--
+
+LOCK TABLES `pago_usuario_transferencia_actividad` WRITE;
+/*!40000 ALTER TABLE `pago_usuario_transferencia_actividad` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pago_usuario_transferencia_actividad` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `paypal`
 --
 
@@ -164,12 +237,11 @@ DROP TABLE IF EXISTS `paypal`;
 CREATE TABLE `paypal` (
   `id_paypal` int NOT NULL AUTO_INCREMENT,
   `correo` varchar(45) NOT NULL,
-  `id_usuario` int NOT NULL,
+  `usuario_id_usuario` int NOT NULL,
   PRIMARY KEY (`id_paypal`),
-  UNIQUE KEY `id_paypal_UNIQUE` (`id_paypal`),
-  KEY `fk_paypal_usuario1_idx` (`id_usuario`),
-  CONSTRAINT `fk_paypal_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `fk_paypal_usuario1_idx` (`usuario_id_usuario`),
+  CONSTRAINT `fk_paypal_usuario` FOREIGN KEY (`usuario_id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,15 +262,14 @@ DROP TABLE IF EXISTS `tarjeta`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tarjeta` (
   `id_tarjeta` int NOT NULL AUTO_INCREMENT,
-  `numero` bigint NOT NULL,
-  `cvv` smallint NOT NULL,
+  `numero` varchar(24) NOT NULL,
+  `cvv` varchar(3) NOT NULL,
   `caducidad` datetime NOT NULL,
   `id_usuario` int NOT NULL,
   PRIMARY KEY (`id_tarjeta`),
-  UNIQUE KEY `id_tarjeta_UNIQUE` (`id_tarjeta`),
   KEY `fk_tarjeta_usuario1_idx` (`id_usuario`),
   CONSTRAINT `fk_tarjeta_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,13 +290,12 @@ DROP TABLE IF EXISTS `transferencia`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `transferencia` (
   `id_transferencia` int NOT NULL AUTO_INCREMENT,
-  `iban` varchar(45) NOT NULL,
-  `id_usuario` int NOT NULL,
+  `iban` varchar(24) NOT NULL,
+  `usuario_id_usuario` int NOT NULL,
   PRIMARY KEY (`id_transferencia`),
-  UNIQUE KEY `id_transferencia_UNIQUE` (`id_transferencia`),
-  KEY `fk_transferencia_usuario1_idx` (`id_usuario`),
-  CONSTRAINT `fk_transferencia_usuario1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `fk_transferencia_dummy_usuario1_idx` (`usuario_id_usuario`),
+  CONSTRAINT `fk_transferencia_usuario` FOREIGN KEY (`usuario_id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -254,7 +324,7 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `id_usuario_UNIQUE` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -263,8 +333,13 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (5,'pedro','perez','banda','12345','pedro@');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'imd'
+--
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -276,4 +351,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-07 21:37:52
+-- Dump completed on 2021-09-15  1:19:38
