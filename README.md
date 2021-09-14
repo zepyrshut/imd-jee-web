@@ -1,2 +1,8 @@
 # imd-jee-web
-Proyecto IMD 
+
+## Instituto municipal de deportes
+- Nada que ver por aquí.
+
+## Autores
+- Jorge Hurtado
+- Pedro Pérez
