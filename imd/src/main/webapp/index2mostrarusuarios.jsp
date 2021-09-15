@@ -15,7 +15,7 @@
     </head>
     <body>
     
-         <h1>listado usuarios</h1>
+         <h1>listado usuariosAA</h1>
         <c:forEach var="usuario" items="${lista}">  
             <c:out value="${usuario.nombreUsuario}"/>  
             

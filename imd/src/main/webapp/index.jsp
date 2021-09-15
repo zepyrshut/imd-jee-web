@@ -1,5 +1,6 @@
-
+    
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!doctype html> <!-- meter el charset utf en un header aparte-->
 <html lang="en">
   <head>
@@ -31,18 +32,23 @@
   <jsp:include page="header.jsp" />
   
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-      <h1 class="display-4 fw-normal">Bienvenido user1</h1>
+      <h1 class="display-4 fw-normal">Bienvenido user1.000.000 reclama tu iphone</h1>
       <p class="fs-5 text-muted">Las mejores actividades por el mejor precio promocionadas por el Instituto
         Municipal de Deportes</p>
     </div>
-
+                  
+   
+            
+           
  
   <main>
+        <c:forEach var="actividad" items="${listaActividad}">  
+            
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Actividad 1</h4>
+            <h4 class="my-0 fw-normal">         <c:out value="${actividad.nombreActividad}"/>  </h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">$10<small class="text-muted fw-light">/mo</small></h1>
@@ -94,8 +100,29 @@
     </div>
 
 </div>
-
+ </c:forEach>  
 </main>
-    
+  <br> lista users <br>
+        <c:forEach var="usuario" items="${lista}">  
+            <c:out value="${usuario.nombreUsuario}"/>  
+            
+            </c:forEach>  
+    <br>lista actividades<br>
+                    <c:forEach var="actividad" items="${listaActividad}">  
+            <c:out value="${actividad.nombreActividad}"/>  
+            
+            </c:forEach>  
+         <c:forEach var="usuario" items="${lista}">  
+            <hr>
+         
+                <c:out value="${usuario.nombreUsuario}"/><p></a>
+                <c:forEach var="actividad" items="${usuario.actividades}">  
+                 <c:out value="${actividad.nombreActividad}"/> 
+           
+            </c:forEach>  
+            <hr>
+        </c:forEach>  
+         
+	
   </body>
 </html>
