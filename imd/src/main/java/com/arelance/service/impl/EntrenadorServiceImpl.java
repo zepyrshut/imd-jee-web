@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 /**
  *
- * @author jorge
+ * @author Jorge
  */
 public class EntrenadorServiceImpl implements EntrenadorService{
     @Inject

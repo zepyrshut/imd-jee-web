@@ -11,13 +11,18 @@ import javax.ejb.Local;
 
 /**
  *
- * @author jorge
+ * @author Jorge
  */
 @Local
 public interface ActividadService {
+
     public List<Actividad> listarActividades();
+
     public Actividad findEntrenadorByID(Actividad actividad);
+
     public void addActividad(Actividad actividad);
+
     public void updateActividad(Actividad actividad);
+
     public void removeActividad(Actividad actividad);
 }

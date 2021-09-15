@@ -1,7 +1,7 @@
 <%-- 
     Document   : index2mostrararticulos
     Created on : 13-sep-2021, 19:49:23
-    Author     : jorge
+    Author     : Jorge
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

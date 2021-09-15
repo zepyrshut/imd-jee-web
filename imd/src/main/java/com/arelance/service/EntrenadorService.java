@@ -11,14 +11,18 @@ import javax.ejb.Local;
 
 /**
  *
- * @author jorge
+ * @author Jorge
  */
 @Local
 public interface EntrenadorService {
-        public List<Entrenador> listarEntrenadores();
- 
+
+    public List<Entrenador> listarEntrenadores();
+
     public Entrenador findEntrenadorByID(Entrenador entrenador);
+
     public void addEntrenador(Entrenador entrenador);
+
     public void updateEntrenador(Entrenador entrenador);
+
     public void removeEntrenador(Entrenador entrenador);
 }

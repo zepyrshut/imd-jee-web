@@ -13,20 +13,21 @@ import javax.persistence.Id;
 
 /**
  *
- * @author jorge
+ * @author Jorge
  */
-public class Tarjeta implements Serializable{
-      @Id
-      @GeneratedValue(strategy = GenerationType.IDENTITY)
-      @Column(name = "id_tarjeta")
-      private int idTarjeta;
-      @Column(name = "numero")
-      private String numero;
-      @Column(name = "cvv")
-      private String cvv;
-      @Column(name = "caducidad")
-      private String caducidad; //DATETIME EN BBD
-              // FK idUsuario (tarjeta.id_usuario en bbdd)
+public class Tarjeta implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_tarjeta")
+    private int idTarjeta;
+    @Column(name = "numero")
+    private String numero;
+    @Column(name = "cvv")
+    private String cvv;
+    @Column(name = "caducidad")
+    private String caducidad; //DATETIME EN BBD
+    // FK idUsuario (tarjeta.id_usuario en bbdd)
 
     public Tarjeta() {
     }
@@ -70,11 +71,4 @@ public class Tarjeta implements Serializable{
         this.caducidad = caducidad;
     }
 
-   
-      
-      
-      
-      
-      
-      
 }

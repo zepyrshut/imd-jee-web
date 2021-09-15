@@ -14,7 +14,7 @@ import javax.inject.Inject;
 
 /**
  *
- * @author jorge
+ * @author Jorge
  */
 public class ActividadServiceImpl implements ActividadService{
     @Inject
