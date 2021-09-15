@@ -5,8 +5,10 @@
  */
 package servlets;
 
+import com.arelance.service.ActividadService;
 import com.arelance.service.UsuarioService;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,11 +17,16 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Jorge
+ * @author jorge
  */
-public class IndexController extends HttpServlet {
-    @Inject
+
+
+
+public class IndexController1 extends HttpServlet {
+ @Inject
     private UsuarioService usuarioService;
+ @Inject
+    private ActividadService actividadService;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -31,12 +38,10 @@ public class IndexController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-        
+             
 request.setAttribute("lista",usuarioService.listarUsuarios());
-  request.getRequestDispatcher("index.jsp").forward(request, response);
-      //  request.getRequestDispatcher("index2mostrararticulos.jsp").forward(request, response);
+request.setAttribute("listaActividad",actividadService.listarActividades());
+  request.getRequestDispatcher("index2mostrarusuarios.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

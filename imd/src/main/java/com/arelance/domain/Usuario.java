@@ -6,11 +6,17 @@
 package com.arelance.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +24,9 @@ import javax.persistence.Table;
  * @author Pedro
  */
 @Entity
+@NamedQueries({@NamedQuery(name="Usuario.findAll",query="SELECT p FROM Usuario p ORDER BY p.idUsuario")
+}
+)
 @Table(name = "usuario")
 public class Usuario implements Serializable {
 
@@ -36,18 +45,31 @@ public class Usuario implements Serializable {
     private String telefonoUsuario;
     @Column(name = "email")
     private String emailUsuario;
-
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario")
+    private  List<Actividad> actividades;
+    
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuarioA, String apellidoUsuarioB, String telefonoUsuario, String emailUsuario) {
+    public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuarioA, String apellidoUsuarioB, String telefonoUsuario, String emailUsuario, List<Actividad> actividades) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuarioA = apellidoUsuarioA;
         this.apellidoUsuarioB = apellidoUsuarioB;
         this.telefonoUsuario = telefonoUsuario;
         this.emailUsuario = emailUsuario;
+        this.actividades = actividades;
     }
+
+//    public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuarioA, String apellidoUsuarioB, String telefonoUsuario, String emailUsuario) {
+//        this.idUsuario = idUsuario;
+//        this.nombreUsuario = nombreUsuario;
+//        this.apellidoUsuarioA = apellidoUsuarioA;
+//        this.apellidoUsuarioB = apellidoUsuarioB;
+//        this.telefonoUsuario = telefonoUsuario;
+//        this.emailUsuario = emailUsuario;
+//    }
 
     public int getIdUsuario() {
         return idUsuario;
@@ -95,6 +117,14 @@ public class Usuario implements Serializable {
 
     public void setEmailUsuario(String emailUsuario) {
         this.emailUsuario = emailUsuario;
+    }
+
+    public List<Actividad> getActividades() {
+        return actividades;
+    }
+
+    public void setActividades(List<Actividad> actividades) {
+        this.actividades = actividades;
     }
 
 }
