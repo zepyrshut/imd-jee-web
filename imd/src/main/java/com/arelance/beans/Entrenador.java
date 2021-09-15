@@ -9,14 +9,14 @@ package com.arelance.beans;
  *
  * @author jorge
  */
-public class Entrenador2 {
+public class Entrenador {
     private int identrenador;
     private String nombre;
 
-    public Entrenador2() {
+    public Entrenador() {
     }
 
-    public Entrenador2(int identrenador, String nombre) {
+    public Entrenador(int identrenador, String nombre) {
         this.identrenador = identrenador;
         this.nombre = nombre;
     }
