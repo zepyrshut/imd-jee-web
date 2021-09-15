@@ -12,17 +12,18 @@ import javax.persistence.Id;
 
 /**
  *
- * @author jorge
+ * @author Jorge
  */
 public class Paypal {
-     @Id
-      @GeneratedValue(strategy = GenerationType.IDENTITY)
-      @Column(name = "id_paypal")
-      private int idPaypal;
-      @Column(name = "correo")
-      private String numero;
-      @Column(name = "correo")
-      private String cvv;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_paypal")
+    private int idPaypal;
+    @Column(name = "correo")
+    private String numero;
+    @Column(name = "correo")
+    private String cvv;
 
     public Paypal(int idPaypal, String numero, String cvv) {
         this.idPaypal = idPaypal;
@@ -53,11 +54,8 @@ public class Paypal {
     public void setCvv(String cvv) {
         this.cvv = cvv;
     }
-   
-      
-      
-              // FK idUsuario (paypal.usuario_id_usuario en bbdd)
 
+    // FK idUsuario (paypal.usuario_id_usuario en bbdd)
     public Paypal() {
     }
 }

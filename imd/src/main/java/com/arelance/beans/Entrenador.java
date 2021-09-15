@@ -5,11 +5,14 @@
  */
 package com.arelance.beans;
 
+import java.io.Serializable;
+
 /**
  *
- * @author jorge
+ * @author Jorge
  */
-public class Entrenador {
+public class Entrenador implements Serializable {
+
     private int identrenador;
     private String nombre;
 
@@ -36,6 +39,5 @@ public class Entrenador {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+
 }

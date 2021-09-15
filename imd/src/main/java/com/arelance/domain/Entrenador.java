@@ -17,6 +17,7 @@ import javax.persistence.Id;
  */
 @Entity
 public class Entrenador implements Comparable<Entrenador> {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_entrenador")
@@ -43,8 +44,6 @@ public class Entrenador implements Comparable<Entrenador> {
         this.idEntrenador = idEntrenador;
     }
 
-
-    
     public String getNombreEntrenador() {
         return nombreEntrenador;
     }

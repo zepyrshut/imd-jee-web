@@ -12,17 +12,18 @@ import javax.persistence.Id;
 
 /**
  *
- * @author jorge
+ * @author Jorge
  */
 //@Entity
 public class ActividadTieneEntrenador { //Tenemos doble PK ; PENDIENTE
-     @Id
-      @GeneratedValue(strategy = GenerationType.IDENTITY)
-      @Column(name = "id_actividad")
-      private int idActividad; //PK en actividad_tiene_entrenador; FK para actividad
-      @Id
-      @GeneratedValue(strategy = GenerationType.IDENTITY)
-      @Column(name = "id_entrenador")
-      private String idEntrenador;//PK en actividad_tiene_entrenador; FK para entrenador
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_actividad")
+    private int idActividad; //PK en actividad_tiene_entrenador; FK para actividad
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_entrenador")
+    private String idEntrenador;//PK en actividad_tiene_entrenador; FK para entrenador
 
 }

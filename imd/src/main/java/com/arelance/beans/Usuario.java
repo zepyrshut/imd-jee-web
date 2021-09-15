@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Pedro
  */
 public class Usuario implements Serializable {
-    
+
     private int idUsuario;
     private String nombre;
     private String apellidoA;
@@ -67,7 +67,5 @@ public class Usuario implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-    
+
 }
