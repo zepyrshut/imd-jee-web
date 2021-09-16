@@ -26,4 +26,7 @@ hs_err_pid*
 /*/.project
 /*/.settings
 nb-configuration.xml
+<<<<<<< HEAD
 /imd/bin/target/
+=======
+>>>>>>> 875088a (Actualización GitIgnore)
