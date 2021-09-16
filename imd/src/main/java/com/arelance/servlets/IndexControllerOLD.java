@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets;
+package com.arelance.servlets;
 
 import com.arelance.service.UsuarioService;
 import java.io.IOException;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jorge
  */
-public class IndexController extends HttpServlet {
+public class IndexControllerOLD extends HttpServlet {
     @Inject
     private UsuarioService usuarioService;
     /**

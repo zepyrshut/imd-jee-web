@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets;
+package com.arelance.servlets;
 
 import com.arelance.service.ActividadService;
 import com.arelance.service.UsuarioService;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-public class IndexController1 extends HttpServlet {
+public class IndexController1OLD extends HttpServlet {
  @Inject
     private UsuarioService usuarioService;
  @Inject
