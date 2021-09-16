@@ -63,8 +63,11 @@
   
       </div>
       <div class="col-md-6">
-  
-        <h5>Nombre actividad</h5>
+   <c:forEach var="actividad" items="${listaActividad}">  
+            
+            
+         
+        <h5> <c:out value="${actividad.nombreActividad}"/> </h5>
         <p class="mb-2 text-muted text-uppercase small"> Categoria</p>
 
         <p><span class="mr-1"><strong>$12.99</strong></span></p>
@@ -122,7 +125,7 @@
           </table>
         </div>
         <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Pagar</button>
-      
+         </c:forEach>  
       </div>
     </div>
   

@@ -24,8 +24,8 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        request.setAttribute("listaActividades", actividadService.listarActividades());
-        request.getRequestDispatcher("lista.jsp").forward(request, response);
+        request.setAttribute("listaActividad", actividadService.listarActividades());
+        request.getRequestDispatcher("index.jsp").forward(request, response);
 
     }
 
