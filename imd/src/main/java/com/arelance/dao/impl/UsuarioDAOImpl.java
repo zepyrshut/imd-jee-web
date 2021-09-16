@@ -19,7 +19,6 @@ import javax.persistence.Query;
  */
 @Stateless
 public class UsuarioDAOImpl implements UsuarioDAO {
-
     @PersistenceContext(unitName = "imdPU")
     EntityManager em;
 
@@ -35,7 +34,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
     @Override
     public Usuario findUsuarioByEmail(Usuario usuario) {
-        Query query = em.createQuery("from Usuario p where p.email=: email");
+        Query query = em.createQuery("from Usuario p where p.emailUsuario= :email");
         query.setParameter("email", usuario.getEmailUsuario());
         return (Usuario) query.getSingleResult();
     }
