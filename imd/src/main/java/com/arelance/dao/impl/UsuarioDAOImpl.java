@@ -19,6 +19,7 @@ import javax.persistence.Query;
  */
 @Stateless
 public class UsuarioDAOImpl implements UsuarioDAO {
+
     @PersistenceContext(unitName = "imdPU")
     EntityManager em;
 
@@ -53,6 +54,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     public void removeUsuario(Usuario usuario) {
         em.merge(usuario);
         em.remove(usuario);
+    }
+
+    @Override
+    public Usuario refrescar(Usuario usuario) {
+        em.refresh(em.merge(usuario));
+        return usuario;
     }
 
 }

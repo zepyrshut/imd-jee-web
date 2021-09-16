@@ -7,13 +7,12 @@ package com.arelance.domain;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -24,13 +23,15 @@ import javax.persistence.Table;
  * @author Pedro
  */
 @Entity
-@NamedQueries({@NamedQuery(name="Usuario.findAll",query="SELECT p FROM Usuario p ORDER BY p.idUsuario")
+@NamedQueries({
+    @NamedQuery(name = "Usuario.findAll", query = "SELECT p FROM Usuario p ORDER BY p.idUsuario")
 }
 )
 @Table(name = "usuario")
 public class Usuario implements Serializable {
+    
+    private static final Long serialVersionUID = 1L;
 
-    private static Long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
@@ -45,10 +46,11 @@ public class Usuario implements Serializable {
     private String telefonoUsuario;
     @Column(name = "email")
     private String emailUsuario;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
+    //@OneToMany(fetch = FetchType.LAZY, mappedBy  = "usuario")
     //@JoinColumn(name = "id_usuario")
-    private  List<Actividad> actividades;
-    
+    @OneToMany(cascade = {CascadeType.REMOVE})
+    private List<Actividad> actividades;
+
     public Usuario() {
     }
 
@@ -61,15 +63,6 @@ public class Usuario implements Serializable {
         this.emailUsuario = emailUsuario;
         this.actividades = actividades;
     }
-
-//    public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuarioA, String apellidoUsuarioB, String telefonoUsuario, String emailUsuario) {
-//        this.idUsuario = idUsuario;
-//        this.nombreUsuario = nombreUsuario;
-//        this.apellidoUsuarioA = apellidoUsuarioA;
-//        this.apellidoUsuarioB = apellidoUsuarioB;
-//        this.telefonoUsuario = telefonoUsuario;
-//        this.emailUsuario = emailUsuario;
-//    }
 
     public int getIdUsuario() {
         return idUsuario;

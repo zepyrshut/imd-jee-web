@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.arelance.service.impl;
 
 import com.arelance.dao.UsuarioDAO;
@@ -22,7 +17,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public List<Usuario> listarUsuarios() {
-
         return usuarioDAO.listarUsuarios();
     }
 
@@ -44,6 +38,12 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public void removeUsuario(Usuario usuario) {
         usuarioDAO.removeUsuario(usuario);
+    }
+    
+    @Override
+    public Usuario refrescar(Usuario usuario) {
+        usuarioDAO.refrescar(usuario);
+        return usuario;
     }
 
 }

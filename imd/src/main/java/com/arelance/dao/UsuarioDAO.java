@@ -27,5 +27,7 @@ public interface UsuarioDAO {
     public void updateUsuario(Usuario usuario);
 
     public void removeUsuario(Usuario usuario);
+    
+    public Usuario refrescar(Usuario usuario);
 
 }

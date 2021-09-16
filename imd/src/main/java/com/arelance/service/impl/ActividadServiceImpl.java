@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.arelance.service.impl;
-
 
 import com.arelance.dao.ActividadDAO;
 import com.arelance.domain.Actividad;
@@ -14,24 +8,26 @@ import javax.inject.Inject;
 
 /**
  *
- * @author jorge
+ * @author Jorge
  */
-public class ActividadServiceImpl implements ActividadService{
+public class ActividadServiceImpl implements ActividadService {
+
     @Inject
     private ActividadDAO actividadDAO;
+
     @Override
     public List<Actividad> listarActividades() {
-     return actividadDAO.listarActividades();
+        return actividadDAO.listarActividades();
     }
 
     @Override
     public Actividad findEntrenadorByID(Actividad actividad) {
-          return actividadDAO.findEntrenadorByID(actividad);
+        return actividadDAO.findEntrenadorByID(actividad);
     }
 
     @Override
     public void addActividad(Actividad actividad) {
-         actividadDAO.addActividad(actividad);
+        actividadDAO.addActividad(actividad);
     }
 
     @Override
@@ -43,5 +39,5 @@ public class ActividadServiceImpl implements ActividadService{
     public void removeActividad(Actividad actividad) {
         actividadDAO.removeActividad(actividad);
     }
-    
+
 }

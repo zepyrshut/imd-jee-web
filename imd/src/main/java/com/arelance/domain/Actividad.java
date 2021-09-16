@@ -5,12 +5,9 @@
  */
 package com.arelance.domain;
 
-import com.arelance.enums.CategoriasActividad;
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -31,11 +27,13 @@ import javax.persistence.Table;
 })
 @Table(name = "actividad")
 public class Actividad implements Serializable {
-    private static Long serialVersionUID = 1L;
+    
+    private static final Long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_actividad")
-    private int IdActividad;
+    private int idActividad;
     @Column(name = "nombre_actividad")
     private String nombreActividad;
     @Column(name = "descripcion_actividad")
@@ -51,8 +49,8 @@ public class Actividad implements Serializable {
     public Actividad() {
     }
 
-    public Actividad(int IdActividad, String nombreActividad, String descripcionActividad, String categoriaActividad, double precio, Usuario usuario) {
-        this.IdActividad = IdActividad;
+    public Actividad(int idActividad, String nombreActividad, String descripcionActividad, String categoriaActividad, double precio, Usuario usuario) {
+        this.idActividad = idActividad;
         this.nombreActividad = nombreActividad;
         this.descripcionActividad = descripcionActividad;
         this.categoriaActividad = categoriaActividad;
@@ -60,28 +58,12 @@ public class Actividad implements Serializable {
         this.usuario = usuario;
     }
 
-
-
-    public void setIdActividad(int IdActividad) {
-        this.IdActividad = IdActividad;
+    public void setIdActividad(int idActividad) {
+        this.idActividad = idActividad;
     }
-
-    
-    
-//    public Actividad(int IdActividad, String nombreActividad, String descripcionActividad, CategoriasActividad categoriaActividad, double precio) {
-//        this.IdActividad = IdActividad;
-//        this.nombreActividad = nombreActividad;
-//        this.descripcionActividad = descripcionActividad;
-//        this.categoriaActividad = categoriaActividad;
-//        this.precio = precio;
-//    }
 
     public int getIdActividad() {
-        return IdActividad;
-    }
-
-    public void setIactividad(int IdActividad) {
-        this.IdActividad = IdActividad;
+        return idActividad;
     }
 
     public String getNombreActividad() {
@@ -108,8 +90,6 @@ public class Actividad implements Serializable {
         this.categoriaActividad = categoriaActividad;
     }
 
-   
-
     public double getPrecio() {
         return precio;
     }
@@ -125,8 +105,5 @@ public class Actividad implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
-    
-    
 
 }
