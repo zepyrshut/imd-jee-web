@@ -22,7 +22,7 @@ public class ActividadServiceImpl implements ActividadService {
 
     @Override
     public Actividad findEntrenadorByID(Actividad actividad) {
-        return actividadDAO.findEntrenadorByID(actividad);
+        return actividadDAO.findActividadById(actividad);
     }
 
     @Override

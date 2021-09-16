@@ -28,7 +28,7 @@ public class ActividadDAOImpl implements ActividadDAO {
     }
 
     @Override
-    public Actividad findEntrenadorByID(Actividad actividad) {
+    public Actividad findActividadById(Actividad actividad) {
         return em.find(Actividad.class, actividad.getIdActividad());
     }
 
