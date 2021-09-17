@@ -4,11 +4,11 @@
 <!doctype html> <!-- meter el charset utf en un header aparte-->
 <html lang="en">
     <head>
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.84.0">
+        <meta charset="utf-8">
         <title>Index</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/pricing/">
@@ -25,12 +25,8 @@
         <link href="css/pricing.css" rel="stylesheet">
     </head>
     <body>
-
-
-
         <div class="container py-3">
-            <jsp:include page="header.jsp" />
-
+            <%@ include file="/jspf/header.jspf" %>
             <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
                 <h1 class="display-4 fw-normal">Bienvenidos a IMD</h1>
                 <p class="fs-5 text-muted">Las mejores actividades por el mejor precio promocionadas por el Instituto
@@ -56,10 +52,8 @@
           <div class="card-body">
              <h1 class="card-title pricing-card-title">$10<small class="text-muted fw-light">/mo</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>descripcion</li>
+              <li>${actividad.descripcionActividad}</li>
               <li>instructor</li>
-              <li>actividad.x</li>
-              <li>actividad.y</li>
             </ul>
             <a href="descripcionactividad.jsp">  <button type="button" class="w-100 btn btn-lg btn-outline-primary">Ver más</button></a>
           </div>
@@ -86,7 +80,7 @@
             <c:forEach var="usuario" items="${lista}">  
                 <hr>
 
-                <c:out value="${usuario.nombreUsuario}"/><p></a>
+                <c:out value="${usuario.nombreUsuario}"/><p>
                     <c:forEach var="actividad" items="${usuario.actividades}">  
                         <c:out value="${actividad.nombreActividad}"/> 
 

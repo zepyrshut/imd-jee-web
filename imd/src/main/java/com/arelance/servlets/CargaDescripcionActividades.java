@@ -29,16 +29,17 @@ public class CargaDescripcionActividades extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-       Usuario usuario (Usuario) request.getSession().getAttribute("usuario");
-       
-       
-
-        actividad.setNombreActividad(request.getParameter("param1"));
-        actividad.setCategoriaActividad(request.getParameter("apellido"));
-        actividad.set(request.getParameter("email"));
-        actividad.setTelefono(request.getParameter("telefono"));
-        request.getSession().setAttribute("persona", persona);
-        request.getRequestDispatcher("MainServlet").forward(request,
+//       Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+//       Actividad actividad = new Actividad();
+//       
+//       
+//
+//        actividad.setNombreActividad(request.getParameter("param1"));
+//        actividad.setCategoriaActividad(request.getParameter("apellido"));
+//        actividad.set(request.getParameter("email"));
+//        actividad.setTelefono(request.getParameter("telefono"));
+//        request.getSession().setAttribute("persona", persona);
+//        request.getRequestDispatcher("MainServlet").forward(request,
         
         
     }
