@@ -42,7 +42,7 @@
 
   <main>
           <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                <c:forEach var="actividad" items="${listaActividad}">  
+              <c:forEach var="actividad" items="${listaActividad}" begin="0" end="5">  
          <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-header py-3">
