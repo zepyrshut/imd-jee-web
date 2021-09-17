@@ -32,7 +32,7 @@
             <jsp:include page="header.jsp" />
 
             <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-                <h1 class="display-4 fw-normal">Bienvenido user1.000.000 reclama tu iphone</h1>
+                <h1 class="display-4 fw-normal">Bienvenidos a IMD</h1>
                 <p class="fs-5 text-muted">Las mejores actividades por el mejor precio promocionadas por el Instituto
                     Municipal de Deportes</p>
             </div>
