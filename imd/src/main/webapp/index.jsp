@@ -60,12 +60,12 @@
         </div>
       </div>
             </c:forEach> 
-     
-                 
-                     
-                    
-              
           </div>
+      
+      
+      
+      
+      
 </main>
             <br> lista users <br>
             <c:forEach var="usuario" items="${lista}">  

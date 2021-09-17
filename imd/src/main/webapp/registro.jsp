@@ -26,11 +26,11 @@
 
 
 <div class="container py-3">
-  <jsp:include page="header.jsp" />
+
   
     <div>
 
-      <form class="form-signin" action="index.jsp">
+    <%--  <form class="form-signin" action="RegistroUsuario">
         <div class="text-center mb-4">
       
           <h1 class="h3 mb-3 font-weight-normal">Registrarse (pendiente, obligar a poner metodos pago)</h1>
@@ -52,6 +52,28 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Registarse</button>
     
       </form>
+    --%>
+              <form action="RegistroUsuario" method="GET">
+                  <p>Datos personales:</p>
+            <p>Nombre: <input type="text" name="nombre"></p>
+            <p>Apellido 1: <input type="text" name="apellidoa"></p>
+          <!--    <p>Apellido 2: <input type="text" name="apellidob"></p> -->
+                <p>Telefono<input type="text" name="telefono"></p>
+                  <p>Correo<input type="text" name="correo"></p>
+               <p>Datos de sesion:</p>
+            <p>Usuario: <input type="text" name="usuario"></p>    
+            <p>Contraseña: <input type="text" name="contrasena"></p> 
+            
+            <p> 
+                <input type="submit" value="Registrar">
+                <input type="reset" value="Borrar">
+            </p>
+        </form>   
+
+        <% if (request.getAttribute("yaExiste") != null) {
+        %> <p>${yaExiste}</p> <% }%>
+        
+        
     </div>
 
 
