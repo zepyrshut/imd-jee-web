@@ -1,0 +1,4 @@
+<%@ page pageEncoding="UTF-8" %>
+<footer class="uk-footer uk-text-center" >
+    <p>2021 - IMD</p>
+</footer>
