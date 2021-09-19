@@ -1,7 +1,9 @@
 package com.arelance.servlets;
 
+import com.arelance.domain.Actividad;
 import com.arelance.service.ActividadService;
 import java.io.IOException;
+import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +27,9 @@ public class Principal extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         request.setAttribute("listaActividad", actividadService.listarActividades());
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("index.jsp").forward(request, response);        
+        
+        List<Actividad> actividades = actividadService.listarActividades();  
 
     }
 
