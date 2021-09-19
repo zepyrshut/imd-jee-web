@@ -5,5 +5,9 @@
     <jta-data-source>jdbc/_imd-1</jta-data-source>
     <class>com.arelance.domain.Actividad</class>
     <class>com.arelance.domain.Usuario</class>
+    <class>com.arelance.domain.DatosSesion</class>
+    <class>com.arelance.domain.Entrenador</class>
+    <class>com.arelance.domain.UsuarioTieneActividad</class>
+    <class>com.arelance.domain.EntrenadorTieneActividad</class>
   </persistence-unit>
 </persistence>

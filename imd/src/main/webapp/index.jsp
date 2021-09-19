@@ -26,9 +26,8 @@
                             </div>
                             <div class="uk-card-body">
                                 <p><c:out value="${actividad.descripcionActividad}"/></p>
-                                <p>Entrenador: Alfonso Cuarón.</p>
+                                <p>Entrenador: <c:out value="${actividad.entrenadorTieneActividad}"/>.</p>
                             </div>
-
                             <div class="uk-card-footer">
                                 <a href="#" class="uk-button uk-button-text">VER MÁS SOBRE <c:out value="${actividad.nombreActividad}"/></a>
                             </div>

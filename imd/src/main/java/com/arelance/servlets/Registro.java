@@ -11,6 +11,10 @@ import com.arelance.service.DatosSesionService;
 import com.arelance.service.UsuarioService;
 import java.io.IOException;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,9 +27,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/registro")
 public class Registro extends HttpServlet {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     @Inject
     private UsuarioService usuarioService;
 
@@ -33,34 +37,24 @@ public class Registro extends HttpServlet {
     private DatosSesionService datosSesionService;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
+
         Usuario usuario = new Usuario();
-        usuario.setNombreUsuario(request.getParameter("nombre"));
-        usuario.setApellidoUsuarioA(request.getParameter("apellido_a"));
-        usuario.setApellidoUsuarioB(request.getParameter("apellido_b"));
-        usuario.setTelefonoUsuario(request.getParameter("telefono"));
-        usuario.setEmailUsuario(request.getParameter("email"));
-       usuarioService.addUsuario(usuario);
+        usuario.setNombre(request.getParameter("nombre"));
+        usuario.setApellidoA(request.getParameter("apellido_a"));
+        usuario.setApellidoB(request.getParameter("apellido_b"));
+        usuario.setTelefono(request.getParameter("telefono"));
+        usuario.setEmail(request.getParameter("email"));
+
         DatosSesion datosSesion = new DatosSesion();
         datosSesion.setUsuario(request.getParameter("usuario"));
-        datosSesion.setContrasena(request.getParameter("contrasena"));  
+        datosSesion.setContrasena(request.getParameter("contrasena"));
+        datosSesion.setUsuario1(usuario);
+      
+        usuarioService.addUsuario(usuario);
         datosSesionService.addDatosSesion(datosSesion);
         
-        
-          request.getRequestDispatcher("/principal").forward(request, response);       
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        request.getRequestDispatcher("/principal").forward(request, response);
 
     }
 

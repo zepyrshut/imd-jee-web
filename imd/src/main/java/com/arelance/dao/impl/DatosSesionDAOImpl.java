@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.arelance.dao.impl;
 
 import com.arelance.dao.DatosSesionDAO;
@@ -23,7 +18,7 @@ public class DatosSesionDAOImpl implements DatosSesionDAO {
 
     @Override
     public DatosSesion findDatosSesionByID(DatosSesion datosSesion) {
-        return em.find(DatosSesion.class, datosSesion.getIdUsuario());
+        return em.find(DatosSesion.class, datosSesion.getIdDatosSesion());
     }
 
     @Override

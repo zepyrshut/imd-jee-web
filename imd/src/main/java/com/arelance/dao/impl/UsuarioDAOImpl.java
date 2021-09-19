@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.arelance.dao.impl;
 
 import com.arelance.dao.UsuarioDAO;
@@ -36,7 +31,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     @Override
     public Usuario findUsuarioByEmail(Usuario usuario) {
         Query query = em.createQuery("from Usuario p where p.emailUsuario= :email");
-        query.setParameter("email", usuario.getEmailUsuario());
+        query.setParameter("email", usuario.getEmail());
         return (Usuario) query.getSingleResult();
     }
 
