@@ -40,22 +40,18 @@ public class Actividad implements Serializable {
     private String descripcionActividad;
     @Column(name = "categoria_actividad") //CAMBIAR A CATEGORIA OBJETO
     private String categoriaActividad;
-    @Column(name = "precio")
+    @Column(name = "precio_actividad")
     private double precio;
-    @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
 
     public Actividad() {
     }
 
-    public Actividad(int idActividad, String nombreActividad, String descripcionActividad, String categoriaActividad, double precio, Usuario usuario) {
+    public Actividad(int idActividad, String nombreActividad, String descripcionActividad, String categoriaActividad, double precio) {
         this.idActividad = idActividad;
         this.nombreActividad = nombreActividad;
         this.descripcionActividad = descripcionActividad;
         this.categoriaActividad = categoriaActividad;
         this.precio = precio;
-        this.usuario = usuario;
     }
 
     public void setIdActividad(int idActividad) {
@@ -96,14 +92,6 @@ public class Actividad implements Serializable {
 
     public void setPrecio(double precio) {
         this.precio = precio;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
 }

@@ -1,7 +1,5 @@
 package com.arelance.servlets;
 
-import com.arelance.domain.Actividad;
-import com.arelance.domain.Usuario;
 import com.arelance.service.ActividadService;
 import com.arelance.service.UsuarioService;
 import java.io.IOException;
@@ -17,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Pedro
  */
 @WebServlet("/cargadescripcionactividades")
-public class CargaDescripcionActividades extends HttpServlet {
+public class DescripcionActividades extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 

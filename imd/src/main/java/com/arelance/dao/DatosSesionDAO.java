@@ -10,9 +10,9 @@ import javax.ejb.Local;
 @Local
 public interface DatosSesionDAO {
 
-    public DatosSesion findUsuarioByID(DatosSesion datosSesion);
+    public DatosSesion findDatosSesionByID(DatosSesion datosSesion);
 
-    public void addUsuario(DatosSesion datosSesion);
+    public void addDatosSesion(DatosSesion datosSesion);
 
     public void updatePersona(DatosSesion datosSesion);
 

@@ -22,12 +22,12 @@ public class DatosSesionDAOImpl implements DatosSesionDAO {
     EntityManager em;
 
     @Override
-    public DatosSesion findUsuarioByID(DatosSesion datosSesion) {
+    public DatosSesion findDatosSesionByID(DatosSesion datosSesion) {
         return em.find(DatosSesion.class, datosSesion.getIdUsuario());
     }
 
     @Override
-    public void addUsuario(DatosSesion datosSesion) {
+    public void addDatosSesion(DatosSesion datosSesion) {
         em.persist(datosSesion);
     }
 

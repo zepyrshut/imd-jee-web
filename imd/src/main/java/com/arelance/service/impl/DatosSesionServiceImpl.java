@@ -15,13 +15,13 @@ public class DatosSesionServiceImpl implements DatosSesionService {
     private DatosSesionDAO datosSesionDAO;
 
     @Override
-    public DatosSesion findUsuarioByID(DatosSesion datosSesion) {
-        return datosSesionDAO.findUsuarioByID(datosSesion);
+    public DatosSesion findDatosSesionByID(DatosSesion datosSesion) {
+        return datosSesionDAO.findDatosSesionByID(datosSesion);
     }
 
     @Override
-    public void addUsuario(DatosSesion datosSesion) {
-        datosSesionDAO.addUsuario(datosSesion);
+    public void addDatosSesion(DatosSesion datosSesion) {
+        datosSesionDAO.addDatosSesion(datosSesion);
     }
 
     @Override

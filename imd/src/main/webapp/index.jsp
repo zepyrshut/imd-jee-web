@@ -9,22 +9,24 @@
         <!-- Barra navegación -->
         <%@ include file="/jspf/navbar.jspf" %>   
         <main>
-            <div class="uk-child-width-1-3@s uk-grid-match uk-padding" uk-grid>    
+            <div class="uk-child-width-1-1 uk-child-width-1-3@m uk-grid-match uk-padding" uk-grid>    
                 <c:forEach var="actividad" items="${listaActividad}" begin="0" end="5">  
                     <div>
-                        <div class="uk-card uk-card-default">
-                            <div class="uk-card-header">
-                                <div class="uk-grid-small uk-flex-middle" uk-grid>
-                                    <div class="uk-width-expand">                       
-                                        <h3 class="uk-card-title uk-margin-remove-bottom"><c:out value="${actividad.nombreActividad}"/></h3>
-                                        <p class="uk-text-meta uk-margin-remove-top"><c:out value="${actividad.descripcionActividad}"/></p>
+                        <div class="uk-card uk-card-default uk-box-shadow-hover-xlarge">
+                            <div class="uk-background-cover" data-src="img/<c:out value="${actividad.nombreActividad}"/>.jpg" uk-img>
+                                <div class="uk-card-header uk-overlay uk-overlay-default">                                
+                                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+
+                                        <div class="uk-width-expand">                       
+                                            <h3 class="uk-card-title uk-margin-remove-bottom"><c:out value="${actividad.nombreActividad}"/></h3>
+                                            <p class="uk-text-meta uk-margin-remove-top"><c:out value="${actividad.categoriaActividad}"/></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="uk-card-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                                <p><c:out value="${actividad.descripcionActividad}"/></p>
                                 <p>Entrenador: Alfonso Cuarón.</p>
-
                             </div>
 
                             <div class="uk-card-footer">
@@ -32,13 +34,10 @@
                             </div>
                         </div>
                     </div>
-
-                </c:forEach>     
+                </c:forEach> 
             </div>
-        </main>
-
+        </main>        
         <!-- Pie de página -->
-        <%@ include file="/jspf/footer.jspf" %>   
-
+        <%@ include file="/jspf/footer.jspf" %> 
     </body>
 </html>

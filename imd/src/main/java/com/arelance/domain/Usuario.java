@@ -46,8 +46,6 @@ public class Usuario implements Serializable {
     private String telefonoUsuario;
     @Column(name = "email")
     private String emailUsuario;
-    //@OneToMany(fetch = FetchType.LAZY, mappedBy  = "usuario")
-    //@JoinColumn(name = "id_usuario")
     @OneToMany(cascade = {CascadeType.REMOVE})
     private List<Actividad> actividades;
 

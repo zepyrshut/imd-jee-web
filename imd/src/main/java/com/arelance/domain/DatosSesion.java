@@ -5,20 +5,24 @@
  */
 package com.arelance.domain;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Pedro
  */
 @Entity
-public class DatosSesion {
+@Table(name = "datos_sesion")
+public class DatosSesion implements Serializable {
+    
+    private static final Long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,15 +31,19 @@ public class DatosSesion {
     @Column(name = "usuario")
     private String usuario;
     @Column(name = "contrasena")
-    private String contrasena;
+    private String contrasena;    
+    @OneToOne
+    private Usuario usuarioImd;
+    
 
     public DatosSesion() {
     }
 
-    public DatosSesion(int idUsuario, String usuario, String contrasena) {
+    public DatosSesion(int idUsuario, String usuario, String contrasena, Usuario usuarioImd) {
         this.idUsuario = idUsuario;
         this.usuario = usuario;
         this.contrasena = contrasena;
+        this.usuarioImd = usuarioImd;
     }
 
     public int getIdUsuario() {
@@ -62,4 +70,13 @@ public class DatosSesion {
         this.contrasena = contrasena;
     }
 
+    public Usuario getUsuarioImd() {
+        return usuarioImd;
+    }
+
+    public void setUsuarioImd(Usuario usuarioImd) {
+        this.usuarioImd = usuarioImd;
+    }
+    
+    
 }
