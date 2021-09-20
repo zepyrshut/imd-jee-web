@@ -28,8 +28,6 @@ public class Principal extends HttpServlet {
         
         request.setAttribute("listaActividad", actividadService.listarActividades());
         request.getRequestDispatcher("index.jsp").forward(request, response);        
-        
-        List<Actividad> actividades = actividadService.listarActividades();  
 
     }
 
