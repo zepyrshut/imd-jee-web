@@ -18,6 +18,12 @@ public class DatosSesionServiceImpl implements DatosSesionService {
     public DatosSesion findDatosSesionByID(DatosSesion datosSesion) {
         return datosSesionDAO.findDatosSesionByID(datosSesion);
     }
+    
+        @Override
+    public DatosSesion findDatosSesionByUsuario(DatosSesion datosSesion) {
+        return datosSesionDAO.findDatosSesionByUsuario(datosSesion);
+    }
+    
 
     @Override
     public void addDatosSesion(DatosSesion datosSesion) {
@@ -38,6 +44,8 @@ public class DatosSesionServiceImpl implements DatosSesionService {
     public DatosSesion inicioSesion(DatosSesion datosSesion) {
        return datosSesionDAO.inicioSesion(datosSesion);
     }
+
+
     
     
 

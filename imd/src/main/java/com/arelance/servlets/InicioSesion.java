@@ -25,7 +25,7 @@ public class InicioSesion extends HttpServlet {
     private DatosSesionDAO datosSesionDAO;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         DatosSesion datosSesion = new DatosSesion();
         String nombre = request.getParameter("usuario");
@@ -37,7 +37,7 @@ public class InicioSesion extends HttpServlet {
         datosSesion = datosSesionDAO.inicioSesion(datosSesion);
 
         if (datosSesion == null) {
-            String datoIncorrecto = "Error, inténtelo de nuevo.";
+            String datoIncorrecto = "Datos de sesión incorrectos, inténtelo de nuevo.";
             request.setAttribute("datoIncorrecto", datoIncorrecto);
             request.getRequestDispatcher("/iniciosesion.jsp").forward(request, response);
             return;
@@ -45,7 +45,7 @@ public class InicioSesion extends HttpServlet {
             Usuario usuario = datosSesion.getUsuarioSocio();
             HttpSession sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", usuario);
-            request.getRequestDispatcher("/principal").forward(request, response);
+            response.sendRedirect("principal");
         }
 
     }

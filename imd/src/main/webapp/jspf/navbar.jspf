@@ -14,13 +14,14 @@
         <div class="uk-offcanvas-bar uk-flex uk-flex-column">
             <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical ">
 
-                <li><a href="/imd">Inicio</a></li>
-                <c:if test="${usuario == null}"><li><a href="iniciosesion.jsp">Iniciar sesión</a></li></c:if>
-                <c:if test="${usuario != null}"><li><a href="#">¡Hola ${usuario.nombre}!</a></li></c:if>                    
+
+                <c:if test="${usuario == null}"><li><a href="login">Iniciar sesión</a></li></c:if>
+                <c:if test="${usuario != null}"><li><a href="#">¡Hola ${usuario.nombre}!</a></li></c:if>    
+                    <li><a href="imd">Inicio</a></li>                
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto</a></li>
-                <c:if test="${usuario == null}"><li><a href="registrousuario.jsp">Registrarse</a></li></c:if>
-                <c:if test="${usuario != null}"><li><a href="#">Cerrar sesión</a></li></c:if>
+                <c:if test="${usuario == null}"><li><a href="register">Registrarse</a></li></c:if>
+                <c:if test="${usuario != null}"><li><a href="cierresesion">Cerrar sesión</a></li></c:if>
 
                 </ul>
             </div>
@@ -34,12 +35,12 @@
             </div>
             <div class="uk-navbar-right padding-right-large">
                 <ul class="uk-navbar-nav">
-                <c:if test="${usuario == null}"><li><a href="iniciosesion.jsp">Iniciar sesión</a></li></c:if>
+                <c:if test="${usuario == null}"><li><a href="login">Iniciar sesión</a></li></c:if>
                 <c:if test="${usuario != null}"><li><a href="#">¡Hola ${usuario.nombre}!</a></li></c:if>                    
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto</a></li>
-                <c:if test="${usuario == null}"><li><a href="registrousuario.jsp">Registrarse</a></li></c:if>
-                <c:if test="${usuario != null}"><li><a href="#">Cerrar sesión</a></li></c:if>
+                <c:if test="${usuario == null}"><li><a href="register">Registrarse</a></li></c:if>
+                <c:if test="${usuario != null}"><li><a href="cierresesion">Cerrar sesión</a></li></c:if>
             </ul>
         </div>
     </nav>

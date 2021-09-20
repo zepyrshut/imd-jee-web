@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Registro extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
+    private static final String REGISTRO_USUARIO = "/registrousuario.jsp";
 
     @Inject
     private UsuarioService usuarioService;
@@ -28,7 +29,7 @@ public class Registro extends HttpServlet {
     private DatosSesionService datosSesionService;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Usuario usuario = new Usuario();
         usuario.setNombre(request.getParameter("nombre"));
@@ -37,16 +38,35 @@ public class Registro extends HttpServlet {
         usuario.setTelefono(request.getParameter("telefono"));
         usuario.setEmail(request.getParameter("email"));
 
-        DatosSesion datosSesion = new DatosSesion();
-        datosSesion.setUsuario(request.getParameter("usuario"));
-        datosSesion.setContrasena(request.getParameter("contrasena"));
-        datosSesion.setUsuarioSocio(usuario);
-      
-        usuarioService.addUsuario(usuario);
-        datosSesionService.addDatosSesion(datosSesion);
-        
-        request.getRequestDispatcher("/principal").forward(request, response);
+        if (usuarioService.findUsuarioByEmail(usuario) != null) {
+            String emailRepetido = "Ya existe este correo electrónico, pruebe otro.";
+            request.setAttribute("emailRepetido", emailRepetido);
+            request.getRequestDispatcher(REGISTRO_USUARIO).forward(request, response);
+            return;
+
+        } else {
+
+            DatosSesion datosSesion = new DatosSesion();
+            datosSesion.setUsuario(request.getParameter("usuario"));
+
+            if (datosSesionService.findDatosSesionByUsuario(datosSesion) != null) {
+                String usuarioRepetido = "Ya existe este usuario, pruebe otro.";
+                request.setAttribute("usuarioRepetido", usuarioRepetido);
+                request.getRequestDispatcher(REGISTRO_USUARIO).forward(request, response);
+                return;
+
+            } else {
+                datosSesion.setContrasena(request.getParameter("contrasena"));
+                datosSesion.setUsuarioSocio(usuario);
+                usuarioService.addUsuario(usuario);
+                datosSesionService.addDatosSesion(datosSesion);
+                String usuarioRegistrado = "Usuario registrado con éxito, ya puedes iniciar sesión.";
+                request.setAttribute("usuarioRegistrado", usuarioRegistrado);
+                request.getRequestDispatcher(REGISTRO_USUARIO).forward(request, response);
+
+            }
+
+        }
 
     }
-
 }

@@ -24,6 +24,20 @@ public class DatosSesionDAOImpl implements DatosSesionDAO {
     }
 
     @Override
+    public DatosSesion findDatosSesionByUsuario(DatosSesion datosSesion) {
+        Query query = em.createNamedQuery("DatosSesion.findByUsuario");
+        query.setParameter("usuario", datosSesion.getUsuario());
+
+        try {
+            return (DatosSesion) query.getSingleResult();
+        } catch (NoResultException e) {
+            e.getMessage();
+            return null;
+        }
+
+    }
+
+    @Override
     public void addDatosSesion(DatosSesion datosSesion) {
         em.persist(datosSesion);
     }
@@ -43,17 +57,15 @@ public class DatosSesionDAOImpl implements DatosSesionDAO {
     public DatosSesion inicioSesion(DatosSesion datosSesion) {
         Query query = em.createNamedQuery("DatosSesion.validarSesion");
         query.setParameter("usuario", datosSesion.getUsuario());
-        query.setParameter("contrasena",  datosSesion.getContrasena());
-        
-        
-        
+        query.setParameter("contrasena", datosSesion.getContrasena());
+
         try {
             return (DatosSesion) query.getSingleResult();
         } catch (NoResultException e) {
             e.getMessage();
             return null;
-        }       
-       
+        }
+
     }
-    
+
 }

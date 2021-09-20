@@ -11,6 +11,8 @@ import javax.ejb.Local;
 public interface DatosSesionDAO {
 
     public DatosSesion findDatosSesionByID(DatosSesion datosSesion);
+    
+    public DatosSesion findDatosSesionByUsuario(DatosSesion datosSesion);
 
     public void addDatosSesion(DatosSesion datosSesion);
 

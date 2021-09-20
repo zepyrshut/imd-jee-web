@@ -37,10 +37,10 @@ public class DatosSesion implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_datos_sesion")
     private Integer idDatosSesion;
-    @Size(max = 20)
+    @Size(min = 1, max = 20)
     @Column(name = "usuario")
     private String usuario;
-    @Size(max = 50)
+    @Size(min = 1, max = 50)
     @Column(name = "contrasena")
     private String contrasena;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
