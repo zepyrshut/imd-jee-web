@@ -1,4 +1,10 @@
 <%@ page pageEncoding="UTF-8" %>
-<footer class="uk-footer uk-text-center" >
-    <p>2021 - IMD</p>
-</footer>
+    <!-- Pie de página -->
+    <footer class="uk-footer uk-text-center font-ubuntu">
+        <a href="https://github.com/zepyrshut"><span class="uk-padding" uk-icon="icon: github"></span></a>
+        <a href="https://getuikit.com/"><span class="uk-padding" uk-icon="icon: uikit"></span></a>
+        <a href="https://github.com/jorgehurtadodmx"><span class="uk-padding" uk-icon="icon: github"></span></a>
+        <p>Desarrollado por Pedro Pérez y Jorge Hurtado</p>
+        <p>UIKit y Java - 2021</p>
+    </footer>
+    <!-- Fin pie de página -->
