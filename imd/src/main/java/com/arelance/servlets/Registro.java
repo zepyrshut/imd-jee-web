@@ -49,7 +49,7 @@ public class Registro extends HttpServlet {
         DatosSesion datosSesion = new DatosSesion();
         datosSesion.setUsuario(request.getParameter("usuario"));
         datosSesion.setContrasena(request.getParameter("contrasena"));
-        datosSesion.setUsuario1(usuario);
+        datosSesion.setUsuarioSocio(usuario);
       
         usuarioService.addUsuario(usuario);
         datosSesionService.addDatosSesion(datosSesion);

@@ -17,9 +17,7 @@ public interface DatosSesionDAO {
     public void updatePersona(DatosSesion datosSesion);
 
     public void removePersona(DatosSesion datosSesion);
-    
-    public void validarSesion(DatosSesion datosSesion);
-    public boolean validarSesionBueno(DatosSesion datosSesion)
-    public DatosSesion validarSesion1(String username, String password);
-    public boolean validarSesion2(DatosSesion datosSesion);
+
+    public DatosSesion inicioSesion(DatosSesion datosSesion);
+
 }

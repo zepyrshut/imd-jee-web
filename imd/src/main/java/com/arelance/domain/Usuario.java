@@ -64,7 +64,7 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "email")
     private String email;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario1")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuarioSocio")
     private DatosSesion datosSesion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
     private Collection<UsuarioTieneActividad> usuarioTieneActividadCollection;
@@ -136,7 +136,7 @@ public class Usuario implements Serializable {
         return datosSesion;
     }
 
-    public void setDatosSesionCollection(DatosSesion datosSesion) {
+    public void setDatosSesion(DatosSesion datosSesion) {
         this.datosSesion = datosSesion;
     }
 

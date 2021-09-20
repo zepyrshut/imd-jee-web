@@ -17,5 +17,7 @@ public interface DatosSesionService {
     public void updatePersona(DatosSesion datosSesion);
 
     public void removePersona(DatosSesion datosSesion);
+    
+    public DatosSesion inicioSesion(DatosSesion datosSesion);
 
 }
