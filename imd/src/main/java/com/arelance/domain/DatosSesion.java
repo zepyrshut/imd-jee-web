@@ -26,7 +26,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "DatosSesion.findAll", query = "SELECT d FROM DatosSesion d"),
     @NamedQuery(name = "DatosSesion.findByIdDatosSesion", query = "SELECT d FROM DatosSesion d WHERE d.idDatosSesion = :idDatosSesion"),
     @NamedQuery(name = "DatosSesion.findByUsuario", query = "SELECT d FROM DatosSesion d WHERE d.usuario = :usuario"),
-    @NamedQuery(name = "DatosSesion.findByContrasena", query = "SELECT d FROM DatosSesion d WHERE d.contrasena = :contrasena")})
+    @NamedQuery(name = "DatosSesion.validarSesion", query = "SELECT d FROM DatosSesion d WHERE d.usuario = :usuario AND d.contrasena = :contrasena"),
+    @NamedQuery(name = "DatosSesion.findByContrasena", query = "SELECT d FROM DatosSesion d WHERE d.contrasena = :contrasena")}
+)
 public class DatosSesion implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,7 +45,7 @@ public class DatosSesion implements Serializable {
     private String contrasena;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @OneToOne(optional = false)
-    private Usuario usuario1;
+    private Usuario usuarioSocio;
 
     public DatosSesion() {
     }
@@ -77,12 +79,12 @@ public class DatosSesion implements Serializable {
         this.contrasena = contrasena;
     }
 
-    public Usuario getUsuario1() {
-        return usuario1;
+    public Usuario getUsuarioSocio() {
+        return usuarioSocio;
     }
 
-    public void setUsuario1(Usuario usuario1) {
-        this.usuario1 = usuario1;
+    public void setUsuarioSocio(Usuario usuario1) {
+        this.usuarioSocio = usuario1;
     }
 
     @Override

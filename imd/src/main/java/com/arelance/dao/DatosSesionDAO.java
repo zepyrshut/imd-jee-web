@@ -18,4 +18,6 @@ public interface DatosSesionDAO {
 
     public void removePersona(DatosSesion datosSesion);
 
+    public DatosSesion inicioSesion(DatosSesion datosSesion);
+
 }

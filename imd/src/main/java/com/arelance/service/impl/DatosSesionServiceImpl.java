@@ -32,6 +32,13 @@ public class DatosSesionServiceImpl implements DatosSesionService {
     @Override
     public void removePersona(DatosSesion datosSesion) {
         datosSesionDAO.removePersona(datosSesion);
+    }  
+    
+    @Override
+    public DatosSesion inicioSesion(DatosSesion datosSesion) {
+       return datosSesionDAO.inicioSesion(datosSesion);
     }
+    
+    
 
 }

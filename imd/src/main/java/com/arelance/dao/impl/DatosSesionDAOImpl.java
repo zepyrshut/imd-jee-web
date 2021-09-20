@@ -4,7 +4,9 @@ import com.arelance.dao.DatosSesionDAO;
 import com.arelance.domain.DatosSesion;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -37,4 +39,21 @@ public class DatosSesionDAOImpl implements DatosSesionDAO {
         em.remove(datosSesion);
     }
 
+    @Override
+    public DatosSesion inicioSesion(DatosSesion datosSesion) {
+        Query query = em.createNamedQuery("DatosSesion.validarSesion");
+        query.setParameter("usuario", datosSesion.getUsuario());
+        query.setParameter("contrasena",  datosSesion.getContrasena());
+        
+        
+        
+        try {
+            return (DatosSesion) query.getSingleResult();
+        } catch (NoResultException e) {
+            e.getMessage();
+            return null;
+        }       
+       
+    }
+    
 }
