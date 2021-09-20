@@ -9,6 +9,7 @@
         <!-- Barra navegación -->
         <%@ include file="/jspf/navbar.jspf" %>   
         <main>
+            
             <div class="uk-child-width-1-1 uk-child-width-1-3@m uk-grid-match uk-padding" uk-grid>    
                 <c:forEach var="actividad" items="${listaActividad}" begin="0" end="5">  
                     <div>
@@ -26,7 +27,7 @@
                             </div>
                             <div class="uk-card-body">
                                 <p><c:out value="${actividad.descripcionActividad}"/></p>
-                                <p>Entrenador: <c:out value="${actividad.entrenadorTieneActividad}"/>.</p>
+                                <p>Entrenador: <c:out value="${actividad.entrenadorTieneActividad.entrenador.nombre}"/>.</p>
                             </div>
                             <div class="uk-card-footer">
                                 <a href="#" class="uk-button uk-button-text">VER MÁS SOBRE <c:out value="${actividad.nombreActividad}"/></a>

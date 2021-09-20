@@ -30,13 +30,13 @@
                     <div  class="uk-width-1-1">
                         <label class="uk-form-label" for="form-stacked-text">Usuario:</label>
                         <div class="uk-form-controls">
-                            <input class="uk-input" id="form-stacked-text" type="text" required>
+                            <input class="uk-input" id="form-stacked-text" type="text"  name="username" required>
                         </div>
                     </div>
                     <div  class="uk-width-1-1">
                         <label class="uk-form-label" for="form-stacked-text">Contraseña:</label>
                         <div class="uk-form-controls">
-                            <input class="uk-input" id="form-stacked-text" type="password" required>
+                            <input class="uk-input" id="form-stacked-text" name="password" type="password" required >
                         </div>
                     </div>
 
