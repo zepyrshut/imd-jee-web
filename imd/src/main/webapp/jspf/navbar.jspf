@@ -14,12 +14,12 @@
         <div class="uk-offcanvas-bar uk-flex uk-flex-column">
             <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical ">
 
-                <li><a href="index.html">Inicio</a></li>
-                <c:if test="${usuario == null}"><li><a href="iniciosesion.html">Iniciar sesión</a></li></c:if>
+                <li><a href="/imd">Inicio</a></li>
+                <c:if test="${usuario == null}"><li><a href="iniciosesion.jsp">Iniciar sesión</a></li></c:if>
                 <c:if test="${usuario != null}"><li><a href="#">¡Hola ${usuario.nombre}!</a></li></c:if>                    
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto</a></li>
-                <c:if test="${usuario == null}"><li><a href="registrousuario.html">Registrarse</a></li></c:if>
+                <c:if test="${usuario == null}"><li><a href="registrousuario.jsp">Registrarse</a></li></c:if>
                 <c:if test="${usuario != null}"><li><a href="#">Cerrar sesión</a></li></c:if>
 
                 </ul>
@@ -30,15 +30,15 @@
     <div class="uk-visible@m">
         <nav class="uk-navbar-container" uk-navbar>
             <div class="uk-navbar-left padding-left-large">
-                <a href="index.html" class="uk-navbar-item uk-logo">IMD</a>
+                <a href="/imd" class="uk-navbar-item uk-logo">IMD</a>
             </div>
             <div class="uk-navbar-right padding-right-large">
                 <ul class="uk-navbar-nav">
-                <c:if test="${usuario == null}"><li><a href="iniciosesion.html">Iniciar sesión</a></li></c:if>
+                <c:if test="${usuario == null}"><li><a href="iniciosesion.jsp">Iniciar sesión</a></li></c:if>
                 <c:if test="${usuario != null}"><li><a href="#">¡Hola ${usuario.nombre}!</a></li></c:if>                    
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto</a></li>
-                <c:if test="${usuario == null}"><li><a href="registrousuario.html">Registrarse</a></li></c:if>
+                <c:if test="${usuario == null}"><li><a href="registrousuario.jsp">Registrarse</a></li></c:if>
                 <c:if test="${usuario != null}"><li><a href="#">Cerrar sesión</a></li></c:if>
             </ul>
         </div>

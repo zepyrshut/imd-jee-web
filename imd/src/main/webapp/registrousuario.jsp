@@ -13,94 +13,74 @@
         <!-- Barra navegaciÃ³n -->
         <%@ include file="/jspf/navbar.jspf" %>   
         
-        <main>
+         <main>
+        <!-- Registro usuario -->
 
-
-
-
-
-            <!-- Registro usuario -->
-
-            <div class="uk-container uk-container-small  uk-padding">
-
-                <div class="uk-align-center uk-padding-small uk-text-center">
-
-                    <h1>¡Bienvenidos a IMD!</h1>
-                </div>
-           
-            <form class="uk-grid-small" uk-grid method="GET" action="registro">
-             
-                    <div  class="uk-width-1-3@s">
-                    <label class="uk-form-label" for="form-stacked-text">Nombre:</label>
-                    <div class="uk-form-controls">
-                        <input class="uk-input" id="form-stacked-text" type="text" name="nombre" required>
-                    </div>
-                </div>
-                    <div  class="uk-width-1-3@s">
-                    <label class="uk-form-label" for="form-stacked-text">Primer apellido:</label>
-                    <div class="uk-form-controls">
-                        <input class="uk-input" id="form-stacked-text" type="text" name="apellido_a" required>
-                    </div>
-                </div>
-                    <div  class="uk-width-1-3@s">
-                    <label class="uk-form-label" for="form-stacked-text">Segundo apellido:</label>
-                    <div class="uk-form-controls">
-                        <input class="uk-input" id="form-stacked-text" name="apellido_b" type="text">
-                    </div>
-                </div>
-                    <div  class="uk-width-1-2@s">
-                    <label class="uk-form-label" for="form-stacked-text">Teléfono:</label>
-                    <div class="uk-form-controls">
-                        <input class="uk-input" id="form-stacked-text" name="telefono" type="text">
-                    </div>
-                </div>
-                    <div  class="uk-width-1-2@s">
-                    <label class="uk-form-label" for="form-stacked-text">Correo electrónico:</label>
-                    <div class="uk-form-controls">
-                        <input class="uk-input" id="form-stacked-text" name="email" type="text"  required>
-                    </div>
-                </div>
-                    <div  class="uk-width-1-2@s">
-                    <label class="uk-form-label" for="form-stacked-text">Nombre de usuario:</label>
-                    <div class="uk-form-controls">
-                        <input class="uk-input" id="form-stacked-text" name="usuario" type="text" required>
-                    </div>
-                </div>
-
-                    <div  class="uk-width-1-2@s">
-                    <label class="uk-form-label" for="form-stacked-text">Contraseña:</label>
-                    <div class="uk-form-controls">
-                        <input class="uk-input" id="form-stacked-text" name="contrasena" type="password" required>
-                    </div>
-                </div> 
-              
-                <div class="uk-align-center  uk-padding-small">
-                <input type="submit" class="uk-button uk-button-primary" value="Registrarse">
-                <input type="reset" class="uk-button uk-button-danger" value="Borrar">        
+        <div class="uk-container uk-container-small uk-padding">
+            <div class="uk-align-center uk-padding-small uk-text-center padding-top-medium">
+                <h1 class="font-merriweather">¡Bienvenidos a IMD!</h1>
             </div>
-
-
-
-            
-               <!--  <div class="uk-margin">
-                    <label class="uk-form-label" for="form-stacked-select">Select</label>
-                    <div class="uk-form-controls">
-                        <select class="uk-select" id="form-stacked-select">
-                            <option>Option 01</option>
-                            <option>Option 02</option>
-                        </select>
+            <form class="uk-grid-small uk" uk-grid>
+                <div class="uk-width-1-3@s">
+                    <div class="uk-inline uk-text-center">
+                        <span class="uk-form-icon" uk-icon="icon: user"></span>
+                        <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
+                            placeholder="Nombre" required />
                     </div>
                 </div>
-            
-                <div class="uk-margin">
-                    <div class="uk-form-label">Radio</div>
-                    <div class="uk-form-controls">
-                        <label><input class="uk-radio" type="radio" name="radio1"> Option 01</label><br>
-                        <label><input class="uk-radio" type="radio" name="radio1"> Option 02</label>
+                <div class="uk-width-1-3@s">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: user"></span>
+                        <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
+                            placeholder="Primer apellido" required />
                     </div>
-                </div> -->
-            
+                </div>
+                <div class="uk-width-1-3@s">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: user"></span>
+                        <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
+                            placeholder="Segundo apellido" required />
+                    </div>
+                </div>
+                <div class="uk-width-1-2@s">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                        <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
+                            placeholder="Correo electrónico" required />
+                    </div>
+                </div>
+                <div class="uk-width-1-2@s">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon:  receiver"></span>
+                        <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
+                            placeholder="Teléfono" required />
+                    </div>
+                </div>
+                <div class="uk-width-1-2@s">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: user"></span>
+                        <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
+                            placeholder="Usuario" required />
+                    </div>
+                </div>
+                <div class="uk-width-1-2@s">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon:  lock"></span>
+                        <input class="uk-input form-width-xlarge" id="form-stacked-text" type="password"
+                            placeholder="Contraseña" required />
+                    </div>
+                </div>
+                <div class="uk-align-center uk-padding-small">
+                    <input type="submit" class="uk-button uk-button-primary" value="Registrarse" />
+                    <input type="reset" class="uk-button uk-button-danger" value="Borrar" />
+                </div>
             </form>
+        </div>
+        <!-- Fin registro usuario -->
+    </main>
+        
+                  <!-- Pie de página -->
+        <%@ include file="/jspf/footer.jspf" %> 
 
         
         

@@ -13,62 +13,41 @@
         <!-- Barra navegación -->
         <%@ include file="/jspf/navbar.jspf" %>   
 
-        <main>
-
-
-            <div class="uk-container uk-container-small  uk-padding">
-
-                <div class="uk-align-center uk-padding-small uk-text-center">
-                    <h1>¡Hola de nuevo!</h1>
-                </div>
-
-
-                <form class="uk-grid-small" uk-grid>
-
-
-
-                    <div  class="uk-width-1-1">
-                        <label class="uk-form-label" for="form-stacked-text">Usuario:</label>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="form-stacked-text" type="text" required>
-                        </div>
-                    </div>
-                    <div  class="uk-width-1-1">
-                        <label class="uk-form-label" for="form-stacked-text">Contraseña:</label>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="form-stacked-text" type="password" required>
-                        </div>
-                    </div>
-
-
-                    <div class="uk-align-center  uk-padding-small">
-
-                        <input type="submit" class="uk-button uk-button-primary" value="Iniciar sesión">
-                        <input type="reset" class="uk-button uk-button-danger" value="Borrar">        
-                    </div>
-
-                </form>
-
-
-
-
+                <div class="uk-container uk-container-small  uk-padding font-ubuntu">
+            <div class="uk-align-center uk-text-center padding-top-medium">
+                <h1 class="font-merriweather">¡Hola de nuevo!</h1>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </main>
+        
+        
+    <main>
+        <!-- Inicio de formulario -->
+        <div class="uk-text-center uk-padding-small">
+            <form>
+                <div class="uk-form-controls uk-padding-small">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: user"></span>
+                        <input class="uk-input uk-form-width-large" id="form-stacked-text" type="text"
+                            placeholder="Usuario" required />
+                    </div>
+                </div>
+                <div class="uk-form-controls  uk-padding-small">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                        <input class="uk-input uk-form-width-large" id="form-stacked-text" type="password"
+                            placeholder="Contraseña" required />
+                    </div>
+                </div>
+                <div class="uk-padding">
+                    <input type="submit" class="uk-button uk-button-primary" value="Iniciar sesión" />
+                    <input type="reset" class="uk-button uk-button-danger" value="Borrar" />
+                </div>
+            </form>
+        </div>
+        <!-- Fin de formulario -->
+    </main>
+        
+                <!-- Pie de página -->
+        <%@ include file="/jspf/footer.jspf" %> 
 
     </body>
 </html>
