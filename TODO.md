@@ -17,4 +17,4 @@
 - [x] Implementación de CRUD para las actividades.
 - [x] Arreglar todos los conflictos.
 - [x] Aplicación de relacion manytomany para relacionar usuario con actividad
-- [ ] - [x] Mostrar al usuario 5 o 6 actividades por defecto en index y dar la opcion de ver todas las actividades mediante botón (javascript)
+- [x]  Mostrar al usuario 5 o 6 actividades por defecto en index y dar la opcion de ver todas las actividades mediante botón (javascript)
