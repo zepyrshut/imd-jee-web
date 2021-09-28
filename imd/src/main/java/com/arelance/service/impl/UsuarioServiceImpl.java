@@ -46,4 +46,14 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuario;
     }
 
+    @Override
+    public Usuario findUsuarioById(Usuario usuario) {
+        return usuarioDAO.findUsuarioByID(usuario);
+    }
+
+    @Override
+    public Usuario findUsuarioById(Integer id) {
+    return usuarioDAO.findUsuarioByID(id);
+    }
+
 }

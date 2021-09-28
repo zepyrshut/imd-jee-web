@@ -1,11 +1,16 @@
 package com.arelance.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -66,9 +71,20 @@ public class Usuario implements Serializable {
     private String email;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuarioSocio")
     private DatosSesion datosSesion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private Collection<UsuarioTieneActividad> usuarioTieneActividadCollection;
+   // @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
 
+       // private Set<UsuarioTieneActividad> usuarioTieneActividadCollection = new HashSet<>(); 
+            @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+        private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
+            
+            
+            
+            
+       //   private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
+         //private List<UsuarioTieneActividad> usuarioTieneActividadCollection;
+        
+        
+ 
     public Usuario() {
     }
 
@@ -83,6 +99,19 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
+    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email, DatosSesion datosSesion, ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellidoA = apellidoA;
+        this.apellidoB = apellidoB;
+        this.telefono = telefono;
+        this.email = email;
+        this.datosSesion = datosSesion;
+        this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
+    }
+
+
+    
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -141,14 +170,16 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public Collection<UsuarioTieneActividad> getUsuarioTieneActividadCollection() {
+    public ArrayList<UsuarioTieneActividad> getUsuarioTieneActividadCollection() {
         return usuarioTieneActividadCollection;
     }
 
-    public void setUsuarioTieneActividadCollection(Collection<UsuarioTieneActividad> usuarioTieneActividadCollection) {
+    public void setUsuarioTieneActividadCollection(ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection) {
         this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
     }
 
+
+    
     @Override
     public int hashCode() {
         int hash = 0;
