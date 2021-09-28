@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.arelance.dao.impl;
 
 import com.arelance.dao.DatosSesionDAO;
 import com.arelance.domain.DatosSesion;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -22,12 +19,26 @@ public class DatosSesionDAOImpl implements DatosSesionDAO {
     EntityManager em;
 
     @Override
-    public DatosSesion findUsuarioByID(DatosSesion datosSesion) {
-        return em.find(DatosSesion.class, datosSesion.getIdUsuario());
+    public DatosSesion findDatosSesionByID(DatosSesion datosSesion) {
+        return em.find(DatosSesion.class, datosSesion.getIdDatosSesion());
     }
 
     @Override
-    public void addUsuario(DatosSesion datosSesion) {
+    public DatosSesion findDatosSesionByUsuario(DatosSesion datosSesion) {
+        Query query = em.createNamedQuery("DatosSesion.findByUsuario");
+        query.setParameter("usuario", datosSesion.getUsuario());
+
+        try {
+            return (DatosSesion) query.getSingleResult();
+        } catch (NoResultException e) {
+            e.getMessage();
+            return null;
+        }
+
+    }
+
+    @Override
+    public void addDatosSesion(DatosSesion datosSesion) {
         em.persist(datosSesion);
     }
 
@@ -40,6 +51,21 @@ public class DatosSesionDAOImpl implements DatosSesionDAO {
     public void removePersona(DatosSesion datosSesion) {
         em.merge(datosSesion);
         em.remove(datosSesion);
+    }
+
+    @Override
+    public DatosSesion inicioSesion(DatosSesion datosSesion) {
+        Query query = em.createNamedQuery("DatosSesion.validarSesion");
+        query.setParameter("usuario", datosSesion.getUsuario());
+        query.setParameter("contrasena", datosSesion.getContrasena());
+
+        try {
+            return (DatosSesion) query.getSingleResult();
+        } catch (NoResultException e) {
+            e.getMessage();
+            return null;
+        }
+
     }
 
 }

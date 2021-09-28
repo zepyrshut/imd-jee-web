@@ -9,7 +9,7 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>
-           mainservlet
+           principal
         </welcome-file>
     </welcome-file-list>
 </web-app>

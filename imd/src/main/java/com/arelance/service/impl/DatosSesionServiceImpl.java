@@ -15,13 +15,19 @@ public class DatosSesionServiceImpl implements DatosSesionService {
     private DatosSesionDAO datosSesionDAO;
 
     @Override
-    public DatosSesion findUsuarioByID(DatosSesion datosSesion) {
-        return datosSesionDAO.findUsuarioByID(datosSesion);
+    public DatosSesion findDatosSesionByID(DatosSesion datosSesion) {
+        return datosSesionDAO.findDatosSesionByID(datosSesion);
     }
+    
+        @Override
+    public DatosSesion findDatosSesionByUsuario(DatosSesion datosSesion) {
+        return datosSesionDAO.findDatosSesionByUsuario(datosSesion);
+    }
+    
 
     @Override
-    public void addUsuario(DatosSesion datosSesion) {
-        datosSesionDAO.addUsuario(datosSesion);
+    public void addDatosSesion(DatosSesion datosSesion) {
+        datosSesionDAO.addDatosSesion(datosSesion);
     }
 
     @Override
@@ -32,6 +38,15 @@ public class DatosSesionServiceImpl implements DatosSesionService {
     @Override
     public void removePersona(DatosSesion datosSesion) {
         datosSesionDAO.removePersona(datosSesion);
+    }  
+    
+    @Override
+    public DatosSesion inicioSesion(DatosSesion datosSesion) {
+       return datosSesionDAO.inicioSesion(datosSesion);
     }
+
+
+    
+    
 
 }

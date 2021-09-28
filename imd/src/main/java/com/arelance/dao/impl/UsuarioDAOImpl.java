@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.arelance.dao.impl;
 
 import com.arelance.dao.UsuarioDAO;
+import com.arelance.domain.DatosSesion;
 import com.arelance.domain.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -35,9 +32,14 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
     @Override
     public Usuario findUsuarioByEmail(Usuario usuario) {
-        Query query = em.createQuery("from Usuario p where p.emailUsuario= :email");
-        query.setParameter("email", usuario.getEmailUsuario());
-        return (Usuario) query.getSingleResult();
+        Query query = em.createNamedQuery("Usuario.findByEmail");
+        query.setParameter("email", usuario.getEmail());
+        try {
+            return (Usuario) query.getSingleResult();
+        } catch (NoResultException e) {
+            e.getMessage();
+            return null;
+        }
     }
 
     @Override
