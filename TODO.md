@@ -8,7 +8,7 @@
 
 - [ ] Mostrar descripción individual de actividades mediante click en su botón correspondiente(descripcionactividad.jsp)
 - [ ] Aplicar header y footer a todas las páginas que lo necesiten
-
+- [ ] Traduccion todo backend al ingles y todo frontend al español
 
 # Ya resuelto
 
