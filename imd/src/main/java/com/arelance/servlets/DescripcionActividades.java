@@ -1,5 +1,6 @@
 package com.arelance.servlets;
 
+import com.arelance.domain.Actividad;
 import com.arelance.service.ActividadService;
 import com.arelance.service.UsuarioService;
 import java.io.IOException;
@@ -21,25 +22,20 @@ public class DescripcionActividades extends HttpServlet {
 
     @Inject
     private ActividadService actividadService;
-    @Inject
-    private UsuarioService usuarioService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//       Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
-//       Actividad actividad = new Actividad();
-//       
-//       
-//
-//        actividad.setNombreActividad(request.getParameter("param1"));
-//        actividad.setCategoriaActividad(request.getParameter("apellido"));
-//        actividad.set(request.getParameter("email"));
-//        actividad.setTelefono(request.getParameter("telefono"));
-//        request.getSession().setAttribute("persona", persona);
-//        request.getRequestDispatcher("MainServlet").forward(request,
-        
-        
+        String idActividad = request.getParameter("idActividad");
+        Actividad actividad = new Actividad();
+        actividad.setIdActividad(Integer.parseInt(idActividad));
+
+        if (idActividad != null) {
+            request.getSession().setAttribute("actividad", actividadService.findActividadById(actividad));
+        } else {
+            request.getSession().removeAttribute("actividad");
+        }
+        request.getRequestDispatcher("detalleactividad.jsp").forward(request, response);
     }
 
 }

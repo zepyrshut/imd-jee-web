@@ -29,7 +29,7 @@
                                 <p>Entrenador: <c:out value="${actividad.entrenadorTieneActividad.entrenador.nombre}"/>.</p>
                             </div>
                             <div class="uk-card-footer">
-                                <a href="detalleactividad.html" class="uk-button uk-button-text font-ubuntu">VER MÁS SOBRE <c:out value="${actividad.nombreActividad}"/></a>
+                                <a href="cargadescripcionactividades?idActividad=${actividad.idActividad}" class="uk-button uk-button-text font-ubuntu">VER MÁS SOBRE <c:out value="${actividad.nombreActividad}"/></a>
                             </div>
                         </div>
                     </div>

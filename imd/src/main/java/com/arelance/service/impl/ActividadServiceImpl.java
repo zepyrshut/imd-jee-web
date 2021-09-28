@@ -21,7 +21,7 @@ public class ActividadServiceImpl implements ActividadService {
     }
 
     @Override
-    public Actividad findEntrenadorByID(Actividad actividad) {
+    public Actividad findActividadById(Actividad actividad) {
         return actividadDAO.findActividadById(actividad);
     }
 

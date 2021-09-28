@@ -96,5 +96,5 @@ public class EntrenadorTieneActividad implements Serializable {
     public String toString() {
         return "com.arelance.domain.EntrenadorTieneActividad[ entrenadorTieneActividadPK=" + entrenadorTieneActividadPK + " ]";
     }
-    
+
 }

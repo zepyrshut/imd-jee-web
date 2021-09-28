@@ -13,7 +13,7 @@ public interface ActividadService {
 
     public List<Actividad> listarActividades();
 
-    public Actividad findEntrenadorByID(Actividad actividad);
+    public Actividad findActividadById(Actividad actividad);
 
     public void addActividad(Actividad actividad);
 
