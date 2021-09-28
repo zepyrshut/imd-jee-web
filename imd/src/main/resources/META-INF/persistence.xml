@@ -9,5 +9,8 @@
     <class>com.arelance.domain.Entrenador</class>
     <class>com.arelance.domain.UsuarioTieneActividad</class>
     <class>com.arelance.domain.EntrenadorTieneActividad</class>
+    <class>com.arelance.domain.Paypal</class>
+    <class>com.arelance.domain.Tarjeta</class>
+    <class>com.arelance.domain.Transferencia</class>
   </persistence-unit>
 </persistence>
