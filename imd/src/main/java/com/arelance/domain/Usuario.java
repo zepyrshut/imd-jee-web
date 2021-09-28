@@ -71,20 +71,9 @@ public class Usuario implements Serializable {
     private String email;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuarioSocio")
     private DatosSesion datosSesion;
-   // @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
 
-       // private Set<UsuarioTieneActividad> usuarioTieneActividadCollection = new HashSet<>(); 
-            @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-        private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
-            
-            
-            
-            
-       //   private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
-         //private List<UsuarioTieneActividad> usuarioTieneActividadCollection;
-        
-        
- 
     public Usuario() {
     }
 
@@ -110,8 +99,6 @@ public class Usuario implements Serializable {
         this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
     }
 
-
-    
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -178,8 +165,6 @@ public class Usuario implements Serializable {
         this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
     }
 
-
-    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -204,5 +189,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "com.arelance.domain.Usuario[ idUsuario=" + idUsuario + " ]";
     }
-    
+
 }
