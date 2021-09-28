@@ -14,6 +14,10 @@ public interface UsuarioService {
     public List<Usuario> listarUsuarios();
 
     public Usuario findUsuarioByEmail(Usuario usuario);
+    
+        public Usuario findUsuarioById(Usuario usuario);
+
+    public Usuario findUsuarioById(Integer id);
 
     public void addUsuario(Usuario usuario);
 

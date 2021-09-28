@@ -2,6 +2,7 @@
 <%@ page pageEncoding="UTF-8" %>   
 <!-- Barra navegación -->
 <!-- Versión móvil y tableta -->
+                <c:if test="${usuario != null}"><li><a href="descripcionusuario">¡Hola ${usuario.nombre}!</a></li></c:if>   
 <div class="uk-hidden@m">
     <nav class="uk-navbar uk-navbar-container uk-margin">
         <div class="uk-navbar-left">
@@ -16,7 +17,7 @@
 
 
                 <c:if test="${usuario == null}"><li><a href="login">Iniciar sesión</a></li></c:if>
-                <c:if test="${usuario != null}"><li><a href="#">¡Hola ${usuario.nombre}!</a></li></c:if>    
+                <c:if test="${usuario != null}"><li><a href="DescripcionUsuario?idUsuario">¡Hola ${usuario.nombre}!</a></li></c:if>    
                     <li><a href="imd">Inicio</a></li>                
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto</a></li>

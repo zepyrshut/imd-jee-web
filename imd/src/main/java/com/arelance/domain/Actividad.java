@@ -2,6 +2,7 @@ package com.arelance.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -62,6 +64,8 @@ public class Actividad implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "actividad")
     private UsuarioTieneActividad usuarioTieneActividad;
 
+    
+    
     public Actividad() {
     }
 
@@ -76,6 +80,18 @@ public class Actividad implements Serializable {
         this.precioActividad = precioActividad;
     }
 
+    public Actividad(Integer idActividad, String nombreActividad, String descripcionActividad, String categoriaActividad, BigDecimal precioActividad, EntrenadorTieneActividad entrenadorTieneActividad, UsuarioTieneActividad usuarioTieneActividad) {
+        this.idActividad = idActividad;
+        this.nombreActividad = nombreActividad;
+        this.descripcionActividad = descripcionActividad;
+        this.categoriaActividad = categoriaActividad;
+        this.precioActividad = precioActividad;
+        this.entrenadorTieneActividad = entrenadorTieneActividad;
+        this.usuarioTieneActividad = usuarioTieneActividad;
+    }
+
+
+    
     public Integer getIdActividad() {
         return idActividad;
     }
@@ -131,6 +147,9 @@ public class Actividad implements Serializable {
     public void setUsuarioTieneActividad(UsuarioTieneActividad usuarioTieneActividad) {
         this.usuarioTieneActividad = usuarioTieneActividad;
     }
+
+
+    
 
     @Override
     public int hashCode() {

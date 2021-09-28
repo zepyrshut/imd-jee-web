@@ -64,4 +64,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         return usuario;
     }
 
+    @Override
+    public Usuario findUsuarioByID(int id) {
+      return em.find(Usuario.class, id);
+    }
+
+
 }
