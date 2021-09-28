@@ -3,10 +3,8 @@
 - [ ] Usuario ha de poder modificar su perfil.
 - [ ] Usuario ha de poder registrarse en actividad(ya se muestran sus actividades)
 - [ ] Añadir metodo de pago a usuario y que este pueda seleccionar solo UNA en el pago de actividad.
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
+
+
 
 - [ ] Mostrar descripción individual de actividades mediante click en su botón correspondiente(descripcionactividad.jsp)
 - [ ] Aplicar header y footer a todas las páginas que lo necesiten
