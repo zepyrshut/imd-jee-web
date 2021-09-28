@@ -53,7 +53,7 @@
                 <div class="uk-grid-small uk-child-width-auto padding-top-small" uk-grid>
                     <div>
                         <form>
-                            <button class="uk-button uk-button-primary" href="inscripcionactividad">¡Inscribirse!</button>
+                            <button class="uk-button uk-button-primary" href="/imd/inscripcionactividad">¡Inscribirse!</button>
                         </form>
                     </div>
                     <div>

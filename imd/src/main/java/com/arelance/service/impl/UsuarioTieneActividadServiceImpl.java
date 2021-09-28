@@ -5,6 +5,7 @@
  */
 package com.arelance.service.impl;
 
+import com.arelance.dao.UsuarioTieneActividadDAO;
 import javax.inject.Inject;
 import com.arelance.domain.UsuarioTieneActividad;
 import com.arelance.service.UsuarioTieneActividadService;
