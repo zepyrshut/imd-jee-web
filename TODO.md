@@ -1,20 +1,17 @@
 # TODO
 
 - [ ] Usuario ha de poder modificar su perfil.
-- [ ] Usuario ha de poder registrarse en actividad(ya se muestran sus actividades)
-- [ ] Añadir metodo de pago a usuario y que este pueda seleccionar solo UNA en el pago de actividad.
-
-
-
-- [ ] Mostrar descripción individual de actividades mediante click en su botón correspondiente(descripcionactividad.jsp)
-- [ ] Aplicar header y footer a todas las páginas que lo necesiten
-- [ ] Traduccion todo backend al ingles y todo frontend al español
+- [ ] Añadir método de pago a usuario y que éste pueda seleccionar sólo UNA en el pago de actividad.
+- [ ] Mostrar descripción individual de actividades mediante clic en su botón correspondiente.
+- [ ] Traducción todo *back-end* al inglés y todo *front-end* al español e inglés (soporte multi-idioma).
 
 # Ya resuelto
 
-- [x] Corregir y solucionar el deploy de Payara.
-- [x] Implementación de CRUD para el usuario.
-- [x] Implementación de CRUD para las actividades.
-- [x] Arreglar todos los conflictos.
-- [x] Aplicación de relacion manytomany para relacionar usuario con actividad
-- [x]  Mostrar al usuario 5 o 6 actividades por defecto en index y dar la opcion de ver todas las actividades mediante botón (javascript)
+-  [x] Corregir y solucionar el despliegue de Payara.
+-  [x] Implementación de CRUD para el usuario.
+-  [x] Implementación de CRUD para las actividades.
+-  [x] Arreglar todos los conflictos.
+-  [x] Aplicación de relación `@manytomany` para relacionar usuario con actividad.
+-  [x] Mostrar al usuario 6 actividades por defecto en inicio y dar la opción de ver todas las actividades mediante botón en JS.
+-  [x] Usuario ha de poder registrarse en actividad.
+-  [x] Aplicar cabecera y pie de página a todas las páginas que lo necesiten.
