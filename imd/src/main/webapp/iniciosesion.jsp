@@ -11,8 +11,7 @@
     <%@ include file="/jspf/head.jspf" %>
     <body>
         <!-- Barra navegación -->
-        <%@ include file="/jspf/navbar.jspf" %>   
-
+        <%@ include file="/jspf/navbar.jspf" %>
         <div class="uk-container uk-container-small  uk-padding font-ubuntu">
             <div class="uk-align-center uk-text-center padding-top-medium">
                 <c:if test="${datoIncorrecto == null}">
@@ -21,10 +20,7 @@
                 <c:if test="${datoIncorrecto != null}">
                     <h1 class="font-merriweather">¡Oops!</h1>
                 </c:if>
-
             </div>
-
-
             <main>
                 <!-- Inicio de formulario -->
                 <div class="uk-text-center uk-padding-small">
@@ -43,8 +39,6 @@
                                        placeholder="Contraseña" name="contrasena" required />
                             </div>
                         </div>
-
-
                         <div class="uk-padding">
                             <input type="submit" class="uk-button uk-button-primary" value="Iniciar sesión" />
                             <input type="reset" class="uk-button uk-button-danger" value="Borrar" />
@@ -78,10 +72,7 @@
                     }
                 </script>
             </c:if>
-
-
             <!-- Pie de página -->
             <%@ include file="/jspf/footer.jspf" %> 
-
     </body>
 </html>
