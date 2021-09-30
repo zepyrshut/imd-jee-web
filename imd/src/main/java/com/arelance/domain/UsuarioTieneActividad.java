@@ -4,7 +4,6 @@ import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -28,15 +27,11 @@ public class UsuarioTieneActividad implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected UsuarioTieneActividadPK usuarioTieneActividadPK;
-    @JoinColumns({
-        @JoinColumn(name = "id_actividad", referencedColumnName = "id_actividad", insertable = false, updatable = false),
-        @JoinColumn(name = "id_actividad", referencedColumnName = "id_actividad", insertable = false, updatable = false)})
+    @JoinColumn(name = "id_actividad", referencedColumnName = "id_actividad", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Actividad actividad;
-    @JoinColumns({
-        @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", insertable = false, updatable = false),
-        @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", insertable = false, updatable = false),
-        @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", insertable = false, updatable = false)})
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", insertable = false, updatable = false)
+
     @ManyToOne(optional = false)
     private Usuario usuario;
 
@@ -99,5 +94,5 @@ public class UsuarioTieneActividad implements Serializable {
     public String toString() {
         return "com.arelance.domain.UsuarioTieneActividad[ usuarioTieneActividadPK=" + usuarioTieneActividadPK + " ]";
     }
-    
+
 }

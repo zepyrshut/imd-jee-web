@@ -20,4 +20,5 @@ public interface ActividadService {
     public void updateActividad(Actividad actividad);
 
     public void removeActividad(Actividad actividad);
+    
 }

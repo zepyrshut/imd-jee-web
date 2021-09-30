@@ -16,13 +16,15 @@ public interface UsuarioDAO {
     public Usuario findUsuarioByEmail(Usuario usuario);
 
     public Usuario findUsuarioByID(Usuario usuario);
-    public Usuario findUsuarioByID(int  id);
+
+    public Usuario findUsuarioByID(int id);
+
     public void addUsuario(Usuario usuario);
 
     public void updateUsuario(Usuario usuario);
 
     public void removeUsuario(Usuario usuario);
-    
+
     public Usuario refrescar(Usuario usuario);
 
 }

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -15,12 +14,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -74,82 +71,9 @@ public class Usuario implements Serializable {
     private String email;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuarioSocio")
     private DatosSesion datosSesion;
-   // @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-
-       // private Set<UsuarioTieneActividad> usuarioTieneActividadCollection = new HashSet<>(); 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
     private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
-  
-    
-   @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Paypal paypal;
-   
-        @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Tarjeta tarjeta; 
-        
-               @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Transferencia transferencia;  
 
-    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email, DatosSesion datosSesion, ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection, Paypal paypal, Tarjeta tarjeta, Transferencia transferencia) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.apellidoA = apellidoA;
-        this.apellidoB = apellidoB;
-        this.telefono = telefono;
-        this.email = email;
-        this.datosSesion = datosSesion;
-        this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
-        this.paypal = paypal;
-        this.tarjeta = tarjeta;
-        this.transferencia = transferencia;
-    }
-
-    public Transferencia getTransferencia() {
-        return transferencia;
-    }
-
-    public void setTransferencia(Transferencia transferencia) {
-        this.transferencia = transferencia;
-    }
-        
-            
-       //   private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
-         //private List<UsuarioTieneActividad> usuarioTieneActividadCollection;
-
-    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email, DatosSesion datosSesion, ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection, Paypal paypal, Tarjeta tarjeta) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.apellidoA = apellidoA;
-        this.apellidoB = apellidoB;
-        this.telefono = telefono;
-        this.email = email;
-        this.datosSesion = datosSesion;
-        this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
-        this.paypal = paypal;
-        this.tarjeta = tarjeta;
-    }
-
-    public Tarjeta getTarjeta() {
-        return tarjeta;
-    }
-
-    public void setTarjeta(Tarjeta tarjeta) {
-        this.tarjeta = tarjeta;
-    }
-
-    
-    public Paypal getPaypal() {
-        return paypal;
-    }
-
-    public void setPaypal(Paypal paypal) {
-        this.paypal = paypal;
-    }
-
- 
-        
-        
- 
     public Usuario() {
     }
 
@@ -175,8 +99,6 @@ public class Usuario implements Serializable {
         this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
     }
 
-
-    
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -245,78 +167,27 @@ public class Usuario implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 13 * hash + Objects.hashCode(this.idUsuario);
-        hash = 13 * hash + Objects.hashCode(this.nombre);
-        hash = 13 * hash + Objects.hashCode(this.apellidoA);
-        hash = 13 * hash + Objects.hashCode(this.apellidoB);
-        hash = 13 * hash + Objects.hashCode(this.telefono);
-        hash = 13 * hash + Objects.hashCode(this.email);
-        hash = 13 * hash + Objects.hashCode(this.datosSesion);
-        hash = 13 * hash + Objects.hashCode(this.usuarioTieneActividadCollection);
-        hash = 13 * hash + Objects.hashCode(this.paypal);
-        hash = 13 * hash + Objects.hashCode(this.tarjeta);
-        hash = 13 * hash + Objects.hashCode(this.transferencia);
+        int hash = 0;
+        hash += (idUsuario != null ? idUsuario.hashCode() : 0);
         return hash;
     }
 
-
-    
-   
-
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Usuario)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Usuario other = (Usuario) obj;
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.apellidoA, other.apellidoA)) {
-            return false;
-        }
-        if (!Objects.equals(this.apellidoB, other.apellidoB)) {
-            return false;
-        }
-        if (!Objects.equals(this.telefono, other.telefono)) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
-        if (!Objects.equals(this.idUsuario, other.idUsuario)) {
-            return false;
-        }
-        if (!Objects.equals(this.datosSesion, other.datosSesion)) {
-            return false;
-        }
-        if (!Objects.equals(this.usuarioTieneActividadCollection, other.usuarioTieneActividadCollection)) {
-            return false;
-        }
-        if (!Objects.equals(this.paypal, other.paypal)) {
-            return false;
-        }
-        if (!Objects.equals(this.tarjeta, other.tarjeta)) {
-            return false;
-        }
-        if (!Objects.equals(this.transferencia, other.transferencia)) {
+        Usuario other = (Usuario) object;
+        if ((this.idUsuario == null && other.idUsuario != null) || (this.idUsuario != null && !this.idUsuario.equals(other.idUsuario))) {
             return false;
         }
         return true;
     }
 
-   
-
     @Override
     public String toString() {
         return "com.arelance.domain.Usuario[ idUsuario=" + idUsuario + " ]";
     }
-    
+
 }

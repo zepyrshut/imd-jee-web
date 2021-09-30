@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Pedro
  */
-@WebServlet("/cargadescripcionactividades")
-public class DescripcionActividades extends HttpServlet {
+@WebServlet("/actividad")
+public class DescripcionActividad extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
