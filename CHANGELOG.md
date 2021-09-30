@@ -1,5 +1,13 @@
 # Lista de cambios
 
+## [0.3.0.64](#) - Avances en registro de actividad y modificación perfil - 30 septiembre 2021
+
+- El usuario puede modificar su perfil.
+- El usuario puede apuntarse a las actividades.
+- Corregido un error de enlaces.
+- Mejoras en el diseño del sitio.
+- Eliminación de algunos bloques `div` redundantes.
+
 ## [0.2.0.61](#) - Fusión *uikit-front* a *main* - 28 septiembre 2021
 
 - Avances en detalles de actividad.
