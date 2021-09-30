@@ -32,7 +32,9 @@
                     </ul>
                     <p>Apto para todas las edades.</p>
                     <p>El entrenador de esta actividad es Alfonso Cuarón.</p>
+                      <p>El entrenador de esta actividad es: ${actividad.entrenadorTieneActividad.entrenador.nombre}</p>
                 </div>
+                 
                 <div>
                     <p class="uk-text-lead">Descripción de la actividad</p>
                     <p class="uk-text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam debitis voluptatem libero nisi.

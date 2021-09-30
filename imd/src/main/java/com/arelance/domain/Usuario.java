@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -242,27 +243,76 @@ public class Usuario implements Serializable {
         this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
     }
 
-
-    
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (idUsuario != null ? idUsuario.hashCode() : 0);
+        int hash = 3;
+        hash = 13 * hash + Objects.hashCode(this.idUsuario);
+        hash = 13 * hash + Objects.hashCode(this.nombre);
+        hash = 13 * hash + Objects.hashCode(this.apellidoA);
+        hash = 13 * hash + Objects.hashCode(this.apellidoB);
+        hash = 13 * hash + Objects.hashCode(this.telefono);
+        hash = 13 * hash + Objects.hashCode(this.email);
+        hash = 13 * hash + Objects.hashCode(this.datosSesion);
+        hash = 13 * hash + Objects.hashCode(this.usuarioTieneActividadCollection);
+        hash = 13 * hash + Objects.hashCode(this.paypal);
+        hash = 13 * hash + Objects.hashCode(this.tarjeta);
+        hash = 13 * hash + Objects.hashCode(this.transferencia);
         return hash;
     }
 
+
+    
+   
+
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Usuario)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Usuario other = (Usuario) object;
-        if ((this.idUsuario == null && other.idUsuario != null) || (this.idUsuario != null && !this.idUsuario.equals(other.idUsuario))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.apellidoA, other.apellidoA)) {
+            return false;
+        }
+        if (!Objects.equals(this.apellidoB, other.apellidoB)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefono, other.telefono)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.idUsuario, other.idUsuario)) {
+            return false;
+        }
+        if (!Objects.equals(this.datosSesion, other.datosSesion)) {
+            return false;
+        }
+        if (!Objects.equals(this.usuarioTieneActividadCollection, other.usuarioTieneActividadCollection)) {
+            return false;
+        }
+        if (!Objects.equals(this.paypal, other.paypal)) {
+            return false;
+        }
+        if (!Objects.equals(this.tarjeta, other.tarjeta)) {
+            return false;
+        }
+        if (!Objects.equals(this.transferencia, other.transferencia)) {
             return false;
         }
         return true;
     }
+
+   
 
     @Override
     public String toString() {

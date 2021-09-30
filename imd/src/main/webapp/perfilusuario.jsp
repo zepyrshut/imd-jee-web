@@ -21,58 +21,65 @@
         <!-- Barra navegación -->
         <%@ include file="/jspf/navbar.jspf" %>   
         <h1>Perfil de usuario</h1>
-        
+
         <p>Actividades de usuario:</p>
-     
-    <table class="table">
-  <thead>
-    <tr>
 
-      <th scope="col">Nombre</th>
+        <table class="table">
+            <thead>
+                <tr>
 
-    </tr>
-  </thead>
-  <c:forEach items="${usuario.usuarioTieneActividadCollection}" var="usuario">
-  <tbody>
-    <tr>
-     
-      <td>${usuario.actividad.nombreActividad}</td></c:forEach>
+                    <th scope="col">Nombre</th>
 
-    </tr>
-  
-  </tbody>
-</table>
+                </tr>
+            </thead>
+            <c:forEach items="${usuario.usuarioTieneActividadCollection}" var="usuario">
+                <tbody>
+                    <tr>
 
-        <div class="container rounded bg-white mt-5">
-            <div class="row">
-                <div class="col-md-4 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <span>Metodos de pago pertenecientes a:</span>
-                        <span class="font-weight-bold">Paypal: ${usuario.paypal.correo}</span>
-                        <span class="font-weight-bold">Tarjeta: ${usuario.tarjeta.numero}</span>
-                         <span class="font-weight-bold">Transferencia: ${usuario.transferencia.iban}</span>
+                        <td>${usuario.actividad.nombreActividad}</td></c:forEach>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div class="container rounded bg-white mt-5">
+                <div class="row">
+                    <div class="col-md-4 border-right">
+                        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                            <span>Metodos de pago disponibles</span>
+                        <c:out value="Correo de paypal: ${empty usuario.paypal.correo ? 'Añadir paypal(formulario JS)' : usuario.paypal.correo}" />
+
+                        <br>
+                        <c:out value="numero de tarjeta: ${empty usuario.tarjeta.numero ? 'Añadir tarjeta de credito(formulario JS)' : usuario.tarjeta.numero}" />
+
+                        <br>
+
+                        <c:out value="numero de iban: ${empty usuario.transferencia.iban ? 'Añadir datos bancarios(formulario JS)' : usuario.transferencia.iban}" />
+
                         <span class="text-black-50">${usuario.email}</span></div>
                 </div>
                 <div class="col-md-8">
                     <div class="p-3 py-5">
+                        <form action="PostUpdateDescripcionUsuario">
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="html">Nombre</label><input type="text" class="form-control" placeholder="nombre" value="${usuario.nombre}" name="profilename"></div>
 
-                        <div class="row mt-3">
-                            <div class="col-md-6">
-                                <label for="html">Nombre</label><input type="text" class="form-control" placeholder="first name" value="${usuario.nombre}"></div>
+                                <div class="col-md-6"> <label for="html">Apellido 1</label>
+                                    <input type="text" class="form-control" value="${usuario.apellidoA}" placeholder="ape1" name="profilemiddlename"></div>
+                                <div class="col-md-6"> <label for="html">Apellido 2</label>
+                                    <input type="text" class="form-control" value="${usuario.apellidoB}" placeholder="ape2" name="profilelastname"></div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6"> <label for="html">Correo</label>
+                                    <input type="text" class="form-control" placeholder="Email" value="${usuario.email}" name="profilemail"></div>
+                                <div class="col-md-6"> <label for="html">Telefono</label>
+                                    <input type="text" class="form-control" value="${usuario.telefono}" placeholder="telefono" name="profilephone"></div>
+                            </div>
 
-                            <div class="col-md-6"> <label for="html">Apellido 1</label>
-                                <input type="text" class="form-control" value="${usuario.apellidoA}" placeholder="Doe"></div>
-                            <div class="col-md-6"> <label for="html">Apellido 2</label>
-                                <input type="text" class="form-control" value="${usuario.apellidoB}" placeholder="Doe"></div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-6"> <label for="html">Correo</label>
-                                <input type="text" class="form-control" placeholder="Email" value="${usuario.email}"></div>
-                            <div class="col-md-6"> <label for="html">Telefono</label>
-                                <input type="text" class="form-control" value="${usuario.telefono}" placeholder="Phone number"></div>
-                        </div>
-
-                        <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button">Guardar cambios(pendiente)</button></div>
+                            <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="submit">Guardar cambios</button></div>
+                        </form>
                     </div>
                 </div>
             </div>
