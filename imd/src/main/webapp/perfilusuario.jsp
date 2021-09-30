@@ -64,18 +64,17 @@
                         <form action="PostUpdateDescripcionUsuario">
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label for="html">Nombre</label><input type="text" class="form-control" placeholder="nombre" value="${usuario.nombre}" name="profilename"></div>
+                                    <label for="html">Nombre</label><input type="text" class="form-control" value="${usuario.nombre}" name="name"></div>
 
-                                <div class="col-md-6"> <label for="html">Apellido 1</label>
-                                    <input type="text" class="form-control" value="${usuario.apellidoA}" placeholder="ape1" name="profilemiddlename"></div>
-                                <div class="col-md-6"> <label for="html">Apellido 2</label>
-                                    <input type="text" class="form-control" value="${usuario.apellidoB}" placeholder="ape2" name="profilelastname"></div>
+                                <div class="col-md-6"> 
+                                    <label for="html">Apellido 1</label><input type="text" class="form-control" value="${usuario.apellidoA}" name="profilemiddlename"></div>
+                                <div class="col-md-6"> <label for="html">Apellido 2</label><input type="text" class="form-control" value="${usuario.apellidoB}" name="profilelastname"></div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6"> <label for="html">Correo</label>
-                                    <input type="text" class="form-control" placeholder="Email" value="${usuario.email}" name="profilemail"></div>
+                                    <input type="text" class="form-control" value="${usuario.email}" name="profilemail"></div>
                                 <div class="col-md-6"> <label for="html">Telefono</label>
-                                    <input type="text" class="form-control" value="${usuario.telefono}" placeholder="telefono" name="profilephone"></div>
+                                    <input type="text" class="form-control" value="${usuario.telefono}" name="profilephone"></div>
                             </div>
 
                             <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="submit">Guardar cambios</button></div>

@@ -41,13 +41,13 @@ public class PostUpdateDescripcionUsuario extends HttpServlet {
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         
     //    Usuario usuarioAux = new Usuario();
-        String name = request.getParameter("profilename");
+        String name = request.getParameter("name");
         String middlename = request.getParameter("profilemiddlename");
         String lastname = request.getParameter("profilelastname");
         String mail = request.getParameter("profilemail");
         String phone = request.getParameter("profilephone");
         if (!usuario.getNombre().equals(name)) {
-            usuario.setNombre(request.getParameter(name));
+            usuario.setNombre(name);
         }
         if (!usuario.getApellidoA().equals(middlename)) {
             usuario.setApellidoA(middlename);
