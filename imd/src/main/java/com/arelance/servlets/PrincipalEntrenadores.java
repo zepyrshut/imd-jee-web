@@ -5,7 +5,7 @@
  */
 package com.arelance.servlets;
 
-import com.arelance.service.UsuarioService;
+import com.arelance.service.EntrenadorService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.inject.Inject;
@@ -14,16 +14,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author jorge
  */
-@WebServlet("/descripcionusuario")
-public class DescripcionUsuario extends HttpServlet {
+@WebServlet(name = "PrincipalEntrenadores", urlPatterns = {"/PrincipalEntrenadores"})
+public class PrincipalEntrenadores extends HttpServlet {
 @Inject
-private UsuarioService usuarioService;
+private EntrenadorService entrenadorService;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,10 +34,8 @@ private UsuarioService usuarioService;
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-          request.getRequestDispatcher("./perfilusuario.jsp").forward(request, response);
-        
-
+      request.setAttribute("listaEntrenadores", entrenadorService.listarEntrenadores());
+        request.getRequestDispatcher("ListadoEntrenadores.jsp").forward(request, response);   
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

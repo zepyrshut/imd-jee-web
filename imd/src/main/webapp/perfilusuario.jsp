@@ -20,63 +20,65 @@
     <body>
         <!-- Barra navegación -->
         <%@ include file="/jspf/navbar.jspf" %>   
-        <h1>User Profile - (This could be Edit Profile or both)</h1>
-        
+        <h1>Perfil de usuario</h1>
+
         <p>Actividades de usuario:</p>
-        <c:forEach items="${usuario.usuarioTieneActividadCollection}" var="usuario">
-            <p>${usuario.actividad.nombreActividad}</p>
-         
-            
-            </c:forEach>
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nombre</th>
 
-    </tr>
-  </thead>
-  <c:forEach items="${usuario.usuarioTieneActividadCollection}" var="usuario">
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>${usuario.actividad.nombreActividad}</td></c:forEach>
+        <table class="table">
+            <thead>
+                <tr>
 
-    </tr>
-  
-  </tbody>
-</table>
+                    <th scope="col">Nombre</th>
 
-        <div class="container rounded bg-white mt-5">
-            <div class="row">
-                <div class="col-md-4 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><span>Some side info, may swap for profile content and use payments on the right</span><span class="font-weight-bold">${usuario.nombre}</span><span class="text-black-50">${usuario.email}</span></div>
+                </tr>
+            </thead>
+            <c:forEach items="${usuario.usuarioTieneActividadCollection}" var="usuario">
+                <tbody>
+                    <tr>
+
+                        <td>${usuario.actividad.nombreActividad}</td></c:forEach>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div class="container rounded bg-white mt-5">
+                <div class="row">
+                    <div class="col-md-4 border-right">
+                        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                            <span>Metodos de pago disponibles</span>
+                        <c:out value="Correo de paypal: ${empty usuario.paypal.correo ? 'Añadir paypal(formulario JS)' : usuario.paypal.correo}" />
+
+                        <br>
+                        <c:out value="numero de tarjeta: ${empty usuario.tarjeta.numero ? 'Añadir tarjeta de credito(formulario JS)' : usuario.tarjeta.numero}" />
+
+                        <br>
+
+                        <c:out value="numero de iban: ${empty usuario.transferencia.iban ? 'Añadir datos bancarios(formulario JS)' : usuario.transferencia.iban}" />
+
+                        <span class="text-black-50">${usuario.email}</span></div>
                 </div>
                 <div class="col-md-8">
                     <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
-                                <h6>Back to home</h6>
+                        <form action="PostUpdateDescripcionUsuario">
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="html">Nombre</label><input type="text" class="form-control" value="${usuario.nombre}" name="name"></div>
+
+                                <div class="col-md-6"> 
+                                    <label for="html">Apellido 1</label><input type="text" class="form-control" value="${usuario.apellidoA}" name="profilemiddlename"></div>
+                                <div class="col-md-6"> <label for="html">Apellido 2</label><input type="text" class="form-control" value="${usuario.apellidoB}" name="profilelastname"></div>
                             </div>
-                            <h6 class="text-right">Edit Profile</h6>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-6">
-                                <label for="html">First Name</label><input type="text" class="form-control" placeholder="first name" value="${usuario.nombre}"></div>
+                            <div class="row mt-3">
+                                <div class="col-md-6"> <label for="html">Correo</label>
+                                    <input type="text" class="form-control" value="${usuario.email}" name="profilemail"></div>
+                                <div class="col-md-6"> <label for="html">Telefono</label>
+                                    <input type="text" class="form-control" value="${usuario.telefono}" name="profilephone"></div>
+                            </div>
 
-                            <div class="col-md-6"> <label for="html">Middle Name</label>
-                                <input type="text" class="form-control" value="${usuario.apellidoA}" placeholder="Doe"></div>
-                            <div class="col-md-6"> <label for="html">Last Name</label>
-                                <input type="text" class="form-control" value="${usuario.apellidoB}" placeholder="Doe"></div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-6"> <label for="html">Email</label>
-                                <input type="text" class="form-control" placeholder="Email" value="${usuario.email}"></div>
-                            <div class="col-md-6"> <label for="html">Phone number</label>
-                                <input type="text" class="form-control" value="${usuario.telefono}" placeholder="Phone number"></div>
-                        </div>
-
-                        <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button">Save Profile(Pending)</button></div>
+                            <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="submit">Guardar cambios</button></div>
+                        </form>
                     </div>
                 </div>
             </div>
