@@ -34,12 +34,15 @@
             </thead>
             <c:forEach items="${usuario.usuarioTieneActividadCollection}" var="usuario">
                 <tbody>
+                 
                     <tr>
-
-                        <td>${usuario.actividad.nombreActividad}</td></c:forEach>
-
+                        
+                        <td>${usuario.actividad.nombreActividad}</td>
+                        <td>${usuario.paypal.correo}</td></c:forEach>
+                        <!-- QUEREMOS UNO QUE PONGA usuario.metodopago.tipo -->
+                        <!-- Sin embargo, podemos poner condicionales para comprobar los tipos -->
                     </tr>
-
+                    
                 </tbody>
             </table>
 
@@ -48,6 +51,8 @@
                     <div class="col-md-4 border-right">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                             <span>Metodos de pago disponibles</span>
+                            
+                            
                         <c:out value="Correo de paypal: ${empty usuario.paypal.correo ? 'Añadir paypal(formulario JS)' : usuario.paypal.correo}" />
 
                         <br>

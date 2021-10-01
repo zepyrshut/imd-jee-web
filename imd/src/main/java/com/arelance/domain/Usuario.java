@@ -157,16 +157,7 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email, DatosSesion datosSesion, ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.apellidoA = apellidoA;
-        this.apellidoB = apellidoB;
-        this.telefono = telefono;
-        this.email = email;
-        this.datosSesion = datosSesion;
-        this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
-    }
+
 
 
     
@@ -236,22 +227,7 @@ public class Usuario implements Serializable {
         this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 13 * hash + Objects.hashCode(this.idUsuario);
-        hash = 13 * hash + Objects.hashCode(this.nombre);
-        hash = 13 * hash + Objects.hashCode(this.apellidoA);
-        hash = 13 * hash + Objects.hashCode(this.apellidoB);
-        hash = 13 * hash + Objects.hashCode(this.telefono);
-        hash = 13 * hash + Objects.hashCode(this.email);
-        hash = 13 * hash + Objects.hashCode(this.datosSesion);
-        hash = 13 * hash + Objects.hashCode(this.usuarioTieneActividadCollection);
-        hash = 13 * hash + Objects.hashCode(this.paypal);
-        hash = 13 * hash + Objects.hashCode(this.tarjeta);
-        hash = 13 * hash + Objects.hashCode(this.transferencia);
-        return hash;
-    }
+    
 
 
     
@@ -303,6 +279,23 @@ public class Usuario implements Serializable {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.idUsuario);
+        hash = 29 * hash + Objects.hashCode(this.nombre);
+        hash = 29 * hash + Objects.hashCode(this.apellidoA);
+        hash = 29 * hash + Objects.hashCode(this.apellidoB);
+        hash = 29 * hash + Objects.hashCode(this.telefono);
+        hash = 29 * hash + Objects.hashCode(this.email);
+        hash = 29 * hash + Objects.hashCode(this.datosSesion);
+        hash = 29 * hash + Objects.hashCode(this.usuarioTieneActividadCollection);
+        hash = 29 * hash + Objects.hashCode(this.paypal);
+        hash = 29 * hash + Objects.hashCode(this.tarjeta);
+        hash = 29 * hash + Objects.hashCode(this.transferencia);
+        return hash;
     }
 
    

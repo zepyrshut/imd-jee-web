@@ -36,6 +36,9 @@ private UsuarioService usuarioService;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        
+        
+        
           request.getRequestDispatcher("./perfilusuario.jsp").forward(request, response);
         
 

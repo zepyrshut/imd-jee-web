@@ -6,6 +6,8 @@
 package com.arelance.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,8 +31,9 @@ public class Paypal implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     @Column(name = "id_paypal")
-    private Long id;
+    private Integer idPaypal;
     
     @Column(name = "correo")
     private String correo;
@@ -38,23 +41,18 @@ public class Paypal implements Serializable {
    @OneToOne
    @JoinColumn(name = "usuario_id_usuario", updatable = false, nullable = false)
    private Usuario usuario;
-    
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Paypal(Integer idPaypal, String correo, Usuario usuario) {
+        this.idPaypal = idPaypal;
+        this.correo = correo;
+        this.usuario = usuario;
     }
+    
+    
 
     public Paypal() {
     }
 
-    public Paypal(Long id, String correo, Usuario usuario) {
-        this.id = id;
-        this.correo = correo;
-        this.usuario = usuario;
-    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -62,6 +60,14 @@ public class Paypal implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Integer getIdPaypal() {
+        return idPaypal;
+    }
+
+    public void setIdPaypal(Integer idPaypal) {
+        this.idPaypal = idPaypal;
     }
 
  
@@ -74,24 +80,34 @@ public class Paypal implements Serializable {
         this.correo = correo;
     }
 
-   
-    
-    
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.idPaypal);
+        hash = 29 * hash + Objects.hashCode(this.correo);
+        hash = 29 * hash + Objects.hashCode(this.usuario);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Paypal)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Paypal other = (Paypal) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Paypal other = (Paypal) obj;
+        if (!Objects.equals(this.correo, other.correo)) {
+            return false;
+        }
+        if (!Objects.equals(this.idPaypal, other.idPaypal)) {
+            return false;
+        }
+        if (!Objects.equals(this.usuario, other.usuario)) {
             return false;
         }
         return true;
@@ -99,7 +115,11 @@ public class Paypal implements Serializable {
 
     @Override
     public String toString() {
-        return "com.arelance.domain.Paypal[ id=" + id + " ]";
+        return "Paypal{" + "idPaypal=" + idPaypal + ", correo=" + correo + ", usuario=" + usuario + '}';
     }
+
+   
+    
+   
     
 }

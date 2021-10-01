@@ -27,14 +27,24 @@ public class UsuarioTieneActividad implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected UsuarioTieneActividadPK usuarioTieneActividadPK;
+    
+    
+    
+    
     @JoinColumn(name = "id_actividad", referencedColumnName = "id_actividad", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Actividad actividad;
+    
+    
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", insertable = false, updatable = false)
-
     @ManyToOne(optional = false)
     private Usuario usuario;
 
+        @JoinColumn(name = "id_paypal", referencedColumnName = "id_paypal", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Paypal paypal;
+    
+    
     public UsuarioTieneActividad() {
     }
 
@@ -42,9 +52,15 @@ public class UsuarioTieneActividad implements Serializable {
         this.usuarioTieneActividadPK = usuarioTieneActividadPK;
     }
 
-    public UsuarioTieneActividad(int idUsuario, int idActividad) {
-        this.usuarioTieneActividadPK = new UsuarioTieneActividadPK(idUsuario, idActividad);
+//     public UsuarioTieneActividad(int idUsuario, int idActividad) {
+//        this.usuarioTieneActividadPK = new UsuarioTieneActividadPK(idUsuario, idActividad);
+//    }
+     
+     public UsuarioTieneActividad(int idUsuario, int idActividad, int idPaypal) {
+        this.usuarioTieneActividadPK = new UsuarioTieneActividadPK(idUsuario, idActividad, idPaypal);
     }
+    
+    
 
     public UsuarioTieneActividadPK getUsuarioTieneActividadPK() {
         return usuarioTieneActividadPK;
@@ -70,6 +86,16 @@ public class UsuarioTieneActividad implements Serializable {
         this.usuario = usuario;
     }
 
+    public Paypal getPaypal() {
+        return paypal;
+    }
+
+    public void setPaypal(Paypal paypal) {
+        this.paypal = paypal;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

@@ -62,6 +62,7 @@ public class PostUpdateDescripcionUsuario extends HttpServlet {
             usuario.setTelefono(phone);
         }
         usuarioService.updateUsuario(usuario);
+        usuarioService.refrescar(usuario);
          request.getRequestDispatcher("./perfilusuario.jsp").forward(request, response);
     }
 

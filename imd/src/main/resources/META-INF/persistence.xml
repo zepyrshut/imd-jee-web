@@ -12,5 +12,6 @@
     <class>com.arelance.domain.Paypal</class>
     <class>com.arelance.domain.Tarjeta</class>
     <class>com.arelance.domain.Transferencia</class>
+    <class>com.arelance.domain.PagoUsuarioPaypal</class>
   </persistence-unit>
 </persistence>

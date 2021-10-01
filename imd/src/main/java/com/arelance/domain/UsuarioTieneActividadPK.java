@@ -17,11 +17,19 @@ public class UsuarioTieneActividadPK implements Serializable {
     @NotNull
     @Column(name = "id_usuario")
     private int idUsuario;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "id_actividad")
     private int idActividad;
-
+    
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "id_paypal")
+    private int idPaypal;
+    
+    
+    
     public UsuarioTieneActividadPK() {
     }
 
@@ -29,6 +37,15 @@ public class UsuarioTieneActividadPK implements Serializable {
         this.idUsuario = idUsuario;
         this.idActividad = idActividad;
     }
+
+    
+    
+    public UsuarioTieneActividadPK(int idUsuario, int idActividad, int idPaypal) {
+        this.idUsuario = idUsuario;
+        this.idActividad = idActividad;
+        this.idPaypal = idPaypal;
+    }
+
 
     public int getIdUsuario() {
         return idUsuario;
@@ -46,24 +63,42 @@ public class UsuarioTieneActividadPK implements Serializable {
         this.idActividad = idActividad;
     }
 
+    public int getIdPaypal() {
+        return idPaypal;
+    }
+
+    public void setIdPaypal(int idPaypal) {
+        this.idPaypal = idPaypal;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (int) idUsuario;
-        hash += (int) idActividad;
+        int hash = 7;
+        hash = 47 * hash + this.idUsuario;
+        hash = 47 * hash + this.idActividad;
+        hash = 47 * hash + this.idPaypal;
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof UsuarioTieneActividadPK)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        UsuarioTieneActividadPK other = (UsuarioTieneActividadPK) object;
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final UsuarioTieneActividadPK other = (UsuarioTieneActividadPK) obj;
         if (this.idUsuario != other.idUsuario) {
             return false;
         }
         if (this.idActividad != other.idActividad) {
+            return false;
+        }
+        if (this.idPaypal != other.idPaypal) {
             return false;
         }
         return true;
@@ -71,7 +106,8 @@ public class UsuarioTieneActividadPK implements Serializable {
 
     @Override
     public String toString() {
-        return "com.arelance.domain.UsuarioTieneActividadPK[ idUsuario=" + idUsuario + ", idActividad=" + idActividad + " ]";
+        return "UsuarioTieneActividadPK{" + "idUsuario=" + idUsuario + ", idActividad=" + idActividad + ", idPaypal=" + idPaypal + '}';
     }
+    
     
 }

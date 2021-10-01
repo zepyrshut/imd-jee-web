@@ -26,5 +26,7 @@ public interface UsuarioDAO {
     public void removeUsuario(Usuario usuario);
 
     public Usuario refrescar(Usuario usuario);
+    
+    
 
 }
