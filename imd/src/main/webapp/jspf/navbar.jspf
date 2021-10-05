@@ -37,7 +37,7 @@
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto</a></li>
                 <c:if test="${usuario == null}"><li><a href="register">Registrarse</a></li></c:if>
-                <c:if test="${usuario != null}"><li><a href="cierresesion">Cerrar sesión</a></li></c:if>
+                <c:if test="${usuario != null}"><li><a href="service?action=logout">Cerrar sesión</a></li></c:if>
             </ul>
         </div>
     </nav>
