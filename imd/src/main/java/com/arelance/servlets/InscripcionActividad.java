@@ -42,7 +42,8 @@ public class InscripcionActividad extends HttpServlet {
         usuarioTieneActividadPK.setIdActividad(actividad.getIdActividad());
         usuarioTieneActividadPK.setIdUsuario(usuario.getIdUsuario());
         usuarioTieneActividad.setUsuarioTieneActividadPK(usuarioTieneActividadPK);
-
+        
+     //   usuarioTieneActividad.setPaypal(usuario.getPaypal());
         usuarioTieneActividadDAO.addUsuarioTieneActividad(usuarioTieneActividad);
 
 //        if (idActividad != null) {

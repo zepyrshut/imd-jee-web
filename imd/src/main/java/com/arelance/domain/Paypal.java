@@ -15,6 +15,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -28,6 +30,13 @@ import javax.persistence.Table;
 @Table(name="paypal")
 public class Paypal implements Serializable {
 
+    @JoinColumns({
+        @JoinColumn(name = "usuario_id_usuario", referencedColumnName = "id_usuario"),
+        @JoinColumn(name = "usuario_id_usuario", referencedColumnName = "id_usuario"),
+        @JoinColumn(name = "usuario_id_usuario", referencedColumnName = "id_usuario")})
+    @ManyToOne(optional = false)
+    private Usuario usuario;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,9 +47,9 @@ public class Paypal implements Serializable {
     @Column(name = "correo")
     private String correo;
     
-   @OneToOne
-   @JoinColumn(name = "usuario_id_usuario", updatable = false, nullable = false)
-   private Usuario usuario;
+//   @OneToOne
+//   @JoinColumn(name = "usuario_id_usuario", updatable = false, nullable = false)
+//   private Usuario usuario;
 
     public Paypal(Integer idPaypal, String correo, Usuario usuario) {
         this.idPaypal = idPaypal;
@@ -117,6 +126,8 @@ public class Paypal implements Serializable {
     public String toString() {
         return "Paypal{" + "idPaypal=" + idPaypal + ", correo=" + correo + ", usuario=" + usuario + '}';
     }
+
+
 
    
     

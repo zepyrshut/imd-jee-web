@@ -2,6 +2,7 @@ package com.arelance.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -37,12 +38,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email")})
 public class Usuario implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id_usuario")
-    private Integer idUsuario;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
@@ -65,6 +60,15 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "email")
     private String email;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private Collection<Paypal> paypalCollection;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id_usuario")
+    private Integer idUsuario;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuarioSocio")
     private DatosSesion datosSesion;
    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
@@ -169,13 +173,6 @@ public class Usuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public String getApellidoA() {
         return apellidoA;
@@ -193,21 +190,6 @@ public class Usuario implements Serializable {
         this.apellidoB = apellidoB;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     @XmlTransient
     public DatosSesion getDatosSesion() {
@@ -303,6 +285,41 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "com.arelance.domain.Usuario[ idUsuario=" + idUsuario + " ]";
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @XmlTransient
+    public Collection<Paypal> getPaypalCollection() {
+        return paypalCollection;
+    }
+
+    public void setPaypalCollection(Collection<Paypal> paypalCollection) {
+        this.paypalCollection = paypalCollection;
     }
     
 }

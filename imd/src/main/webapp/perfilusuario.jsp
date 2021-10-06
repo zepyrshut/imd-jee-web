@@ -46,14 +46,26 @@
                 </tbody>
             </table>
 
+        <table class="table">
+            <tr>
+               
+                <td>Metodo pago user</td>
+            </tr>
+            <tr>
+                
+                <td>${usuario.paypal.correo}</td>
+            </tr>
+            
+        </table>
+        
             <div class="container rounded bg-white mt-5">
                 <div class="row">
                     <div class="col-md-4 border-right">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                             <span>Metodos de pago disponibles</span>
-                            
-                            
-                        <c:out value="Correo de paypal: ${empty usuario.paypal.correo ? 'Añadir paypal(formulario JS)' : usuario.paypal.correo}" />
+                            <p>Correos paypal:</p>
+                          
+                        <c:out value="Correo/s de paypal: ${empty usuario.paypal.correo ? 'Añadir paypal(formulario JS)' : usuario.paypal.correo}" />
 
                         <br>
                         <c:out value="numero de tarjeta: ${empty usuario.tarjeta.numero ? 'Añadir tarjeta de credito(formulario JS)' : usuario.tarjeta.numero}" />

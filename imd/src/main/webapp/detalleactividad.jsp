@@ -53,7 +53,13 @@
                 <div class="uk-grid-small uk-child-width-auto padding-top-small" uk-grid>
                     <div>
                         <form>
-                            <button class="uk-button uk-button-primary" href="inscripcionactividad">¡Inscribirse!</button>
+                            <input type="radio" id="pago1" name="pago" value="paypal1"
+                                   checked>
+                            <label for="pago1">Pago1</label>
+                               <input type="radio" id="pago2" name="pago" value="paypal2"
+                                   >
+                            <label for="pago2">Pago2</label>
+                            <button class="uk-button uk-button-primary" href=inscripcionactividad">¡Inscribirse!</button>
                         </form>
                     </div>
                     <div>
