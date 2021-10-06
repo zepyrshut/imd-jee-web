@@ -7,6 +7,7 @@
 - [ ] Creación de página de contacto y redigir a ella desde información extra de actividad.
 - [ ] Cambiar relación `@OneToOne` de actividad - entrenador a `@OneToMany` para permitir que puedan mostrarse más de un entrenador (relación hecha en bbdd).
 - [ ] Traducción todo *back-end* al inglés y todo *front-end* al español e inglés (soporte multi-idioma).
+- [ ] Ventana de prueba.
 
 # Ya resuelto
 
