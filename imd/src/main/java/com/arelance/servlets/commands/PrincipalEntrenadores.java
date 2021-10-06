@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.arelance.servlets;
+package com.arelance.servlets.commands;
 
 import com.arelance.service.EntrenadorService;
 import java.io.IOException;

@@ -9,7 +9,7 @@ import javax.servlet.http.*;
  * @author Pedro
  */
 @FunctionalInterface
-public interface ServletAction {
+public interface MainCommand {
     
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
     

@@ -1,4 +1,4 @@
-package com.arelance.servlets;
+package com.arelance.servlets.commands;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

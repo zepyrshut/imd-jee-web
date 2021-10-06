@@ -1,4 +1,4 @@
-package com.arelance.servlets;
+package com.arelance.servlets.commands;
 
 import com.arelance.domain.DatosSesion;
 import com.arelance.domain.Usuario;

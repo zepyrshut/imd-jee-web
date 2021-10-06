@@ -1,4 +1,4 @@
-package com.arelance.servlets;
+package com.arelance.servlets.commands;
 
 import com.arelance.dao.DatosSesionDAO;
 import com.arelance.domain.DatosSesion;
@@ -6,6 +6,7 @@ import com.arelance.domain.Usuario;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,16 +14,19 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Pedro
- */ 
-@WebServlet
-public class LogIn extends HttpServlet implements ServletAction {
+ * @author Jorge, Pedro
+ */
+@WebServlet("/iniciosesion")
+public class InicioSesion extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
 
     @Inject
     private DatosSesionDAO datosSesionDAO;
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         DatosSesion datosSesion = new DatosSesion();
         String nombre = request.getParameter("usuario");
         String contrasena = request.getParameter("contrasena");
@@ -36,14 +40,14 @@ public class LogIn extends HttpServlet implements ServletAction {
             String datoIncorrecto = "Datos de sesión incorrectos, inténtelo de nuevo.";
             request.setAttribute("datoIncorrecto", datoIncorrecto);
             request.getRequestDispatcher("/iniciosesion.jsp").forward(request, response);
-            return "Success";
+            return;
         } else {
             Usuario usuario = datosSesion.getUsuarioSocio();
             HttpSession sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", usuario);
             response.sendRedirect("principal");
-            return "Fail";
         }
 
     }
+
 }

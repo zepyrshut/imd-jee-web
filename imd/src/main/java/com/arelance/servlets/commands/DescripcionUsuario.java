@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.arelance.servlets;
+package com.arelance.servlets.commands;
 
-import com.arelance.domain.Usuario;
 import com.arelance.service.UsuarioService;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,17 +14,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author jorge
  */
-@WebServlet(name = "PostUpdateDescripcionUsuario", urlPatterns = {"/PostUpdateDescripcionUsuario"})
-public class PostUpdateDescripcionUsuario extends HttpServlet {
-
-    @Inject
-    UsuarioService usuarioService;
-
+@WebServlet("/descripcionusuario")
+public class DescripcionUsuario extends HttpServlet {
+@Inject
+private UsuarioService usuarioService;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,32 +35,10 @@ public class PostUpdateDescripcionUsuario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         
-    //    Usuario usuarioAux = new Usuario();
-        String name = request.getParameter("name");
-        String middlename = request.getParameter("profilemiddlename");
-        String lastname = request.getParameter("profilelastname");
-        String mail = request.getParameter("profilemail");
-        String phone = request.getParameter("profilephone");
-        if (!usuario.getNombre().equals(name)) {
-            usuario.setNombre(name);
-        }
-        if (!usuario.getApellidoA().equals(middlename)) {
-            usuario.setApellidoA(middlename);
-        }
-        if (!usuario.getApellidoB().equals(lastname)) {
-            usuario.setApellidoB(lastname);
-        }
-        if (!usuario.getEmail().equals(mail)) {
-            usuario.setTelefono(mail);
-        }
-        if (!usuario.getTelefono().equals(phone)) {
-            usuario.setTelefono(phone);
-        }
-        usuarioService.updateUsuario(usuario);
-         request.getRequestDispatcher("./perfilusuario.jsp").forward(request, response);
+          request.getRequestDispatcher("./perfilusuario.jsp").forward(request, response);
+        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

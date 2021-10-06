@@ -1,4 +1,4 @@
-package com.arelance.servlets;
+package com.arelance.servlets.commands;
 
 import com.arelance.domain.Actividad;
 import com.arelance.service.ActividadService;
