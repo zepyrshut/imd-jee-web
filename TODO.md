@@ -13,6 +13,7 @@
 - [ ] Mover los *scripts* a una carpeta externa, llamar a todo con funciones y uso de *this*.
 - [ ] Arreglar enlace de suscripción a actividad.
 - [ ] Creación de un controlador principal, que deriva a otros controladores.
+- [ ] Resolver el fallo de *nullpointerexception* con el uso del patrón comando. Eliminando dicho patrón, funciona correctamente.
 
 # Ya resuelto
 
