@@ -15,7 +15,10 @@ public class LogOut implements MainCommand {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        return "successLogOut";
+        
+        HttpSession sesion = request.getSession();
+        sesion.invalidate();        
+        
+        return "/index.jsp";
     }
 }

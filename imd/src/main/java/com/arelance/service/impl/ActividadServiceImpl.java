@@ -1,9 +1,12 @@
 package com.arelance.service.impl;
 
 import com.arelance.dao.ActividadDAO;
+import com.arelance.dao.impl.ActividadDAOImpl;
 import com.arelance.domain.Actividad;
 import com.arelance.service.ActividadService;
+import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Local;
 import javax.inject.Inject;
 
 /**
@@ -14,7 +17,7 @@ public class ActividadServiceImpl implements ActividadService {
 
     @Inject
     private ActividadDAO actividadDAO;
-
+    
     @Override
     public List<Actividad> listarActividades() {
         return actividadDAO.listarActividades();

@@ -2,7 +2,9 @@ package com.arelance.dao.impl;
 
 import com.arelance.dao.ActividadDAO;
 import com.arelance.domain.Actividad;
+import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,7 +13,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Jorge
  */
-@Stateless
+@Stateful
 public class ActividadDAOImpl implements ActividadDAO {
 
     @PersistenceContext(unitName = "imdPU")
