@@ -5,7 +5,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.arelance.servlets.MainCommand;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 
@@ -15,14 +14,14 @@ import javax.inject.Named;
  */
 @Stateless
 @Named(value = "logout")
-public class LogOut implements MainCommand {
+public class LogOut implements ActionsController {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession sesion = request.getSession();
         sesion.invalidate();
-
-        return "/index.jsp";
+        return "/preindex";
+        
     }
 }

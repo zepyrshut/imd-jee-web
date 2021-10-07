@@ -7,7 +7,7 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>
-           maincontroller
+           preindex
         </welcome-file>
     </welcome-file-list>
 </web-app>

@@ -7,7 +7,6 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.arelance.servlets.MainCommand;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpSession;
  */
 @Stateless
 @Named(value = "login")
-public class LogIn implements MainCommand {
+public class LogIn implements ActionsController {
 
     @Inject
     private DatosSesionDAO datosSesionDAO;
@@ -43,7 +42,7 @@ public class LogIn implements MainCommand {
             Usuario usuario = datosSesion.getUsuarioSocio();
             HttpSession sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", usuario);
-            return "/index.jsp";
+            return "/preindex";
         }
 
     }

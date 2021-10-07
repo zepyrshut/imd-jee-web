@@ -1,4 +1,4 @@
-package com.arelance.servlets;
+package com.arelance.servlets.commands;
 
 import java.io.IOException;
 import javax.ejb.Local;
@@ -11,7 +11,7 @@ import javax.servlet.http.*;
  */
 @Local
 @FunctionalInterface
-public interface MainCommand {
+public interface ActionsController {
     
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
     

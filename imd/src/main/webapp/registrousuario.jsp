@@ -39,7 +39,7 @@
                     </div>                
                 </c:if>
 
-                <form class="uk-grid-small uk" uk-grid method="POST" action="registro">
+                <form class="uk-grid-small uk" uk-grid method="POST" action="actions?action=register">
                     <div class="uk-width-1-3@s">
                         <div class="uk-inline uk-text-center">
                             <span class="uk-form-icon" uk-icon="icon: user"></span>
