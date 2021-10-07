@@ -1,5 +1,6 @@
 package com.arelance.servlets.commands;
 
+import com.arelance.servlets.commands.qualifiers.RegisterQ;
 import com.arelance.domain.DatosSesion;
 import com.arelance.domain.Usuario;
 import com.arelance.service.DatosSesionService;
@@ -8,16 +9,13 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 /**
  *
  * @author Pedro
  */
-@Stateless
-@Named(value = "register")
+@RegisterQ
 public class Register implements ActionsController {
 
     @Inject

@@ -1,6 +1,7 @@
 package com.arelance.domain;
 
 import java.io.Serializable;
+import javax.ejb.Local;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

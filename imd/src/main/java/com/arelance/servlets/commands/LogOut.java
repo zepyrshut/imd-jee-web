@@ -1,19 +1,17 @@
 package com.arelance.servlets.commands;
 
+import com.arelance.servlets.commands.qualifiers.LogOutQ;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.ejb.Stateless;
-import javax.inject.Named;
 
 /**
  *
  * @author Pedro
  */
-@Stateless
-@Named(value = "logout")
+@LogOutQ
 public class LogOut implements ActionsController {
 
     @Override
