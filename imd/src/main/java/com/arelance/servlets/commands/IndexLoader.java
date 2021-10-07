@@ -7,11 +7,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.arelance.servlets.MainCommand;
+import javax.ejb.Stateless;
+import javax.inject.Named;
 
 /**
  *
  * @author Pedro
  */
+@Stateless
+@Named(value = "indexloader")
 public class IndexLoader implements MainCommand {
 
     @Inject

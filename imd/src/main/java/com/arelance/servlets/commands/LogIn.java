@@ -8,13 +8,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.arelance.servlets.MainCommand;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Pedro
  */
+@Stateless
+@Named(value = "login")
 public class LogIn implements MainCommand {
 
     @Inject
@@ -39,7 +43,7 @@ public class LogIn implements MainCommand {
             Usuario usuario = datosSesion.getUsuarioSocio();
             HttpSession sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", usuario);
-            return "principal";
+            return "/index.jsp";
         }
 
     }

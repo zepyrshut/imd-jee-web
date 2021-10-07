@@ -24,7 +24,7 @@
             <main>
                 <!-- Inicio de formulario -->
                 <div class="uk-text-center uk-padding-small">
-                    <form method="POST" action="service?action=login">
+                    <form method="POST" action="maincontroller?action=login">
                         <div class="uk-form-controls uk-padding-small">
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: user"></span>

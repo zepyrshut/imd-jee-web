@@ -1,10 +1,9 @@
 package com.arelance.servlets;
 
-import com.arelance.servlets.commands.IndexLoader;
-import com.arelance.servlets.commands.LogIn;
-import com.arelance.servlets.commands.LogOut;
 import java.io.IOException;
 import java.util.*;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,22 +22,35 @@ public class MainController extends HttpServlet {
 
     private final Map<String, MainCommand> actions = new HashMap<>();
 
-    public MainController() {
-        actions.put("logout", new LogOut());
-        actions.put("indexloader", new IndexLoader());
-        actions.put("login", new LogIn());
-        
+    @Inject
+    @Named("indexloader")
+    private MainCommand indexLoader;
+
+    @Inject
+    @Named("login")
+    private MainCommand logIn;
+
+    @Inject
+    @Named("logout")
+    private MainCommand logOut;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        actions.put("indexloader", indexLoader);
+        actions.put("logout", logOut);
+        actions.put("login", logIn);
     }
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String actionKey = request.getParameter("action");
-        
+
         if (actionKey == null) {
             actionKey = "indexloader";
         }
-        
+
         MainCommand action = actions.get(actionKey);
         String page = action.execute(request, response);
         
