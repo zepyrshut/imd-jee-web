@@ -30,14 +30,14 @@
     <!-- Barra navegación -->
     <!-- Versión móvil y tableta -->
     <div class="uk-hidden@m">
-        <nav class="uk-navbar uk-navbar-container uk-margin border-bottom">
+        <div class="uk-navbar uk-navbar-container uk-margin border-bottom">
             <div class="uk-navbar-left">
                 <a class="uk-navbar-toggle" uk-toggle="target: #menu-lateral">
                     <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
                 </a>
             </div>
-        </nav>
-        <div id="menu-lateral" uk-offcanvas="overlay: true">
+        </div>
+        <nav id="menu-lateral" uk-offcanvas="overlay: true" role="navigation">
             <div class="uk-offcanvas-bar uk-flex uk-flex-column">
                 <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical ">
                     <li><a href="index.html">Inicio</a></li>
@@ -47,20 +47,20 @@
                     <li><a href="registrousuario.html">Registrarse</a></li>
                 </ul>
             </div>
-        </div>
+        </nav>
     </div>
     <!-- Versión escritorio -->
     <div class="uk-visible@m">
-        <nav class="uk-navbar-container border-bottom" uk-navbar>
+        <nav class="uk-navbar-container border-bottom" uk-navbar role="navigation">
             <div class="uk-navbar-left padding-left-large">
                 <a href="index.html" class="uk-navbar-item uk-logo">IMD</a>
             </div>
             <div class="uk-navbar-right padding-right-large">
                 <ul class="uk-navbar-nav">
-                    <li><a href="iniciosesion.html">Iniciar sesión</a></li>
+                    <li><a href="perfilusuario.html">¡Hola Pedro!</a></li>
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto</a></li>
-                    <li><a href="registrousuario.html">Registrarse</a></li>
+                    <li><a href="#">Cerrar sesión</a></li>
                 </ul>
             </div>
         </nav>
@@ -68,17 +68,21 @@
     <!-- Fin barra navegación -->
     <!-- Contenido -->
 
-    <div class="uk-container uk-container-small ">
-        <main>
-            <div class="uk-text-center padding-top-medium">
-                <div class="uk-background-cover" data-src="/img/Baloncesto.jpg" uk-img>
-                    <div
-                        class="uk-height-medium uk-overlay uk-overlay-default uk-flex uk-flex-middle uk-flex-center blur">
-                        <h1>Baloncesto</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="uk-child-width-expand@s padding-top-small" uk-grid>
+    <main class="uk-container uk-container-small">
+
+
+        <header class="uk-text-center padding-top-medium">
+            <figure class="uk-background-cover uk-margin-remove" data-src="../img/Baloncesto.jpg" uk-img>
+                <figcaption
+                    class="uk-height-medium uk-overlay uk-overlay-default uk-flex uk-flex-middle uk-flex-center blur">
+                    <h1>Baloncesto</h1>
+                </figcaption>
+            </figure>
+        </header>
+
+        <section>
+
+            <article class="uk-child-width-expand@s padding-top-small" uk-grid>
                 <div>
                     <p class="uk-text-lead">Horarios</p>
                     <p>Horario de mañanas:</p>
@@ -105,21 +109,27 @@
                     <p>Apto para todas las edades.</p>
                     <p>El entrenador de esta actividad es Alfonso Cuarón.</p>
                 </div>
-            </div>
-            <div class="uk-grid-small uk-child-width-auto padding-top-small" uk-grid>
-                <div>
-                    <form>
-                        <button class="uk-button uk-button-primary" href="#">¡Inscribirse!</button>
-                    </form>
-                </div>
-                <div>
-                    <a class="uk-button uk-button-secondary" href="#">¿Tienes dudas?, escríbenos.</a>
-                </div>
-            </div>
-            <p class="uk-text-lead">Detalles de pago</p>
-            <p>Seleccione el método de pago deseado para la inscripción de la actividad.</p>
-        </main>
-    </div>
+            </article>
+
+
+            <article class="uk-grid-small uk-child-width-auto padding-top-small" uk-grid>
+                <p> <a class="uk-button uk-button-primary" href="#">¡Inscribirse!</a></p>  
+                <p> <a class="uk-button uk-button-secondary" href="#">¿Tienes dudas?, escríbenos.</a></p>
+            </article>
+
+            <aside class="uk-margin">
+
+                <p class="uk-text-lead">Detalles de pago</p>
+                <p>Seleccione el método de pago deseado para la inscripción de la actividad.</p>
+            </aside>
+
+
+
+        </section>
+
+
+    </main>
+
     <!-- Fin contenido -->
     <!-- Pie de página -->
     <footer class="uk-footer uk-text-center ">
