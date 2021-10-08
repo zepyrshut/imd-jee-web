@@ -1,33 +1,31 @@
-package com.arelance.servlets;
+package com.arelance.servlets.commands;
 
 import com.arelance.domain.Actividad;
 import com.arelance.service.ActividadService;
-import com.arelance.service.UsuarioService;
+import com.arelance.servlets.commands.qualifiers.ActivityDescriptionQ;
 import java.io.IOException;
-import javax.inject.Inject;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.inject.Inject;
 
 /**
  *
  * @author Pedro
  */
-@WebServlet("/actividad")
-public class DescripcionActividad extends HttpServlet {
-
-    private static final long serialVersionUID = 1L;
+@ActivityDescriptionQ
+public class ActivityDescription implements ActionsController {
 
     @Inject
     private ActividadService actividadService;
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Inject
+    private Actividad actividad;
 
-        String idActividad = request.getParameter("idActividad");
-        Actividad actividad = new Actividad();
+    @Override
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String idActividad = request.getParameter("idactividad");
         actividad.setIdActividad(Integer.parseInt(idActividad));
 
         if (idActividad != null) {
@@ -35,7 +33,7 @@ public class DescripcionActividad extends HttpServlet {
         } else {
             request.getSession().removeAttribute("actividad");
         }
-        request.getRequestDispatcher("detalleactividad.jsp").forward(request, response);
+        return "/detalleactividad.jsp";
     }
 
 }

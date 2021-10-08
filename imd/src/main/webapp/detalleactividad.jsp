@@ -52,9 +52,10 @@
             <c:if test="${usuario != null}">
                 <div class="uk-grid-small uk-child-width-auto padding-top-small" uk-grid>
                     <div>
-                        <form>
-                            <button class="uk-button uk-button-primary" href="inscripcionactividad">¡Inscribirse!</button>
-                        </form>
+
+
+                        <a class="uk-button uk-button-primary" href="actions?action=activityinscription">¡Inscribirse!</a>
+
                     </div>
                     <div>
                         <a class="uk-button uk-button-secondary" href="#">¿Tienes dudas?, escríbenos.</a>

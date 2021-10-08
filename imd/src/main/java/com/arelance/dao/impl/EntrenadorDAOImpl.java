@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Jorge
  */
-@Stateless // ¿porque stateless y no stateful si almacenamos los datos?
+@Stateless
 public class EntrenadorDAOImpl implements EntrenadorDAO {
 
     @PersistenceContext(unitName = "imdPU")

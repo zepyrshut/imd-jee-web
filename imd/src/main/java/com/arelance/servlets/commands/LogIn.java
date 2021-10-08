@@ -1,31 +1,28 @@
-package com.arelance.servlets;
+package com.arelance.servlets.commands;
 
+import com.arelance.servlets.commands.qualifiers.LogInQ;
 import com.arelance.dao.DatosSesionDAO;
 import com.arelance.domain.DatosSesion;
 import com.arelance.domain.Usuario;
 import java.io.IOException;
-import javax.inject.Inject;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Jorge, Pedro
+ * @author Pedro
  */
-@WebServlet("/iniciosesion")
-public class InicioSesion extends HttpServlet {
-
-    private static final long serialVersionUID = 1L;
+@LogInQ
+public class LogIn implements ActionsController {
 
     @Inject
     private DatosSesionDAO datosSesionDAO;
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         DatosSesion datosSesion = new DatosSesion();
         String nombre = request.getParameter("usuario");
@@ -33,19 +30,17 @@ public class InicioSesion extends HttpServlet {
 
         datosSesion.setUsuario(nombre);
         datosSesion.setContrasena(contrasena);
-
         datosSesion = datosSesionDAO.inicioSesion(datosSesion);
 
         if (datosSesion == null) {
             String datoIncorrecto = "Datos de sesión incorrectos, inténtelo de nuevo.";
             request.setAttribute("datoIncorrecto", datoIncorrecto);
-            request.getRequestDispatcher("/iniciosesion.jsp").forward(request, response);
-            return;
+            return "/iniciosesion.jsp";
         } else {
             Usuario usuario = datosSesion.getUsuarioSocio();
             HttpSession sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", usuario);
-            response.sendRedirect("principal");
+            return "/preindex";
         }
 
     }
