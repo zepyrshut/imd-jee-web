@@ -10,9 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -69,10 +69,17 @@ public class Usuario implements Serializable {
     private DatosSesion datosSesion;
    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
 
-       // private Set<UsuarioTieneActividad> usuarioTieneActividadCollection = new HashSet<>(); 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
+    
+    
+    
+      
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "listaUsuarios")
+    private ArrayList<Actividad> actividadesUsuario = new ArrayList<>();
   
+    
+    
+    
+    
     
    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private Paypal paypal;
@@ -83,7 +90,7 @@ public class Usuario implements Serializable {
                @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private Transferencia transferencia;  
 
-    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email, DatosSesion datosSesion, ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection, Paypal paypal, Tarjeta tarjeta, Transferencia transferencia) {
+    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email, DatosSesion datosSesion, Paypal paypal, Tarjeta tarjeta, Transferencia transferencia) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellidoA = apellidoA;
@@ -91,11 +98,12 @@ public class Usuario implements Serializable {
         this.telefono = telefono;
         this.email = email;
         this.datosSesion = datosSesion;
-        this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
         this.paypal = paypal;
         this.tarjeta = tarjeta;
         this.transferencia = transferencia;
     }
+
+    
 
     public Transferencia getTransferencia() {
         return transferencia;
@@ -109,18 +117,6 @@ public class Usuario implements Serializable {
        //   private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
          //private List<UsuarioTieneActividad> usuarioTieneActividadCollection;
 
-    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email, DatosSesion datosSesion, ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection, Paypal paypal, Tarjeta tarjeta) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.apellidoA = apellidoA;
-        this.apellidoB = apellidoB;
-        this.telefono = telefono;
-        this.email = email;
-        this.datosSesion = datosSesion;
-        this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
-        this.paypal = paypal;
-        this.tarjeta = tarjeta;
-    }
 
     public Tarjeta getTarjeta() {
         return tarjeta;
@@ -157,7 +153,7 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email, DatosSesion datosSesion, ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection) {
+    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email, DatosSesion datosSesion) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellidoA = apellidoA;
@@ -165,7 +161,7 @@ public class Usuario implements Serializable {
         this.telefono = telefono;
         this.email = email;
         this.datosSesion = datosSesion;
-        this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
+
     }
 
 
@@ -227,13 +223,14 @@ public class Usuario implements Serializable {
         this.datosSesion = datosSesion;
     }
 
-    @XmlTransient
-    public ArrayList<UsuarioTieneActividad> getUsuarioTieneActividadCollection() {
-        return usuarioTieneActividadCollection;
+    public ArrayList<Actividad> getActividadesUsuario() {
+        return actividadesUsuario;
     }
 
-    public void setUsuarioTieneActividadCollection(ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection) {
-        this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
+  
+    public void addActivity(Actividad actividad) {
+        actividadesUsuario.add(actividad);
+        actividad.getListaUsuarios().add(this);
     }
 
     @Override
@@ -246,16 +243,11 @@ public class Usuario implements Serializable {
         hash = 13 * hash + Objects.hashCode(this.telefono);
         hash = 13 * hash + Objects.hashCode(this.email);
         hash = 13 * hash + Objects.hashCode(this.datosSesion);
-        hash = 13 * hash + Objects.hashCode(this.usuarioTieneActividadCollection);
         hash = 13 * hash + Objects.hashCode(this.paypal);
         hash = 13 * hash + Objects.hashCode(this.tarjeta);
         hash = 13 * hash + Objects.hashCode(this.transferencia);
         return hash;
     }
-
-
-    
-   
 
     @Override
     public boolean equals(Object obj) {
@@ -290,7 +282,7 @@ public class Usuario implements Serializable {
         if (!Objects.equals(this.datosSesion, other.datosSesion)) {
             return false;
         }
-        if (!Objects.equals(this.usuarioTieneActividadCollection, other.usuarioTieneActividadCollection)) {
+        if (!Objects.equals(this.actividadesUsuario, other.actividadesUsuario)) {
             return false;
         }
         if (!Objects.equals(this.paypal, other.paypal)) {
@@ -304,6 +296,11 @@ public class Usuario implements Serializable {
         }
         return true;
     }
+
+
+    
+   
+
 
    
 

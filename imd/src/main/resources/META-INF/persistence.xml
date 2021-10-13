@@ -7,10 +7,14 @@
     <class>com.arelance.domain.Usuario</class>
     <class>com.arelance.domain.DatosSesion</class>
     <class>com.arelance.domain.Entrenador</class>
-    <class>com.arelance.domain.UsuarioTieneActividad</class>
     <class>com.arelance.domain.EntrenadorTieneActividad</class>
     <class>com.arelance.domain.Paypal</class>
     <class>com.arelance.domain.Tarjeta</class>
     <class>com.arelance.domain.Transferencia</class>
+    <properties>
+      <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+      <property name="eclipselink.logging.level" value="FINE"/>
+      <property name="eclipselink.logging.parameters" value="true"/>
+    </properties>
   </persistence-unit>
 </persistence>

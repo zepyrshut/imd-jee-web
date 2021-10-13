@@ -2,13 +2,19 @@ package com.arelance.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -59,8 +65,18 @@ public class Actividad implements Serializable {
     private BigDecimal precioActividad;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "actividad")
     private EntrenadorTieneActividad entrenadorTieneActividad;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "actividad")
-    private UsuarioTieneActividad usuarioTieneActividad;
+    
+    
+    
+   @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "usuario_tiene_actividad",
+            joinColumns = {
+                @JoinColumn(name = "id_actividad")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "id_usuario")}
+    )
+    private List<Usuario> listaUsuarios = new ArrayList<>();
 
     
     
@@ -78,15 +94,16 @@ public class Actividad implements Serializable {
         this.precioActividad = precioActividad;
     }
 
-    public Actividad(Integer idActividad, String nombreActividad, String descripcionActividad, String categoriaActividad, BigDecimal precioActividad, EntrenadorTieneActividad entrenadorTieneActividad, UsuarioTieneActividad usuarioTieneActividad) {
+    public Actividad(Integer idActividad, String nombreActividad, String descripcionActividad, String categoriaActividad, BigDecimal precioActividad, EntrenadorTieneActividad entrenadorTieneActividad) {
         this.idActividad = idActividad;
         this.nombreActividad = nombreActividad;
         this.descripcionActividad = descripcionActividad;
         this.categoriaActividad = categoriaActividad;
         this.precioActividad = precioActividad;
         this.entrenadorTieneActividad = entrenadorTieneActividad;
-        this.usuarioTieneActividad = usuarioTieneActividad;
     }
+    
+    
 
 
     
@@ -138,14 +155,19 @@ public class Actividad implements Serializable {
         this.entrenadorTieneActividad = entrenadorTieneActividad;
     }
 
-    public UsuarioTieneActividad getUsuarioTieneActividad() {
-        return usuarioTieneActividad;
+    public List<Usuario> getListaUsuarios() {
+        return listaUsuarios;
     }
 
-    public void setUsuarioTieneActividad(UsuarioTieneActividad usuarioTieneActividad) {
-        this.usuarioTieneActividad = usuarioTieneActividad;
+    public void setListaUsuarios(List<Usuario> listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
+    }
+    
+    public void eliminarUsuario(Usuario usuario) {
+        listaUsuarios.remove(usuario);
     }
 
+   
 
     
 

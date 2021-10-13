@@ -1,17 +1,15 @@
 package com.arelance.servlets.commands;
 
-import com.arelance.dao.UsuarioTieneActividadDAO;
-import com.arelance.dao.UsuarioTieneActividadPKDAO;
 import com.arelance.domain.Actividad;
 import com.arelance.servlets.commands.qualifiers.ActivityInscriptionQ;
 import com.arelance.domain.Usuario;
-import com.arelance.domain.UsuarioTieneActividad;
-import com.arelance.domain.UsuarioTieneActividadPK;
+import com.arelance.service.ActividadService;
+import com.arelance.service.UsuarioService;
 import java.io.IOException;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.inject.Inject;
 
 /**
  *
@@ -21,16 +19,10 @@ import javax.inject.Inject;
 public class ActivityInscription implements ActionsController {
 
     @Inject
-    UsuarioTieneActividadDAO usuarioTieneActividadDAO;
-    
+    private UsuarioService usuarioService;
+
     @Inject
-    UsuarioTieneActividadPKDAO usuarioTieneActividadPKDAO;
-    
-    @Inject
-    UsuarioTieneActividadPK usuarioTieneActividadPK;
-    
-    @Inject
-    UsuarioTieneActividad usuarioTieneActividad;
+    private ActividadService actividadService;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,12 +30,13 @@ public class ActivityInscription implements ActionsController {
         Actividad actividad = (Actividad) request.getSession().getAttribute("actividad");
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 
-        usuarioTieneActividad.setActividad(actividad);
-        usuarioTieneActividad.setUsuario(usuario);
-        usuarioTieneActividadPK.setIdActividad(actividad.getIdActividad());
-        usuarioTieneActividadPK.setIdUsuario(usuario.getIdUsuario());
-        usuarioTieneActividad.setUsuarioTieneActividadPK(usuarioTieneActividadPK);
-        usuarioTieneActividadDAO.addUsuarioTieneActividad(usuarioTieneActividad);
+        // alta usuario actividad
+        // usuario.addActivity(actividad);  
+        // usuarioService.updateUsuario(usuario);
+        // baja usuario actividad
+        actividad.eliminarUsuario(usuario);
+
+        actividadService.updateActividad(actividad);
 
         return "/detalleactividad.jsp";
 
