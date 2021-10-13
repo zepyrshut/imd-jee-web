@@ -1,6 +1,5 @@
 # TODO
 
-- [ ] Permitir a usuario quitarse de una actividad.
 - [ ] Añadir método de pago a usuario y que éste pueda seleccionar sólo UNA en el pago de actividad (cambiar `@OneToOne` a `@OneToMany`).
 - [ ] Creacion de Error 404.
 - [ ] Implementar operadores ternarios en todas las condiciones posibles de JSP con EL.
@@ -10,7 +9,6 @@
 - [ ] Deshabilitar todos los enlaces directos redundantes. Si está en *index*, eliminar los enlaces que llevan a *index*.
 - [ ] Desahbilitar botón guardar cambios en el perfil de usuario si no hay ninguna modificación.
 - [ ] Mover los *scripts* a una carpeta externa, llamar a todo con funciones y uso de *this*.
-
 # Ya resuelto
 
 - [x] Corregir y solucionar el despliegue de Payara.
@@ -27,3 +25,4 @@
 - [x] Creación de un controlador principal, que deriva a otros controladores.
 - [x] Arreglar enlace de suscripción a actividad.
 - [x] Implementar UIKit en el proyecto (Boostrap a UIKit).
+- [x] Permitir a usuario quitarse de una actividad.
