@@ -22,40 +22,29 @@
         <%@ include file="/jspf/navbar.jspf" %>   
         <h1>Perfil de usuario</h1>
 
-        <p>Actividades de usuario:</p>
+        <p>Datos usuario:</p>
+        <p>${usuario.nombre}</p>
+        <p><c:out value="${usuario.algo}" default="no existe"></c:out></p>
 
-        <table class="table">
-            <thead>
-                <tr>
-
-                    <th scope="col">Nombre</th>
-
-                </tr>
-            </thead>
-            <c:forEach items="${usuario.usuarioTieneActividadCollection}" var="usuario">
-                <tbody>
-                    <tr>
-
-                        <td>${usuario.actividad.nombreActividad}</td></c:forEach>
-
-                    </tr>
-
-                </tbody>
-            </table>
+          <c:forEach items="${usuario.metodoPago}" var="metodoPago">
+              <p>${metodoPago.nombrepago}</p>
+              
+          </c:forEach>
+     
 
             <div class="container rounded bg-white mt-5">
                 <div class="row">
                     <div class="col-md-4 border-right">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                             <span>Metodos de pago disponibles</span>
-                        <c:out value="Correo de paypal: ${empty usuario.paypal.correo ? 'Añadir paypal(formulario JS)' : usuario.paypal.correo}" />
+                    <%--    <c:out value="Correo de paypal: ${empty usuario.paypal.correo ? 'Añadir paypal(formulario JS)' : usuario.paypal.correo}" />
 
                         <br>
                         <c:out value="numero de tarjeta: ${empty usuario.tarjeta.numero ? 'Añadir tarjeta de credito(formulario JS)' : usuario.tarjeta.numero}" />
 
                         <br>
 
-                        <c:out value="numero de iban: ${empty usuario.transferencia.iban ? 'Añadir datos bancarios(formulario JS)' : usuario.transferencia.iban}" />
+                        <c:out value="numero de iban: ${empty usuario.transferencia.iban ? 'Añadir datos bancarios(formulario JS)' : usuario.transferencia.iban}" /> --%>
 
                         <span class="text-black-50">${usuario.email}</span></div>
                 </div>

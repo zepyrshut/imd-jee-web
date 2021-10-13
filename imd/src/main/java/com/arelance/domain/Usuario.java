@@ -2,6 +2,7 @@ package com.arelance.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -67,97 +68,14 @@ public class Usuario implements Serializable {
     private String email;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuarioSocio")
     private DatosSesion datosSesion;
-   // @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-
-       // private Set<UsuarioTieneActividad> usuarioTieneActividadCollection = new HashSet<>(); 
+ 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
-  
-    
-   @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Paypal paypal;
-   
-        @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Tarjeta tarjeta; 
-        
-               @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Transferencia transferencia;  
+    private List<MetodoPago> metodoPago;
 
-    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email, DatosSesion datosSesion, ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection, Paypal paypal, Tarjeta tarjeta, Transferencia transferencia) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.apellidoA = apellidoA;
-        this.apellidoB = apellidoB;
-        this.telefono = telefono;
-        this.email = email;
-        this.datosSesion = datosSesion;
-        this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
-        this.paypal = paypal;
-        this.tarjeta = tarjeta;
-        this.transferencia = transferencia;
-    }
-
-    public Transferencia getTransferencia() {
-        return transferencia;
-    }
-
-    public void setTransferencia(Transferencia transferencia) {
-        this.transferencia = transferencia;
-    }
-        
-            
-       //   private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
-         //private List<UsuarioTieneActividad> usuarioTieneActividadCollection;
-
-    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email, DatosSesion datosSesion, ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection, Paypal paypal, Tarjeta tarjeta) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.apellidoA = apellidoA;
-        this.apellidoB = apellidoB;
-        this.telefono = telefono;
-        this.email = email;
-        this.datosSesion = datosSesion;
-        this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
-        this.paypal = paypal;
-        this.tarjeta = tarjeta;
-    }
-
-    public Tarjeta getTarjeta() {
-        return tarjeta;
-    }
-
-    public void setTarjeta(Tarjeta tarjeta) {
-        this.tarjeta = tarjeta;
-    }
-
-    
-    public Paypal getPaypal() {
-        return paypal;
-    }
-
-    public void setPaypal(Paypal paypal) {
-        this.paypal = paypal;
-    }
-
- 
-        
-        
- 
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public Usuario(Integer idUsuario, String nombre, String apellidoA, String email) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.apellidoA = apellidoA;
-        this.email = email;
-    }
-
-    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email, DatosSesion datosSesion, ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection) {
+    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email, DatosSesion datosSesion, List<MetodoPago> metodoPago) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellidoA = apellidoA;
@@ -165,11 +83,30 @@ public class Usuario implements Serializable {
         this.telefono = telefono;
         this.email = email;
         this.datosSesion = datosSesion;
-        this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
+        this.metodoPago = metodoPago;
     }
 
+    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email, List<MetodoPago> metodoPago) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellidoA = apellidoA;
+        this.apellidoB = apellidoB;
+        this.telefono = telefono;
+        this.email = email;
+        this.metodoPago = metodoPago;
+    }
 
+    public Usuario(Integer idUsuario, String nombre, String apellidoA, String apellidoB, String telefono, String email) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellidoA = apellidoA;
+        this.apellidoB = apellidoB;
+        this.telefono = telefono;
+        this.email = email;
+    }
     
+    
+
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -218,7 +155,6 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    @XmlTransient
     public DatosSesion getDatosSesion() {
         return datosSesion;
     }
@@ -227,35 +163,27 @@ public class Usuario implements Serializable {
         this.datosSesion = datosSesion;
     }
 
-    @XmlTransient
-    public ArrayList<UsuarioTieneActividad> getUsuarioTieneActividadCollection() {
-        return usuarioTieneActividadCollection;
+    public List<MetodoPago> getMetodoPago() {
+        return metodoPago;
     }
 
-    public void setUsuarioTieneActividadCollection(ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection) {
-        this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
+    public void setMetodoPago(List<MetodoPago> metodoPago) {
+        this.metodoPago = metodoPago;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 13 * hash + Objects.hashCode(this.idUsuario);
-        hash = 13 * hash + Objects.hashCode(this.nombre);
-        hash = 13 * hash + Objects.hashCode(this.apellidoA);
-        hash = 13 * hash + Objects.hashCode(this.apellidoB);
-        hash = 13 * hash + Objects.hashCode(this.telefono);
-        hash = 13 * hash + Objects.hashCode(this.email);
-        hash = 13 * hash + Objects.hashCode(this.datosSesion);
-        hash = 13 * hash + Objects.hashCode(this.usuarioTieneActividadCollection);
-        hash = 13 * hash + Objects.hashCode(this.paypal);
-        hash = 13 * hash + Objects.hashCode(this.tarjeta);
-        hash = 13 * hash + Objects.hashCode(this.transferencia);
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.idUsuario);
+        hash = 97 * hash + Objects.hashCode(this.nombre);
+        hash = 97 * hash + Objects.hashCode(this.apellidoA);
+        hash = 97 * hash + Objects.hashCode(this.apellidoB);
+        hash = 97 * hash + Objects.hashCode(this.telefono);
+        hash = 97 * hash + Objects.hashCode(this.email);
+        hash = 97 * hash + Objects.hashCode(this.datosSesion);
+        hash = 97 * hash + Objects.hashCode(this.metodoPago);
         return hash;
     }
-
-
-    
-   
 
     @Override
     public boolean equals(Object obj) {
@@ -290,26 +218,18 @@ public class Usuario implements Serializable {
         if (!Objects.equals(this.datosSesion, other.datosSesion)) {
             return false;
         }
-        if (!Objects.equals(this.usuarioTieneActividadCollection, other.usuarioTieneActividadCollection)) {
-            return false;
-        }
-        if (!Objects.equals(this.paypal, other.paypal)) {
-            return false;
-        }
-        if (!Objects.equals(this.tarjeta, other.tarjeta)) {
-            return false;
-        }
-        if (!Objects.equals(this.transferencia, other.transferencia)) {
+        if (!Objects.equals(this.metodoPago, other.metodoPago)) {
             return false;
         }
         return true;
     }
 
-   
-
     @Override
     public String toString() {
-        return "com.arelance.domain.Usuario[ idUsuario=" + idUsuario + " ]";
+        return "Usuario{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellidoA=" + apellidoA + ", apellidoB=" + apellidoB + ", telefono=" + telefono + ", email=" + email + ", datosSesion=" + datosSesion + ", metodoPago=" + metodoPago + '}';
     }
+    
+    
+    
     
 }
