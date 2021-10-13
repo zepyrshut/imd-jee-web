@@ -8,7 +8,6 @@
 - [ ] Traducción todo *back-end* al inglés y todo *front-end* al español e inglés (soporte multi-idioma).
 - [ ] Deshabilitar todos los enlaces directos redundantes. Si está en *index*, eliminar los enlaces que llevan a *index*.
 - [ ] Desahbilitar botón guardar cambios en el perfil de usuario si no hay ninguna modificación.
-- [ ] Mover los *scripts* a una carpeta externa, llamar a todo con funciones y uso de *this*.
 # Ya resuelto
 
 - [x] Corregir y solucionar el despliegue de Payara.
@@ -26,3 +25,4 @@
 - [x] Arreglar enlace de suscripción a actividad.
 - [x] Implementar UIKit en el proyecto (Boostrap a UIKit).
 - [x] Permitir a usuario quitarse de una actividad.
+- [x] Mover los *scripts* a una carpeta externa, llamar a todo con funciones y uso de *this*.
