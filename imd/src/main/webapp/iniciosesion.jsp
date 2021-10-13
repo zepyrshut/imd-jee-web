@@ -21,39 +21,38 @@
                     <h1 class="font-merriweather">¡Oops!</h1>
                 </c:if>
             </div>
-            <main>
-                <!-- Inicio de formulario -->
-                <div class="uk-text-center uk-padding-small">
-                    <form method="POST" action="actions?action=login">
-                        <div class="uk-form-controls uk-padding-small">
-                            <div class="uk-inline">
-                                <span class="uk-form-icon" uk-icon="icon: user"></span>
-                                <input class="uk-input uk-form-width-large" id="usuario-login" onclick="cambioNeutral()"  type ="text"
-                                       placeholder="Usuario" name="usuario" required />
-                            </div>
-                        </div>
-                        <div class="uk-form-controls  uk-padding-small">
-                            <div class="uk-inline">
-                                <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                                <input class="uk-input uk-form-width-large" id="contrasena-login" onclick="cambioNeutral()" type ="password"
-                                       placeholder="Contraseña" name="contrasena" required />
-                            </div>
-                        </div>
-                        <div class="uk-padding">
-                            <input type="submit" class="uk-button uk-button-primary" value="Iniciar sesión" />
-                            <input type="reset" class="uk-button uk-button-danger" value="Borrar" />
-                        </div>
-                    </form>
+            <main class="uk-text-center uk-padding-small">
+                <section>         
                     <c:if test="${datoIncorrecto != null}">
-                        <div class="uk-alert-danger  uk-text-left"  id="mensajeError"  uk-alert>
+                        <article class="uk-alert-danger  uk-text-left"  id="mensajeError"  uk-alert>
                             <a class="uk-alert-close" uk-close></a>
                             <p><c:out value="${datoIncorrecto}"/></p>
-                        </div>                
-                    </c:if>
-                </div>
+                        </article>                
+                    </c:if>            
+                </section>
+                <!-- Inicio de formulario -->
+                <form class="uk-grid-small" method="POST" action="actions?action=login">
+                    <div class="uk-form-controls uk-padding-small">
+                        <article class="uk-inline">
+                            <span class="uk-form-icon" uk-icon="icon: user"></span>
+                            <input class="uk-input uk-form-width-large" id="usuario-login" onclick="cambioNeutral()"  type ="text"
+                                   placeholder="Usuario" name="usuario" required />
+                        </article>
+                    </div>
+                    <div class="uk-form-controls uk-padding-small">
+                        <article class="uk-inline">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input uk-form-width-large" id="contrasena-login" onclick="cambioNeutral()" type ="password"
+                                   placeholder="Contraseña" name="contrasena" required />
+                        </article>
+                    </div>
+                    <footer class="uk-padding">
+                        <input type="submit" class="uk-button uk-button-primary" value="Iniciar sesión" />
+                        <input type="reset" class="uk-button uk-button-danger" value="Borrar" />
+                    </footer>
+                </form>
                 <!-- Fin de formulario -->
             </main>
-
             <c:if test="${datoIncorrecto != null}">
                 <script>
                     var usuario = document.getElementById('usuario-login');
@@ -63,12 +62,12 @@
                 </script>
                 <script>
                     function cambioNeutral() {
-                    var usuario = document.getElementById('usuario-login');
-                    var contrasena = document.getElementById('contrasena-login');
-                    var mensajeError = document.getElementById('mensajeError');
-                    usuario.classList.remove('uk-form-danger');
-                    contrasena.classList.remove('uk-form-danger');
-                    mensajeError.parentNode.removeChild(mensajeError);
+                        var usuario = document.getElementById('usuario-login');
+                        var contrasena = document.getElementById('contrasena-login');
+                        var mensajeError = document.getElementById('mensajeError');
+                        usuario.classList.remove('uk-form-danger');
+                        contrasena.classList.remove('uk-form-danger');
+                        mensajeError.parentNode.removeChild(mensajeError);
                     }
                 </script>
             </c:if>

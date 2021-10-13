@@ -14,7 +14,7 @@ public class ActividadServiceImpl implements ActividadService {
 
     @Inject
     private ActividadDAO actividadDAO;
-    
+
     @Override
     public List<Actividad> listarActividades() {
         return actividadDAO.listarActividades();

@@ -1,9 +1,9 @@
 package com.arelance.servlets.commands;
 
 import com.arelance.domain.Actividad;
-import com.arelance.servlets.commands.qualifiers.ActivityUnsubcriptionQ;
+import com.arelance.servlets.commands.qualifiers.ActivityInscriptionQ;
 import com.arelance.domain.Usuario;
-import com.arelance.service.UsuarioService;
+import com.arelance.service.ActividadService;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -14,11 +14,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Pedro
  */
-@ActivityUnsubcriptionQ
-public class ActivityInscription implements ActionsController {
+@ActivityInscriptionQ
+public class ActivityUnsubscription implements ActionsController {
 
     @Inject
-    private UsuarioService usuarioService;
+    private ActividadService actividadService;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,8 +26,8 @@ public class ActivityInscription implements ActionsController {
         Actividad actividad = (Actividad) request.getSession().getAttribute("actividad");
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 
-        usuario.addActivity(actividad);
-        usuarioService.updateUsuario(usuario);
+        actividad.eliminarUsuario(usuario);
+        actividadService.updateActividad(actividad);
 
         return "/detalleactividad.jsp";
 

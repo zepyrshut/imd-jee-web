@@ -1,7 +1,6 @@
 package com.arelance.dao.impl;
 
 import com.arelance.dao.UsuarioDAO;
-import com.arelance.domain.DatosSesion;
 import com.arelance.domain.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;

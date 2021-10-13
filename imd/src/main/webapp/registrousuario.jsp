@@ -37,7 +37,7 @@
                     </article>                
                 </c:if>
             </section>
-            <form class="uk-grid-small uk" uk-grid method="POST" action="actions?action=register">
+            <form class="uk-grid-small" uk-grid method="POST" action="actions?action=register">
                 <div class="uk-width-1-3@s">
                     <article class="uk-inline">
                         <span class="uk-form-icon" uk-icon="icon: user"></span>

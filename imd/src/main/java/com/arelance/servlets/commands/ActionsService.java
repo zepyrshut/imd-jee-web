@@ -2,6 +2,7 @@ package com.arelance.servlets.commands;
 
 import com.arelance.servlets.commands.qualifiers.ActivityDescriptionQ;
 import com.arelance.servlets.commands.qualifiers.ActivityInscriptionQ;
+import com.arelance.servlets.commands.qualifiers.ActivityUnsubcriptionQ;
 import com.arelance.servlets.commands.qualifiers.LogInQ;
 import com.arelance.servlets.commands.qualifiers.RegisterQ;
 import com.arelance.servlets.commands.qualifiers.LogOutQ;
@@ -46,6 +47,10 @@ public class ActionsService extends HttpServlet {
     @ActivityInscriptionQ
     private ActionsController activityInscription;
     
+    @Inject
+    @ActivityUnsubcriptionQ
+    private ActionsController activityUnsubcription;
+    
     @Override
     public void init() throws ServletException {
         super.init();
@@ -53,7 +58,8 @@ public class ActionsService extends HttpServlet {
         actions.put("login", logIn);
         actions.put("register", register);
         actions.put("activitydescription", activityDescription);
-        actions.put("activityinscription", activityInscription);        
+        actions.put("activityinscription", activityInscription);  
+        actions.put("activityubsubcription", activityUnsubcription);
     }
 
     @Override
