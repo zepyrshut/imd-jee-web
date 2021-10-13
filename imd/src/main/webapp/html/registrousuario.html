@@ -66,81 +66,80 @@
         </nav>
     </div>
     <!-- Fin barra navegación -->
-    <main>
+    <main class="uk-container uk-container-small uk-padding uk-padding-small">
         <!-- Registro usuario -->
-
-        <div class="uk-container uk-container-small uk-padding">
-            <div class="uk-align-center uk-padding-small uk-text-center padding-top-medium">
-                <h1 class="">¡Bienvenidos a IMD!</h1>
-            </div>
-            <div class="uk-alert-danger" uk-alert>
+        <header class="padding-top-medium uk-text-center uk-padding">
+            <h1 class="">¡Bienvenidos a IMD!</h1>
+        </header>
+        <section>
+            <article class="uk-alert-danger  uk-text-left" uk-alert>
                 <a class="uk-alert-close" uk-close></a>
                 <p>Error. Ya existe este correo electrónico.</p>
-            </div>  
-            <div class="uk-alert-danger" uk-alert>
+            </article>
+            <article class="uk-alert-danger  uk-text-left" uk-alert>
                 <a class="uk-alert-close" uk-close></a>
                 <p>Error. Ya existe este usuario.</p>
-            </div>      
-            <form class="uk-grid-small uk" uk-grid>
-                <div class="uk-width-1-3@s">
-                    <div class="uk-inline uk-text-center">
-                        <span class="uk-form-icon" uk-icon="icon: user"></span>
-                        <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                            placeholder="Nombre" required />
-                    </div>
-                </div>
-                <div class="uk-width-1-3@s">
-                    <div class="uk-inline">
-                        <span class="uk-form-icon" uk-icon="icon: user"></span>
-                        <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                            placeholder="Primer apellido" required />
-                    </div>
-                </div>
-                <div class="uk-width-1-3@s">
-                    <div class="uk-inline">
-                        <span class="uk-form-icon" uk-icon="icon: user"></span>
-                        <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                            placeholder="Segundo apellido" required />
-                    </div>
-                </div>
-                <div class="uk-width-1-2@s">
-                    <div class="uk-inline">
-                        <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                        <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                            placeholder="Correo electrónico" required />
-                    </div>
-                </div>
-                <div class="uk-width-1-2@s">
-                    <div class="uk-inline">
-                        <span class="uk-form-icon" uk-icon="icon:  receiver"></span>
-                        <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                            placeholder="Teléfono" required />
-                    </div>
-                </div>
-                <div class="uk-width-1-2@s">
-                    <div class="uk-inline">
-                        <span class="uk-form-icon" uk-icon="icon: user"></span>
-                        <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                            placeholder="Usuario" required />
-                    </div>
-                </div>
-                <div class="uk-width-1-2@s">
-                    <div class="uk-inline">
-                        <span class="uk-form-icon" uk-icon="icon:  lock"></span>
-                        <input class="uk-input form-width-xlarge" id="form-stacked-text" type="password"
-                            placeholder="Contraseña" required />
-                    </div>
-                </div>
-                <div class="uk-align-center uk-padding-small">
-                    <input type="submit" class="uk-button uk-button-primary" value="Registrarse" />
-                    <input type="reset" class="uk-button uk-button-danger" value="Borrar" />
-                </div>
-            </form>
-            <div class="uk-alert-success" uk-alert>
+            </article>
+            <article class="uk-alert-success  uk-text-left" uk-alert>
                 <a class="uk-alert-close" uk-close></a>
-                <p>Usuario registrado con éxito. Ahora puede iniciar sesión.</p>
-            </div> 
-        </div>
+                <p>Usuario registrado con éxito. Ahora puede <a href="#">iniciar sesión</a>.</p>
+            </article>
+        </section>
+        <form class="uk-grid-small uk" uk-grid>
+            <div class="uk-width-1-3@s">
+                <article class="uk-inline">
+                    <span class="uk-form-icon" uk-icon="icon: user"></span>
+                    <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text" placeholder="Nombre"
+                        required />
+                </article>
+            </div>
+            <div class="uk-width-1-3@s">
+                <article class="uk-inline">
+                    <span class="uk-form-icon" uk-icon="icon: user"></span>
+                    <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
+                        placeholder="Primer apellido" required />
+                </article>
+            </div>
+            <div class="uk-width-1-3@s">
+                <article class="uk-inline">
+                    <span class="uk-form-icon" uk-icon="icon: user"></span>
+                    <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
+                        placeholder="Segundo apellido" required />
+                </article>
+            </div>
+            <div class="uk-width-1-2@s">
+                <article class="uk-inline">
+                    <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                    <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
+                        placeholder="Correo electrónico" required />
+                </article>
+            </div>
+            <div class="uk-width-1-2@s">
+                <article class="uk-inline">
+                    <span class="uk-form-icon" uk-icon="icon:  receiver"></span>
+                    <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text" placeholder="Teléfono"
+                        required />
+                </article>
+            </div>
+            <div class="uk-width-1-2@s">
+                <article class="uk-inline">
+                    <span class="uk-form-icon" uk-icon="icon: user"></span>
+                    <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text" placeholder="Usuario"
+                        required />
+                </article>
+            </div>
+            <div class="uk-width-1-2@s">
+                <article class="uk-inline">
+                    <span class="uk-form-icon" uk-icon="icon:  lock"></span>
+                    <input class="uk-input form-width-xlarge" id="form-stacked-text" type="password"
+                        placeholder="Contraseña" required />
+                </article>
+            </div>
+            <footer class=" uk-align-center uk-padding-small">
+                <input type="submit" class="uk-button uk-button-primary" value="Registrarse" />
+                <input type="reset" class="uk-button uk-button-danger" value="Borrar" />
+            </footer>
+        </form>
         <!-- Fin registro usuario -->
     </main>
     <!-- Pie de página -->
@@ -153,4 +152,5 @@
     </footer>
     <!-- Fin pie de página -->
 </body>
+
 </html>

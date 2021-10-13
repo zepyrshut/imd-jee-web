@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
     <!-- Pie de página -->
-    <footer class="uk-footer uk-text-center font-ubuntu">
+    <footer class="uk-footer uk-text-center ">
         <a href="https://github.com/zepyrshut"><span class="uk-padding" uk-icon="icon: github"></span></a>
         <a href="https://getuikit.com/"><span class="uk-padding" uk-icon="icon: uikit"></span></a>
         <a href="https://github.com/jorgehurtadodmx"><span class="uk-padding" uk-icon="icon: github"></span></a>
