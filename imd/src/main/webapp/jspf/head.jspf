@@ -19,6 +19,9 @@
 
     <!-- CSS personalizado -->
     <link rel="stylesheet" href="css/main.css" />
+    
+    <!-- JS personalizado -->
+     <script src="js/scripts.js"></script>
 
 </head>
 <!-- Fin HTML head -->

@@ -23,6 +23,9 @@
     <!-- CSS personalizado -->
     <link rel="stylesheet" href="../css/main.css" />
 
+    <!-- JS personalizado -->
+    <script src="../js/test.js"></script>
+
 </head>
 <!-- Fin HTML head -->
 
@@ -82,14 +85,14 @@
             <article class="uk-form-controls uk-padding-small">
                 <div class="uk-inline">
                     <span class="uk-form-icon" uk-icon="icon: user"></span>
-                    <input class="uk-input uk-form-width-large" id="usuario-login" onclick="cambioNeutral()" type="text"
+                    <input class="uk-input uk-form-width-large errorInput" id="usuario-login" onclick="cambioNeutral()" type="text"
                         placeholder="Usuario" required />
                 </div>
             </article>
             <article class="uk-form-controls  uk-padding-small">
                 <div class="uk-inline">
                     <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                    <input class="uk-input uk-form-width-large" id="contrasena-login" onclick="cambioNeutral()"
+                    <input class="uk-input uk-form-width-large errorInput" id="contrasena-login" onclick="cambioNeutral()"
                         type="password" placeholder="Contraseña" required />
                 </div>
             </article>
@@ -114,22 +117,6 @@
 </body>
 
 
-<script>
-    var usuario = document.getElementById('usuario-login');
-    var contrasena = document.getElementById('contrasena-login');
-    usuario.classList.add('uk-form-danger');
-    contrasena.classList.add('uk-form-danger');
-</script>
 
-<script>
-    function cambioNeutral() {
-        var usuario = document.getElementById('usuario-login');
-        var contrasena = document.getElementById('contrasena-login');
-        var mensajeError = document.getElementById('mensajeError');
-        usuario.classList.remove('uk-form-danger');
-        contrasena.classList.remove('uk-form-danger');
-        mensajeError.parentNode.removeChild(mensajeError);
-    }
-</script>
 
 </html>
