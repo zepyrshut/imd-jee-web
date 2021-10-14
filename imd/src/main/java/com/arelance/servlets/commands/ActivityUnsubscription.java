@@ -32,7 +32,7 @@ public class ActivityUnsubscription implements ActionsController {
         actividad = (Actividad) request.getSession().getAttribute("actividad");
         usuario = (Usuario) request.getSession().getAttribute("usuario");
 
-        actividad.eliminarUsuario(usuario);
+        //actividad.eliminarUsuario(usuario);
         actividadService.updateActividad(actividad);
 
         return "/detalleactividad.jsp";

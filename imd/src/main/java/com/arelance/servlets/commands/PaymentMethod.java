@@ -62,7 +62,7 @@ public class PaymentMethod extends HttpServlet {
 
         List<MetodoPago> metodoPago = new ArrayList<>();
         metodoPago.add(mp);        
-        usuario.getMetodoPago().add(mp);
+        //usuario.getMetodoPago().add(mp);
 
         usuarioService.updateUsuario(usuario);
     }

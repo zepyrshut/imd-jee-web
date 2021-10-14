@@ -3,18 +3,23 @@ package com.arelance.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -22,39 +27,73 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "usuario")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
     @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario"),
+    @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre"),
+    @NamedQuery(name = "Usuario.findByApellidoA", query = "SELECT u FROM Usuario u WHERE u.apellidoA = :apellidoA"),
+    @NamedQuery(name = "Usuario.findByApellidoB", query = "SELECT u FROM Usuario u WHERE u.apellidoB = :apellidoB"),
+    @NamedQuery(name = "Usuario.findByTelefono", query = "SELECT u FROM Usuario u WHERE u.telefono = :telefono"),
     @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     @Column(name = "id_usuario")
     private Integer idUsuario;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "nombre")
     private String nombre;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "apellido_a")
     private String apellidoA;
+    @Size(max = 20)
     @Column(name = "apellido_b")
     private String apellidoB;
+    @Size(max = 15)
     @Column(name = "telefono")
     private String telefono;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "email")
     private String email;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuarioSocio")
     private DatosSesion datosSesion;
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "listaUsuarios")
-    private ArrayList<Actividad> actividadesUsuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private List<MetodoPago> metodoPago;
+   // @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
 
+       // private Set<UsuarioTieneActividad> usuarioTieneActividadCollection = new HashSet<>(); 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
+    
+    
+      @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private List<MetodoPago> metodoPago;
+    
+   
+
+    
+            
+       //   private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
+         //private List<UsuarioTieneActividad> usuarioTieneActividadCollection;
+        
+        
+ 
     public Usuario() {
-        this.actividadesUsuario = new ArrayList<>();
-        this.metodoPago = new ArrayList<MetodoPago>();
     }
 
+
+
+
+    
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -103,6 +142,7 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
+    @XmlTransient
     public DatosSesion getDatosSesion() {
         return datosSesion;
     }
@@ -111,13 +151,13 @@ public class Usuario implements Serializable {
         this.datosSesion = datosSesion;
     }
 
-    public ArrayList<Actividad> getActividadesUsuario() {
-        return actividadesUsuario;
+    @XmlTransient
+    public ArrayList<UsuarioTieneActividad> getUsuarioTieneActividadCollection() {
+        return usuarioTieneActividadCollection;
     }
 
-    public void addActivity(Actividad actividad) {
-        actividadesUsuario.add(actividad);
-        actividad.getListaUsuarios().add(this);
+    public void setUsuarioTieneActividadCollection(ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection) {
+        this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
     }
 
     public List<MetodoPago> getMetodoPago() {
@@ -128,4 +168,17 @@ public class Usuario implements Serializable {
         this.metodoPago = metodoPago;
     }
 
+
+    
+    
+   
+
+
+   
+
+    @Override
+    public String toString() {
+        return "com.arelance.domain.Usuario[ idUsuario=" + idUsuario + " ]";
+    }
+    
 }

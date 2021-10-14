@@ -12,6 +12,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tarjeta")
+@TarjetaQ
 public class Tarjeta extends MetodoPago implements Serializable {
 
     private static final long serialVersionUID = 1L;
