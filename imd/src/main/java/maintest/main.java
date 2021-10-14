@@ -5,9 +5,11 @@
  */
 package maintest;
 
+import checkdomains.TransferenciaJpaController;
 import com.arelance.domain.MetodoPago;
 import com.arelance.domain.Paypal;
 import com.arelance.domain.Tarjeta;
+import com.arelance.domain.Transferencia;
 import com.arelance.domain.Usuario;
 import entitycontrol.PaypalJpaController;
 import entitycontrol.TarjetaJpaController;
@@ -48,6 +50,10 @@ public class main {
                MetodoPago p2 = new Paypal("correoj2@jgjgj.com", 0, "esunpaypa2", u1);
      
         paypalJpaController.create((Paypal) p2);
+        
+        TransferenciaJpaController transferenciaJpaController = new TransferenciaJpaController(emf);
+        MetodoPago transferencia1 = new Transferencia("ibanXXX", 0, "miiban", u1);
+        transferenciaJpaController.create((Transferencia) transferencia1);
            em.getTransaction().begin();
         emf.close();
     }

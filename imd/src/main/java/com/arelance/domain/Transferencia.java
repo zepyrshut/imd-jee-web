@@ -6,6 +6,7 @@
 package com.arelance.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,28 +22,17 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "transferencia")
-public class Transferencia implements Serializable {
+public class Transferencia extends MetodoPago{
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_transferencia")
-    private Long id;
+  
     
     @Column(name = "iban")
     private String iban;
-        
-       @OneToOne
-   @JoinColumn(name = "usuario_id_usuario", updatable = false, nullable = false)
-   private Usuario usuario;
+     
+    
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
 
     public String getIban() {
         return iban;
@@ -52,38 +42,41 @@ public class Transferencia implements Serializable {
         this.iban = iban;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+
+
+    public Transferencia(String iban) {
+        this.iban = iban;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public Transferencia(String iban, Integer idtp, String nombrepago, Usuario usuarioid) {
+        super(idtp, nombrepago, usuarioid);
+        this.iban = iban;
     }
 
     public Transferencia() {
     }
 
-    public Transferencia(Long id, String iban, Usuario usuario) {
-        this.id = id;
-        this.iban = iban;
-        this.usuario = usuario;
-    }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.iban);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Transferencia)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Transferencia other = (Transferencia) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Transferencia other = (Transferencia) obj;
+        if (!Objects.equals(this.iban, other.iban)) {
             return false;
         }
         return true;
@@ -91,7 +84,8 @@ public class Transferencia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.arelance.domain.Transferencia[ id=" + id + " ]";
+        return "Transferencia{" + "iban=" + iban + '}';
     }
+
     
 }
