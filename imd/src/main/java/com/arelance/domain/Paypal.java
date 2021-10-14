@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.arelance.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,43 +8,38 @@ import javax.persistence.Table;
 
 /**
  *
- * @author jorge
+ * @author Jorge
  */
 @Entity
-@Table(name="paypal")
-public class Paypal extends MetodoPago{
+@Table(name = "paypal")
+public class Paypal extends MetodoPago implements Serializable {
 
     private static final long serialVersionUID = 1L;
-  
-    
+
     @Column(name = "correo")
-    private String correo;
+    private String correoPayPal;
 
     public Paypal() {
+        super();
     }
 
-    public Paypal(String correo, Integer idtp, String nombrepago, Usuario usuarioid) {
-        super(idtp, nombrepago, usuarioid);
-        this.correo = correo;
+    public Paypal(String correoPayPal) {
+        super();
+        this.correoPayPal = correoPayPal;
     }
 
-
-    public String getCorreo() {
-        return correo;
+    public String getCorreoPayPal() {
+        return correoPayPal;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public Paypal(String correo) {
-        this.correo = correo;
+    public void setCorreoPayPal(String correoPayPal) {
+        this.correoPayPal = correoPayPal;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 11 * hash + Objects.hashCode(this.correo);
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.correoPayPal);
         return hash;
     }
 
@@ -64,19 +55,10 @@ public class Paypal extends MetodoPago{
             return false;
         }
         final Paypal other = (Paypal) obj;
-        if (!Objects.equals(this.correo, other.correo)) {
+        if (!Objects.equals(this.correoPayPal, other.correoPayPal)) {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Paypal{" + "correo=" + correo + '}';
-    }
-    
-    
-    
-   
+    }    
     
 }

@@ -1,47 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.arelance.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
  *
- * @author jorge
+ * @author Jorge
  */
 @Entity
 @Table(name = "transferencia")
-public class Transferencia implements Serializable {
+public class Transferencia extends MetodoPago implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_transferencia")
-    private Long id;
-    
+
     @Column(name = "iban")
     private String iban;
-        
-       @OneToOne
-   @JoinColumn(name = "usuario_id_usuario", updatable = false, nullable = false)
-   private Usuario usuario;
 
-    public Long getId() {
-        return id;
+    public Transferencia() {
+        super();
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Transferencia(String iban) {
+        super();
+        this.iban = iban;
     }
 
     public String getIban() {
@@ -52,46 +36,26 @@ public class Transferencia implements Serializable {
         this.iban = iban;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Transferencia() {
-    }
-
-    public Transferencia(Long id, String iban, Usuario usuario) {
-        this.id = id;
-        this.iban = iban;
-        this.usuario = usuario;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.iban);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Transferencia)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Transferencia other = (Transferencia) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.arelance.domain.Transferencia[ id=" + id + " ]";
-    }
+        final Transferencia other = (Transferencia) obj;
+        return Objects.equals(this.iban, other.iban);
+    } 
     
 }

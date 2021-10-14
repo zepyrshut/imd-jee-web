@@ -11,6 +11,7 @@
     <class>com.arelance.domain.Paypal</class>
     <class>com.arelance.domain.Tarjeta</class>
     <class>com.arelance.domain.Transferencia</class>
+    <class>com.arelance.domain.MetodoPago</class>
     <properties>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
       <property name="eclipselink.logging.level" value="FINE"/>

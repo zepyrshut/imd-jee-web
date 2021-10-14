@@ -2,7 +2,7 @@ package com.arelance.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,7 +24,8 @@ import javax.persistence.Table;
 @Table(name = "usuario")
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
-    @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario")})
+    @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario"),
+    @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,15 +46,13 @@ public class Usuario implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuarioSocio")
     private DatosSesion datosSesion;
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "listaUsuarios")
-    private ArrayList<Actividad> actividadesUsuario = new ArrayList<>();
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Paypal paypal;
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Tarjeta tarjeta;
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Transferencia transferencia;
+    private ArrayList<Actividad> actividadesUsuario;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private List<MetodoPago> metodoPago;
 
     public Usuario() {
+        this.actividadesUsuario = new ArrayList<>();
+        this.metodoPago = new ArrayList<MetodoPago>();
     }
 
     public Integer getIdUsuario() {
@@ -120,89 +120,12 @@ public class Usuario implements Serializable {
         actividad.getListaUsuarios().add(this);
     }
 
-    public Paypal getPaypal() {
-        return paypal;
+    public List<MetodoPago> getMetodoPago() {
+        return metodoPago;
     }
 
-    public void setPaypal(Paypal paypal) {
-        this.paypal = paypal;
+    public void setMetodoPago(List<MetodoPago> metodoPago) {
+        this.metodoPago = metodoPago;
     }
 
-    public Tarjeta getTarjeta() {
-        return tarjeta;
-    }
-
-    public void setTarjeta(Tarjeta tarjeta) {
-        this.tarjeta = tarjeta;
-    }
-
-    public Transferencia getTransferencia() {
-        return transferencia;
-    }
-
-    public void setTransferencia(Transferencia transferencia) {
-        this.transferencia = transferencia;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.idUsuario);
-        hash = 59 * hash + Objects.hashCode(this.nombre);
-        hash = 59 * hash + Objects.hashCode(this.apellidoA);
-        hash = 59 * hash + Objects.hashCode(this.apellidoB);
-        hash = 59 * hash + Objects.hashCode(this.telefono);
-        hash = 59 * hash + Objects.hashCode(this.email);
-        hash = 59 * hash + Objects.hashCode(this.datosSesion);
-        hash = 59 * hash + Objects.hashCode(this.actividadesUsuario);
-        hash = 59 * hash + Objects.hashCode(this.paypal);
-        hash = 59 * hash + Objects.hashCode(this.tarjeta);
-        hash = 59 * hash + Objects.hashCode(this.transferencia);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Usuario other = (Usuario) obj;
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.apellidoA, other.apellidoA)) {
-            return false;
-        }
-        if (!Objects.equals(this.apellidoB, other.apellidoB)) {
-            return false;
-        }
-        if (!Objects.equals(this.telefono, other.telefono)) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
-        if (!Objects.equals(this.idUsuario, other.idUsuario)) {
-            return false;
-        }
-        if (!Objects.equals(this.datosSesion, other.datosSesion)) {
-            return false;
-        }
-        if (!Objects.equals(this.actividadesUsuario, other.actividadesUsuario)) {
-            return false;
-        }
-        if (!Objects.equals(this.paypal, other.paypal)) {
-            return false;
-        }
-        if (!Objects.equals(this.tarjeta, other.tarjeta)) {
-            return false;
-        }
-        return Objects.equals(this.transferencia, other.transferencia);
-    }
 }
