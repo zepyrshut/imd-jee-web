@@ -1,14 +1,12 @@
 package com.arelance.domain;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Basic;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,9 +17,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -29,46 +24,27 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "actividad")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Actividad.findAll", query = "SELECT a FROM Actividad a"),
-    @NamedQuery(name = "Actividad.findByIdActividad", query = "SELECT a FROM Actividad a WHERE a.idActividad = :idActividad"),
-    @NamedQuery(name = "Actividad.findByNombreActividad", query = "SELECT a FROM Actividad a WHERE a.nombreActividad = :nombreActividad"),
-    @NamedQuery(name = "Actividad.findByDescripcionActividad", query = "SELECT a FROM Actividad a WHERE a.descripcionActividad = :descripcionActividad"),
-    @NamedQuery(name = "Actividad.findByCategoriaActividad", query = "SELECT a FROM Actividad a WHERE a.categoriaActividad = :categoriaActividad"),
-    @NamedQuery(name = "Actividad.findByPrecioActividad", query = "SELECT a FROM Actividad a WHERE a.precioActividad = :precioActividad")})
+    @NamedQuery(name = "Actividad.findByIdActividad", query = "SELECT a FROM Actividad a WHERE a.idActividad = :idActividad")})
 public class Actividad implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id_actividad")
     private Integer idActividad;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
     @Column(name = "nombre_actividad")
     private String nombreActividad;
-    @Size(max = 255)
     @Column(name = "descripcion_actividad")
     private String descripcionActividad;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
     @Column(name = "categoria_actividad")
     private String categoriaActividad;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "precio_actividad")
-    private BigDecimal precioActividad;
+    private Double precioActividad;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "actividad")
     private EntrenadorTieneActividad entrenadorTieneActividad;
-    
-    
-    
-   @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "usuario_tiene_actividad",
             joinColumns = {
@@ -78,35 +54,9 @@ public class Actividad implements Serializable {
     )
     private List<Usuario> listaUsuarios = new ArrayList<>();
 
-    
-    
     public Actividad() {
     }
 
-    public Actividad(Integer idActividad) {
-        this.idActividad = idActividad;
-    }
-
-    public Actividad(Integer idActividad, String nombreActividad, String categoriaActividad, BigDecimal precioActividad) {
-        this.idActividad = idActividad;
-        this.nombreActividad = nombreActividad;
-        this.categoriaActividad = categoriaActividad;
-        this.precioActividad = precioActividad;
-    }
-
-    public Actividad(Integer idActividad, String nombreActividad, String descripcionActividad, String categoriaActividad, BigDecimal precioActividad, EntrenadorTieneActividad entrenadorTieneActividad) {
-        this.idActividad = idActividad;
-        this.nombreActividad = nombreActividad;
-        this.descripcionActividad = descripcionActividad;
-        this.categoriaActividad = categoriaActividad;
-        this.precioActividad = precioActividad;
-        this.entrenadorTieneActividad = entrenadorTieneActividad;
-    }
-    
-    
-
-
-    
     public Integer getIdActividad() {
         return idActividad;
     }
@@ -139,11 +89,11 @@ public class Actividad implements Serializable {
         this.categoriaActividad = categoriaActividad;
     }
 
-    public BigDecimal getPrecioActividad() {
+    public Double getPrecioActividad() {
         return precioActividad;
     }
 
-    public void setPrecioActividad(BigDecimal precioActividad) {
+    public void setPrecioActividad(Double precioActividad) {
         this.precioActividad = precioActividad;
     }
 
@@ -159,41 +109,55 @@ public class Actividad implements Serializable {
         return listaUsuarios;
     }
 
-    public void setListaUsuarios(List<Usuario> listaUsuarios) {
-        this.listaUsuarios = listaUsuarios;
-    }
-    
     public void eliminarUsuario(Usuario usuario) {
         listaUsuarios.remove(usuario);
+        usuario.getActividadesUsuario().remove(this);
     }
-
-   
-
-    
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (idActividad != null ? idActividad.hashCode() : 0);
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.idActividad);
+        hash = 97 * hash + Objects.hashCode(this.nombreActividad);
+        hash = 97 * hash + Objects.hashCode(this.descripcionActividad);
+        hash = 97 * hash + Objects.hashCode(this.categoriaActividad);
+        hash = 97 * hash + Objects.hashCode(this.precioActividad);
+        hash = 97 * hash + Objects.hashCode(this.entrenadorTieneActividad);
+        hash = 97 * hash + Objects.hashCode(this.listaUsuarios);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Actividad)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Actividad other = (Actividad) object;
-        if ((this.idActividad == null && other.idActividad != null) || (this.idActividad != null && !this.idActividad.equals(other.idActividad))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final Actividad other = (Actividad) obj;
+        if (!Objects.equals(this.nombreActividad, other.nombreActividad)) {
+            return false;
+        }
+        if (!Objects.equals(this.descripcionActividad, other.descripcionActividad)) {
+            return false;
+        }
+        if (!Objects.equals(this.categoriaActividad, other.categoriaActividad)) {
+            return false;
+        }
+        if (!Objects.equals(this.idActividad, other.idActividad)) {
+            return false;
+        }
+        if (!Objects.equals(this.precioActividad, other.precioActividad)) {
+            return false;
+        }
+        if (!Objects.equals(this.entrenadorTieneActividad, other.entrenadorTieneActividad)) {
+            return false;
+        }
+        return Objects.equals(this.listaUsuarios, other.listaUsuarios);
     }
 
-    @Override
-    public String toString() {
-        return "com.arelance.domain.Actividad[ idActividad=" + idActividad + " ]";
-    }
-    
 }
