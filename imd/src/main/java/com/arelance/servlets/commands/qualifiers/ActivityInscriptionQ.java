@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/CDI/Qualifier.java to edit this template
- */
 package com.arelance.servlets.commands.qualifiers;
 
 import static java.lang.annotation.ElementType.TYPE;
@@ -15,7 +11,7 @@ import javax.inject.Qualifier;
 
 /**
  *
- * @author model
+ * @author Pedro
  */
 @Qualifier
 @Retention(RUNTIME)
