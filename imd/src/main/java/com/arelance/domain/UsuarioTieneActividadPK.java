@@ -1,7 +1,6 @@
 package com.arelance.domain;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
@@ -13,21 +12,15 @@ import javax.validation.constraints.NotNull;
 @Embeddable
 public class UsuarioTieneActividadPK implements Serializable {
 
-    @Basic(optional = false)
     @NotNull
     @Column(name = "id_usuario")
     private int idUsuario;
-    @Basic(optional = false)
     @NotNull
     @Column(name = "id_actividad")
     private int idActividad;
-    @Basic(optional = false)
     @NotNull
     @Column(name = "id_pago")
     private int idPago;
-    
-    
-    
 
     public UsuarioTieneActividadPK() {
     }
@@ -89,12 +82,7 @@ public class UsuarioTieneActividadPK implements Serializable {
         if (this.idActividad != other.idActividad) {
             return false;
         }
-        if (this.idPago != other.idPago) {
-            return false;
-        }
-        return true;
+        return this.idPago == other.idPago;
     }
 
-    
-    
 }

@@ -2,9 +2,7 @@ package com.arelance.servlets.commands;
 
 import com.arelance.domain.Actividad;
 import com.arelance.domain.MetodoPago;
-import com.arelance.domain.PayPalQ;
-import com.arelance.domain.TarjetaQ;
-import com.arelance.domain.TransferenciaQ;
+import com.arelance.domain.Paypal;
 import com.arelance.domain.Usuario;
 import com.arelance.domain.UsuarioTieneActividad;
 import com.arelance.domain.UsuarioTieneActividadPK;
@@ -25,28 +23,16 @@ public class ActivityInscription implements ActionsController {
 
     @Inject
     private UsuarioService usuarioService;
-    
+
     @Inject
     private UsuarioTieneActividad usuarioTieneActividad;
-    
+
     @Inject
     private UsuarioTieneActividadPK usuarioTieneActividadPK;
-    
-    @Inject
-    @PayPalQ
-    private MetodoPago paypal;
-        
-    @Inject
-    @TarjetaQ
-    private MetodoPago tarjeta;
-    
-    @Inject
-    @TransferenciaQ
-    private MetodoPago transferencia;
-    
+
     @Inject
     private Usuario usuario;
-    
+
     @Inject
     private Actividad actividad;
 
@@ -54,22 +40,31 @@ public class ActivityInscription implements ActionsController {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         actividad = (Actividad) request.getSession().getAttribute("actividad");
-        usuario = (Usuario) request.getSession().getAttribute("usuario");        
-        paypal = usuario.getMetodoPago().get(0);
+        usuario = (Usuario) request.getSession().getAttribute("usuario");
+        String metodoPagoUsuario = usuario.getMetodoPago().get(0).getClass().getSimpleName();
         
+        // TODO - Mejorar sistema direccionamiento. Uso de patrón comando o patrón estrategia.
+
+        if (metodoPagoUsuario.equals("Paypal")) {
+            paypal = usuario.getMetodoPago().get(0);
+        } else if (metodoPagoUsuario.equals("Tarjeta")) {
+            tarjeta = usuario.getMetodoPago().get(0);
+        }
+
+        //Paypal paypal = new Paypal():
+        // paypal = usuario.getMetodoPago().get(0);
         usuarioTieneActividad.setActividad(actividad);
         usuarioTieneActividad.setUsuario(usuario);
-        usuarioTieneActividad.setMetodoPago(paypal);
+        // usuarioTieneActividad.setMetodoPago(paypal);
 
         usuarioTieneActividadPK.setIdActividad(actividad.getIdActividad());
         usuarioTieneActividadPK.setIdUsuario(usuario.getIdUsuario());
-        usuarioTieneActividadPK.setIdPago(paypal.getIdMetodoPago());
-        
-        usuarioTieneActividad.setUsuarioTieneActividadPK(usuarioTieneActividadPK);        
-        
-        usuario.getUsuarioTieneActividadCollection().add(usuarioTieneActividad);
+        //  usuarioTieneActividadPK.setIdPago(paypal.getIdMetodoPago());
 
-        
+        usuarioTieneActividad.setUsuarioTieneActividadPK(usuarioTieneActividadPK);
+
+        usuario.getUsuarioTieneActividad().add(usuarioTieneActividad);
+
         usuarioService.updateUsuario(usuario);
 
         return "/detalleactividad.jsp";

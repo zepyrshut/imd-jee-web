@@ -12,7 +12,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tarjeta")
-@TarjetaQ
 public class Tarjeta extends MetodoPago implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -24,7 +23,6 @@ public class Tarjeta extends MetodoPago implements Serializable {
     private String cvv;
 
     // TODO - Meter fecha de caducidad.
-    
     public Tarjeta() {
         super();
     }
@@ -76,5 +74,5 @@ public class Tarjeta extends MetodoPago implements Serializable {
         }
         return Objects.equals(this.cvv, other.cvv);
     }
-       
+
 }

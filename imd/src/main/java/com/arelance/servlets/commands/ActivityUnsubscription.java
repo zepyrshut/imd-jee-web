@@ -2,7 +2,7 @@ package com.arelance.servlets.commands;
 
 import com.arelance.domain.Actividad;
 import com.arelance.domain.Usuario;
-import com.arelance.service.ActividadService;
+import com.arelance.service.UsuarioService;
 import com.arelance.servlets.commands.qualifiers.ActivityUnsubcriptionQ;
 import java.io.IOException;
 import javax.inject.Inject;
@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServletResponse;
  * @author Pedro
  */
 @ActivityUnsubcriptionQ
-public class ActivityUnsubscription implements ActionsController {
+public class ActivityUnsubscription implements ActionsController {   
 
     @Inject
-    private ActividadService actividadService;
-        
+    private UsuarioService usuarioService;
+
     @Inject
     private Actividad actividad;
-    
+
     @Inject
     private Usuario usuario;
 
@@ -32,8 +32,12 @@ public class ActivityUnsubscription implements ActionsController {
         actividad = (Actividad) request.getSession().getAttribute("actividad");
         usuario = (Usuario) request.getSession().getAttribute("usuario");
 
-        //actividad.eliminarUsuario(usuario);
-        actividadService.updateActividad(actividad);
+        boolean remove = usuario.getUsuarioTieneActividad().remove(actividad);
+        if (remove) {
+        usuarioService.updateUsuario(usuario);
+        } else {
+            // TODO - Añadir mensajes de error.
+        }
 
         return "/detalleactividad.jsp";
 

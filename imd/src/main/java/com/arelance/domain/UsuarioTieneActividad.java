@@ -1,15 +1,14 @@
 package com.arelance.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -17,27 +16,21 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "usuario_tiene_actividad")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "UsuarioTieneActividad.findAll", query = "SELECT u FROM UsuarioTieneActividad u"),
-    @NamedQuery(name = "UsuarioTieneActividad.findByIdUsuario", query = "SELECT u FROM UsuarioTieneActividad u WHERE u.usuarioTieneActividadPK.idUsuario = :idUsuario"),
-    @NamedQuery(name = "UsuarioTieneActividad.findByIdActividad", query = "SELECT u FROM UsuarioTieneActividad u WHERE u.usuarioTieneActividadPK.idActividad = :idActividad")})
+    @NamedQuery(name = "UsuarioTieneActividad.findAll", query = "SELECT u FROM UsuarioTieneActividad u")})
 public class UsuarioTieneActividad implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected UsuarioTieneActividadPK usuarioTieneActividadPK;
     @JoinColumn(name = "id_actividad", referencedColumnName = "id_actividad", insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @ManyToOne
     private Actividad actividad;
-    
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Usuario usuario;
-    
-    
     @JoinColumn(name = "id_pago", referencedColumnName = "id_pago", insertable = false, updatable = false)
-    @OneToOne
+    @ManyToOne
     private MetodoPago metodoPago;
 
     public UsuarioTieneActividad() {
@@ -74,33 +67,6 @@ public class UsuarioTieneActividad implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
-    
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (usuarioTieneActividadPK != null ? usuarioTieneActividadPK.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof UsuarioTieneActividad)) {
-            return false;
-        }
-        UsuarioTieneActividad other = (UsuarioTieneActividad) object;
-        if ((this.usuarioTieneActividadPK == null && other.usuarioTieneActividadPK != null) || (this.usuarioTieneActividadPK != null && !this.usuarioTieneActividadPK.equals(other.usuarioTieneActividadPK))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.arelance.domain.UsuarioTieneActividad[ usuarioTieneActividadPK=" + usuarioTieneActividadPK + " ]";
-    }
 
     public MetodoPago getMetodoPago() {
         return metodoPago;
@@ -108,6 +74,40 @@ public class UsuarioTieneActividad implements Serializable {
 
     public void setMetodoPago(MetodoPago metodoPago) {
         this.metodoPago = metodoPago;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.usuarioTieneActividadPK);
+        hash = 89 * hash + Objects.hashCode(this.actividad);
+        hash = 89 * hash + Objects.hashCode(this.usuario);
+        hash = 89 * hash + Objects.hashCode(this.metodoPago);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final UsuarioTieneActividad other = (UsuarioTieneActividad) obj;
+        if (!Objects.equals(this.usuarioTieneActividadPK, other.usuarioTieneActividadPK)) {
+            return false;
+        }
+        if (!Objects.equals(this.actividad, other.actividad)) {
+            return false;
+        }
+        if (!Objects.equals(this.usuario, other.usuario)) {
+            return false;
+        }
+        return Objects.equals(this.metodoPago, other.metodoPago);
     }
 
 }

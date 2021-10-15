@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,10 +15,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -41,59 +38,31 @@ public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id_usuario")
     private Integer idUsuario;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
     @Column(name = "nombre")
     private String nombre;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
     @Column(name = "apellido_a")
     private String apellidoA;
-    @Size(max = 20)
     @Column(name = "apellido_b")
     private String apellidoB;
-    @Size(max = 15)
     @Column(name = "telefono")
     private String telefono;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid email")
     @Column(name = "email")
     private String email;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuarioSocio")
     private DatosSesion datosSesion;
-   // @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-
-       // private Set<UsuarioTieneActividad> usuarioTieneActividadCollection = new HashSet<>(); 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
-    
-    
-      @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private List<UsuarioTieneActividad> usuarioTieneActividad;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
     private List<MetodoPago> metodoPago;
-    
-   
 
-    
-            
-       //   private ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection;
-         //private List<UsuarioTieneActividad> usuarioTieneActividadCollection;
-        
-        
- 
     public Usuario() {
+        this.usuarioTieneActividad = new ArrayList<>();
+        this.metodoPago = new ArrayList<>();
     }
 
-
-
-
-    
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -142,7 +111,6 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    @XmlTransient
     public DatosSesion getDatosSesion() {
         return datosSesion;
     }
@@ -151,13 +119,12 @@ public class Usuario implements Serializable {
         this.datosSesion = datosSesion;
     }
 
-    @XmlTransient
-    public ArrayList<UsuarioTieneActividad> getUsuarioTieneActividadCollection() {
-        return usuarioTieneActividadCollection;
+    public List<UsuarioTieneActividad> getUsuarioTieneActividad() {
+        return usuarioTieneActividad;
     }
 
-    public void setUsuarioTieneActividadCollection(ArrayList<UsuarioTieneActividad> usuarioTieneActividadCollection) {
-        this.usuarioTieneActividadCollection = usuarioTieneActividadCollection;
+    public void setUsuarioTieneActividad(List<UsuarioTieneActividad> usuarioTieneActividad) {
+        this.usuarioTieneActividad = usuarioTieneActividad;
     }
 
     public List<MetodoPago> getMetodoPago() {
@@ -168,17 +135,58 @@ public class Usuario implements Serializable {
         this.metodoPago = metodoPago;
     }
 
-
-    
-    
-   
-
-
-   
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 71 * hash + Objects.hashCode(this.idUsuario);
+        hash = 71 * hash + Objects.hashCode(this.nombre);
+        hash = 71 * hash + Objects.hashCode(this.apellidoA);
+        hash = 71 * hash + Objects.hashCode(this.apellidoB);
+        hash = 71 * hash + Objects.hashCode(this.telefono);
+        hash = 71 * hash + Objects.hashCode(this.email);
+        hash = 71 * hash + Objects.hashCode(this.datosSesion);
+        hash = 71 * hash + Objects.hashCode(this.usuarioTieneActividad);
+        hash = 71 * hash + Objects.hashCode(this.metodoPago);
+        return hash;
+    }
 
     @Override
-    public String toString() {
-        return "com.arelance.domain.Usuario[ idUsuario=" + idUsuario + " ]";
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.apellidoA, other.apellidoA)) {
+            return false;
+        }
+        if (!Objects.equals(this.apellidoB, other.apellidoB)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefono, other.telefono)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.idUsuario, other.idUsuario)) {
+            return false;
+        }
+        if (!Objects.equals(this.datosSesion, other.datosSesion)) {
+            return false;
+        }
+        if (!Objects.equals(this.usuarioTieneActividad, other.usuarioTieneActividad)) {
+            return false;
+        }
+        return Objects.equals(this.metodoPago, other.metodoPago);
     }
-    
+
 }

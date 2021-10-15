@@ -12,7 +12,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "transferencia")
-@TransferenciaQ
 public class Transferencia extends MetodoPago implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -57,6 +56,6 @@ public class Transferencia extends MetodoPago implements Serializable {
         }
         final Transferencia other = (Transferencia) obj;
         return Objects.equals(this.iban, other.iban);
-    } 
+    }
     
 }
