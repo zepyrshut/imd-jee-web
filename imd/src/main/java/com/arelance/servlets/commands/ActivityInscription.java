@@ -46,9 +46,9 @@ public class ActivityInscription implements ActionsController {
         // TODO - Mejorar sistema direccionamiento. Uso de patrón comando o patrón estrategia.
 
         if (metodoPagoUsuario.equals("Paypal")) {
-            paypal = usuario.getMetodoPago().get(0);
+          //  paypal = usuario.getMetodoPago().get(0);
         } else if (metodoPagoUsuario.equals("Tarjeta")) {
-            tarjeta = usuario.getMetodoPago().get(0);
+          //  tarjeta = usuario.getMetodoPago().get(0);
         }
 
         //Paypal paypal = new Paypal():
