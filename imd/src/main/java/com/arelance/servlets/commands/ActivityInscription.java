@@ -59,12 +59,10 @@ public class ActivityInscription implements ActionsController {
 
         usuarioTieneActividadPK.setIdActividad(actividad.getIdActividad());
         usuarioTieneActividadPK.setIdUsuario(usuario.getIdUsuario());
-        //  usuarioTieneActividadPK.setIdPago(paypal.getIdMetodoPago());
+        // usuarioTieneActividadPK.setIdPago(paypal.getIdMetodoPago());
 
         usuarioTieneActividad.setUsuarioTieneActividadPK(usuarioTieneActividadPK);
-
         usuario.getUsuarioTieneActividad().add(usuarioTieneActividad);
-
         usuarioService.updateUsuario(usuario);
 
         return "/detalleactividad.jsp";

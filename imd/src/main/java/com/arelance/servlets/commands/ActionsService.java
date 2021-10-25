@@ -1,6 +1,5 @@
 package com.arelance.servlets.commands;
 
-import com.arelance.servlets.commands.qualifiers.ActivityDescriptionQ;
 import com.arelance.servlets.commands.qualifiers.ActivityInscriptionQ;
 import com.arelance.servlets.commands.qualifiers.ActivityUnsubcriptionQ;
 import com.arelance.servlets.commands.qualifiers.LogInQ;
@@ -15,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.arelance.servlets.commands.qualifiers.ActivityDetailsQ;
 
 /**
  *
@@ -40,7 +40,7 @@ public class ActionsService extends HttpServlet {
     private ActionsController register;
     
     @Inject
-    @ActivityDescriptionQ
+    @ActivityDetailsQ
     private ActionsController activityDescription;
     
     @Inject

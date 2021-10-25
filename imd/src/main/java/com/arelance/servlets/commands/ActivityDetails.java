@@ -2,19 +2,19 @@ package com.arelance.servlets.commands;
 
 import com.arelance.domain.Actividad;
 import com.arelance.service.ActividadService;
-import com.arelance.servlets.commands.qualifiers.ActivityDescriptionQ;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.inject.Inject;
+import com.arelance.servlets.commands.qualifiers.ActivityDetailsQ;
 
 /**
  *
  * @author Pedro
  */
-@ActivityDescriptionQ
-public class ActivityDescription implements ActionsController {
+@ActivityDetailsQ
+public class ActivityDetails implements ActionsController {
 
     @Inject
     private ActividadService actividadService;
