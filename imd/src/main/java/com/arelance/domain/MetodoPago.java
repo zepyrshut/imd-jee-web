@@ -29,13 +29,20 @@ public abstract class MetodoPago implements Serializable {
     @Column(name = "id_pago")
     protected Integer idMetodoPago;
     @Column(name = "nombre_pago")
-    protected String nombrepago;
+    protected String nombrePago;
     @ManyToOne
     @JoinColumn(name = "id_usuario")
     protected Usuario usuario;
 
     public MetodoPago() {
+        super();
     }
+    
+    
+
+    protected MetodoPago(String nombrePago) {
+        this.nombrePago = nombrePago;
+    }    
 
     public Integer getIdMetodoPago() {
         return idMetodoPago;
@@ -46,11 +53,11 @@ public abstract class MetodoPago implements Serializable {
     }
 
     public String getNombrepago() {
-        return nombrepago;
+        return nombrePago;
     }
 
-    public void setNombrepago(String nombrepago) {
-        this.nombrepago = nombrepago;
+    public void setNombrepago(String nombrePago) {
+        this.nombrePago = nombrePago;
     }
 
     public Usuario getUsuario() {
@@ -65,7 +72,7 @@ public abstract class MetodoPago implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 31 * hash + Objects.hashCode(this.idMetodoPago);
-        hash = 31 * hash + Objects.hashCode(this.nombrepago);
+        hash = 31 * hash + Objects.hashCode(this.nombrePago);
         hash = 31 * hash + Objects.hashCode(this.usuario);
         return hash;
     }
@@ -82,7 +89,7 @@ public abstract class MetodoPago implements Serializable {
             return false;
         }
         final MetodoPago other = (MetodoPago) obj;
-        if (!Objects.equals(this.nombrepago, other.nombrepago)) {
+        if (!Objects.equals(this.nombrePago, other.nombrePago)) {
             return false;
         }
         if (!Objects.equals(this.idMetodoPago, other.idMetodoPago)) {

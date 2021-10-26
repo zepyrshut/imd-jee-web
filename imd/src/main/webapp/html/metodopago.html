@@ -69,16 +69,55 @@
     <!-- Contenido -->
 
 
-    <a href="metodopago.html">Añadir un método de pago.</a>
+    <ul uk-accordion>
+
+        <li>
+            <a class="uk-accordion-title" href="#">Añadir PayPal</a>
+            <div class="uk-accordion-content">
+                <form method="POST" action="actions?action=paymentmethod">
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Descripción">
+                        <input class="uk-input" type="text" placeholder="Correo PayPal">
+                        <input class="uk-input" type="text" placeholder="Contraseña PayPal">
+                    </div>
+                    <input type="submit" value="Añadir" class="uk-button uk-button-primary uk-margin-small-top">
+                </form>
+            </div>
+        </li>
+
+
+        <li>
+            <a class="uk-accordion-title" href="#">Añadir tarjeta</a>
+            <div class="uk-accordion-content">
+                <form>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Descripción">
+                        <input class="uk-input" type="text" placeholder="Número tarjeta">
+                        <input class="uk-input" type="text" placeholder="Código seguridad">
+                    </div>
+                    <input type="submit" value="Añadir" class="uk-button uk-button-primary uk-margin-small-top">
+                </form>
+            </div>
+        </li>
+
+
+        <li>
+            <a class="uk-accordion-title" href="#">Añadir cuenta bancaria</a>
+            <div class="uk-accordion-content">
+                <form>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Descripción">
+                        <input class="uk-input" type="text" placeholder="Número IBAN">
+                    </div>
+                    <input type="submit" value="Añadir" class="uk-button uk-button-primary uk-margin-small-top">
+                </form>
+            </div>
+        </li>
 
 
 
 
-
-
-
-
-
+    </ul>
 
 
 
@@ -87,12 +126,12 @@
 
 
     <!-- Fin contenido -->
-        <!-- Pie de página -->
-        <footer class="uk-footer uk-text-center ">
-            <a href="https://github.com/zepyrshut"><span class="uk-padding" uk-icon="icon: github"></span></a>
-            <a href="https://getuikit.com/"><span class="uk-padding" uk-icon="icon: uikit"></span></a>
-            <a href="https://github.com/jorgehurtadodmx"><span class="uk-padding" uk-icon="icon: github"></span></a>
-            <p>Desarrollado por Pedro Pérez y Jorge Hurtado</p>
-            <p>UIKit y Java - 2021</p>
-        </footer>
-        <!-- Fin pie de página -->
+    <!-- Pie de página -->
+    <footer class="uk-footer uk-text-center ">
+        <a href="https://github.com/zepyrshut"><span class="uk-padding" uk-icon="icon: github"></span></a>
+        <a href="https://getuikit.com/"><span class="uk-padding" uk-icon="icon: uikit"></span></a>
+        <a href="https://github.com/jorgehurtadodmx"><span class="uk-padding" uk-icon="icon: github"></span></a>
+        <p>Desarrollado por Pedro Pérez y Jorge Hurtado</p>
+        <p>UIKit y Java - 2021</p>
+    </footer>
+    <!-- Fin pie de página -->

@@ -22,11 +22,13 @@ public class Transferencia extends MetodoPago implements Serializable {
     public Transferencia() {
         super();
     }
+    
+    
 
-    public Transferencia(String iban) {
-        super();
+    public Transferencia(String iban, String nombrePago) {
+        super(nombrePago);
         this.iban = iban;
-    }
+    }    
 
     public String getIban() {
         return iban;
