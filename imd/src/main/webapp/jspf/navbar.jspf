@@ -14,7 +14,7 @@
         <div class="uk-offcanvas-bar uk-flex uk-flex-column">
             <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical ">
                 <c:if test="${usuario == null}"><li><a href="login">Iniciar sesión</a></li></c:if>
-                <c:if test="${usuario != null}"><li><a href="perfilusuario">¡Hola ${usuario.nombre}!</a></li></c:if> 
+                <c:if test="${usuario != null}"><li><a href="perfilusuario.jsp">¡Hola ${usuario.nombre}!</a></li></c:if> 
                     <li><a href="imd">Inicio</a></li>                
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto</a></li>
@@ -33,7 +33,7 @@
             <div class="uk-navbar-right padding-right-large">
                 <ul class="uk-navbar-nav">
                 <c:if test="${usuario == null}"><li><a href="login">Iniciar sesión</a></li></c:if>
-                <c:if test="${usuario != null}"><li><a href="perfilusuario">¡Hola ${usuario.nombre}!</a></li></c:if>                    
+                <c:if test="${usuario != null}"><li><a href="perfilusuario.jsp">¡Hola ${usuario.nombre}!</a></li></c:if>                    
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto</a></li>
                 <c:if test="${usuario == null}"><li><a href="register">Registrarse</a></li></c:if>

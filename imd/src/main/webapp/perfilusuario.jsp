@@ -27,7 +27,7 @@
      
 
           <c:forEach items="${usuario.metodoPago}" var="metodoPago">
-              <p>${metodoPago}</p>
+              <p>${metodoPago.nombrepago}</p>
               
           </c:forEach>
      

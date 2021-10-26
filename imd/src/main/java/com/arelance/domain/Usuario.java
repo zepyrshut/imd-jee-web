@@ -15,7 +15,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -139,14 +138,6 @@ public class Usuario implements Serializable {
     public int hashCode() {
         int hash = 3;
         hash = 71 * hash + Objects.hashCode(this.idUsuario);
-        hash = 71 * hash + Objects.hashCode(this.nombre);
-        hash = 71 * hash + Objects.hashCode(this.apellidoA);
-        hash = 71 * hash + Objects.hashCode(this.apellidoB);
-        hash = 71 * hash + Objects.hashCode(this.telefono);
-        hash = 71 * hash + Objects.hashCode(this.email);
-        hash = 71 * hash + Objects.hashCode(this.datosSesion);
-        hash = 71 * hash + Objects.hashCode(this.usuarioTieneActividad);
-        hash = 71 * hash + Objects.hashCode(this.metodoPago);
         return hash;
     }
 

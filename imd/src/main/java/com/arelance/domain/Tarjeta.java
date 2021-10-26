@@ -15,14 +15,13 @@ import javax.persistence.Table;
 public class Tarjeta extends MetodoPago implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    
     @Column(name = "numero")
     private String numero;
 
     @Column(name = "cvv")
     private String cvv;
 
-    // TODO - Meter fecha de caducidad.
     public Tarjeta() {
         super();
     }

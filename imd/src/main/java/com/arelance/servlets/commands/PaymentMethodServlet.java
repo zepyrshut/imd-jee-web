@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package com.arelance.servlets.commands;
 
 import com.arelance.domain.MetodoPago;
@@ -9,14 +5,9 @@ import com.arelance.domain.Paypal;
 import com.arelance.domain.Usuario;
 import com.arelance.service.UsuarioService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,10 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author model
+ * @author Pedro
  */
 @WebServlet(name = "PaymentMethod", urlPatterns = {"/PaymentMethod"})
-public class PaymentMethod extends HttpServlet {
+public class PaymentMethodServlet extends HttpServlet {
 
 
     @Inject

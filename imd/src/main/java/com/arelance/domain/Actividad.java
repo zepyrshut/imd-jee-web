@@ -43,6 +43,7 @@ public class Actividad implements Serializable {
     private UsuarioTieneActividad usuarioTieneActividad;
     
     public Actividad() {
+        super();
     }
 
     public Integer getIdActividad() {
