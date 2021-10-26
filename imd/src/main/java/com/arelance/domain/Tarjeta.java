@@ -23,14 +23,16 @@ public class Tarjeta extends MetodoPago implements Serializable {
     private String cvv;
 
     public Tarjeta() {
-        super();
+super();
     }
+    
+    
 
-    public Tarjeta(String numero, String cvv) {
-        super();
+    public Tarjeta(String numero, String cvv, String nombrePago) {
+        super(nombrePago);
         this.numero = numero;
         this.cvv = cvv;
-    }
+    }   
 
     public String getNumero() {
         return numero;

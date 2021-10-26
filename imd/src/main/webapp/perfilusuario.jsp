@@ -24,6 +24,8 @@
 
         <p>Datos usuario:</p>
         <p>${usuario.nombre}</p>
+        
+        <a href="metodopago.jsp">AÑADIR METODO DE PAGO</a>
      
 
           <c:forEach items="${usuario.metodoPago}" var="metodoPago">

@@ -52,9 +52,9 @@ public class ActionsService extends HttpServlet {
     @ActivityUnsubcriptionQ
     private ActionsController activityUnsubcription;
     
-//    @Inject
-//    @PaymentMethodQ
-//    private ActionsController paymentMethod;
+    @Inject
+    @PaymentMethodQ
+    private ActionsController paymentMethod;
     
     @Override
     public void init() throws ServletException {
@@ -65,7 +65,7 @@ public class ActionsService extends HttpServlet {
         actions.put("activitydescription", activityDescription);
         actions.put("activityinscription", activityInscription);  
         actions.put("activityubsubcription", activityUnsubcription);
-      //  actions.put("paymentmethod", paymentMethod);
+        actions.put("paymentmethod", paymentMethod);
     }
 
     @Override

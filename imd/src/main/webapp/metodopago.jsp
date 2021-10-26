@@ -14,31 +14,55 @@
     <body>
       
         
-        <form method="GET" action="PaymentMethod">
-            
-       <label for="paypal">paypal</label>     <input type="radio" id="paypal" name="metodopago" value="paypal">
-       <label for="transferencia">transferencia</label>     <input type="radio" id="transferencia" name="metodopago" value="transferencia">
-       <label for="cuentacorriente">cuentacorriente</label>     <input type="radio" id="cuentacorriente" name="metodopago" value="cuentacorriente">
-            
-            
-        <input type="text" id="correo-paypal" name="correopaypal">
-                  
-        <input type="text" id="string-key" name="stringkey">
-            
-             
-            
-            
-            
-            <input type="submit" class="uk-button uk-button-primary" value="Añadir" />
-            
-            
-            
-        </form>
-        
-        
-        
-        <a href="PaymentMethod">ejecutar</a>
-        
+  <ul uk-accordion>
+
+        <li>
+            <a class="uk-accordion-title" href="#">Añadir PayPal</a>
+            <div class="uk-accordion-content">
+                <form method="POST" action="actions?action=paymentmethod&metodopago=paypal">
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Descripción" name="descripcion">
+                        <input class="uk-input" type="text" placeholder="Correo PayPal" name="correopaypal">
+                    </div>
+                    <input type="submit" value="Añadir" class="uk-button uk-button-primary uk-margin-small-top">
+                </form>
+            </div>
+        </li>
+
+
+        <li>
+            <a class="uk-accordion-title" href="#">Añadir tarjeta</a>
+            <div class="uk-accordion-content">
+                <form  method="POST" action="actions?action=paymentmethod?metodopago=tarjeta">
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Descripción" name="descripcion">
+                        <input class="uk-input" type="text" placeholder="Número tarjeta" name="numerotarjeta">
+                        <input class="uk-input" type="text" placeholder="Código seguridad" name="cvv">
+                    </div>
+                    <input type="submit" value="Añadir" class="uk-button uk-button-primary uk-margin-small-top">
+                </form>
+            </div>
+        </li>
+
+
+        <li>
+            <a class="uk-accordion-title" href="#">Añadir cuenta bancaria</a>
+            <div class="uk-accordion-content">
+                <form  method="POST" action="actions?action=paymentmethod?metodopago=transferencia">
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Descripción" name="descripcion">
+                        <input class="uk-input" type="text" placeholder="Número IBAN" name="iban">
+                    </div>
+                    <input type="submit" value="Añadir" class="uk-button uk-button-primary uk-margin-small-top">
+                </form>
+            </div>
+        </li>
+
+
+
+
+    </ul>
+
         
         
     </body>
