@@ -11,7 +11,7 @@ import javax.persistence.Table;
  * @author Jorge
  */
 @Entity
-@Table(name = "transferencia")
+@Table(name = "bank_account")
 public class BankAccount extends PaymentMethod implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -23,8 +23,8 @@ public class BankAccount extends PaymentMethod implements Serializable {
         super();
     }
 
-    public BankAccount(String iban, String nombrePago) {
-        super(nombrePago);
+    public BankAccount(String iban, String paymentName) {
+        super(paymentName);
         this.iban = iban;
     }
 

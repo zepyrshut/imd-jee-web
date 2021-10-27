@@ -1,11 +1,10 @@
 package com.arelance.servlets.commands;
 
 import com.arelance.domain.Activity;
-import com.arelance.domain.User;
+import com.arelance.domain.UserImd;
 import com.arelance.service.factory.Crud;
-import com.arelance.service.factory.UserFactory;
-import com.arelance.servlets.commands.qualifiers.ActivityUnsubcriptionQ;
-import com.arelance.servlets.commands.qualifiers.UserCrudQ;
+import com.arelance.qualifiers.ActivityUnsubcriptionQ;
+import com.arelance.qualifiers.UserCrudQ;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -21,31 +20,24 @@ public class ActivityUnsubscription implements ActionsController {
 
     @Inject
     @UserCrudQ
-    private Crud<User> crudUser;
-
-    @Inject
-    private UserFactory userFactory;
+    private Crud<UserImd> userCrud;
 
     @Inject
     private Activity activity;
 
     @Inject
-    private User user;
+    private UserImd userImd;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        crudUser = userFactory.createCrud();
-
         activity = (Activity) request.getSession().getAttribute("actividad");
-        user = (User) request.getSession().getAttribute("usuario");
+        userImd = (UserImd) request.getSession().getAttribute("usuario");
 
-        boolean remove = user.getUsuarioTieneActividad().remove(activity);
+        boolean remove = userImd.getUserHasActivity().remove(activity);
 
         if (remove) {
-            // TODO - Revisar.
-            //crudUser.updateEntity(user);
-            crudUser.updateEntity(user);
+            userCrud.updateEntity(userImd);
         } else {
             // TODO - Añadir mensajes de error.
         }

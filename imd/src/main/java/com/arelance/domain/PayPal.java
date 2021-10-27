@@ -16,30 +16,30 @@ public class PayPal extends PaymentMethod implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Column(name = "correo")
-    private String correoPayPal;
+    @Column(name = "email")
+    private String payPalEmail;
 
     public PayPal() {
-       super();
-    }      
-
-    public PayPal(String correoPayPal, String nombrePago) {
-        super(nombrePago);
-        this.correoPayPal = correoPayPal;
-    }   
-
-    public String getCorreoPayPal() {
-        return correoPayPal;
+        super();
     }
 
-    public void setCorreoPayPal(String correoPayPal) {
-        this.correoPayPal = correoPayPal;
+    public PayPal(String payPalEmail, String paymentName) {
+        super(paymentName);
+        this.payPalEmail = payPalEmail;
+    }
+
+    public String getPayPalEmail() {
+        return payPalEmail;
+    }
+
+    public void setPayPalEmail(String payPalEmail) {
+        this.payPalEmail = payPalEmail;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.correoPayPal);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.payPalEmail);
         return hash;
     }
 
@@ -55,7 +55,7 @@ public class PayPal extends PaymentMethod implements Serializable {
             return false;
         }
         final PayPal other = (PayPal) obj;
-        return Objects.equals(this.correoPayPal, other.correoPayPal);
+        return Objects.equals(this.payPalEmail, other.payPalEmail);
     }
 
 }

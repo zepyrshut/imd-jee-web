@@ -18,69 +18,69 @@ import javax.persistence.Table;
  * @author Pedro
  */
 @Entity
-@Table(name = "datos_sesion")
+@Table(name = "session_data")
 @NamedQueries({
-    @NamedQuery(name = "DatosSesion.findAll", query = "SELECT d FROM DatosSesion d"),
-    @NamedQuery(name = "DatosSesion.findByIdDatosSesion", query = "SELECT d FROM DatosSesion d WHERE d.idDatosSesion = :idDatosSesion"),
-    @NamedQuery(name = "DatosSesion.findByUsuario", query = "SELECT d FROM DatosSesion d WHERE d.usuario = :usuario"),
-    @NamedQuery(name = "DatosSesion.validarSesion", query = "SELECT d FROM DatosSesion d WHERE d.usuario = :usuario AND d.contrasena = :contrasena"),
-    @NamedQuery(name = "DatosSesion.findByContrasena", query = "SELECT d FROM DatosSesion d WHERE d.contrasena = :contrasena")}
+    @NamedQuery(name = "SessionData.findAll", query = "SELECT d FROM SessionData d"),
+    @NamedQuery(name = "SessionData.findBySessionDataId", query = "SELECT d FROM SessionData d WHERE d.sessionDataId = :sessionDataId"),
+    @NamedQuery(name = "SessionData.findByUser", query = "SELECT d FROM SessionData d WHERE d.userImd = :userImd"),
+    @NamedQuery(name = "SessionData.sessionValidate", query = "SELECT d FROM SessionData d WHERE d.userImd = :userImd AND d.password = :password"),
+    @NamedQuery(name = "SessionData.findByPassword", query = "SELECT d FROM SessionData d WHERE d.password = :password")}
 )
 public class SessionData implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_datos_sesion")
-    private Integer idDatosSesion;
-    @Column(name = "usuario")
-    private String usuario;
-    @Column(name = "contrasena")
-    private String contrasena;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @Column(name = "id_session_data")
+    private Integer sessionDataId;
+    @Column(name = "userImd")
+    private String userImd;
+    @Column(name = "password")
+    private String password;
+    @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     @OneToOne(optional = false)
-    private User usuarioSocio;
+    private UserImd userSessionData;
 
     public SessionData() {
         super();
     }
 
-    public Integer getIdDatosSesion() {
-        return idDatosSesion;
+    public Integer getSessionDataId() {
+        return sessionDataId;
     }
 
-    public void setIdDatosSesion(Integer idDatosSesion) {
-        this.idDatosSesion = idDatosSesion;
+    public void setSessionDataId(Integer sessionDataId) {
+        this.sessionDataId = sessionDataId;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getUser() {
+        return userImd;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUser(String userImd) {
+        this.userImd = userImd;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public User getUsuarioSocio() {
-        return usuarioSocio;
+    public UserImd getUserSessionData() {
+        return userSessionData;
     }
 
-    public void setUsuarioSocio(User usuario1) {
-        this.usuarioSocio = usuario1;
+    public void setUserSessionData(UserImd userSessionData) {
+        this.userSessionData = userSessionData;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + Objects.hashCode(this.idDatosSesion);
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.sessionDataId);
         return hash;
     }
 
@@ -96,16 +96,16 @@ public class SessionData implements Serializable {
             return false;
         }
         final SessionData other = (SessionData) obj;
-        if (!Objects.equals(this.usuario, other.usuario)) {
+        if (!Objects.equals(this.userImd, other.userImd)) {
             return false;
         }
-        if (!Objects.equals(this.contrasena, other.contrasena)) {
+        if (!Objects.equals(this.password, other.password)) {
             return false;
         }
-        if (!Objects.equals(this.idDatosSesion, other.idDatosSesion)) {
+        if (!Objects.equals(this.sessionDataId, other.sessionDataId)) {
             return false;
         }
-        return Objects.equals(this.usuarioSocio, other.usuarioSocio);
+        return Objects.equals(this.userSessionData, other.userSessionData);
     }
 
 }

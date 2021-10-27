@@ -3,7 +3,6 @@ package com.arelance.domain;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -12,55 +11,52 @@ import javax.validation.constraints.NotNull;
 @Embeddable
 public class UserHasActivityPK implements Serializable {
 
-    @NotNull
-    @Column(name = "id_usuario")
-    private int idUsuario;
-    @NotNull
-    @Column(name = "id_actividad")
-    private int idActividad;
-    @NotNull
-    @Column(name = "id_pago")
-    private int idPago;
+    @Column(name = "id_user")
+    private int userId;
+    @Column(name = "id_activity")
+    private int activityId;
+    @Column(name = "id_payment")
+    private int paymentId;
 
     public UserHasActivityPK() {
     }
 
-    public UserHasActivityPK(int idUsuario, int idActividad, int idPago) {
-        this.idUsuario = idUsuario;
-        this.idActividad = idActividad;
-        this.idPago = idPago;
+    public UserHasActivityPK(int userId, int activityId, int paymentId) {
+        this.userId = userId;
+        this.activityId = activityId;
+        this.paymentId = paymentId;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public int getIdActividad() {
-        return idActividad;
+    public int getActivityId() {
+        return activityId;
     }
 
-    public void setIdActividad(int idActividad) {
-        this.idActividad = idActividad;
+    public void setActivityId(int activityId) {
+        this.activityId = activityId;
     }
 
-    public int getIdPago() {
-        return idPago;
+    public int getPaymentId() {
+        return paymentId;
     }
 
-    public void setIdPago(int idPago) {
-        this.idPago = idPago;
+    public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 31 * hash + this.idUsuario;
-        hash = 31 * hash + this.idActividad;
-        hash = 31 * hash + this.idPago;
+        int hash = 7;
+        hash = 37 * hash + this.userId;
+        hash = 37 * hash + this.activityId;
+        hash = 37 * hash + this.paymentId;
         return hash;
     }
 
@@ -76,13 +72,13 @@ public class UserHasActivityPK implements Serializable {
             return false;
         }
         final UserHasActivityPK other = (UserHasActivityPK) obj;
-        if (this.idUsuario != other.idUsuario) {
+        if (this.userId != other.userId) {
             return false;
         }
-        if (this.idActividad != other.idActividad) {
+        if (this.activityId != other.activityId) {
             return false;
         }
-        return this.idPago == other.idPago;
+        return this.paymentId == other.paymentId;
     }
 
 }

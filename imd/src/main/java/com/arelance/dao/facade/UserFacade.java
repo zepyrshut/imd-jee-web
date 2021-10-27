@@ -1,7 +1,7 @@
 package com.arelance.dao.facade;
 
 import com.arelance.dao.AbstractFacade;
-import com.arelance.domain.User;
+import com.arelance.domain.UserImd;
 import java.io.Serializable;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Pedro
  */
-public class UserFacade extends AbstractFacade<User> implements Serializable {
+public class UserFacade extends AbstractFacade<UserImd> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -23,7 +23,7 @@ public class UserFacade extends AbstractFacade<User> implements Serializable {
     }
 
     public UserFacade() {
-        super(User.class);
+        super(UserImd.class);
     }
 
 }

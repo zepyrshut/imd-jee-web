@@ -29,9 +29,9 @@ public class SessionDataFacade extends AbstractFacade<SessionData> implements Se
     }
 
     public SessionData logIn(SessionData sessionData) {
-        Query query = em.createNamedQuery("DatosSesion.validarSesion");
-        query.setParameter("usuario", sessionData.getUsuario());
-        query.setParameter("contrasena", sessionData.getContrasena());
+        Query query = em.createNamedQuery("SessionData.sessionValidate");
+        query.setParameter("userImd", sessionData.getUser());
+        query.setParameter("password", sessionData.getPassword());
 
         try {
             return (SessionData) query.getSingleResult();

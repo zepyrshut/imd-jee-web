@@ -3,7 +3,6 @@ package com.arelance.domain;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,91 +13,72 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author Pedro
  */
 @Entity
-@Table(name = "entrenador")
-@XmlRootElement
+@Table(name = "trainer")
 @NamedQueries({
-    @NamedQuery(name = "Entrenador.findAll", query = "SELECT e FROM Entrenador e"),
-    @NamedQuery(name = "Entrenador.findByIdEntrenador", query = "SELECT e FROM Entrenador e WHERE e.idEntrenador = :idEntrenador"),
-    @NamedQuery(name = "Entrenador.findByNombre", query = "SELECT e FROM Entrenador e WHERE e.nombre = :nombre"),
-    @NamedQuery(name = "Entrenador.findByApellido", query = "SELECT e FROM Entrenador e WHERE e.apellido = :apellido")})
+    @NamedQuery(name = "Trainer.findAll", query = "SELECT e FROM Trainer e"),
+    @NamedQuery(name = "Trainer.findByIdTrainer", query = "SELECT e FROM Trainer e WHERE e.trainerId = :trainerId"),
+    @NamedQuery(name = "Trainer.findByNameTrainer", query = "SELECT e FROM Trainer e WHERE e.nameTrainer = :nameTrainer"),
+    @NamedQuery(name = "Trainer.findBySurnameTrainer", query = "SELECT e FROM Trainer e WHERE e.surnameTrainer = :surnameTrainer")})
 public class Trainer implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id_entrenador")
-    private Integer idEntrenador;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "nombre")
-    private String nombre;
-    @Size(max = 20)
-    @Column(name = "apellido")
-    private String apellido;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "entrenador")
-    private Collection<EntrenadorTieneActividad> entrenadorTieneActividadCollection;
+    @Column(name = "id_trainer")
+    private Integer trainerId;
+    @Column(name = "name_trainer")
+    private String nameTrainer;
+    @Column(name = "surname_trainer")
+    private String surnameTrainer;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trainer")
+    private Collection<TrainerHasActivity> trainerHasActivities;
 
     public Trainer() {
+        super();
     }
 
-    public Trainer(Integer idEntrenador) {
-        this.idEntrenador = idEntrenador;
+    public Integer getTrainerId() {
+        return trainerId;
     }
 
-    public Trainer(Integer idEntrenador, String nombre) {
-        this.idEntrenador = idEntrenador;
-        this.nombre = nombre;
+    public void setTrainerId(Integer trainerId) {
+        this.trainerId = trainerId;
     }
 
-    public Integer getIdEntrenador() {
-        return idEntrenador;
+    public String getNameTrainer() {
+        return nameTrainer;
     }
 
-    public void setIdEntrenador(Integer idEntrenador) {
-        this.idEntrenador = idEntrenador;
+    public void setNameTrainer(String nameTrainer) {
+        this.nameTrainer = nameTrainer;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getSurnameTrainer() {
+        return surnameTrainer;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setSurnameTrainer(String surnameTrainer) {
+        this.surnameTrainer = surnameTrainer;
     }
 
-    public String getApellido() {
-        return apellido;
+    public Collection<TrainerHasActivity> getTrainerHasActivities() {
+        return trainerHasActivities;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    @XmlTransient
-    public Collection<EntrenadorTieneActividad> getEntrenadorTieneActividadCollection() {
-        return entrenadorTieneActividadCollection;
-    }
-
-    public void setEntrenadorTieneActividadCollection(Collection<EntrenadorTieneActividad> entrenadorTieneActividadCollection) {
-        this.entrenadorTieneActividadCollection = entrenadorTieneActividadCollection;
+    public void setTrainerHasActivities(Collection<TrainerHasActivity> trainerHasActivities) {
+        this.trainerHasActivities = trainerHasActivities;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (idEntrenador != null ? idEntrenador.hashCode() : 0);
+        int hash = 5;
+        hash = 23 * hash + Objects.hashCode(this.trainerId);
         return hash;
     }
 
@@ -114,21 +94,19 @@ public class Trainer implements Serializable {
             return false;
         }
         final Trainer other = (Trainer) obj;
-        if (!Objects.equals(this.nombre, other.nombre)) {
+        if (!Objects.equals(this.nameTrainer, other.nameTrainer)) {
             return false;
         }
-        if (!Objects.equals(this.apellido, other.apellido)) {
+        if (!Objects.equals(this.surnameTrainer, other.surnameTrainer)) {
             return false;
         }
-        if (!Objects.equals(this.idEntrenador, other.idEntrenador)) {
+        if (!Objects.equals(this.trainerId, other.trainerId)) {
             return false;
         }
-        return Objects.equals(this.entrenadorTieneActividadCollection, other.entrenadorTieneActividadCollection);
+        if (!Objects.equals(this.trainerHasActivities, other.trainerHasActivities)) {
+            return false;
+        }
+        return true;
     }
 
-    @Override
-    public String toString() {
-        return "com.arelance.domain.Entrenador[ idEntrenador=" + idEntrenador + " ]";
-    }
-    
 }

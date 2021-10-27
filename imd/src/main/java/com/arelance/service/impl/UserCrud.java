@@ -1,53 +1,50 @@
 package com.arelance.service.impl;
 
 import com.arelance.dao.facade.UserFacade;
-import com.arelance.domain.SessionData;
-import com.arelance.domain.User;
+import com.arelance.domain.UserImd;
 import com.arelance.service.factory.Crud;
 import java.util.List;
 import javax.inject.Inject;
-import com.arelance.servlets.commands.qualifiers.UserCrudQ;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
+import com.arelance.qualifiers.UserCrudQ;
 
 /**
  *
  * @author Pedro
  */
 @UserCrudQ
-public class UserCrud implements Crud<User> {
+public class UserCrud implements Crud<UserImd> {
 
     @Inject
     private UserFacade facade;
 
     @Override
-    public void createEntity(User t) {
+    public void createEntity(UserImd t) {
         facade.createEntity(t);
     }
 
     @Override
-    public void updateEntity(User t) {
+    public void updateEntity(UserImd t) {
         facade.updateEntity(t);
     }
 
     @Override
-    public void deleteEntity(User t) {
+    public void deleteEntity(UserImd t) {
         facade.deleteEntity(t);
     }
 
     @Override
-    public User readEntity(Integer n) {
-        return (User) facade.readEntity(n);
+    public UserImd readEntity(Integer n) {
+        return (UserImd) facade.readEntity(n);
     }
 
     @Override
-    public List<User> readAllEntity() {
+    public List<UserImd> readAllEntity() {
         return facade.readAllEntity();
     }
 
     @Override
-    public User refreshEntity(User t) {
-        return (User) facade.refreshEntity(t);
+    public UserImd refreshEntity(UserImd t) {
+        return (UserImd) facade.refreshEntity(t);
     }
     
 }

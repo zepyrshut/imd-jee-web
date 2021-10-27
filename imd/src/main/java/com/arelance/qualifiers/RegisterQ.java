@@ -1,4 +1,4 @@
-package com.arelance.servlets.commands.qualifiers;
+package com.arelance.qualifiers;
 
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.ElementType.FIELD;
@@ -16,5 +16,5 @@ import javax.inject.Qualifier;
 @Qualifier
 @Retention(RUNTIME)
 @Target({METHOD, FIELD, PARAMETER, TYPE})
-public @interface ActivityInscriptionQ {
+public @interface RegisterQ {
 }

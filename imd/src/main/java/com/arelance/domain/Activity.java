@@ -18,94 +18,94 @@ import javax.persistence.Table;
  * @author Pedro
  */
 @Entity
-@Table(name = "actividad")
+@Table(name = "activity")
 @NamedQueries({
-    @NamedQuery(name = "Actividad.findAll", query = "SELECT a FROM Actividad a"),
-    @NamedQuery(name = "Actividad.findByIdActividad", query = "SELECT a FROM Actividad a WHERE a.idActividad = :idActividad")})
+    @NamedQuery(name = "Activity.findAll", query = "SELECT a FROM Activity a"),
+    @NamedQuery(name = "Activity.findByIdActividad", query = "SELECT a FROM Activity a WHERE a.activityId = :activityId")})
 public class Activity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_actividad")
-    private Integer idActividad;
-    @Column(name = "nombre_actividad")
-    private String nombreActividad;
-    @Column(name = "descripcion_actividad")
-    private String descripcionActividad;
-    @Column(name = "categoria_actividad")
-    private String categoriaActividad;
-    @Column(name = "precio_actividad")
-    private Double precioActividad;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "actividad")
-    private EntrenadorTieneActividad entrenadorTieneActividad;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "actividad")
-    private UserHasActivity usuarioTieneActividad;
+    @Column(name = "id_activity")
+    private Integer activityId;
+    @Column(name = "name_activity")
+    private String activityName;
+    @Column(name = "description_activity")
+    private String activityDescription;
+    @Column(name = "category_activity")
+    private String activityCategory;
+    @Column(name = "price_activity")
+    private Double activityPrice;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "activity")
+    private TrainerHasActivity trainerHasActivity;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "activity")
+    private UserHasActivity userHasActivity;
 
     public Activity() {
         super();
     }
 
-    public Integer getIdActividad() {
-        return idActividad;
+    public Integer getActivityId() {
+        return activityId;
     }
 
-    public void setIdActividad(Integer idActividad) {
-        this.idActividad = idActividad;
+    public void setActivityId(Integer activityId) {
+        this.activityId = activityId;
     }
 
-    public String getNombreActividad() {
-        return nombreActividad;
+    public String getActivityName() {
+        return activityName;
     }
 
-    public void setNombreActividad(String nombreActividad) {
-        this.nombreActividad = nombreActividad;
+    public void setActivityName(String activityName) {
+        this.activityName = activityName;
     }
 
-    public String getDescripcionActividad() {
-        return descripcionActividad;
+    public String getActivityDescription() {
+        return activityDescription;
     }
 
-    public void setDescripcionActividad(String descripcionActividad) {
-        this.descripcionActividad = descripcionActividad;
+    public void setActivityDescription(String activityDescription) {
+        this.activityDescription = activityDescription;
     }
 
-    public String getCategoriaActividad() {
-        return categoriaActividad;
+    public String getActivityCategory() {
+        return activityCategory;
     }
 
-    public void setCategoriaActividad(String categoriaActividad) {
-        this.categoriaActividad = categoriaActividad;
+    public void setActivityCategory(String activityCategory) {
+        this.activityCategory = activityCategory;
     }
 
-    public Double getPrecioActividad() {
-        return precioActividad;
+    public Double getActivityPrice() {
+        return activityPrice;
     }
 
-    public void setPrecioActividad(Double precioActividad) {
-        this.precioActividad = precioActividad;
+    public void setActivityPrice(Double activityPrice) {
+        this.activityPrice = activityPrice;
     }
 
-    public EntrenadorTieneActividad getEntrenadorTieneActividad() {
-        return entrenadorTieneActividad;
+    public TrainerHasActivity getTrainerHasActivity() {
+        return trainerHasActivity;
     }
 
-    public void setEntrenadorTieneActividad(EntrenadorTieneActividad entrenadorTieneActividad) {
-        this.entrenadorTieneActividad = entrenadorTieneActividad;
+    public void setTrainerHasActivity(TrainerHasActivity trainerHasActivity) {
+        this.trainerHasActivity = trainerHasActivity;
     }
 
-    public UserHasActivity getUsuarioTieneActividad() {
-        return usuarioTieneActividad;
+    public UserHasActivity getUserHasActivity() {
+        return userHasActivity;
     }
 
-    public void setUsuarioTieneActividad(UserHasActivity usuarioTieneActividad) {
-        this.usuarioTieneActividad = usuarioTieneActividad;
+    public void setUserHasActivity(UserHasActivity userHasActivity) {
+        this.userHasActivity = userHasActivity;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.idActividad);
+        hash = 67 * hash + Objects.hashCode(this.activityId);
         return hash;
     }
 
@@ -121,25 +121,25 @@ public class Activity implements Serializable {
             return false;
         }
         final Activity other = (Activity) obj;
-        if (!Objects.equals(this.nombreActividad, other.nombreActividad)) {
+        if (!Objects.equals(this.activityName, other.activityName)) {
             return false;
         }
-        if (!Objects.equals(this.descripcionActividad, other.descripcionActividad)) {
+        if (!Objects.equals(this.activityDescription, other.activityDescription)) {
             return false;
         }
-        if (!Objects.equals(this.categoriaActividad, other.categoriaActividad)) {
+        if (!Objects.equals(this.activityCategory, other.activityCategory)) {
             return false;
         }
-        if (!Objects.equals(this.idActividad, other.idActividad)) {
+        if (!Objects.equals(this.activityId, other.activityId)) {
             return false;
         }
-        if (!Objects.equals(this.precioActividad, other.precioActividad)) {
+        if (!Objects.equals(this.activityPrice, other.activityPrice)) {
             return false;
         }
-        if (!Objects.equals(this.entrenadorTieneActividad, other.entrenadorTieneActividad)) {
+        if (!Objects.equals(this.trainerHasActivity, other.trainerHasActivity)) {
             return false;
         }
-        return Objects.equals(this.usuarioTieneActividad, other.usuarioTieneActividad);
+        return Objects.equals(this.userHasActivity, other.userHasActivity);
     }
-
+    
 }

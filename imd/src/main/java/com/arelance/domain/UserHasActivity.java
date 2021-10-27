@@ -15,71 +15,67 @@ import javax.persistence.Table;
  * @author Pedro
  */
 @Entity
-@Table(name = "usuario_tiene_actividad")
+@Table(name = "user_has_activty")
 @NamedQueries({
-    @NamedQuery(name = "UsuarioTieneActividad.findAll", query = "SELECT u FROM UsuarioTieneActividad u")})
+    @NamedQuery(name = "UserHasActivity.findAll", query = "SELECT u FROM UserHasActivity u")})
 public class UserHasActivity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected UserHasActivityPK usuarioTieneActividadPK;
-    @JoinColumn(name = "id_actividad", referencedColumnName = "id_actividad", insertable = false, updatable = false)
+    protected UserHasActivityPK userHasActivityPK;
+    @JoinColumn(name = "id_activity", referencedColumnName = "id_activity", insertable = false, updatable = false)
     @ManyToOne
-    private Activity actividad;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", insertable = false, updatable = false)
+    private Activity activity;
+    @JoinColumn(name = "id_user", referencedColumnName = "id_user", insertable = false, updatable = false)
     @ManyToOne
-    private User usuario;
-    @JoinColumn(name = "id_pago", referencedColumnName = "id_pago", insertable = false, updatable = false)
+    private UserImd userImd;
+    @JoinColumn(name = "id_payment", referencedColumnName = "id_payment", insertable = false, updatable = false)
     @ManyToOne
-    private PaymentMethod metodoPago;
+    private PaymentMethod paymentMethod;
 
     public UserHasActivity() {
+        super();
     }
 
-    public UserHasActivity(UserHasActivityPK usuarioTieneActividadPK) {
-        this.usuarioTieneActividadPK = usuarioTieneActividadPK;
+    public UserHasActivityPK getUserHasActivityPK() {
+        return userHasActivityPK;
     }
 
-    public UserHasActivity(int idUsuario, int idActividad, int idPago) {
-        this.usuarioTieneActividadPK = new UserHasActivityPK(idUsuario, idActividad, idPago);
+    public void setUserHasActivityPK(UserHasActivityPK userHasActivityPK) {
+        this.userHasActivityPK = userHasActivityPK;
     }
 
-    public UserHasActivityPK getUsuarioTieneActividadPK() {
-        return usuarioTieneActividadPK;
+    public Activity getActivity() {
+        return activity;
     }
 
-    public void setUsuarioTieneActividadPK(UserHasActivityPK usuarioTieneActividadPK) {
-        this.usuarioTieneActividadPK = usuarioTieneActividadPK;
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 
-    public Activity getActividad() {
-        return actividad;
+    public UserImd getUserImd() {
+        return userImd;
     }
 
-    public void setActividad(Activity actividad) {
-        this.actividad = actividad;
+    public void setUserImd(UserImd userImd) {
+        this.userImd = userImd;
     }
 
-    public User getUsuario() {
-        return usuario;
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public void setUsuario(User usuario) {
-        this.usuario = usuario;
-    }
-
-    public PaymentMethod getMetodoPago() {
-        return metodoPago;
-    }
-
-    public void setMetodoPago(PaymentMethod metodoPago) {
-        this.metodoPago = metodoPago;
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.usuarioTieneActividadPK);
+        int hash = 5;
+        hash = 17 * hash + Objects.hashCode(this.userHasActivityPK);
+        hash = 17 * hash + Objects.hashCode(this.activity);
+        hash = 17 * hash + Objects.hashCode(this.userImd);
+        hash = 17 * hash + Objects.hashCode(this.paymentMethod);
         return hash;
     }
 
@@ -95,7 +91,16 @@ public class UserHasActivity implements Serializable {
             return false;
         }
         final UserHasActivity other = (UserHasActivity) obj;
-        return Objects.equals(this.usuarioTieneActividadPK, other.usuarioTieneActividadPK);
+        if (!Objects.equals(this.userHasActivityPK, other.userHasActivityPK)) {
+            return false;
+        }
+        if (!Objects.equals(this.activity, other.activity)) {
+            return false;
+        }
+        if (!Objects.equals(this.userImd, other.userImd)) {
+            return false;
+        }
+        return Objects.equals(this.paymentMethod, other.paymentMethod);
     }
 
 }

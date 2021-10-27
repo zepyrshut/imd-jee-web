@@ -3,7 +3,7 @@ package com.arelance.service.impl;
 import com.arelance.dao.facade.ActivityFacade;
 import com.arelance.domain.Activity;
 import com.arelance.service.factory.Crud;
-import com.arelance.servlets.commands.qualifiers.ActivityCrudQ;
+import com.arelance.qualifiers.ActivityCrudQ;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -12,7 +12,7 @@ import javax.inject.Inject;
  * @author Pedro
  */
 @ActivityCrudQ
-public class ActividadCrud implements Crud<Activity> {
+public class ActivityCrud implements Crud<Activity> {
 
     @Inject
     private ActivityFacade facade;

@@ -3,7 +3,7 @@ package com.arelance.service.impl;
 import com.arelance.dao.facade.SessionDataFacade;
 import com.arelance.domain.SessionData;
 import com.arelance.service.factory.Crud;
-import com.arelance.servlets.commands.qualifiers.SessionDataCrudQ;
+import com.arelance.qualifiers.SessionDataCrudQ;
 import java.util.List;
 import javax.inject.Inject;
 

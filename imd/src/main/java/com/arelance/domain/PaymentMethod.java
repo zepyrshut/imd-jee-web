@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * @author Jorge
  */
 @Entity
-@Table(name = "metodo_pago")
+@Table(name = "payment_method")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class PaymentMethod implements Serializable {
 
@@ -26,52 +26,50 @@ public abstract class PaymentMethod implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_pago")
-    protected Integer idMetodoPago;
-    @Column(name = "nombre_pago")
-    protected String nombrePago;
+    @Column(name = "id_payment")
+    protected Integer paymentId;
+    @Column(name = "name_payment")
+    protected String paymentName;
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    protected User usuario;
+    @JoinColumn(name = "id_user")
+    protected UserImd userImd;
 
     protected PaymentMethod() {
         super();
     }
 
-    protected PaymentMethod(String nombrePago) {
-        this.nombrePago = nombrePago;
+    protected PaymentMethod(String paymentName) {
+        this.paymentName = paymentName;
+    }    
+
+    public Integer getPaymentId() {
+        return paymentId;
     }
 
-    public Integer getIdMetodoPago() {
-        return idMetodoPago;
+    public void setPaymentId(Integer paymentId) {
+        this.paymentId = paymentId;
     }
 
-    public void setIdMetodoPago(Integer idMetodoPago) {
-        this.idMetodoPago = idMetodoPago;
+    public String getPaymentName() {
+        return paymentName;
     }
 
-    public String getNombrepago() {
-        return nombrePago;
+    public void setPaymentName(String paymentName) {
+        this.paymentName = paymentName;
     }
 
-    public void setNombrepago(String nombrePago) {
-        this.nombrePago = nombrePago;
+    public UserImd getUserImd() {
+        return userImd;
     }
 
-    public User getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(User usuario) {
-        this.usuario = usuario;
+    public void setUserImd(UserImd userImd) {
+        this.userImd = userImd;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 31 * hash + Objects.hashCode(this.idMetodoPago);
-        hash = 31 * hash + Objects.hashCode(this.nombrePago);
-        hash = 31 * hash + Objects.hashCode(this.usuario);
+        hash = 83 * hash + Objects.hashCode(this.paymentId);
         return hash;
     }
 
@@ -87,13 +85,16 @@ public abstract class PaymentMethod implements Serializable {
             return false;
         }
         final PaymentMethod other = (PaymentMethod) obj;
-        if (!Objects.equals(this.nombrePago, other.nombrePago)) {
+        if (!Objects.equals(this.paymentName, other.paymentName)) {
             return false;
         }
-        if (!Objects.equals(this.idMetodoPago, other.idMetodoPago)) {
+        if (!Objects.equals(this.paymentId, other.paymentId)) {
             return false;
         }
-        return Objects.equals(this.usuario, other.usuario);
+        if (!Objects.equals(this.userImd, other.userImd)) {
+            return false;
+        }
+        return true;
     }
 
 }

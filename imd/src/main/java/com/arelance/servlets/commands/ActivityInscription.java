@@ -2,13 +2,12 @@ package com.arelance.servlets.commands;
 
 import com.arelance.domain.Activity;
 import com.arelance.domain.PaymentMethod;
-import com.arelance.domain.User;
+import com.arelance.domain.UserImd;
 import com.arelance.domain.UserHasActivity;
 import com.arelance.domain.UserHasActivityPK;
-import com.arelance.service.factory.Crud;
-import com.arelance.service.factory.UserFactory;
-import com.arelance.servlets.commands.qualifiers.ActivityInscriptionQ;
-import com.arelance.servlets.commands.qualifiers.UserCrudQ;
+import com.arelance.service.impl.UserCrud;
+import com.arelance.qualifiers.ActivityInscriptionQ;
+import com.arelance.qualifiers.UserCrudQ;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -24,10 +23,7 @@ public class ActivityInscription implements ActionsController {
 
     @Inject
     @UserCrudQ
-    private Crud<User> crudUser;
-
-    @Inject
-    private UserFactory userFactory;
+    private UserCrud userCrud;
 
     @Inject
     private UserHasActivity userHasActivity;
@@ -36,7 +32,7 @@ public class ActivityInscription implements ActionsController {
     private UserHasActivityPK userHasActivityPK;
 
     @Inject
-    private User user;
+    private UserImd userImd;
 
     @Inject
     private Activity activity;
@@ -44,24 +40,22 @@ public class ActivityInscription implements ActionsController {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        crudUser = userFactory.createCrud();
-
         activity = (Activity) request.getSession().getAttribute("actividad");
-        user = (User) request.getSession().getAttribute("usuario");
+        userImd = (UserImd) request.getSession().getAttribute("usuario");
         int index = Integer.parseInt(request.getParameter("metodoPago"));
-        PaymentMethod metodoPago = user.getMetodoPago().get(index);
+        PaymentMethod metodoPago = userImd.getPaymentMethod().get(index);
 
-        userHasActivityPK.setIdActividad(activity.getIdActividad());
-        userHasActivityPK.setIdUsuario(user.getIdUsuario());
-        userHasActivityPK.setIdPago(metodoPago.getIdMetodoPago());
+        userHasActivityPK.setActivityId(activity.getActivityId());
+        userHasActivityPK.setUserId(userImd.getUserId());
+        userHasActivityPK.setPaymentId(metodoPago.getPaymentId());
 
-        userHasActivity.setActividad(activity);
-        userHasActivity.setUsuario(user);
-        userHasActivity.setMetodoPago(metodoPago);
+        userHasActivity.setActivity(activity);
+        userHasActivity.setUserImd(userImd);
+        userHasActivity.setPaymentMethod(metodoPago);
 
-        userHasActivity.setUsuarioTieneActividadPK(userHasActivityPK);
-        user.getUsuarioTieneActividad().add(userHasActivity);
-        crudUser.updateEntity(user);
+        userHasActivity.setUserHasActivityPK(userHasActivityPK);
+        userImd.getUserHasActivity().add(userHasActivity);
+        userCrud.updateEntity(userImd);
 
         return "/preindex";
 

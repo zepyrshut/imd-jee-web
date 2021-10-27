@@ -1,18 +1,17 @@
 package com.arelance.servlets.commands;
 
-import com.arelance.servlets.commands.qualifiers.RegisterQ;
+import com.arelance.qualifiers.RegisterQ;
 import com.arelance.domain.SessionData;
-import com.arelance.domain.User;
-import com.arelance.service.factory.Crud;
-import com.arelance.service.factory.SessionDataFactory;
-import com.arelance.service.factory.UserFactory;
-import com.arelance.servlets.commands.qualifiers.SessionDataCrudQ;
+import com.arelance.domain.UserImd;
+import com.arelance.service.impl.SessionDataCrud;
+import com.arelance.service.impl.UserCrud;
+import com.arelance.qualifiers.SessionDataCrudQ;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.inject.Inject;
-import com.arelance.servlets.commands.qualifiers.UserCrudQ;
+import com.arelance.qualifiers.UserCrudQ;
 
 /**
  *
@@ -20,46 +19,36 @@ import com.arelance.servlets.commands.qualifiers.UserCrudQ;
  */
 @RegisterQ
 public class Register implements ActionsController {
-    
+
     @Inject
     @UserCrudQ
-    private Crud<User> crudUser;
-    
+    private UserCrud userCrud;
+
     @Inject
     @SessionDataCrudQ
-    private Crud<SessionData> crudSessionData;
-    
+    private SessionDataCrud sessionDataCrud;
+
     @Inject
-    private UserFactory userFactory;
-    
-    @Inject
-    private SessionDataFactory sessionDataFactory;
-    
-    @Inject
-    private User user;
-    
+    private UserImd userImd;
+
     @Inject
     private SessionData sessionData;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        crudUser = userFactory.createCrud();
-        crudSessionData = sessionDataFactory.createCrud();
 
-        
-        user.setNombre(request.getParameter("nombre"));
-        user.setApellidoA(request.getParameter("apellido_a"));
-        user.setApellidoB(request.getParameter("apellido_b"));
-        user.setTelefono(request.getParameter("telefono"));
-        user.setEmail(request.getParameter("email"));
-        
-        sessionData.setContrasena(request.getParameter("contrasena"));
-        sessionData.setUsuario(request.getParameter("usuario"));
-        sessionData.setUsuarioSocio(user);
-        
-        crudUser.createEntity(user);
-        crudSessionData.createEntity(sessionData);
+        userImd.setName(request.getParameter("nombre"));
+        userImd.setSurnameA(request.getParameter("apellido_a"));
+        userImd.setSurnameB(request.getParameter("apellido_b"));
+        userImd.setPhone(request.getParameter("telefono"));
+        userImd.setEmail(request.getParameter("email"));
+
+        sessionData.setPassword(request.getParameter("contrasena"));
+        sessionData.setUser(request.getParameter("usuario"));
+        sessionData.setUserSessionData(userImd);
+
+        userCrud.createEntity(userImd);
+        sessionDataCrud.createEntity(sessionData);
 
 //        if (usuarioService.findUsuarioByEmail(usuario) != null) {
 //            String emailRepetido = "Ya existe este correo electrónico, pruebe otro.";
@@ -85,7 +74,6 @@ public class Register implements ActionsController {
 //            }
 //
 //        }
-
         return "/registrousuario.jsp";
 
     }

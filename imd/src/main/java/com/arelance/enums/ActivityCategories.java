@@ -4,8 +4,8 @@ package com.arelance.enums;
  *
  * @author Pedro
  */
-public enum CategoriasActividad {
+public enum ActivityCategories {
 
-    INTERIOR, EXTERIOR;
+    INNER, OUTER;
 
 }

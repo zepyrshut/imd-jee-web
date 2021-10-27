@@ -11,35 +11,33 @@ import javax.persistence.Table;
  * @author Jorge
  */
 @Entity
-@Table(name = "tarjeta")
+@Table(name = "debit_card")
 public class DebitCard extends PaymentMethod implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    @Column(name = "numero")
-    private String numero;
+
+    @Column(name = "number")
+    private String number;
 
     @Column(name = "cvv")
     private String cvv;
 
     public DebitCard() {
-super();
+        super();
     }
-    
-    
 
-    public DebitCard(String numero, String cvv, String nombrePago) {
-        super(nombrePago);
-        this.numero = numero;
+    public DebitCard(String number, String cvv, String paymentName) {
+        super(paymentName);
+        this.number = number;
         this.cvv = cvv;
-    }   
-
-    public String getNumero() {
-        return numero;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getCvv() {
@@ -50,11 +48,19 @@ super();
         this.cvv = cvv;
     }
 
+    public String getNombrePago() {
+        return getNombrePago();
+    }
+
+    public void setNombrePago(String nombrePago) {
+        this.setNombrePago(nombrePago);
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.numero);
-        hash = 67 * hash + Objects.hashCode(this.cvv);
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.number);
+        hash = 17 * hash + Objects.hashCode(this.cvv);
         return hash;
     }
 
@@ -70,7 +76,7 @@ super();
             return false;
         }
         final DebitCard other = (DebitCard) obj;
-        if (!Objects.equals(this.numero, other.numero)) {
+        if (!Objects.equals(this.number, other.number)) {
             return false;
         }
         return Objects.equals(this.cvv, other.cvv);
