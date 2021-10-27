@@ -1,6 +1,5 @@
 package com.arelance.domain;
 
-import com.arelance.servlets.commands.qualifiers.PayPalQ;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -13,7 +12,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "paypal")
-@PayPalQ
 public class PayPal extends MetodoPago implements Serializable {
 
     private static final long serialVersionUID = 1L;

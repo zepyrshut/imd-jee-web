@@ -1,6 +1,5 @@
 package com.arelance.domain;
 
-import com.arelance.servlets.commands.qualifiers.MetodoPagoQ;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -35,10 +34,9 @@ public abstract class MetodoPago implements Serializable {
     @JoinColumn(name = "id_usuario")
     protected Usuario usuario;
 
-    public MetodoPago() {
+    protected MetodoPago() {
         super();
-    } 
-    
+    }    
 
     protected MetodoPago(String nombrePago) {
         this.nombrePago = nombrePago;

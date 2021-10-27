@@ -2,7 +2,7 @@ package com.arelance.servlets.commands;
 
 import com.arelance.domain.Actividad;
 import com.arelance.domain.MetodoPago;
-import com.arelance.domain.PayPal;
+import com.arelance.domain.PayPalRename;
 import com.arelance.domain.Tarjeta;
 import com.arelance.domain.Transferencia;
 import com.arelance.domain.Usuario;
@@ -10,9 +10,6 @@ import com.arelance.domain.UsuarioTieneActividad;
 import com.arelance.domain.UsuarioTieneActividadPK;
 import com.arelance.service.UsuarioService;
 import com.arelance.servlets.commands.qualifiers.ActivityInscriptionQ;
-import com.arelance.servlets.commands.qualifiers.PayPalQ;
-import com.arelance.servlets.commands.qualifiers.TarjetaQ;
-import com.arelance.servlets.commands.qualifiers.TransferenciaQ;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,38 +40,22 @@ public class ActivityInscription implements ActionsController {
     @Inject
     private Actividad actividad;
 
-    @Inject
-    @PayPalQ
-    private PayPal paypal;
+    private final Map<String, MetodoPago> metodosPago = crearMetodosPago();
 
-    @Inject
-    @TarjetaQ
-    private Tarjeta tarjeta;
-
-    @Inject
-    @TransferenciaQ
-    private Transferencia transferencia;
-    
-    MetodoPago mp;
-
-    private final Map<String, MetodoPago> metodosPago = new HashMap<>();
-
-    public void buildMap() {
-        metodosPago.put("PayPal", paypal);
-        metodosPago.put("Tarjeta", tarjeta);
-        metodosPago.put("Transferencia", transferencia);
+    private static Map<String, MetodoPago> crearMetodosPago() {
+        Map<String, MetodoPago> metodosPago = new HashMap<>();
+        metodosPago.put("PayPal", new PayPalRename());
+        metodosPago.put("Tarjeta", new Tarjeta());
+        metodosPago.put("Transferencia", new Transferencia());
+        return metodosPago;
     }
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {     
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        MetodoPago metodopago;
         
-        buildMap();
-        
-        // TODO - Mejorar el método execute(), es muy largo.
-
         actividad = (Actividad) request.getSession().getAttribute("actividad");
         usuario = (Usuario) request.getSession().getAttribute("usuario");
-        String test = request.getParameter("metodoPago");
         int index = Integer.parseInt(request.getParameter("metodoPago"));
         String metodoPagoUsuario = usuario.getMetodoPago().get(index).getClass().getSimpleName();
 
@@ -82,10 +63,10 @@ public class ActivityInscription implements ActionsController {
         usuarioTieneActividadPK.setIdActividad(actividad.getIdActividad());
         usuarioTieneActividadPK.setIdUsuario(usuario.getIdUsuario());
 
-        mp = metodosPago.get(metodoPagoUsuario);
-        mp = usuario.getMetodoPago().get(index);
-        usuarioTieneActividad.setMetodoPago(mp);
-        usuarioTieneActividadPK.setIdPago(mp.getIdMetodoPago());
+        metodosPago.get(metodoPagoUsuario);
+        metodopago = usuario.getMetodoPago().get(index);
+        usuarioTieneActividad.setMetodoPago(metodopago);
+        usuarioTieneActividadPK.setIdPago(metodopago.getIdMetodoPago());
 
         usuarioTieneActividad.setActividad(actividad);
         usuarioTieneActividad.setUsuarioTieneActividadPK(usuarioTieneActividadPK);
