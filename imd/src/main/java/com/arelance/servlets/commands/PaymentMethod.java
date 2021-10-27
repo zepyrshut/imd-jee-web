@@ -1,7 +1,7 @@
 package com.arelance.servlets.commands;
 
 import com.arelance.domain.MetodoPago;
-import com.arelance.domain.PayPalRename;
+import com.arelance.domain.PayPal;
 import com.arelance.domain.Tarjeta;
 import com.arelance.domain.Transferencia;
 import com.arelance.domain.Usuario;
@@ -37,7 +37,7 @@ public class PaymentMethod implements ActionsController {
 
         if (metodoPago.equals("paypal")) {
             String correopaypal = request.getParameter("correopaypal");
-            mp = new PayPalRename(correopaypal, descripcion);
+            mp = new PayPal(correopaypal, descripcion);
         } else if (metodoPago.equals("tarjeta")) {
             String numero = request.getParameter("numerotarjeta");
             String cvv = request.getParameter("cvv");

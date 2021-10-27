@@ -2,7 +2,7 @@ package com.arelance.servlets.commands;
 
 import com.arelance.domain.Actividad;
 import com.arelance.domain.MetodoPago;
-import com.arelance.domain.PayPalRename;
+import com.arelance.domain.PayPal;
 import com.arelance.domain.Tarjeta;
 import com.arelance.domain.Transferencia;
 import com.arelance.domain.Usuario;
@@ -44,7 +44,7 @@ public class ActivityInscription implements ActionsController {
 
     private static Map<String, MetodoPago> crearMetodosPago() {
         Map<String, MetodoPago> metodosPago = new HashMap<>();
-        metodosPago.put("PayPal", new PayPalRename());
+        metodosPago.put("PayPal", new PayPal());
         metodosPago.put("Tarjeta", new Tarjeta());
         metodosPago.put("Transferencia", new Transferencia());
         return metodosPago;
