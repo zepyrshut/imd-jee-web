@@ -22,17 +22,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "transferencia")
-public class Transferencia extends MetodoPago{
+public class Transferencia extends MetodoPago {
 
     private static final long serialVersionUID = 1L;
-  
-    
+
     @Column(name = "iban")
     private String iban;
-     
-    
-
-    
 
     public String getIban() {
         return iban;
@@ -41,8 +36,6 @@ public class Transferencia extends MetodoPago{
     public void setIban(String iban) {
         this.iban = iban;
     }
-
-
 
     public Transferencia(String iban) {
         this.iban = iban;
@@ -55,7 +48,6 @@ public class Transferencia extends MetodoPago{
 
     public Transferencia() {
     }
-
 
     @Override
     public int hashCode() {
@@ -87,5 +79,4 @@ public class Transferencia extends MetodoPago{
         return "Transferencia{" + "iban=" + iban + '}';
     }
 
-    
 }
