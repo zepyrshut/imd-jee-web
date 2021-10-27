@@ -1,5 +1,6 @@
 package com.arelance.domain;
 
+import com.arelance.servlets.commands.qualifiers.MetodoPagoQ;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -36,8 +37,7 @@ public abstract class MetodoPago implements Serializable {
 
     public MetodoPago() {
         super();
-    }
-    
+    } 
     
 
     protected MetodoPago(String nombrePago) {
@@ -72,8 +72,6 @@ public abstract class MetodoPago implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 31 * hash + Objects.hashCode(this.idMetodoPago);
-        hash = 31 * hash + Objects.hashCode(this.nombrePago);
-        hash = 31 * hash + Objects.hashCode(this.usuario);
         return hash;
     }
 

@@ -1,16 +1,21 @@
 package com.arelance.servlets.commands;
 
 import com.arelance.domain.Actividad;
-import com.arelance.domain.Paypal;
+import com.arelance.domain.MetodoPago;
+import com.arelance.domain.PayPal;
 import com.arelance.domain.Tarjeta;
 import com.arelance.domain.Transferencia;
 import com.arelance.domain.Usuario;
 import com.arelance.domain.UsuarioTieneActividad;
 import com.arelance.domain.UsuarioTieneActividadPK;
-import com.arelance.service.ActividadService;
 import com.arelance.service.UsuarioService;
 import com.arelance.servlets.commands.qualifiers.ActivityInscriptionQ;
+import com.arelance.servlets.commands.qualifiers.PayPalQ;
+import com.arelance.servlets.commands.qualifiers.TarjetaQ;
+import com.arelance.servlets.commands.qualifiers.TransferenciaQ;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -38,36 +43,49 @@ public class ActivityInscription implements ActionsController {
     @Inject
     private Actividad actividad;
 
+    @Inject
+    @PayPalQ
+    private PayPal paypal;
+
+    @Inject
+    @TarjetaQ
+    private Tarjeta tarjeta;
+
+    @Inject
+    @TransferenciaQ
+    private Transferencia transferencia;
+    
+    MetodoPago mp;
+
+    private final Map<String, MetodoPago> metodosPago = new HashMap<>();
+
+    public void buildMap() {
+        metodosPago.put("PayPal", paypal);
+        metodosPago.put("Tarjeta", tarjeta);
+        metodosPago.put("Transferencia", transferencia);
+    }
+
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {     
+        
+        buildMap();
+        
+        // TODO - Mejorar el método execute(), es muy largo.
 
         actividad = (Actividad) request.getSession().getAttribute("actividad");
         usuario = (Usuario) request.getSession().getAttribute("usuario");
-        int index = 0;
+        String test = request.getParameter("metodoPago");
+        int index = Integer.parseInt(request.getParameter("metodoPago"));
         String metodoPagoUsuario = usuario.getMetodoPago().get(index).getClass().getSimpleName();
 
         usuarioTieneActividad.setUsuario(usuario);
         usuarioTieneActividadPK.setIdActividad(actividad.getIdActividad());
         usuarioTieneActividadPK.setIdUsuario(usuario.getIdUsuario());
 
-        // TODO - Mejorar sistema direccionamiento. Uso de patrón comando o patrón estrategia.
-        if (metodoPagoUsuario.equals("Paypal")) {
-            Paypal paypal;
-            paypal = (Paypal) usuario.getMetodoPago().get(index);
-            usuarioTieneActividad.setMetodoPago(paypal);
-            usuarioTieneActividadPK.setIdPago(paypal.getIdMetodoPago());
-
-        } else if (metodoPagoUsuario.equals("Tarjeta")) {
-            Tarjeta tarjeta;
-            tarjeta = (Tarjeta) usuario.getMetodoPago().get(index);
-            usuarioTieneActividad.setMetodoPago(tarjeta);
-            usuarioTieneActividadPK.setIdPago(tarjeta.getIdMetodoPago());
-        } else {
-            Transferencia transferencia;
-            transferencia = (Transferencia) usuario.getMetodoPago().get(index);
-            usuarioTieneActividad.setMetodoPago(transferencia);
-            usuarioTieneActividadPK.setIdPago(transferencia.getIdMetodoPago());
-        }
+        mp = metodosPago.get(metodoPagoUsuario);
+        mp = usuario.getMetodoPago().get(index);
+        usuarioTieneActividad.setMetodoPago(mp);
+        usuarioTieneActividadPK.setIdPago(mp.getIdMetodoPago());
 
         usuarioTieneActividad.setActividad(actividad);
         usuarioTieneActividad.setUsuarioTieneActividadPK(usuarioTieneActividadPK);

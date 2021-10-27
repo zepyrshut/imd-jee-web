@@ -2,7 +2,6 @@ package com.arelance.domain;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +12,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 /**
  *
@@ -44,6 +42,7 @@ public class DatosSesion implements Serializable {
     private Usuario usuarioSocio;
 
     public DatosSesion() {
+        super();
     }
 
     public Integer getIdDatosSesion() {
@@ -82,9 +81,6 @@ public class DatosSesion implements Serializable {
     public int hashCode() {
         int hash = 3;
         hash = 29 * hash + Objects.hashCode(this.idDatosSesion);
-        hash = 29 * hash + Objects.hashCode(this.usuario);
-        hash = 29 * hash + Objects.hashCode(this.contrasena);
-        hash = 29 * hash + Objects.hashCode(this.usuarioSocio);
         return hash;
     }
 

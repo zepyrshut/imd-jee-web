@@ -1,5 +1,6 @@
 package com.arelance.domain;
 
+import com.arelance.servlets.commands.qualifiers.TarjetaQ;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tarjeta")
+@TarjetaQ
 public class Tarjeta extends MetodoPago implements Serializable {
 
     private static final long serialVersionUID = 1L;

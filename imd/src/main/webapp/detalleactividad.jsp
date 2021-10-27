@@ -55,6 +55,18 @@
                     </article>
                 </c:if>
                 <c:if test="${usuario != null}">
+                    <form action="actions?action=activityinscription" method="POST">
+                                        <label for="metodoPago">Elige método de pago:</label>
+                    <select name="metodoPago">
+                        <c:forEach items="${usuario.metodoPago}" var="metodoPago" varStatus="forLoop">
+                            <option value=${forLoop.index}>${metodoPago.nombrepago}</option>
+                        </c:forEach>
+                    </select>
+                                        
+                                       <input type="submit" class="uk-button uk-button-primary" value="Inscribirse" />
+                    </form>
+                    
+                    
                     <article class="uk-grid-small uk-child-width-auto padding-top-small" uk-grid>
                         <p><a class="uk-button uk-button-primary" href="actions?action=activityinscription">¡Inscribirse!</a></p>
                         <p><a class="uk-button uk-button-secondary" href="#">¿Tienes dudas?, escríbenos.</a></p>
@@ -63,6 +75,14 @@
                         <p class="uk-text-lead">Detalles de pago</p>
                         <p>Seleccione el método de pago deseado para la inscripción de la actividad.</p>
                     </aside>
+
+                    <c:forEach items="${usuario.metodoPago}" var="metodoPago" varStatus="forLoop">
+                        <p>${metodoPago.nombrepago} ${forLoop.index}</p>
+                    </c:forEach>
+
+
+
+
                 </c:if>
             </section>
         </main>

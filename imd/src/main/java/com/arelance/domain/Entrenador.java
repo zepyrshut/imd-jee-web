@@ -2,6 +2,7 @@ package com.arelance.domain;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -102,16 +103,27 @@ public class Entrenador implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Entrenador)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Entrenador other = (Entrenador) object;
-        if ((this.idEntrenador == null && other.idEntrenador != null) || (this.idEntrenador != null && !this.idEntrenador.equals(other.idEntrenador))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final Entrenador other = (Entrenador) obj;
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.apellido, other.apellido)) {
+            return false;
+        }
+        if (!Objects.equals(this.idEntrenador, other.idEntrenador)) {
+            return false;
+        }
+        return Objects.equals(this.entrenadorTieneActividadCollection, other.entrenadorTieneActividadCollection);
     }
 
     @Override

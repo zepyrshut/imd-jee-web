@@ -106,12 +106,6 @@ public class Actividad implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 97 * hash + Objects.hashCode(this.idActividad);
-        hash = 97 * hash + Objects.hashCode(this.nombreActividad);
-        hash = 97 * hash + Objects.hashCode(this.descripcionActividad);
-        hash = 97 * hash + Objects.hashCode(this.categoriaActividad);
-        hash = 97 * hash + Objects.hashCode(this.precioActividad);
-        hash = 97 * hash + Objects.hashCode(this.entrenadorTieneActividad);
-        hash = 97 * hash + Objects.hashCode(this.usuarioTieneActividad);
         return hash;
     }
 

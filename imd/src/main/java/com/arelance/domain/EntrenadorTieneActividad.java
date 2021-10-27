@@ -1,6 +1,7 @@
 package com.arelance.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -80,13 +81,24 @@ public class EntrenadorTieneActividad implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof EntrenadorTieneActividad)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        EntrenadorTieneActividad other = (EntrenadorTieneActividad) object;
-        if ((this.entrenadorTieneActividadPK == null && other.entrenadorTieneActividadPK != null) || (this.entrenadorTieneActividadPK != null && !this.entrenadorTieneActividadPK.equals(other.entrenadorTieneActividadPK))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final EntrenadorTieneActividad other = (EntrenadorTieneActividad) obj;
+        if (!Objects.equals(this.entrenadorTieneActividadPK, other.entrenadorTieneActividadPK)) {
+            return false;
+        }
+        if (!Objects.equals(this.actividad, other.actividad)) {
+            return false;
+        }
+        if (!Objects.equals(this.entrenador, other.entrenador)) {
             return false;
         }
         return true;

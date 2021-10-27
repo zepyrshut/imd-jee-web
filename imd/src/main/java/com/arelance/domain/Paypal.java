@@ -1,5 +1,6 @@
 package com.arelance.domain;
 
+import com.arelance.servlets.commands.qualifiers.PayPalQ;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -12,18 +13,19 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "paypal")
-public class Paypal extends MetodoPago implements Serializable {
+@PayPalQ
+public class PayPal extends MetodoPago implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Column(name = "correo")
     private String correoPayPal;
 
-    public Paypal() {
+    public PayPal() {
        super();
     }      
 
-    public Paypal(String correoPayPal, String nombrePago) {
+    public PayPal(String correoPayPal, String nombrePago) {
         super(nombrePago);
         this.correoPayPal = correoPayPal;
     }   
@@ -54,11 +56,8 @@ public class Paypal extends MetodoPago implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Paypal other = (Paypal) obj;
-        if (!Objects.equals(this.correoPayPal, other.correoPayPal)) {
-            return false;
-        }
-        return true;
+        final PayPal other = (PayPal) obj;
+        return Objects.equals(this.correoPayPal, other.correoPayPal);
     }
 
 }

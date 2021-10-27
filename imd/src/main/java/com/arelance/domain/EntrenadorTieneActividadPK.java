@@ -55,19 +55,21 @@ public class EntrenadorTieneActividadPK implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof EntrenadorTieneActividadPK)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        EntrenadorTieneActividadPK other = (EntrenadorTieneActividadPK) object;
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final EntrenadorTieneActividadPK other = (EntrenadorTieneActividadPK) obj;
         if (this.idEntrenador != other.idEntrenador) {
             return false;
         }
-        if (this.idActividad != other.idActividad) {
-            return false;
-        }
-        return true;
+        return this.idActividad == other.idActividad;
     }
 
     @Override
