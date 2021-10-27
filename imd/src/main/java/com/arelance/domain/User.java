@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuario.findByApellidoB", query = "SELECT u FROM Usuario u WHERE u.apellidoB = :apellidoB"),
     @NamedQuery(name = "Usuario.findByTelefono", query = "SELECT u FROM Usuario u WHERE u.telefono = :telefono"),
     @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email")})
-public class Usuario implements Serializable {
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -51,13 +51,13 @@ public class Usuario implements Serializable {
     @Column(name = "email")
     private String email;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuarioSocio")
-    private DatosSesion datosSesion;
+    private SessionData datosSesion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private List<UsuarioTieneActividad> usuarioTieneActividad;
+    private List<UserHasActivity> usuarioTieneActividad;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private List<MetodoPago> metodoPago;
+    private List<PaymentMethod> metodoPago;
 
-    public Usuario() {
+    public User() {
         this.usuarioTieneActividad = new ArrayList<>();
         this.metodoPago = new ArrayList<>();
     }
@@ -110,27 +110,27 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public DatosSesion getDatosSesion() {
+    public SessionData getDatosSesion() {
         return datosSesion;
     }
 
-    public void setDatosSesion(DatosSesion datosSesion) {
+    public void setDatosSesion(SessionData datosSesion) {
         this.datosSesion = datosSesion;
     }
 
-    public List<UsuarioTieneActividad> getUsuarioTieneActividad() {
+    public List<UserHasActivity> getUsuarioTieneActividad() {
         return usuarioTieneActividad;
     }
 
-    public void setUsuarioTieneActividad(List<UsuarioTieneActividad> usuarioTieneActividad) {
+    public void setUsuarioTieneActividad(List<UserHasActivity> usuarioTieneActividad) {
         this.usuarioTieneActividad = usuarioTieneActividad;
     }
 
-    public List<MetodoPago> getMetodoPago() {
+    public List<PaymentMethod> getMetodoPago() {
         return metodoPago;
     }
 
-    public void setMetodoPago(List<MetodoPago> metodoPago) {
+    public void setMetodoPago(List<PaymentMethod> metodoPago) {
         this.metodoPago = metodoPago;
     }
 
@@ -152,7 +152,7 @@ public class Usuario implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Usuario other = (Usuario) obj;
+        final User other = (User) obj;
         if (!Objects.equals(this.nombre, other.nombre)) {
             return false;
         }

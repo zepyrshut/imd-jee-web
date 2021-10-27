@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "metodo_pago")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class MetodoPago implements Serializable {
+public abstract class PaymentMethod implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,13 +32,13 @@ public abstract class MetodoPago implements Serializable {
     protected String nombrePago;
     @ManyToOne
     @JoinColumn(name = "id_usuario")
-    protected Usuario usuario;
+    protected User usuario;
 
-    protected MetodoPago() {
+    protected PaymentMethod() {
         super();
     }
 
-    protected MetodoPago(String nombrePago) {
+    protected PaymentMethod(String nombrePago) {
         this.nombrePago = nombrePago;
     }
 
@@ -58,11 +58,11 @@ public abstract class MetodoPago implements Serializable {
         this.nombrePago = nombrePago;
     }
 
-    public Usuario getUsuario() {
+    public User getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(User usuario) {
         this.usuario = usuario;
     }
 
@@ -70,6 +70,8 @@ public abstract class MetodoPago implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 31 * hash + Objects.hashCode(this.idMetodoPago);
+        hash = 31 * hash + Objects.hashCode(this.nombrePago);
+        hash = 31 * hash + Objects.hashCode(this.usuario);
         return hash;
     }
 
@@ -84,7 +86,7 @@ public abstract class MetodoPago implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final MetodoPago other = (MetodoPago) obj;
+        final PaymentMethod other = (PaymentMethod) obj;
         if (!Objects.equals(this.nombrePago, other.nombrePago)) {
             return false;
         }

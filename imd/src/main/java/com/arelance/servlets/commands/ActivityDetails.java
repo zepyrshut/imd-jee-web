@@ -1,7 +1,9 @@
 package com.arelance.servlets.commands;
 
-import com.arelance.domain.Actividad;
-import com.arelance.service.ActividadService;
+import com.arelance.domain.Activity;
+import com.arelance.service.factory.ActivityFactory;
+import com.arelance.service.factory.Crud;
+import com.arelance.servlets.commands.qualifiers.ActivityCrudQ;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,21 +17,27 @@ import com.arelance.servlets.commands.qualifiers.ActivityDetailsQ;
  */
 @ActivityDetailsQ
 public class ActivityDetails implements ActionsController {
+    
+    @Inject
+    @ActivityCrudQ
+    private Crud<Activity> crudActivity;
 
     @Inject
-    private ActividadService actividadService;
+    private ActivityFactory activityFactory;
 
     @Inject
-    private Actividad actividad;
+    private Activity activity;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        crudActivity = activityFactory.createCrud();
 
         String idActividad = request.getParameter("idactividad");
-        actividad.setIdActividad(Integer.parseInt(idActividad));
+        activity.setIdActividad(Integer.parseInt(idActividad));
 
         if (idActividad != null) {
-            request.getSession().setAttribute("actividad", actividadService.findActividadById(actividad));
+            request.getSession().setAttribute("actividad", crudActivity.readEntity(activity.getIdActividad()));
         } else {
             request.getSession().removeAttribute("actividad");
         }

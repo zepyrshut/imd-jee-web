@@ -12,7 +12,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "paypal")
-public class PayPal extends MetodoPago implements Serializable {
+public class PayPal extends PaymentMethod implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

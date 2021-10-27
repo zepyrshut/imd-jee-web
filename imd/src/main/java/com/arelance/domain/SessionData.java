@@ -26,7 +26,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "DatosSesion.validarSesion", query = "SELECT d FROM DatosSesion d WHERE d.usuario = :usuario AND d.contrasena = :contrasena"),
     @NamedQuery(name = "DatosSesion.findByContrasena", query = "SELECT d FROM DatosSesion d WHERE d.contrasena = :contrasena")}
 )
-public class DatosSesion implements Serializable {
+public class SessionData implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -39,9 +39,9 @@ public class DatosSesion implements Serializable {
     private String contrasena;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @OneToOne(optional = false)
-    private Usuario usuarioSocio;
+    private User usuarioSocio;
 
-    public DatosSesion() {
+    public SessionData() {
         super();
     }
 
@@ -69,11 +69,11 @@ public class DatosSesion implements Serializable {
         this.contrasena = contrasena;
     }
 
-    public Usuario getUsuarioSocio() {
+    public User getUsuarioSocio() {
         return usuarioSocio;
     }
 
-    public void setUsuarioSocio(Usuario usuario1) {
+    public void setUsuarioSocio(User usuario1) {
         this.usuarioSocio = usuario1;
     }
 
@@ -95,7 +95,7 @@ public class DatosSesion implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final DatosSesion other = (DatosSesion) obj;
+        final SessionData other = (SessionData) obj;
         if (!Objects.equals(this.usuario, other.usuario)) {
             return false;
         }

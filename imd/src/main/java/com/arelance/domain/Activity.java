@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Actividad.findAll", query = "SELECT a FROM Actividad a"),
     @NamedQuery(name = "Actividad.findByIdActividad", query = "SELECT a FROM Actividad a WHERE a.idActividad = :idActividad")})
-public class Actividad implements Serializable {
+public class Activity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,9 +40,9 @@ public class Actividad implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "actividad")
     private EntrenadorTieneActividad entrenadorTieneActividad;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "actividad")
-    private UsuarioTieneActividad usuarioTieneActividad;
-    
-    public Actividad() {
+    private UserHasActivity usuarioTieneActividad;
+
+    public Activity() {
         super();
     }
 
@@ -94,11 +94,11 @@ public class Actividad implements Serializable {
         this.entrenadorTieneActividad = entrenadorTieneActividad;
     }
 
-    public UsuarioTieneActividad getUsuarioTieneActividad() {
+    public UserHasActivity getUsuarioTieneActividad() {
         return usuarioTieneActividad;
     }
 
-    public void setUsuarioTieneActividad(UsuarioTieneActividad usuarioTieneActividad) {
+    public void setUsuarioTieneActividad(UserHasActivity usuarioTieneActividad) {
         this.usuarioTieneActividad = usuarioTieneActividad;
     }
 
@@ -120,7 +120,7 @@ public class Actividad implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Actividad other = (Actividad) obj;
+        final Activity other = (Activity) obj;
         if (!Objects.equals(this.nombreActividad, other.nombreActividad)) {
             return false;
         }
@@ -140,6 +140,6 @@ public class Actividad implements Serializable {
             return false;
         }
         return Objects.equals(this.usuarioTieneActividad, other.usuarioTieneActividad);
-    }        
-    
+    }
+
 }

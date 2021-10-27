@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
  * @author Pedro
  */
 @Embeddable
-public class UsuarioTieneActividadPK implements Serializable {
+public class UserHasActivityPK implements Serializable {
 
     @NotNull
     @Column(name = "id_usuario")
@@ -22,10 +22,10 @@ public class UsuarioTieneActividadPK implements Serializable {
     @Column(name = "id_pago")
     private int idPago;
 
-    public UsuarioTieneActividadPK() {
+    public UserHasActivityPK() {
     }
 
-    public UsuarioTieneActividadPK(int idUsuario, int idActividad, int idPago) {
+    public UserHasActivityPK(int idUsuario, int idActividad, int idPago) {
         this.idUsuario = idUsuario;
         this.idActividad = idActividad;
         this.idPago = idPago;
@@ -75,7 +75,7 @@ public class UsuarioTieneActividadPK implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final UsuarioTieneActividadPK other = (UsuarioTieneActividadPK) obj;
+        final UserHasActivityPK other = (UserHasActivityPK) obj;
         if (this.idUsuario != other.idUsuario) {
             return false;
         }

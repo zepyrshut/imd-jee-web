@@ -1,9 +1,11 @@
 package com.arelance.servlets.commands;
 
-import com.arelance.domain.Actividad;
-import com.arelance.domain.Usuario;
-import com.arelance.service.UsuarioService;
+import com.arelance.domain.Activity;
+import com.arelance.domain.User;
+import com.arelance.service.factory.Crud;
+import com.arelance.service.factory.UserFactory;
 import com.arelance.servlets.commands.qualifiers.ActivityUnsubcriptionQ;
+import com.arelance.servlets.commands.qualifiers.UserCrudQ;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -15,26 +17,35 @@ import javax.servlet.http.HttpServletResponse;
  * @author Pedro
  */
 @ActivityUnsubcriptionQ
-public class ActivityUnsubscription implements ActionsController {   
+public class ActivityUnsubscription implements ActionsController {
 
     @Inject
-    private UsuarioService usuarioService;
+    @UserCrudQ
+    private Crud<User> crudUser;
 
     @Inject
-    private Actividad actividad;
+    private UserFactory userFactory;
 
     @Inject
-    private Usuario usuario;
+    private Activity activity;
+
+    @Inject
+    private User user;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        actividad = (Actividad) request.getSession().getAttribute("actividad");
-        usuario = (Usuario) request.getSession().getAttribute("usuario");
+        crudUser = userFactory.createCrud();
 
-        boolean remove = usuario.getUsuarioTieneActividad().remove(actividad);
+        activity = (Activity) request.getSession().getAttribute("actividad");
+        user = (User) request.getSession().getAttribute("usuario");
+
+        boolean remove = user.getUsuarioTieneActividad().remove(activity);
+
         if (remove) {
-        usuarioService.updateUsuario(usuario);
+            // TODO - Revisar.
+            //crudUser.updateEntity(user);
+            crudUser.updateEntity(user);
         } else {
             // TODO - Añadir mensajes de error.
         }

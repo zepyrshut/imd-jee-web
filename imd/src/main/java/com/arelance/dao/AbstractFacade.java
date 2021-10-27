@@ -16,7 +16,7 @@ public abstract class AbstractFacade<T> implements Crud {
     protected AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
-    
+
     protected abstract EntityManager getEntityManager();
 
     @Override
@@ -31,7 +31,7 @@ public abstract class AbstractFacade<T> implements Crud {
 
     @Override
     public void deleteEntity(Object entity) {
-         getEntityManager().merge(entity);
+        getEntityManager().merge(entity);
         getEntityManager().remove(entity);
     }
 
@@ -44,7 +44,7 @@ public abstract class AbstractFacade<T> implements Crud {
     public List<T> readAllEntity() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
-        return getEntityManager().createQuery(cq).getResultList();    
+        return getEntityManager().createQuery(cq).getResultList();
     }
 
     @Override

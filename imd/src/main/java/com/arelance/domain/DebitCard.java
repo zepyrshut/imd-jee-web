@@ -12,7 +12,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tarjeta")
-public class Tarjeta extends MetodoPago implements Serializable {
+public class DebitCard extends PaymentMethod implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -22,13 +22,13 @@ public class Tarjeta extends MetodoPago implements Serializable {
     @Column(name = "cvv")
     private String cvv;
 
-    public Tarjeta() {
+    public DebitCard() {
 super();
     }
     
     
 
-    public Tarjeta(String numero, String cvv, String nombrePago) {
+    public DebitCard(String numero, String cvv, String nombrePago) {
         super(nombrePago);
         this.numero = numero;
         this.cvv = cvv;
@@ -69,7 +69,7 @@ super();
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Tarjeta other = (Tarjeta) obj;
+        final DebitCard other = (DebitCard) obj;
         if (!Objects.equals(this.numero, other.numero)) {
             return false;
         }

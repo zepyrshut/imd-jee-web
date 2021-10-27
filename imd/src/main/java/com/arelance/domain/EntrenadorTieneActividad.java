@@ -33,10 +33,10 @@ public class EntrenadorTieneActividad implements Serializable {
         @JoinColumn(name = "id_actividad", referencedColumnName = "id_actividad", insertable = false, updatable = false),
         @JoinColumn(name = "id_actividad", referencedColumnName = "id_actividad", insertable = false, updatable = false)})
     @OneToOne(optional = false)
-    private Actividad actividad;
+    private Activity actividad;
     @JoinColumn(name = "id_entrenador", referencedColumnName = "id_entrenador", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Entrenador entrenador;
+    private Trainer entrenador;
 
     public EntrenadorTieneActividad() {
     }
@@ -57,19 +57,19 @@ public class EntrenadorTieneActividad implements Serializable {
         this.entrenadorTieneActividadPK = entrenadorTieneActividadPK;
     }
 
-    public Actividad getActividad() {
+    public Activity getActividad() {
         return actividad;
     }
 
-    public void setActividad(Actividad actividad) {
+    public void setActividad(Activity actividad) {
         this.actividad = actividad;
     }
 
-    public Entrenador getEntrenador() {
+    public Trainer getEntrenador() {
         return entrenador;
     }
 
-    public void setEntrenador(Entrenador entrenador) {
+    public void setEntrenador(Trainer entrenador) {
         this.entrenador = entrenador;
     }
 

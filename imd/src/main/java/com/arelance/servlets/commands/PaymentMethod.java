@@ -1,11 +1,11 @@
 package com.arelance.servlets.commands;
 
-import com.arelance.domain.MetodoPago;
 import com.arelance.domain.PayPal;
-import com.arelance.domain.Tarjeta;
-import com.arelance.domain.Transferencia;
-import com.arelance.domain.Usuario;
-import com.arelance.service.UsuarioService;
+import com.arelance.domain.DebitCard;
+import com.arelance.domain.BankAccount;
+import com.arelance.domain.User;
+import com.arelance.service.factory.Crud;
+import com.arelance.service.factory.UserFactory;
 import com.arelance.servlets.commands.qualifiers.PaymentMethodQ;
 import java.io.IOException;
 import javax.inject.Inject;
@@ -19,19 +19,24 @@ import javax.servlet.http.HttpServletResponse;
  */
 @PaymentMethodQ
 public class PaymentMethod implements ActionsController {
+    
+    @Inject
+    private Crud crudUser;
+    
+    @Inject
+    private UserFactory userFactory;
 
     @Inject
-    private UsuarioService usuarioService;
+    private User user;
 
-    @Inject
-    private Usuario usuario;
-
-    private MetodoPago metodoPagoUsuario;
+    private com.arelance.domain.PaymentMethod paymentMethodUser;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        crudUser = userFactory.createCrud();
 
-        usuario = (Usuario) request.getSession().getAttribute("usuario");
+        user = (User) request.getSession().getAttribute("usuario");
         String metodoPagoSeleccionado = request.getParameter("metodopago");
         String descripcion = request.getParameter("descripcion");
         
@@ -40,23 +45,23 @@ public class PaymentMethod implements ActionsController {
         switch (metodoPagoSeleccionado) {
             case "paypal":
                 String correopaypal = request.getParameter("correopaypal");
-                metodoPagoUsuario = new PayPal(correopaypal, descripcion);
+                paymentMethodUser = new PayPal(correopaypal, descripcion);
                 break;
             case "tarjeta":
                 String numero = request.getParameter("numerotarjeta");
                 String cvv = request.getParameter("cvv");
-                metodoPagoUsuario = new Tarjeta(numero, cvv, descripcion);
+                paymentMethodUser = new DebitCard(numero, cvv, descripcion);
                 break;
             case "transferencia":
                 String iban = request.getParameter("iban");
-                metodoPagoUsuario = new Transferencia(iban, descripcion);
+                paymentMethodUser = new BankAccount(iban, descripcion);
                 break;
             default:
         }
 
-        metodoPagoUsuario.setUsuario(usuario);
-        usuario.getMetodoPago().add(metodoPagoUsuario);
-        usuarioService.updateUsuario(usuario);
+        paymentMethodUser.setUsuario(user);
+        user.getMetodoPago().add(paymentMethodUser);
+        crudUser.updateEntity(this);
 
         return "/preindex";
     }

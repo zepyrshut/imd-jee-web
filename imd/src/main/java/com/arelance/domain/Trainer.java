@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Entrenador.findByIdEntrenador", query = "SELECT e FROM Entrenador e WHERE e.idEntrenador = :idEntrenador"),
     @NamedQuery(name = "Entrenador.findByNombre", query = "SELECT e FROM Entrenador e WHERE e.nombre = :nombre"),
     @NamedQuery(name = "Entrenador.findByApellido", query = "SELECT e FROM Entrenador e WHERE e.apellido = :apellido")})
-public class Entrenador implements Serializable {
+public class Trainer implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -50,14 +50,14 @@ public class Entrenador implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "entrenador")
     private Collection<EntrenadorTieneActividad> entrenadorTieneActividadCollection;
 
-    public Entrenador() {
+    public Trainer() {
     }
 
-    public Entrenador(Integer idEntrenador) {
+    public Trainer(Integer idEntrenador) {
         this.idEntrenador = idEntrenador;
     }
 
-    public Entrenador(Integer idEntrenador, String nombre) {
+    public Trainer(Integer idEntrenador, String nombre) {
         this.idEntrenador = idEntrenador;
         this.nombre = nombre;
     }
@@ -113,7 +113,7 @@ public class Entrenador implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Entrenador other = (Entrenador) obj;
+        final Trainer other = (Trainer) obj;
         if (!Objects.equals(this.nombre, other.nombre)) {
             return false;
         }

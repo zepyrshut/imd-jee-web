@@ -18,61 +18,61 @@ import javax.persistence.Table;
 @Table(name = "usuario_tiene_actividad")
 @NamedQueries({
     @NamedQuery(name = "UsuarioTieneActividad.findAll", query = "SELECT u FROM UsuarioTieneActividad u")})
-public class UsuarioTieneActividad implements Serializable {
+public class UserHasActivity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected UsuarioTieneActividadPK usuarioTieneActividadPK;
+    protected UserHasActivityPK usuarioTieneActividadPK;
     @JoinColumn(name = "id_actividad", referencedColumnName = "id_actividad", insertable = false, updatable = false)
     @ManyToOne
-    private Actividad actividad;
+    private Activity actividad;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", insertable = false, updatable = false)
     @ManyToOne
-    private Usuario usuario;
+    private User usuario;
     @JoinColumn(name = "id_pago", referencedColumnName = "id_pago", insertable = false, updatable = false)
     @ManyToOne
-    private MetodoPago metodoPago;
+    private PaymentMethod metodoPago;
 
-    public UsuarioTieneActividad() {
+    public UserHasActivity() {
     }
 
-    public UsuarioTieneActividad(UsuarioTieneActividadPK usuarioTieneActividadPK) {
+    public UserHasActivity(UserHasActivityPK usuarioTieneActividadPK) {
         this.usuarioTieneActividadPK = usuarioTieneActividadPK;
     }
 
-    public UsuarioTieneActividad(int idUsuario, int idActividad, int idPago) {
-        this.usuarioTieneActividadPK = new UsuarioTieneActividadPK(idUsuario, idActividad, idPago);
+    public UserHasActivity(int idUsuario, int idActividad, int idPago) {
+        this.usuarioTieneActividadPK = new UserHasActivityPK(idUsuario, idActividad, idPago);
     }
 
-    public UsuarioTieneActividadPK getUsuarioTieneActividadPK() {
+    public UserHasActivityPK getUsuarioTieneActividadPK() {
         return usuarioTieneActividadPK;
     }
 
-    public void setUsuarioTieneActividadPK(UsuarioTieneActividadPK usuarioTieneActividadPK) {
+    public void setUsuarioTieneActividadPK(UserHasActivityPK usuarioTieneActividadPK) {
         this.usuarioTieneActividadPK = usuarioTieneActividadPK;
     }
 
-    public Actividad getActividad() {
+    public Activity getActividad() {
         return actividad;
     }
 
-    public void setActividad(Actividad actividad) {
+    public void setActividad(Activity actividad) {
         this.actividad = actividad;
     }
 
-    public Usuario getUsuario() {
+    public User getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(User usuario) {
         this.usuario = usuario;
     }
 
-    public MetodoPago getMetodoPago() {
+    public PaymentMethod getMetodoPago() {
         return metodoPago;
     }
 
-    public void setMetodoPago(MetodoPago metodoPago) {
+    public void setMetodoPago(PaymentMethod metodoPago) {
         this.metodoPago = metodoPago;
     }
 
@@ -94,7 +94,7 @@ public class UsuarioTieneActividad implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final UsuarioTieneActividad other = (UsuarioTieneActividad) obj;
+        final UserHasActivity other = (UserHasActivity) obj;
         return Objects.equals(this.usuarioTieneActividadPK, other.usuarioTieneActividadPK);
     }
 

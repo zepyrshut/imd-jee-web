@@ -12,23 +12,21 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "transferencia")
-public class Transferencia extends MetodoPago implements Serializable {
+public class BankAccount extends PaymentMethod implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Column(name = "iban")
     private String iban;
 
-    public Transferencia() {
+    public BankAccount() {
         super();
     }
-    
-    
 
-    public Transferencia(String iban, String nombrePago) {
+    public BankAccount(String iban, String nombrePago) {
         super(nombrePago);
         this.iban = iban;
-    }    
+    }
 
     public String getIban() {
         return iban;
@@ -56,8 +54,8 @@ public class Transferencia extends MetodoPago implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Transferencia other = (Transferencia) obj;
+        final BankAccount other = (BankAccount) obj;
         return Objects.equals(this.iban, other.iban);
     }
-    
+
 }
