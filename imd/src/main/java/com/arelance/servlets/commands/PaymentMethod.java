@@ -26,29 +26,36 @@ public class PaymentMethod implements ActionsController {
     @Inject
     private Usuario usuario;
 
+    private MetodoPago metodoPagoUsuario;
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // TODO - Mejorar el algoritmo de if/else con patrón estrategia, comando o estado.
         usuario = (Usuario) request.getSession().getAttribute("usuario");
-        String metodoPago = request.getParameter("metodopago");
+        String metodoPagoSeleccionado = request.getParameter("metodopago");
         String descripcion = request.getParameter("descripcion");
-        MetodoPago mp = null;
+        
+        // TODO - Mejorar sentencia switch, reemplazando por patrón comando.
 
-        if (metodoPago.equals("paypal")) {
-            String correopaypal = request.getParameter("correopaypal");
-            mp = new PayPal(correopaypal, descripcion);
-        } else if (metodoPago.equals("tarjeta")) {
-            String numero = request.getParameter("numerotarjeta");
-            String cvv = request.getParameter("cvv");
-            mp = new Tarjeta(numero, cvv, descripcion);
-        } else if (metodoPago.equals("transferencia")) {
-            String iban = request.getParameter("iban");
-            mp = new Transferencia(iban, descripcion);
+        switch (metodoPagoSeleccionado) {
+            case "paypal":
+                String correopaypal = request.getParameter("correopaypal");
+                metodoPagoUsuario = new PayPal(correopaypal, descripcion);
+                break;
+            case "tarjeta":
+                String numero = request.getParameter("numerotarjeta");
+                String cvv = request.getParameter("cvv");
+                metodoPagoUsuario = new Tarjeta(numero, cvv, descripcion);
+                break;
+            case "transferencia":
+                String iban = request.getParameter("iban");
+                metodoPagoUsuario = new Transferencia(iban, descripcion);
+                break;
+            default:
         }
 
-        mp.setUsuario(usuario);
-        usuario.getMetodoPago().add(mp);
+        metodoPagoUsuario.setUsuario(usuario);
+        usuario.getMetodoPago().add(metodoPagoUsuario);
         usuarioService.updateUsuario(usuario);
 
         return "/preindex";
