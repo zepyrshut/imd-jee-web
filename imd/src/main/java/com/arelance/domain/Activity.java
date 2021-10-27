@@ -141,5 +141,5 @@ public class Activity implements Serializable {
         }
         return Objects.equals(this.userHasActivity, other.userHasActivity);
     }
-    
+
 }

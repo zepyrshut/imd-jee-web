@@ -31,23 +31,23 @@ public class PaymentMethod implements ActionsController {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        userImd = (UserImd) request.getSession().getAttribute("usuario");
-        String selectedPaymentMethod = request.getParameter("metodopago");
-        String description = request.getParameter("descripcion");
+        userImd = (UserImd) request.getSession().getAttribute("user");
+        String selectedPaymentMethod = request.getParameter("paymentmethod");
+        String description = request.getParameter("description");
         
         // TODO - Mejorar sentencia switch, reemplazando por patrón comando.
 
         switch (selectedPaymentMethod) {
             case "paypal":
-                String email = request.getParameter("correopaypal");
+                String email = request.getParameter("email");
                 paymentMethodUser = new PayPal(email, description);
                 break;
-            case "tarjeta":
-                String number = request.getParameter("numerotarjeta");
+            case "debit":
+                String number = request.getParameter("number");
                 String cvv = request.getParameter("cvv");
                 paymentMethodUser = new DebitCard(number, cvv, description);
                 break;
-            case "transferencia":
+            case "bank":
                 String iban = request.getParameter("iban");
                 paymentMethodUser = new BankAccount(iban, description);
                 break;

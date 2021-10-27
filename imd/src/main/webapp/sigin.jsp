@@ -21,19 +21,19 @@
                 <c:if test="${usuarioRepetido != null}">
                     <article class="uk-alert-danger uk-text-left" uk-alert>
                         <a class="uk-alert-close" uk-close></a>
-                        <p><c:out value="${usuarioRepetido}"/></p>
+                        <p><c:out value="${userExists}"/></p>
                     </article>                
                 </c:if>
                 <c:if test="${emailRepetido != null}">
                     <article class="uk-alert-danger uk-text-left" uk-alert>
                         <a class="uk-alert-close" uk-close></a>
-                        <p><c:out value="${emailRepetido}"/></p>
+                        <p><c:out value="${emailExists}"/></p>
                     </article>                
                 </c:if>
-                <c:if test="${usuarioRegistrado != null}">
+                <c:if test="${success != null}">
                     <article class="uk-alert-success uk-text-left" uk-alert>
                         <a class="uk-alert-close" uk-close></a>
-                        <p><c:out value="${usuarioRegistrado}"/></p>
+                        <p><c:out value="${success}"/></p>
                     </article>                
                 </c:if>
             </section>
@@ -42,21 +42,21 @@
                     <article class="uk-inline">
                         <span class="uk-form-icon" uk-icon="icon: user"></span>
                         <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                               placeholder="Nombre" name="nombre" required />
+                               placeholder="Nombre" name="name" required />
                     </article>
                 </div>
                 <div class="uk-width-1-3@s">
                     <article class="uk-inline">
                         <span class="uk-form-icon" uk-icon="icon: user"></span>
                         <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                               placeholder="Primer apellido" name="apellido_a" required />
+                               placeholder="Primer apellido" name="surname_a" required />
                     </article>
                 </div>
                 <div class="uk-width-1-3@s">
                     <article class="uk-inline">
                         <span class="uk-form-icon" uk-icon="icon: user"></span>
                         <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                               placeholder="Segundo apellido" name="apellido_b" />
+                               placeholder="Segundo apellido" name="surname_b" />
                     </article>
                 </div>
                 <div class="uk-width-1-2@s">
@@ -70,21 +70,21 @@
                     <article class="uk-inline">
                         <span class="uk-form-icon" uk-icon="icon:  receiver"></span>
                         <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                               placeholder="Teléfono" name="telefono" />
+                               placeholder="Teléfono" name="phone" />
                     </article>
                 </div>
                 <div class="uk-width-1-2@s">
                     <article class="uk-inline">
                         <span class="uk-form-icon" uk-icon="icon: user"></span>
                         <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                               placeholder="Usuario" name="usuario" required />
+                               placeholder="Usuario" name="user" required />
                     </article>
                 </div>
                 <div class="uk-width-1-2@s">
                     <article class="uk-inline">
                         <span class="uk-form-icon" uk-icon="icon:  lock"></span>
                         <input class="uk-input form-width-xlarge" id="form-stacked-text" type="password"
-                               placeholder="Contraseña" name="contrasena" required />
+                               placeholder="Contraseña" name="password" required />
                     </article>
                 </div>
                 <footer class="uk-align-center uk-padding-small">

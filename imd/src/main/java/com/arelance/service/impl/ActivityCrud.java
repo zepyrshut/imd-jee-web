@@ -1,9 +1,9 @@
 package com.arelance.service.impl;
 
-import com.arelance.dao.facade.ActivityFacade;
+import com.arelance.dao.facade.local.ActivityFacadeLocal;
 import com.arelance.domain.Activity;
-import com.arelance.service.factory.Crud;
 import com.arelance.qualifiers.ActivityCrudQ;
+import com.arelance.service.Crud;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -15,7 +15,7 @@ import javax.inject.Inject;
 public class ActivityCrud implements Crud<Activity> {
 
     @Inject
-    private ActivityFacade facade;
+    private ActivityFacadeLocal facade;
 
     @Override
     public void createEntity(Activity t) {

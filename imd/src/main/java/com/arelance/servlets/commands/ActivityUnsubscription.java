@@ -2,7 +2,7 @@ package com.arelance.servlets.commands;
 
 import com.arelance.domain.Activity;
 import com.arelance.domain.UserImd;
-import com.arelance.service.factory.Crud;
+import com.arelance.service.Crud;
 import com.arelance.qualifiers.ActivityUnsubcriptionQ;
 import com.arelance.qualifiers.UserCrudQ;
 import java.io.IOException;

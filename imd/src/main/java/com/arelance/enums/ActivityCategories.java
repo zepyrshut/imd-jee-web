@@ -6,6 +6,6 @@ package com.arelance.enums;
  */
 public enum ActivityCategories {
 
-    INNER, OUTER;
+    INDOOR, OUTDOOR;
 
 }

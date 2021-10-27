@@ -35,8 +35,8 @@ public class LogIn implements ActionsController {
         datosSesion = sessionDataCrud.logIn(datosSesion);
         
         if (datosSesion == null) {
-            String datoIncorrecto = "Datos de sesión incorrectos, inténtelo de nuevo.";
-            request.setAttribute("datoIncorrecto", datoIncorrecto);
+            String invalidData = "Datos de sesión incorrectos, inténtelo de nuevo.";
+            request.setAttribute("invalidData", invalidData);
             return "/iniciosesion.jsp";
         } else {
             UserImd userImd = datosSesion.getUserSessionData();

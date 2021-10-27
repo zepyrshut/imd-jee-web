@@ -1,4 +1,4 @@
-package com.arelance.service.factory;
+package com.arelance.service;
 
 import java.util.List;
 import javax.ejb.Local;

@@ -1,11 +1,11 @@
 package com.arelance.service.impl;
 
-import com.arelance.dao.facade.UserFacade;
+import com.arelance.dao.facade.local.UserFacadeLocal;
 import com.arelance.domain.UserImd;
-import com.arelance.service.factory.Crud;
 import java.util.List;
 import javax.inject.Inject;
 import com.arelance.qualifiers.UserCrudQ;
+import com.arelance.service.Crud;
 
 /**
  *
@@ -15,7 +15,7 @@ import com.arelance.qualifiers.UserCrudQ;
 public class UserCrud implements Crud<UserImd> {
 
     @Inject
-    private UserFacade facade;
+    private UserFacadeLocal facade;
 
     @Override
     public void createEntity(UserImd t) {
@@ -47,4 +47,7 @@ public class UserCrud implements Crud<UserImd> {
         return (UserImd) facade.refreshEntity(t);
     }
     
+    public UserImd findUserByEmail(UserImd user) {
+        return facade.findUserByEmail(user);
+    }
 }

@@ -20,7 +20,7 @@ public class Register extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("./registrousuario.jsp").forward(request, response);
+        request.getRequestDispatcher("./sigin.jsp").forward(request, response);
     }
 
 }

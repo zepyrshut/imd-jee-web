@@ -14,19 +14,19 @@
         <%@ include file="/jspf/navbar.jspf" %>
         <div class="uk-container uk-container-small uk-padding">
             <header class="uk-align-center uk-text-center padding-top-medium">
-                <c:if test="${datoIncorrecto == null}">
+                <c:if test="${invalidData == null}">
                     <h1>¡Hola de nuevo!</h1>
                 </c:if>
-                <c:if test="${datoIncorrecto != null}">
+                <c:if test="${invalidData != null}">
                     <h1>¡Oops!</h1>
                 </c:if>
             </header>
             <main class="uk-text-center uk-padding-small">
                 <section>         
-                    <c:if test="${datoIncorrecto != null}">
+                    <c:if test="${invalidData != null}">
                         <article class="uk-alert-danger  uk-text-left"  id="error-message"  uk-alert>
                             <a class="uk-alert-close" uk-close></a>
-                            <p><c:out value="${datoIncorrecto}"/></p>
+                            <p><c:out value="${invalidData}"/></p>
                         </article>                
                     </c:if>            
                 </section>
@@ -36,14 +36,14 @@
                         <article class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: user"></span>
                             <input class="uk-input uk-form-width-large error-input" id="usuario-login" onclick="toNeutral()"  type ="text"
-                                   placeholder="Usuario" name="usuario" required />
+                                   placeholder="Usuario" name="user" required />
                         </article>
                     </div>
                     <div class="uk-form-controls uk-padding-small">
                         <article class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: lock"></span>
                             <input class="uk-input uk-form-width-large error-input" id="contrasena-login" onclick="toNeutral()" type ="password"
-                                   placeholder="Contraseña" name="contrasena" required />
+                                   placeholder="Contraseña" name="password" required />
                         </article>
                     </div>
                     <footer class="uk-padding">
@@ -53,7 +53,7 @@
                 </form>
                 <!-- Fin de formulario -->
             </main>
-            <c:if test="${datoIncorrecto != null}">
+            <c:if test="${invalidData != null}">
                 <script>toError();</script>
             </c:if>
             <!-- Pie de página -->
