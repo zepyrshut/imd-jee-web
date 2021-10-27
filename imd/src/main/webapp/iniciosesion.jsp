@@ -12,7 +12,7 @@
     <body>
         <!-- Barra navegación -->
         <%@ include file="/jspf/navbar.jspf" %>
-        <div class="uk-container uk-container-small uk-padding">
+     
             <header class="uk-align-center uk-text-center padding-top-medium">
                 <c:if test="${datoIncorrecto == null}">
                     <h1>¡Hola de nuevo!</h1>
@@ -32,20 +32,20 @@
                 </section>
                 <!-- Inicio de formulario -->
                 <form class="uk-grid-small" method="POST" action="actions?action=login">
-                    <div class="uk-form-controls uk-padding-small">
+                    <section class="uk-form-controls uk-padding-small">
                         <article class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: user"></span>
                             <input class="uk-input uk-form-width-large error-input" id="usuario-login" onclick="toNeutral()"  type ="text"
                                    placeholder="Usuario" name="usuario" required />
                         </article>
-                    </div>
-                    <div class="uk-form-controls uk-padding-small">
+                    </section>
+                    <section class="uk-form-controls uk-padding-small">
                         <article class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: lock"></span>
                             <input class="uk-input uk-form-width-large error-input" id="contrasena-login" onclick="toNeutral()" type ="password"
                                    placeholder="Contraseña" name="contrasena" required />
                         </article>
-                    </div>
+                    </section>
                     <footer class="uk-padding">
                         <input type="submit" class="uk-button uk-button-primary" value="Iniciar sesión" />
                         <input type="reset" class="uk-button uk-button-danger" value="Borrar" />

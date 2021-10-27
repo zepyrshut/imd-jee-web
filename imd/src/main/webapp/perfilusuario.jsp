@@ -24,7 +24,7 @@
 
         <p>Datos usuario:</p>
         <p>${usuario.nombre}</p>
-        <p><c:out value="${usuario.algo}" default="no existe"></c:out></p>
+       
 
           <c:forEach items="${usuario.metodoPago}" var="metodoPago">
               <p>${metodoPago.nombrepago}</p>

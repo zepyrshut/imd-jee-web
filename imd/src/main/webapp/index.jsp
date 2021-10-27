@@ -13,8 +13,7 @@
                 <c:forEach var="actividad" items="${listaActividad}">  
                     <section>
                         <article class="uk-card uk-card-default uk-box-shadow-hover-xlarge">
-                            <section class="uk-background-cover" data-src="img/<c:out value="${actividad.nombreActividad}"/>.jpg" uk-img>
-                                <!--los tres siguentes divs son para encuadre de los carteles-->
+                            <section class="uk-background-cover" data-src="img/<c:out value="${actividad.nombreActividad}"/>.jpg" uk-img>                                
                                 <header class="uk-card-header uk-overlay uk-overlay-default">
                                     <figure class="uk-grid-small uk-flex-middle" uk-grid>
                                         <div class="uk-width-expand">
@@ -35,17 +34,10 @@
                         </article>
                     </section>
                 </c:forEach> 
-            </section>
-                        
-            </div>
-                   <div>
-                       <button onclick="mostrar_ocultar()" id="mostrarmenosmas">Mostrar mas contenido</button>
-        </div>
+            </section>                                                    
         </main>        
         <!-- Pie de página -->
-        <%@ include file="/jspf/footer.jspf" %> 
-      
-     
+        <%@ include file="/jspf/footer.jspf" %>            
         <script src="extensionarticulos.js"></script>
     </body>
 </html>
