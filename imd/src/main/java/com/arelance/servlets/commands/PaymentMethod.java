@@ -1,12 +1,13 @@
 package com.arelance.servlets.commands;
 
-import com.arelance.domain.MetodoPago;
-import com.arelance.domain.Paypal;
-import com.arelance.domain.Tarjeta;
-import com.arelance.domain.Transferencia;
-import com.arelance.domain.Usuario;
-import com.arelance.service.UsuarioService;
-import com.arelance.servlets.commands.qualifiers.PaymentMethodQ;
+import com.arelance.domain.PayPal;
+import com.arelance.domain.DebitCard;
+import com.arelance.domain.BankAccount;
+import com.arelance.domain.UserImd;
+import com.arelance.service.UserCrud;
+import com.arelance.qualifiers.PaymentMethodQ;
+import com.arelance.qualifiers.UserFactoryQ;
+import com.arelance.service.factory.Factory;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -19,37 +20,46 @@ import javax.servlet.http.HttpServletResponse;
  */
 @PaymentMethodQ
 public class PaymentMethod implements ActionsController {
-
+    
     @Inject
-    private UsuarioService usuarioService;
-
+    @UserFactoryQ
+    private Factory<UserCrud> userFactory;    
+    
     @Inject
-    private Usuario usuario;
+    private UserImd userImd;
+    
+    // TODO - Mejorar esto
+    private com.arelance.domain.PaymentMethod paymentMethodUser;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        userImd = (UserImd) request.getSession().getAttribute("user");
+        String selectedPaymentMethod = request.getParameter("paymentmethod");
+        String description = request.getParameter("description");
+        
+        // TODO - Mejorar sentencia switch, reemplazando por patrón comando.
 
-        // TODO - Mejorar el algoritmo de if/else con patrón estrategia, comando o estado.
-        usuario = (Usuario) request.getSession().getAttribute("usuario");
-        String metodoPago = request.getParameter("metodopago");
-        String descripcion = request.getParameter("descripcion");
-        MetodoPago mp = null;
-
-        if (metodoPago.equals("paypal")) {
-            String correopaypal = request.getParameter("correopaypal");
-            mp = new Paypal(correopaypal, descripcion);
-        } else if (metodoPago.equals("tarjeta")) {
-            String numero = request.getParameter("numerotarjeta");
-            String cvv = request.getParameter("cvv");
-            mp = new Tarjeta(numero, cvv, descripcion);
-        } else if (metodoPago.equals("transferencia")) {
-            String iban = request.getParameter("iban");
-            mp = new Transferencia(iban, descripcion);
+        switch (selectedPaymentMethod) {
+            case "paypal":
+                String email = request.getParameter("email");
+                paymentMethodUser = new PayPal(email, description);
+                break;
+            case "debit":
+                String number = request.getParameter("number");
+                String cvv = request.getParameter("cvv");
+                paymentMethodUser = new DebitCard(number, cvv, description);
+                break;
+            case "bank":
+                String iban = request.getParameter("iban");
+                paymentMethodUser = new BankAccount(iban, description);
+                break;
+            default:
         }
 
-        mp.setUsuario(usuario);
-        usuario.getMetodoPago().add(mp);
-        usuarioService.updateUsuario(usuario);
+        paymentMethodUser.setUserImd(userImd);
+        userImd.getPaymentMethod().add(paymentMethodUser);
+        userFactory.buildCrud().updateEntity(userImd);
 
         return "/preindex";
     }

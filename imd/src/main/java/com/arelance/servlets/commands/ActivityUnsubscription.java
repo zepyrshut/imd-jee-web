@@ -1,9 +1,11 @@
 package com.arelance.servlets.commands;
 
-import com.arelance.domain.Actividad;
-import com.arelance.domain.Usuario;
-import com.arelance.service.UsuarioService;
-import com.arelance.servlets.commands.qualifiers.ActivityUnsubcriptionQ;
+import com.arelance.domain.Activity;
+import com.arelance.domain.UserImd;
+import com.arelance.qualifiers.ActivityUnsubcriptionQ;
+import com.arelance.qualifiers.UserFactoryQ;
+import com.arelance.service.UserCrud;
+import com.arelance.service.factory.Factory;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -15,26 +17,30 @@ import javax.servlet.http.HttpServletResponse;
  * @author Pedro
  */
 @ActivityUnsubcriptionQ
-public class ActivityUnsubscription implements ActionsController {   
+public class ActivityUnsubscription implements ActionsController {
+
+    
+    @Inject
+    @UserFactoryQ
+    private Factory<UserCrud> userFactory;
 
     @Inject
-    private UsuarioService usuarioService;
+    private Activity activity;
 
     @Inject
-    private Actividad actividad;
-
-    @Inject
-    private Usuario usuario;
+    private UserImd userImd;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        actividad = (Actividad) request.getSession().getAttribute("actividad");
-        usuario = (Usuario) request.getSession().getAttribute("usuario");
+        activity = (Activity) request.getSession().getAttribute("actividad");
+        userImd = (UserImd) request.getSession().getAttribute("usuario");        
 
-        boolean remove = usuario.getUsuarioTieneActividad().remove(actividad);
+        boolean remove = userImd.getUserHasActivity().remove(activity);
+
         if (remove) {
-        usuarioService.updateUsuario(usuario);
+            userFactory.buildCrud().updateEntity(userImd);
+            
         } else {
             // TODO - Añadir mensajes de error.
         }

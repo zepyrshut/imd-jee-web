@@ -1,9 +1,11 @@
 package com.arelance.servlets.commands;
 
-import com.arelance.servlets.commands.qualifiers.LogInQ;
-import com.arelance.dao.DatosSesionDAO;
-import com.arelance.domain.DatosSesion;
-import com.arelance.domain.Usuario;
+import com.arelance.qualifiers.LogInQ;
+import com.arelance.domain.SessionData;
+import com.arelance.domain.UserImd;
+import com.arelance.service.SessionDataCrud;
+import com.arelance.qualifiers.SessionDataFactoryQ;
+import com.arelance.service.factory.Factory;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,29 +19,34 @@ import javax.servlet.http.HttpSession;
  */
 @LogInQ
 public class LogIn implements ActionsController {
-
+    
+    
     @Inject
-    private DatosSesionDAO datosSesionDAO;
+    @SessionDataFactoryQ
+    private Factory<SessionDataCrud> sessionDataFactory;
+    
+    @Inject
+    private SessionData sessionData;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        DatosSesion datosSesion = new DatosSesion();
-        String nombre = request.getParameter("usuario");
-        String contrasena = request.getParameter("contrasena");
+        String name = request.getParameter("usuario");
+        String password = request.getParameter("contrasena");
 
-        datosSesion.setUsuario(nombre);
-        datosSesion.setContrasena(contrasena);
-        datosSesion = datosSesionDAO.inicioSesion(datosSesion);
+        sessionData.setUser(name);
+        sessionData.setPassword(password);
+        sessionData = sessionDataFactory.buildCrud().logIn(sessionData);
 
-        if (datosSesion == null) {
-            String datoIncorrecto = "Datos de sesión incorrectos, inténtelo de nuevo.";
-            request.setAttribute("datoIncorrecto", datoIncorrecto);
+        
+        if (sessionData == null) {
+            String invalidData = "Datos de sesión incorrectos, inténtelo de nuevo.";
+            request.setAttribute("invalidData", invalidData);
             return "/iniciosesion.jsp";
         } else {
-            Usuario usuario = datosSesion.getUsuarioSocio();
+            UserImd userImd = sessionData.getUserSessionData();
             HttpSession sesionUsuario = request.getSession(true);
-            sesionUsuario.setAttribute("usuario", usuario);
+            sesionUsuario.setAttribute("usuario", userImd);
             return "/preindex";
         }
 

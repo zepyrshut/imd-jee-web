@@ -1,15 +1,14 @@
 package com.arelance.servlets.commands;
 
-import com.arelance.domain.Actividad;
-import com.arelance.domain.Paypal;
-import com.arelance.domain.Tarjeta;
-import com.arelance.domain.Transferencia;
-import com.arelance.domain.Usuario;
-import com.arelance.domain.UsuarioTieneActividad;
-import com.arelance.domain.UsuarioTieneActividadPK;
-import com.arelance.service.ActividadService;
-import com.arelance.service.UsuarioService;
-import com.arelance.servlets.commands.qualifiers.ActivityInscriptionQ;
+import com.arelance.domain.Activity;
+import com.arelance.domain.PaymentMethod;
+import com.arelance.domain.UserImd;
+import com.arelance.domain.UserHasActivity;
+import com.arelance.domain.UserHasActivityPK;
+import com.arelance.service.UserCrud;
+import com.arelance.qualifiers.ActivityInscriptionQ;
+import com.arelance.qualifiers.UserFactoryQ;
+import com.arelance.service.factory.Factory;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -22,57 +21,42 @@ import javax.servlet.http.HttpServletResponse;
  */
 @ActivityInscriptionQ
 public class ActivityInscription implements ActionsController {
+    
+    @Inject
+    @UserFactoryQ
+    private Factory<UserCrud> userFactory;
 
     @Inject
-    private UsuarioService usuarioService;
+    private UserHasActivity userHasActivity;
 
     @Inject
-    private UsuarioTieneActividad usuarioTieneActividad;
+    private UserHasActivityPK userHasActivityPK;
 
     @Inject
-    private UsuarioTieneActividadPK usuarioTieneActividadPK;
+    private UserImd userImd;
 
     @Inject
-    private Usuario usuario;
-
-    @Inject
-    private Actividad actividad;
+    private Activity activity;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        actividad = (Actividad) request.getSession().getAttribute("actividad");
-        usuario = (Usuario) request.getSession().getAttribute("usuario");
-        int index = 0;
-        String metodoPagoUsuario = usuario.getMetodoPago().get(index).getClass().getSimpleName();
+        activity = (Activity) request.getSession().getAttribute("actividad");
+        userImd = (UserImd) request.getSession().getAttribute("usuario");
+        int index = Integer.parseInt(request.getParameter("metodoPago"));
+        PaymentMethod metodoPago = userImd.getPaymentMethod().get(index);
 
-        usuarioTieneActividad.setUsuario(usuario);
-        usuarioTieneActividadPK.setIdActividad(actividad.getIdActividad());
-        usuarioTieneActividadPK.setIdUsuario(usuario.getIdUsuario());
+        userHasActivityPK.setActivityId(activity.getActivityId());
+        userHasActivityPK.setUserId(userImd.getUserId());
+        userHasActivityPK.setPaymentId(metodoPago.getPaymentId());
 
-        // TODO - Mejorar sistema direccionamiento. Uso de patrón comando o patrón estrategia.
-        if (metodoPagoUsuario.equals("Paypal")) {
-            Paypal paypal;
-            paypal = (Paypal) usuario.getMetodoPago().get(index);
-            usuarioTieneActividad.setMetodoPago(paypal);
-            usuarioTieneActividadPK.setIdPago(paypal.getIdMetodoPago());
+        userHasActivity.setActivity(activity);
+        userHasActivity.setUserImd(userImd);
+        userHasActivity.setPaymentMethod(metodoPago);
 
-        } else if (metodoPagoUsuario.equals("Tarjeta")) {
-            Tarjeta tarjeta;
-            tarjeta = (Tarjeta) usuario.getMetodoPago().get(index);
-            usuarioTieneActividad.setMetodoPago(tarjeta);
-            usuarioTieneActividadPK.setIdPago(tarjeta.getIdMetodoPago());
-        } else {
-            Transferencia transferencia;
-            transferencia = (Transferencia) usuario.getMetodoPago().get(index);
-            usuarioTieneActividad.setMetodoPago(transferencia);
-            usuarioTieneActividadPK.setIdPago(transferencia.getIdMetodoPago());
-        }
-
-        usuarioTieneActividad.setActividad(actividad);
-        usuarioTieneActividad.setUsuarioTieneActividadPK(usuarioTieneActividadPK);
-        usuario.getUsuarioTieneActividad().add(usuarioTieneActividad);
-        usuarioService.updateUsuario(usuario);
+        userHasActivity.setUserHasActivityPK(userHasActivityPK);
+        userImd.getUserHasActivity().add(userHasActivity);
+        userFactory.buildCrud().updateEntity(userImd);
 
         return "/preindex";
 

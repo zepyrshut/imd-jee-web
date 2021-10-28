@@ -1,6 +1,8 @@
 package com.arelance.servlets.ocultos;
 
-import com.arelance.service.ActividadService;
+import com.arelance.qualifiers.ActivityFactoryQ;
+import com.arelance.service.ActivityCrud;
+import com.arelance.service.factory.Factory;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -12,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Pedro
- * 
+ *
  * Primer servlet que carga cuando se inicia la página por primera vez. También
  * es cargada cuando se inicia sesión o cierra sesión.
  */
@@ -20,15 +22,16 @@ import javax.servlet.http.HttpServletResponse;
 public class PreIndexLoader extends HttpServlet {
 
     @Inject
-    ActividadService actividadService;
-    
+    @ActivityFactoryQ
+    private Factory<ActivityCrud> activityFactory;
+
     /**
-     * 
+     *
      * @param request
      * @param response
      * @throws ServletException
-     * @throws IOException 
-     * 
+     * @throws IOException
+     *
      * Método que recoge ambas solicitudes y son gestionadas según como proceda,
      * su función es cargar la página inicial con todas las actividades deporti-
      * vas.
@@ -36,9 +39,9 @@ public class PreIndexLoader extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setAttribute("listaActividad", actividadService.listarActividades());
+        request.setAttribute("activitiesList", activityFactory.buildCrud().readAllEntities());
         request.getRequestDispatcher("index.jsp").forward(request, response);
-        
+
     }
 
     @Override

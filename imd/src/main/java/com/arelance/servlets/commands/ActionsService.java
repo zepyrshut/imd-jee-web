@@ -1,10 +1,10 @@
 package com.arelance.servlets.commands;
 
-import com.arelance.servlets.commands.qualifiers.ActivityInscriptionQ;
-import com.arelance.servlets.commands.qualifiers.ActivityUnsubcriptionQ;
-import com.arelance.servlets.commands.qualifiers.LogInQ;
-import com.arelance.servlets.commands.qualifiers.RegisterQ;
-import com.arelance.servlets.commands.qualifiers.LogOutQ;
+import com.arelance.qualifiers.ActivityInscriptionQ;
+import com.arelance.qualifiers.ActivityUnsubcriptionQ;
+import com.arelance.qualifiers.LogInQ;
+import com.arelance.qualifiers.RegisterQ;
+import com.arelance.qualifiers.LogOutQ;
 import java.io.IOException;
 import java.util.*;
 import javax.inject.Inject;
@@ -14,8 +14,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.arelance.servlets.commands.qualifiers.ActivityDetailsQ;
-import com.arelance.servlets.commands.qualifiers.PaymentMethodQ;
+import com.arelance.qualifiers.ActivityDetailsQ;
+import com.arelance.qualifiers.PaymentMethodQ;
 
 /**
  *

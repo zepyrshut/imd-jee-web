@@ -1,6 +1,6 @@
 package com.arelance.servlets.commands;
 
-import com.arelance.servlets.commands.qualifiers.LogOutQ;
+import com.arelance.qualifiers.LogOutQ;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
