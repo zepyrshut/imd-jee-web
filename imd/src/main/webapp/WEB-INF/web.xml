@@ -9,7 +9,7 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>
-           principal
+           PrincipalTests
         </welcome-file>
     </welcome-file-list>
        <error-page>
