@@ -12,9 +12,9 @@
         <main class="uk-container uk-container-small">
             <header class="uk-text-center padding-top-medium">
                 <figure class="uk-background-cover uk-margin-remove"
-                        data-src="img/<c:out value="${actividad.nombreActividad}"/>.jpg" uk-img>
+                        data-src="img/<c:out value="${activity.activityName}"/>.jpg" uk-img>
                     <figcaption class="uk-height-medium uk-overlay uk-overlay-default uk-flex uk-flex-middle uk-flex-center blur">
-                        <h1><c:out value="${actividad.nombreActividad}"/></h1>
+                        <h1><c:out value="${activity.activityName}"/></h1>
                     </figcaption>
                 </figure>
             </header>
@@ -43,23 +43,23 @@
                             Sed harum numquam nam autem quidem, sapiente totam incidunt, repellendus maxime praesentium
                             tempore optio voluptatem voluptate necessitatibus.</p>
                         <p>Apto para todas las edades.</p>
-                        <p>El entrenador de esta actividad es <c:out value="${actividad.entrenadorTieneActividad.entrenador.nombre}"/>.</p>
+                        <p>El entrenador de esta actividad es <c:out value="${activity.trainerHasActivity.trainer.name}"/>.</p>
                     </div>
                     </div>
                 </article>
             </section>
             <section>
-                <c:if test="${usuario == null}">    
+                <c:if test="${user == null}">    
                     <article>
                         <p> Para poder inscribirse en la actividad, debes primero <a href="login">iniciar sesión</a>.</p>
                     </article>
                 </c:if>
-                <c:if test="${usuario != null}">
+                <c:if test="${user != null}">
                     <form action="actions?action=activityinscription" method="POST">
-                                        <label for="metodoPago">Elige método de pago:</label>
-                    <select name="metodoPago">
-                        <c:forEach items="${usuario.metodoPago}" var="metodoPago" varStatus="forLoop">
-                            <option value=${forLoop.index}>${metodoPago.nombrepago}</option>
+                                        <label for="paymentMethod">Elige método de pago:</label>
+                    <select name="paymentMethod">
+                        <c:forEach items="${user.paymentMethod}" var="paymentMethod" varStatus="forLoop">
+                            <option value=${forLoop.index}>${paymentMethod.paymentName}</option>
                         </c:forEach>
                     </select>
                                         
@@ -76,8 +76,8 @@
                         <p>Seleccione el método de pago deseado para la inscripción de la actividad.</p>
                     </aside>
 
-                    <c:forEach items="${usuario.metodoPago}" var="metodoPago" varStatus="forLoop">
-                        <p>${metodoPago.nombrepago} ${forLoop.index}</p>
+                    <c:forEach items="${usuario.metodoPago}" var="paymentMethod" varStatus="forLoop">
+                        <p>${paymentMethod.paymentName} ${forLoop.index}</p>
                     </c:forEach>
 
 

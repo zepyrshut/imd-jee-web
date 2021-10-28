@@ -91,10 +91,7 @@ public abstract class PaymentMethod implements Serializable {
         if (!Objects.equals(this.paymentId, other.paymentId)) {
             return false;
         }
-        if (!Objects.equals(this.userImd, other.userImd)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.userImd, other.userImd);
     }
 
 }

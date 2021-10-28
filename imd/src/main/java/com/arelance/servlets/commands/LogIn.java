@@ -31,8 +31,8 @@ public class LogIn implements ActionsController {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String name = request.getParameter("usuario");
-        String password = request.getParameter("contrasena");
+        String name = request.getParameter("user");
+        String password = request.getParameter("password");
 
         sessionData.setUser(name);
         sessionData.setPassword(password);
@@ -42,11 +42,11 @@ public class LogIn implements ActionsController {
         if (sessionData == null) {
             String invalidData = "Datos de sesión incorrectos, inténtelo de nuevo.";
             request.setAttribute("invalidData", invalidData);
-            return "/iniciosesion.jsp";
+            return "/login.jsp";
         } else {
             UserImd userImd = sessionData.getUserSessionData();
             HttpSession sesionUsuario = request.getSession(true);
-            sesionUsuario.setAttribute("usuario", userImd);
+            sesionUsuario.setAttribute("user", userImd);
             return "/preindex";
         }
 

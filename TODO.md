@@ -8,6 +8,7 @@
 - [ ] Traducción todo *back-end* al inglés y todo *front-end* al español e inglés (soporte multi-idioma).
 - [ ] Deshabilitar todos los enlaces directos redundantes. Si está en *index*, eliminar los enlaces que llevan a *index*.
 - [ ] Desahbilitar botón guardar cambios en el perfil de usuario si no hay ninguna modificación.
+
 # Ya resuelto
 
 - [x] Corregir y solucionar el despliegue de Payara.

@@ -28,15 +28,14 @@ public class ActivityDetails implements ActionsController {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String idActividad = request.getParameter("idactividad");
-        activity.setActivityId(Integer.parseInt(idActividad));
+        Integer idActividad = Integer.parseInt(request.getParameter("idactividad"));
 
-        if (idActividad != null) {
-            request.getSession().setAttribute("actividad", activityFactory.buildCrud().findById(this));
+        if (idActividad < 0) {
+            request.getSession().setAttribute("activity", activityFactory.buildCrud().findById(idActividad));
         } else {
-            request.getSession().removeAttribute("actividad");
+            request.getSession().removeAttribute("activity");
         }
-        return "/detalleactividad.jsp";
+        return "/activitydetails.jsp";
     }
 
 }

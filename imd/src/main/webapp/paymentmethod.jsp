@@ -19,10 +19,10 @@
         <li>
             <a class="uk-accordion-title" href="#">Añadir PayPal</a>
             <div class="uk-accordion-content">
-                <form method="POST" action="actions?action=paymentmethod&metodopago=paypal">
+                <form method="POST" action="actions?action=paymentmethod&paymentmethod=paypal">
                     <div class="uk-margin">
-                        <input class="uk-input" type="text" placeholder="Descripción" name="descripcion">
-                        <input class="uk-input" type="text" placeholder="Correo PayPal" name="correopaypal">
+                        <input class="uk-input" type="text" placeholder="Descripción" name="description">
+                        <input class="uk-input" type="text" placeholder="Correo PayPal" name="email">
                     </div>
                     <input type="submit" value="Añadir" class="uk-button uk-button-primary uk-margin-small-top">
                 </form>
@@ -33,10 +33,10 @@
         <li>
             <a class="uk-accordion-title" href="#">Añadir tarjeta</a>
             <div class="uk-accordion-content">
-                <form  method="POST" action="actions?action=paymentmethod?metodopago=tarjeta">
+                <form  method="POST" action="actions?action=paymentmethod?paymentmethod=debit">
                     <div class="uk-margin">
                         <input class="uk-input" type="text" placeholder="Descripción" name="descripcion">
-                        <input class="uk-input" type="text" placeholder="Número tarjeta" name="numerotarjeta">
+                        <input class="uk-input" type="text" placeholder="Número tarjeta" name="number">
                         <input class="uk-input" type="text" placeholder="Código seguridad" name="cvv">
                     </div>
                     <input type="submit" value="Añadir" class="uk-button uk-button-primary uk-margin-small-top">
@@ -48,7 +48,7 @@
         <li>
             <a class="uk-accordion-title" href="#">Añadir cuenta bancaria</a>
             <div class="uk-accordion-content">
-                <form  method="POST" action="actions?action=paymentmethod?metodopago=transferencia">
+                <form  method="POST" action="actions?action=paymentmethod?paymentmethod=bank">
                     <div class="uk-margin">
                         <input class="uk-input" type="text" placeholder="Descripción" name="descripcion">
                         <input class="uk-input" type="text" placeholder="Número IBAN" name="iban">

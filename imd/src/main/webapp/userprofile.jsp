@@ -23,14 +23,13 @@
         <h1>Perfil de usuario</h1>
 
         <p>Datos usuario:</p>
-        <p>${usuario.nombre}</p>
+        <p>${user.name}</p>
         
-        <a href="metodopago.jsp">AÑADIR METODO DE PAGO</a>
+        <a href="paymentmethod.jsp">AÑADIR METODO DE PAGO</a>
      
 
-          <c:forEach items="${usuario.metodoPago}" var="metodoPago">
-              <p>${metodoPago.nombrepago}</p>
-              
+          <c:forEach items="${user.paymentMethod}" var="paymentMethod">
+              <p>${paymentMethod.paymentName}</p>              
           </c:forEach>
      
 
@@ -48,24 +47,24 @@
 
                         <c:out value="numero de iban: ${empty usuario.transferencia.iban ? 'Añadir datos bancarios(formulario JS)' : usuario.transferencia.iban}" /> --%>
 
-                        <span class="text-black-50">${usuario.email}</span></div>
+                        <span class="text-black-50">${user.email}</span></div>
                 </div>
                 <div class="col-md-8">
                     <div class="p-3 py-5">
                         <form action="PostUpdateDescripcionUsuario">
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label for="html">Nombre</label><input type="text" class="form-control" value="${usuario.nombre}" name="name"></div>
+                                    <label for="html">Nombre</label><input type="text" class="form-control" value="${user.name}" name="name"></div>
 
                                 <div class="col-md-6"> 
-                                    <label for="html">Apellido 1</label><input type="text" class="form-control" value="${usuario.apellidoA}" name="profilemiddlename"></div>
-                                <div class="col-md-6"> <label for="html">Apellido 2</label><input type="text" class="form-control" value="${usuario.apellidoB}" name="profilelastname"></div>
+                                    <label for="html">Apellido 1</label><input type="text" class="form-control" value="${user.surnameA}" name="profilemiddlename"></div>
+                                <div class="col-md-6"> <label for="html">Apellido 2</label><input type="text" class="form-control" value="${user.surnameB}" name="profilelastname"></div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6"> <label for="html">Correo</label>
-                                    <input type="text" class="form-control" value="${usuario.email}" name="profilemail"></div>
+                                    <input type="text" class="form-control" value="${user.email}" name="profilemail"></div>
                                 <div class="col-md-6"> <label for="html">Telefono</label>
-                                    <input type="text" class="form-control" value="${usuario.telefono}" name="profilephone"></div>
+                                    <input type="text" class="form-control" value="${user.phone}" name="profilephone"></div>
                             </div>
 
                             <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="submit">Guardar cambios</button></div>
