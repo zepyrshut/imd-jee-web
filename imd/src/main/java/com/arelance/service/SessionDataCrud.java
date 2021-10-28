@@ -3,6 +3,7 @@ package com.arelance.service;
 import com.arelance.dao.facade.local.SessionDataFacadeLocal;
 import com.arelance.domain.SessionData;
 import com.arelance.qualifiers.SessionDataCrudQ;
+import com.arelance.qualifiers.SessionDataFacadeQ;
 import javax.inject.Inject;
 
 /**
@@ -13,6 +14,7 @@ import javax.inject.Inject;
 public class SessionDataCrud implements SessionDataFacadeLocal {
 
     @Inject
+    @SessionDataFacadeQ
     private SessionDataFacadeLocal facade;
 
     @Override

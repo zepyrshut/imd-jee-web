@@ -3,6 +3,7 @@ package com.arelance.service;
 import com.arelance.dao.facade.local.ActivityFacadeLocal;
 import com.arelance.domain.Activity;
 import com.arelance.qualifiers.ActivityCrudQ;
+import com.arelance.qualifiers.ActivityFacadeQ;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -11,9 +12,11 @@ import javax.inject.Inject;
  * @author Pedro
  */
 @ActivityCrudQ
+
 public class ActivityCrud implements ActivityFacadeLocal {
 
     @Inject
+    @ActivityFacadeQ
     private ActivityFacadeLocal facade;
 
     @Override

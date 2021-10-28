@@ -15,7 +15,6 @@ public abstract class AbstractFacade<T> {
     protected AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
-
     protected abstract EntityManager getEntityManager();
 
     public void createEntity(T entity) {
@@ -36,7 +35,7 @@ public abstract class AbstractFacade<T> {
     }
 
     public T refreshEntity(T entity) {
-        getEntityManager().refresh(getEntityManager().merge(entity));
+       getEntityManager().refresh(getEntityManager().merge(entity));
         return entity;
     }
 

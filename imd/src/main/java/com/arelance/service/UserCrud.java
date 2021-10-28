@@ -4,6 +4,7 @@ import com.arelance.dao.facade.local.UserFacadeLocal;
 import com.arelance.domain.UserImd;
 import javax.inject.Inject;
 import com.arelance.qualifiers.UserCrudQ;
+import com.arelance.qualifiers.UserFacadeQ;
 
 /**
  *
@@ -13,6 +14,7 @@ import com.arelance.qualifiers.UserCrudQ;
 public class UserCrud implements UserFacadeLocal {
 
     @Inject
+    @UserFacadeQ
     private UserFacadeLocal facade;
 
     @Override

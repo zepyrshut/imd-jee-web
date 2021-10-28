@@ -2,7 +2,9 @@ package com.arelance.dao.facade;
 
 import com.arelance.dao.facade.local.UserFacadeLocal;
 import com.arelance.domain.UserImd;
+import com.arelance.qualifiers.UserFacadeQ;
 import java.io.Serializable;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -12,9 +14,15 @@ import javax.persistence.Query;
  *
  * @author Pedro
  */
+@Stateless
+@UserFacadeQ
 public class UserFacade extends AbstractFacade<UserImd> implements Serializable, UserFacadeLocal {
 
     private static final long serialVersionUID = 1L;
+
+    public UserFacade() {
+        super(UserImd.class);
+    }
 
     @PersistenceContext(unitName = "imdPU")
     EntityManager em;
@@ -22,10 +30,6 @@ public class UserFacade extends AbstractFacade<UserImd> implements Serializable,
     @Override
     protected EntityManager getEntityManager() {
         return em;
-    }
-
-    public UserFacade() {
-        super(UserImd.class);
     }
 
     @Override
