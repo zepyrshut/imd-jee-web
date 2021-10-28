@@ -10,8 +10,8 @@ import javax.persistence.PersistenceContext;
  *
  * @author Pedro
  */
-public class ActivityFacade extends AbstractFacade<Activity> implements Serializable, ActivityFacadeLocal{
-    
+public class ActivityFacade extends AbstractFacade<Activity> implements Serializable, ActivityFacadeLocal {
+
     private static final long serialVersionUID = 1L;
 
     @PersistenceContext(unitName = "imdPU")
@@ -25,5 +25,5 @@ public class ActivityFacade extends AbstractFacade<Activity> implements Serializ
     public ActivityFacade() {
         super(Activity.class);
     }
-    
+
 }

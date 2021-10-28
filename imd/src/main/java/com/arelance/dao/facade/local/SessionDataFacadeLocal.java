@@ -1,7 +1,6 @@
 package com.arelance.dao.facade.local;
 
 import com.arelance.domain.SessionData;
-import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -16,10 +15,8 @@ public interface SessionDataFacadeLocal {
     public void updateEntity(SessionData user);
 
     public void deleteEntity(SessionData user);
-    
-    public List<SessionData> readAllEntity();
 
-    public SessionData readEntity(Object id);
+    public SessionData findById(Object id);
 
     public SessionData refreshEntity(SessionData sessionData);
 

@@ -2,17 +2,16 @@ package com.arelance.service.impl;
 
 import com.arelance.dao.facade.local.UserFacadeLocal;
 import com.arelance.domain.UserImd;
-import java.util.List;
 import javax.inject.Inject;
 import com.arelance.qualifiers.UserCrudQ;
-import com.arelance.service.Crud;
+import com.arelance.service.intefacescrud.BasicCrud;
 
 /**
  *
  * @author Pedro
  */
 @UserCrudQ
-public class UserCrud implements Crud<UserImd> {
+public class UserCrud implements BasicCrud<UserImd> {
 
     @Inject
     private UserFacadeLocal facade;
@@ -33,15 +32,10 @@ public class UserCrud implements Crud<UserImd> {
     }
 
     @Override
-    public UserImd readEntity(Integer n) {
-        return (UserImd) facade.readEntity(n);
+    public UserImd findById(Integer n) {
+        return (UserImd) facade.findById(n);
     }
-
-    @Override
-    public List<UserImd> readAllEntity() {
-        return facade.readAllEntity();
-    }
-
+    
     @Override
     public UserImd refreshEntity(UserImd t) {
         return (UserImd) facade.refreshEntity(t);

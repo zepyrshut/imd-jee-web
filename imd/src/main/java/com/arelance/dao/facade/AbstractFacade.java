@@ -31,19 +31,19 @@ public abstract class AbstractFacade<T> {
         getEntityManager().remove(entity);
     }
 
-    public T readEntity(Object id) {
-        return getEntityManager().find(entityClass, id);
-    }
-
-    public List<T> readAllEntity() {
-        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-        cq.select(cq.from(entityClass));
-        return getEntityManager().createQuery(cq).getResultList();
+    public T findById(Object idEntity) {
+        return getEntityManager().find(entityClass, idEntity);
     }
 
     public T refreshEntity(T entity) {
         getEntityManager().refresh(getEntityManager().merge(entity));
         return entity;
     }
-    
+
+    public List<T> readAllEntities() {
+        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass));
+        return getEntityManager().createQuery(cq).getResultList();
+    }
+
 }

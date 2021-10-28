@@ -3,16 +3,15 @@ package com.arelance.service.impl;
 import com.arelance.dao.facade.local.SessionDataFacadeLocal;
 import com.arelance.domain.SessionData;
 import com.arelance.qualifiers.SessionDataCrudQ;
-import com.arelance.service.Crud;
-import java.util.List;
 import javax.inject.Inject;
+import com.arelance.service.intefacescrud.SessionDataCrudSpecific;
 
 /**
  *
  * @author Pedro
  */
 @SessionDataCrudQ
-public class SessionDataCrud implements Crud<SessionData> {
+public class SessionDataCrud implements SessionDataCrudSpecific {
 
     @Inject
     private SessionDataFacadeLocal facade;
@@ -33,13 +32,8 @@ public class SessionDataCrud implements Crud<SessionData> {
     }
 
     @Override
-    public SessionData readEntity(Integer n) {
-        return (SessionData) facade.readEntity(n);
-    }
-
-    @Override
-    public List<SessionData> readAllEntity() {
-        return facade.readAllEntity();
+    public SessionData findById(Integer n) {
+        return (SessionData) facade.findById(n);
     }
 
     @Override
@@ -47,10 +41,12 @@ public class SessionDataCrud implements Crud<SessionData> {
         return (SessionData) facade.refreshEntity(t);
     }
 
+    @Override
     public SessionData logIn(SessionData sessionData) {
         return facade.logIn(sessionData);
     }
 
+    @Override
     public SessionData findSessionDataByUser(SessionData sessionData) {
         return facade.findSessionDataByUser(sessionData);
     }

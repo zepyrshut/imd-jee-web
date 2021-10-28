@@ -29,9 +29,9 @@ public class UserFacade extends AbstractFacade<UserImd> implements Serializable,
     }
 
     @Override
-    public UserImd findUserByEmail(UserImd user) {
+    public UserImd findUserByEmail(UserImd userImd) {
         Query query = em.createNamedQuery("User.findByEmail");
-        query.setParameter("email", user.getEmail());
+        query.setParameter("email", userImd.getEmail());
         try {
             return (UserImd) query.getSingleResult();
         } catch (NoResultException e) {
@@ -39,5 +39,4 @@ public class UserFacade extends AbstractFacade<UserImd> implements Serializable,
             return null;
         }
     }
-
 }

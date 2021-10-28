@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.inject.Inject;
 import com.arelance.qualifiers.ActivityDetailsQ;
-import com.arelance.service.Crud;
+import com.arelance.service.intefacescrud.BasicCrud;
 
 /**
  *
@@ -19,7 +19,7 @@ public class ActivityDetails implements ActionsController {
     
     @Inject
     @ActivityCrudQ
-    private Crud<Activity> activityCrud;
+    private BasicCrud<Activity> activityCrud;
 
     @Inject
     private Activity activity;

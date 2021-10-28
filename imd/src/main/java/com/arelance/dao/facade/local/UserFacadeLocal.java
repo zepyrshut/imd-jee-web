@@ -1,7 +1,6 @@
 package com.arelance.dao.facade.local;
 
 import com.arelance.domain.UserImd;
-import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -11,18 +10,16 @@ import javax.ejb.Local;
 @Local
 public interface UserFacadeLocal {
 
-    public void createEntity(UserImd user);
+    public void createEntity(UserImd userImd);
 
-    public void updateEntity(UserImd user);
+    public void updateEntity(UserImd userImd);
 
-    public void deleteEntity(UserImd user);
+    public void deleteEntity(UserImd userImd);
 
-    public UserImd readEntity(Object id);
+    public UserImd findById(Object idEntity);
 
-    public List<UserImd> readAllEntity();
+    public UserImd findUserByEmail(UserImd userImd);
 
-    public UserImd refreshEntity(UserImd user);
-    
-    public UserImd findUserByEmail(UserImd user);
+    public UserImd refreshEntity(UserImd userImd);
 
 }

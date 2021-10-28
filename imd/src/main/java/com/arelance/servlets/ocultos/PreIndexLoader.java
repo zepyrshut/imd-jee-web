@@ -1,8 +1,8 @@
 package com.arelance.servlets.ocultos;
 
 import com.arelance.domain.Activity;
-import com.arelance.qualifiers.ActivityCrudQ;
-import com.arelance.service.Crud;
+import com.arelance.qualifiers.ActivityFactoryQ;
+import com.arelance.service.intefacescrud.Factory;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 public class PreIndexLoader extends HttpServlet {
 
     @Inject
-    @ActivityCrudQ
-    private Crud<Activity> activityCrud;
+    @ActivityFactoryQ
+    private Factory<Activity> activityFactory;
 
     /**
      *
@@ -38,8 +38,10 @@ public class PreIndexLoader extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        activityFactory.createCrud().re
 
-        request.setAttribute("activitiesList", activityCrud.readAllEntity());
+        request.setAttribute("activitiesList", activityFactory.createCrud();
         request.getRequestDispatcher("index.jsp").forward(request, response);
 
     }

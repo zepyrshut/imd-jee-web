@@ -2,7 +2,6 @@ package com.arelance.servlets.commands;
 
 import com.arelance.domain.Activity;
 import com.arelance.domain.UserImd;
-import com.arelance.service.Crud;
 import com.arelance.qualifiers.ActivityUnsubcriptionQ;
 import com.arelance.qualifiers.UserCrudQ;
 import java.io.IOException;
@@ -10,6 +9,7 @@ import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.arelance.service.intefacescrud.BasicCrud;
 
 /**
  *
@@ -20,7 +20,7 @@ public class ActivityUnsubscription implements ActionsController {
 
     @Inject
     @UserCrudQ
-    private Crud<UserImd> userCrud;
+    private BasicCrud<UserImd> userCrud;
 
     @Inject
     private Activity activity;

@@ -1,6 +1,7 @@
 package com.arelance.dao.facade.local;
 
 import com.arelance.domain.Activity;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -15,10 +16,10 @@ public interface ActivityFacadeLocal {
     public void updateEntity(Activity activity);
 
     public void deleteEntity(Activity activity);
-    
-    public List<Activity> readAllEntity();
 
-    public Activity readEntity(Object id);
+    public Activity findById(Object id);
+
+    public List<Activity> readAllEntities();
 
     public Activity refreshEntity(Activity activity);
 

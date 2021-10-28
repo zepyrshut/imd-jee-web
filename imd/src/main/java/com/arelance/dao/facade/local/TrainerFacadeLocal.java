@@ -16,7 +16,7 @@ public interface TrainerFacadeLocal {
 
     public void deleteEntity(Trainer trainer);
 
-    public Trainer readEntity(Object id);
+    public Trainer findById(Object id);
 
     public Trainer refreshEntity(Trainer trainer);
 

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.inject.Inject;
 import com.arelance.qualifiers.UserCrudQ;
-import com.arelance.service.Crud;
+import com.arelance.service.intefacescrud.BasicCrud;
 
 /**
  *
@@ -21,11 +21,15 @@ public class Register implements ActionsController {
 
     @Inject
     @UserCrudQ
-    private Crud<UserImd> userCrud;
+    private BasicCrud<UserImd> userCrud;
+    
+    @Inject
+    @UserFactoryQ
+    private Factory
 
     @Inject
     @SessionDataCrudQ
-    private Crud<SessionData> sessionDataCrud;
+    private BasicCrud<SessionData> sessionDataCrud;
 
     @Inject
     private UserImd userImd;

@@ -3,7 +3,7 @@ package com.arelance.service.impl;
 import com.arelance.dao.facade.local.ActivityFacadeLocal;
 import com.arelance.domain.Activity;
 import com.arelance.qualifiers.ActivityCrudQ;
-import com.arelance.service.Crud;
+import com.arelance.service.intefacescrud.ActivityCrudSpecific;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -12,7 +12,7 @@ import javax.inject.Inject;
  * @author Pedro
  */
 @ActivityCrudQ
-public class ActivityCrud implements Crud<Activity> {
+public class ActivityCrud implements ActivityCrudSpecific {
 
     @Inject
     private ActivityFacadeLocal facade;
@@ -33,13 +33,13 @@ public class ActivityCrud implements Crud<Activity> {
     }
 
     @Override
-    public Activity readEntity(Integer n) {
-        return (Activity) facade.readEntity(n);
+    public Activity findById(Integer n) {
+        return (Activity) facade.findById(n);
     }
 
     @Override
-    public List<Activity> readAllEntity() {
-        return facade.readAllEntity();
+    public List<Activity> readAllEntities() {
+        return facade.readAllEntities();
     }
 
     @Override

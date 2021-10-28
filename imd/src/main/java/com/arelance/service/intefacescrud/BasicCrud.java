@@ -1,4 +1,4 @@
-package com.arelance.service;
+package com.arelance.service.intefacescrud;
 
 import java.util.List;
 import javax.ejb.Local;
@@ -9,7 +9,7 @@ import javax.ejb.Local;
  * @param <T>
  */
 @Local
-public interface Crud<T> {
+public interface BasicCrud<T> {
 
     void createEntity(T t);
 
@@ -17,9 +17,7 @@ public interface Crud<T> {
 
     void deleteEntity(T t);
 
-    T readEntity(Integer n);
-
-    List<T> readAllEntity();
+    T findById(Integer n);
 
     T refreshEntity(T t);
 
