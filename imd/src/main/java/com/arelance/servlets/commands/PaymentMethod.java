@@ -4,9 +4,10 @@ import com.arelance.domain.PayPal;
 import com.arelance.domain.DebitCard;
 import com.arelance.domain.BankAccount;
 import com.arelance.domain.UserImd;
-import com.arelance.service.impl.UserCrud;
+import com.arelance.service.UserCrud;
 import com.arelance.qualifiers.PaymentMethodQ;
-import com.arelance.qualifiers.UserCrudQ;
+import com.arelance.qualifiers.UserFactoryQ;
+import com.arelance.service.factory.Factory;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -21,16 +22,18 @@ import javax.servlet.http.HttpServletResponse;
 public class PaymentMethod implements ActionsController {
     
     @Inject
-    @UserCrudQ
-    private UserCrud userCrud;
+    @UserFactoryQ
+    private Factory<UserCrud> userFactory;    
+    
     @Inject
     private UserImd userImd;
-
+    
+    // TODO - Mejorar esto
     private com.arelance.domain.PaymentMethod paymentMethodUser;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        
         userImd = (UserImd) request.getSession().getAttribute("user");
         String selectedPaymentMethod = request.getParameter("paymentmethod");
         String description = request.getParameter("description");
@@ -56,7 +59,7 @@ public class PaymentMethod implements ActionsController {
 
         paymentMethodUser.setUserImd(userImd);
         userImd.getPaymentMethod().add(paymentMethodUser);
-        userCrud.updateEntity(userImd);
+        userFactory.buildCrud().updateEntity(userImd);
 
         return "/preindex";
     }

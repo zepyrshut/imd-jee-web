@@ -1,5 +1,6 @@
 package com.arelance.domain;
 
+import com.arelance.qualifiers.PaymentMethodQ;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -40,7 +41,7 @@ public abstract class PaymentMethod implements Serializable {
 
     protected PaymentMethod(String paymentName) {
         this.paymentName = paymentName;
-    }    
+    }
 
     public Integer getPaymentId() {
         return paymentId;

@@ -1,44 +1,43 @@
-package com.arelance.service.impl;
+package com.arelance.service;
 
 import com.arelance.dao.facade.local.SessionDataFacadeLocal;
 import com.arelance.domain.SessionData;
 import com.arelance.qualifiers.SessionDataCrudQ;
 import javax.inject.Inject;
-import com.arelance.service.intefacescrud.SessionDataCrudSpecific;
 
 /**
  *
  * @author Pedro
  */
 @SessionDataCrudQ
-public class SessionDataCrud implements SessionDataCrudSpecific {
+public class SessionDataCrud implements SessionDataFacadeLocal {
 
     @Inject
     private SessionDataFacadeLocal facade;
 
     @Override
-    public void createEntity(SessionData t) {
-        facade.createEntity(t);
+    public void createEntity(SessionData sessionData) {
+        facade.createEntity(sessionData);
     }
 
     @Override
-    public void updateEntity(SessionData t) {
-        facade.updateEntity(t);
+    public void updateEntity(SessionData sessionData) {
+        facade.updateEntity(sessionData);
     }
 
     @Override
-    public void deleteEntity(SessionData t) {
-        facade.deleteEntity(t);
+    public void deleteEntity(SessionData sessionData) {
+        facade.deleteEntity(sessionData);
     }
 
     @Override
-    public SessionData findById(Integer n) {
-        return (SessionData) facade.findById(n);
+    public SessionData findById(Object id) {
+        return facade.findById(id);
     }
 
     @Override
-    public SessionData refreshEntity(SessionData t) {
-        return (SessionData) facade.refreshEntity(t);
+    public SessionData refreshEntity(SessionData sessionData) {
+        return facade.refreshEntity(sessionData);
     }
 
     @Override

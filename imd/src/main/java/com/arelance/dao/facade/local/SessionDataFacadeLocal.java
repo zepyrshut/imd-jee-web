@@ -12,9 +12,9 @@ public interface SessionDataFacadeLocal {
 
     public void createEntity(SessionData sessionData);
 
-    public void updateEntity(SessionData user);
+    public void updateEntity(SessionData sessionData);
 
-    public void deleteEntity(SessionData user);
+    public void deleteEntity(SessionData sessionData);
 
     public SessionData findById(Object id);
 

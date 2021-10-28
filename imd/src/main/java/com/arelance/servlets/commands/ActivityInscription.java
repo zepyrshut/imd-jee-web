@@ -5,9 +5,10 @@ import com.arelance.domain.PaymentMethod;
 import com.arelance.domain.UserImd;
 import com.arelance.domain.UserHasActivity;
 import com.arelance.domain.UserHasActivityPK;
-import com.arelance.service.impl.UserCrud;
+import com.arelance.service.UserCrud;
 import com.arelance.qualifiers.ActivityInscriptionQ;
-import com.arelance.qualifiers.UserCrudQ;
+import com.arelance.qualifiers.UserFactoryQ;
+import com.arelance.service.factory.Factory;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -20,10 +21,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @ActivityInscriptionQ
 public class ActivityInscription implements ActionsController {
-
+    
     @Inject
-    @UserCrudQ
-    private UserCrud userCrud;
+    @UserFactoryQ
+    private Factory<UserCrud> userFactory;
 
     @Inject
     private UserHasActivity userHasActivity;
@@ -55,7 +56,7 @@ public class ActivityInscription implements ActionsController {
 
         userHasActivity.setUserHasActivityPK(userHasActivityPK);
         userImd.getUserHasActivity().add(userHasActivity);
-        userCrud.updateEntity(userImd);
+        userFactory.buildCrud().updateEntity(userImd);
 
         return "/preindex";
 

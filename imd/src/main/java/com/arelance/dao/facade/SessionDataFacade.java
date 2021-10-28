@@ -40,7 +40,6 @@ public class SessionDataFacade extends AbstractFacade<SessionData> implements Se
             e.getMessage();
             return null;
         }
-
     }
 
     @Override
@@ -53,7 +52,6 @@ public class SessionDataFacade extends AbstractFacade<SessionData> implements Se
             e.getMessage();
             return null;
         }
-
     }
 
 }

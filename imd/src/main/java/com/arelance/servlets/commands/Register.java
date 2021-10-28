@@ -3,14 +3,16 @@ package com.arelance.servlets.commands;
 import com.arelance.qualifiers.RegisterQ;
 import com.arelance.domain.SessionData;
 import com.arelance.domain.UserImd;
-import com.arelance.qualifiers.SessionDataCrudQ;
+import com.arelance.qualifiers.SessionDataFactoryQ;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.inject.Inject;
-import com.arelance.qualifiers.UserCrudQ;
-import com.arelance.service.intefacescrud.BasicCrud;
+import com.arelance.qualifiers.UserFactoryQ;
+import com.arelance.service.SessionDataCrud;
+import com.arelance.service.UserCrud;
+import com.arelance.service.factory.Factory;
 
 /**
  *
@@ -20,16 +22,12 @@ import com.arelance.service.intefacescrud.BasicCrud;
 public class Register implements ActionsController {
 
     @Inject
-    @UserCrudQ
-    private BasicCrud<UserImd> userCrud;
-    
-    @Inject
     @UserFactoryQ
-    private Factory
+    private Factory<UserCrud> userFactory;
 
     @Inject
-    @SessionDataCrudQ
-    private BasicCrud<SessionData> sessionDataCrud;
+    @SessionDataFactoryQ
+    private Factory<SessionDataCrud> sessionDataFactory;
 
     @Inject
     private UserImd userImd;
@@ -46,20 +44,20 @@ public class Register implements ActionsController {
         userImd.setPhone(request.getParameter("photne"));
         userImd.setEmail(request.getParameter("email"));
 
-        if (userCrud.findUserByEmail(userImd) != null) {
+        if (userFactory.buildCrud().findUserByEmail(userImd) != null) {
             String emailExists = "Ya existe este correo electrónico, pruebe otro.";
             request.setAttribute("emailExists", emailExists);
         } else {
             sessionData.setUser(request.getParameter("user"));
-            if (sessionDataCrud.findSessionDataByUser(sessionData) != null) {
+            if (sessionDataFactory.buildCrud().findSessionDataByUser(sessionData) != null) {
                 String userExists = "Ya existe este usuario, pruebe otro.";
                 request.setAttribute("userExists", userExists);
 
             } else {
                 sessionData.setPassword(request.getParameter("password"));
                 sessionData.setUserSessionData(userImd);
-                userCrud.createEntity(userImd);
-                sessionDataCrud.createEntity(sessionData);
+                userFactory.buildCrud().createEntity(userImd);
+                sessionDataFactory.buildCrud().createEntity(sessionData);
                 String success = "Usuario registrado con éxito, ya puedes iniciar sesión.";
                 request.setAttribute("success", success);//
             }

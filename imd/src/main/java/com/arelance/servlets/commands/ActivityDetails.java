@@ -1,14 +1,15 @@
 package com.arelance.servlets.commands;
 
 import com.arelance.domain.Activity;
-import com.arelance.qualifiers.ActivityCrudQ;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.inject.Inject;
 import com.arelance.qualifiers.ActivityDetailsQ;
-import com.arelance.service.intefacescrud.BasicCrud;
+import com.arelance.qualifiers.ActivityFactoryQ;
+import com.arelance.service.ActivityCrud;
+import com.arelance.service.factory.Factory;
 
 /**
  *
@@ -16,10 +17,10 @@ import com.arelance.service.intefacescrud.BasicCrud;
  */
 @ActivityDetailsQ
 public class ActivityDetails implements ActionsController {
-    
+        
     @Inject
-    @ActivityCrudQ
-    private BasicCrud<Activity> activityCrud;
+    @ActivityFactoryQ
+    private Factory<ActivityCrud> activityFactory;
 
     @Inject
     private Activity activity;
@@ -31,7 +32,7 @@ public class ActivityDetails implements ActionsController {
         activity.setActivityId(Integer.parseInt(idActividad));
 
         if (idActividad != null) {
-            request.getSession().setAttribute("actividad", activityCrud.readEntity(activity.getActivityId()));
+            request.getSession().setAttribute("actividad", activityFactory.buildCrud().findById(this));
         } else {
             request.getSession().removeAttribute("actividad");
         }

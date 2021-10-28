@@ -1,6 +1,5 @@
-package com.arelance.service.intefacescrud;
+package com.arelance.service.factory;
 
-import com.arelance.service.intefacescrud.BasicCrud;
 import javax.ejb.Local;
 
 /**
@@ -12,6 +11,6 @@ import javax.ejb.Local;
 @FunctionalInterface
 public interface Factory<T> {
 
-    BasicCrud<T> createCrud();
+    T buildCrud();
 
 }
