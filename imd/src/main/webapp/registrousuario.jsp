@@ -16,7 +16,7 @@
         <main>
             <!-- Registro usuario -->
 
-            <div class="uk-container uk-container-small uk-padding">
+            <section class="uk-container uk-container-small uk-padding">
                 <div class="uk-align-center uk-padding-small uk-text-center padding-top-medium">
                     <h1 class="font-merriweather">¡Bienvenidos a IMD!</h1>
                 </div>
@@ -27,10 +27,10 @@
                     </div>                
                 </c:if>
                 <c:if test="${emailRepetido != null}">
-                    <div class="uk-alert-danger" uk-alert>
+                    <section class="uk-alert-danger" uk-alert>
                         <a class="uk-alert-close" uk-close></a>
                         <p><c:out value="${emailRepetido}"/></p>
-                    </div>                
+                    </section>                
                 </c:if>
                 <c:if test="${usuarioRegistrado != null}">
                     <div class="uk-alert-success" uk-alert>
@@ -69,32 +69,32 @@
                         </div>
                     </div>
                     <div class="uk-width-1-2@s">
-                        <div class="uk-inline">
+                        <span class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon:  receiver"></span>
                             <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
                                    placeholder="Teléfono" name="telefono" />
-                        </div>
+                        </span>
                     </div>
                     <div class="uk-width-1-2@s">
-                        <div class="uk-inline">
+                        <span class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: user"></span>
                             <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
                                    placeholder="Usuario" name="usuario" required />
-                        </div>
+                        </span>
                     </div>
                     <div class="uk-width-1-2@s">
-                        <div class="uk-inline">
+                        <span class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon:  lock"></span>
                             <input class="uk-input form-width-xlarge" id="form-stacked-text" type="password"
                                    placeholder="Contraseña" name="contrasena" required />
-                        </div>
+                        </span>
                     </div>
-                    <div class="uk-align-center uk-padding-small">
+                    <span class="uk-align-center uk-padding-small">
                         <input type="submit" class="uk-button uk-button-primary" value="Registrarse" />
                         <input type="reset" class="uk-button uk-button-danger" value="Borrar" />
-                    </div>
+                    </span>
                 </form>
-            </div>
+            </section>
             <!-- Fin registro usuario -->
         </main>
 
