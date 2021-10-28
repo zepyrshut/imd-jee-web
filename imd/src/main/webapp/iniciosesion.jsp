@@ -27,28 +27,28 @@
 
             <main>
                 <!-- Inicio de formulario -->
-                <div class="uk-text-center uk-padding-small">
+                <section class="uk-text-center uk-padding-small">
                     <form method="POST" action="iniciosesion">
-                        <div class="uk-form-controls uk-padding-small">
-                            <div class="uk-inline">
+                        <section class="uk-form-controls uk-padding-small">
+                            <span class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: user"></span>
                                 <input class="uk-input uk-form-width-large" id="usuario-login" onclick="cambioNeutral()"  type ="text"
                                        placeholder="Usuario" name="usuario" required />
-                            </div>
-                        </div>
-                        <div class="uk-form-controls  uk-padding-small">
-                            <div class="uk-inline">
+                            </span>
+                        </section>
+                        <section class="uk-form-controls  uk-padding-small">
+                            <span class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: lock"></span>
                                 <input class="uk-input uk-form-width-large" id="contrasena-login" onclick="cambioNeutral()" type ="password"
                                        placeholder="Contraseña" name="contrasena" required />
-                            </div>
-                        </div>
+                            </span>
+                        </section>
 
 
-                        <div class="uk-padding">
+                        <section class="uk-padding">
                             <input type="submit" class="uk-button uk-button-primary" value="Iniciar sesión" />
                             <input type="reset" class="uk-button uk-button-danger" value="Borrar" />
-                        </div>
+                        </section>
                     </form>
                     <c:if test="${datoIncorrecto != null}">
                         <div class="uk-alert-danger  uk-text-left"  id="mensajeError"  uk-alert>
@@ -56,7 +56,7 @@
                             <p><c:out value="${datoIncorrecto}"/></p>
                         </div>                
                     </c:if>
-                </div>
+                </section>
                 <!-- Fin de formulario -->
             </main>
 
