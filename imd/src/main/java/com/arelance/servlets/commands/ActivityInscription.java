@@ -41,9 +41,9 @@ public class ActivityInscription implements ActionsController {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        activity = (Activity) request.getSession().getAttribute("actividad");
-        userImd = (UserImd) request.getSession().getAttribute("usuario");
-        int index = Integer.parseInt(request.getParameter("metodoPago"));
+        activity = (Activity) request.getSession().getAttribute("activity");
+        userImd = (UserImd) request.getSession().getAttribute("user");
+        int index = Integer.parseInt(request.getParameter("paymentMethod"));
         PaymentMethod metodoPago = userImd.getPaymentMethod().get(index);
 
         userHasActivityPK.setActivityId(activity.getActivityId());
