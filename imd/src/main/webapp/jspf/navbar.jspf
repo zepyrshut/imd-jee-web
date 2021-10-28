@@ -2,46 +2,42 @@
 <%@ page pageEncoding="UTF-8" %>   
 <!-- Barra navegación -->
 <!-- Versión móvil y tableta -->
-                <c:if test="${usuario != null}"><li><a href="descripcionusuario">¡Hola ${usuario.nombre}!</a></li></c:if>   
 <div class="uk-hidden@m">
-    <nav class="uk-navbar uk-navbar-container uk-margin">
+    <div class="uk-navbar uk-navbar-container uk-margin border-bottom">
         <div class="uk-navbar-left">
             <a class="uk-navbar-toggle" uk-toggle="target: #menu-lateral">
                 <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
             </a>
         </div>
-    </nav>
-    <div id="menu-lateral" uk-offcanvas="overlay: true">
+    </div>
+    <nav id="menu-lateral" uk-offcanvas="overlay: true" role="navigation">
         <div class="uk-offcanvas-bar uk-flex uk-flex-column">
             <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical ">
-
-
                 <c:if test="${usuario == null}"><li><a href="login">Iniciar sesión</a></li></c:if>
-                <c:if test="${usuario != null}"><li><a href="DescripcionUsuario?idUsuario">¡Hola ${usuario.nombre}!</a></li></c:if>    
+                <c:if test="${usuario != null}"><li><a href="perfilusuario.jsp">¡Hola ${usuario.nombre}!</a></li></c:if> 
                     <li><a href="imd">Inicio</a></li>                
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto</a></li>
                 <c:if test="${usuario == null}"><li><a href="register">Registrarse</a></li></c:if>
-                <c:if test="${usuario != null}"><li><a href="cierresesion">Cerrar sesión</a></li></c:if>
-
+                <c:if test="${usuario != null}"><li><a href="actions?action=logout">Cerrar sesión</a></li></c:if>
                 </ul>
             </div>
-        </div>
+        </nav>
     </div>
     <!-- Versión escritorio -->
     <div class="uk-visible@m">
-        <nav class="uk-navbar-container" uk-navbar>
+        <nav class="uk-navbar-container border-bottom" uk-navbar role="navigation">
             <div class="uk-navbar-left padding-left-large">
-                <a href="/imd" class="uk-navbar-item uk-logo">IMD</a>
+                <a href="preindex" class="uk-navbar-item uk-logo">IMD</a>
             </div>
             <div class="uk-navbar-right padding-right-large">
                 <ul class="uk-navbar-nav">
                 <c:if test="${usuario == null}"><li><a href="login">Iniciar sesión</a></li></c:if>
-                <c:if test="${usuario != null}"><li><a href="#">¡Hola ${usuario.nombre}!</a></li></c:if>                    
+                <c:if test="${usuario != null}"><li><a href="perfilusuario.jsp">¡Hola ${usuario.nombre}!</a></li></c:if>                    
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto</a></li>
                 <c:if test="${usuario == null}"><li><a href="register">Registrarse</a></li></c:if>
-                <c:if test="${usuario != null}"><li><a href="cierresesion">Cerrar sesión</a></li></c:if>
+                <c:if test="${usuario != null}"><li><a href="actions?action=logout">Cerrar sesión</a></li></c:if>
             </ul>
         </div>
     </nav>
