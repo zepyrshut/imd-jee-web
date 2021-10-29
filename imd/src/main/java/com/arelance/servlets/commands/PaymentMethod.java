@@ -6,7 +6,6 @@ import com.arelance.domain.BankAccount;
 import com.arelance.domain.UserImd;
 import com.arelance.service.UserCrud;
 import com.arelance.qualifiers.PaymentMethodQ;
-import com.arelance.qualifiers.UserFactoryQ;
 import com.arelance.service.factory.Factory;
 import java.io.IOException;
 import javax.inject.Inject;
@@ -22,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 public class PaymentMethod implements ActionsController {
     
     @Inject
-    @UserFactoryQ
     private Factory<UserCrud> userFactory;    
     
     @Inject

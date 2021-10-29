@@ -3,7 +3,6 @@ package com.arelance.servlets.commands;
 import com.arelance.domain.Activity;
 import com.arelance.domain.UserImd;
 import com.arelance.qualifiers.ActivityUnsubcriptionQ;
-import com.arelance.qualifiers.UserFactoryQ;
 import com.arelance.service.UserCrud;
 import com.arelance.service.factory.Factory;
 import java.io.IOException;
@@ -21,7 +20,6 @@ public class ActivityUnsubscription implements ActionsController {
 
     
     @Inject
-    @UserFactoryQ
     private Factory<UserCrud> userFactory;
 
     @Inject

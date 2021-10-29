@@ -1,6 +1,5 @@
 package com.arelance.servlets.ocultos;
 
-import com.arelance.qualifiers.ActivityFactoryQ;
 import com.arelance.service.ActivityCrud;
 import com.arelance.service.factory.Factory;
 import java.io.IOException;
@@ -21,8 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/preindex")
 public class PreIndexLoader extends HttpServlet {
 
+    private static final long serialVersionUID = 1L;
+
     @Inject
-    @ActivityFactoryQ
     private Factory<ActivityCrud> activityFactory;
 
     /**

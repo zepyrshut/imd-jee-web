@@ -3,13 +3,11 @@ package com.arelance.servlets.commands;
 import com.arelance.qualifiers.RegisterQ;
 import com.arelance.domain.SessionData;
 import com.arelance.domain.UserImd;
-import com.arelance.qualifiers.SessionDataFactoryQ;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.inject.Inject;
-import com.arelance.qualifiers.UserFactoryQ;
 import com.arelance.service.SessionDataCrud;
 import com.arelance.service.UserCrud;
 import com.arelance.service.factory.Factory;
@@ -22,11 +20,9 @@ import com.arelance.service.factory.Factory;
 public class Register implements ActionsController {
 
     @Inject
-    @UserFactoryQ
     private Factory<UserCrud> userFactory;
 
     @Inject
-    @SessionDataFactoryQ
     private Factory<SessionDataCrud> sessionDataFactory;
 
     @Inject

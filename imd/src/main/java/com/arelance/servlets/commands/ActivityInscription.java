@@ -7,7 +7,6 @@ import com.arelance.domain.UserHasActivity;
 import com.arelance.domain.UserHasActivityPK;
 import com.arelance.service.UserCrud;
 import com.arelance.qualifiers.ActivityInscriptionQ;
-import com.arelance.qualifiers.UserFactoryQ;
 import com.arelance.service.factory.Factory;
 import java.io.IOException;
 import javax.inject.Inject;
@@ -23,7 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 public class ActivityInscription implements ActionsController {
     
     @Inject
-    @UserFactoryQ
     private Factory<UserCrud> userFactory;
 
     @Inject

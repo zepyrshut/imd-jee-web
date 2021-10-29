@@ -33,7 +33,7 @@ public class SessionData implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_session_data")
     private Integer sessionDataId;
-    @Column(name = "userImd")
+    @Column(name = "user_imd")
     private String userImd;
     @Column(name = "password")
     private String password;

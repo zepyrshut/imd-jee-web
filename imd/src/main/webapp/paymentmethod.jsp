@@ -12,10 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-      
-        
   <ul uk-accordion>
-
         <li>
             <a class="uk-accordion-title" href="#">Añadir PayPal</a>
             <div class="uk-accordion-content">
@@ -35,7 +32,7 @@
             <div class="uk-accordion-content">
                 <form  method="POST" action="actions?action=paymentmethod?paymentmethod=debit">
                     <div class="uk-margin">
-                        <input class="uk-input" type="text" placeholder="Descripción" name="descripcion">
+                        <input class="uk-input" type="text" placeholder="Descripción" name="description">
                         <input class="uk-input" type="text" placeholder="Número tarjeta" name="number">
                         <input class="uk-input" type="text" placeholder="Código seguridad" name="cvv">
                     </div>
@@ -50,7 +47,7 @@
             <div class="uk-accordion-content">
                 <form  method="POST" action="actions?action=paymentmethod?paymentmethod=bank">
                     <div class="uk-margin">
-                        <input class="uk-input" type="text" placeholder="Descripción" name="descripcion">
+                        <input class="uk-input" type="text" placeholder="Descripción" name="description">
                         <input class="uk-input" type="text" placeholder="Número IBAN" name="iban">
                     </div>
                     <input type="submit" value="Añadir" class="uk-button uk-button-primary uk-margin-small-top">

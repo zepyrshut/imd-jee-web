@@ -11,6 +11,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class UserHasActivityPK implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Column(name = "id_user")
     private int userId;
     @Column(name = "id_activity")

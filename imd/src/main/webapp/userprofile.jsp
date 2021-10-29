@@ -29,7 +29,9 @@
      
 
           <c:forEach items="${user.paymentMethod}" var="paymentMethod">
-              <p>${paymentMethod.paymentName}</p>              
+              <p>${paymentMethod.paymentId}</p> 
+              <p>${paymentMethod.paymentName}</p> 
+              
           </c:forEach>
      
 

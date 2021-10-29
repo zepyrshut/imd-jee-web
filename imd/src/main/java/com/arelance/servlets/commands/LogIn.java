@@ -4,7 +4,6 @@ import com.arelance.qualifiers.LogInQ;
 import com.arelance.domain.SessionData;
 import com.arelance.domain.UserImd;
 import com.arelance.service.SessionDataCrud;
-import com.arelance.qualifiers.SessionDataFactoryQ;
 import com.arelance.service.factory.Factory;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -19,10 +18,8 @@ import javax.servlet.http.HttpSession;
  */
 @LogInQ
 public class LogIn implements ActionsController {
-    
-    
+        
     @Inject
-    @SessionDataFactoryQ
     private Factory<SessionDataCrud> sessionDataFactory;
     
     @Inject
@@ -37,7 +34,6 @@ public class LogIn implements ActionsController {
         sessionData.setUser(name);
         sessionData.setPassword(password);
         sessionData = sessionDataFactory.buildCrud().logIn(sessionData);
-
         
         if (sessionData == null) {
             String invalidData = "Datos de sesión incorrectos, inténtelo de nuevo.";
