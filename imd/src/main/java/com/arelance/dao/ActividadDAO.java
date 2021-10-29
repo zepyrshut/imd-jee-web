@@ -20,4 +20,7 @@ public interface ActividadDAO {
     public void updateActividad(Actividad actividad);
 
     public void removeActividad(Actividad actividad);
+
+    public List<Actividad> allPaginatedActivities(int offset, int noOfRecords);
+    public int getNoOfRecords();
 }

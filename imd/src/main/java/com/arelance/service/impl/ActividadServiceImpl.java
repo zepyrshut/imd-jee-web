@@ -40,4 +40,16 @@ public class ActividadServiceImpl implements ActividadService {
         actividadDAO.removeActividad(actividad);
     }
 
+    @Override
+    public List<Actividad> allPaginatedActivities(int offset, int noOfRecords) {
+      return actividadDAO.allPaginatedActivities(offset, noOfRecords);
+    }
+
+    @Override
+    public int getNoOfRecords() {
+       return actividadDAO.getNoOfRecords();
+    }
+
+
+
 }

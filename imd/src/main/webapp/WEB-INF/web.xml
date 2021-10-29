@@ -7,11 +7,7 @@
             30
         </session-timeout>
     </session-config>
-    <welcome-file-list>
-        <welcome-file>
-           PrincipalTests
-        </welcome-file>
-    </welcome-file-list>
+    
        <error-page>
         <error-code>404</error-code>
         <location>/error404.jsp</location> 
