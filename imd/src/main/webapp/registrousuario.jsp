@@ -3,7 +3,6 @@
     Created on : 19 sept. 2021, 0:36:56
     Author     : Pedro
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,81 +11,88 @@
     <body>
         <!-- Barra navegación -->
         <%@ include file="/jspf/navbar.jspf" %>   
-
         <main>
             <!-- Registro usuario -->
-
             <section class="uk-container uk-container-small uk-padding">
                 <section class="uk-align-center uk-padding-small uk-text-center padding-top-medium">
-                    <h1 class="font-merriweather">¡Bienvenidos a IMD!</h1>
+                    <h1 class="font-merriweather">
+                        ¡Bienvenidos a IMD!
+                    </h1>
                 </section>
                 <c:if test="${usuarioRepetido != null}">
                     <section class="uk-alert-danger" uk-alert>
-                        <a class="uk-alert-close" uk-close></a>
-                        <p><c:out value="${usuarioRepetido}"/></p>
+                        <a class="uk-alert-close" uk-close>
+                        </a>
+                        <p>
+                            <c:out value="${usuarioRepetido}"/>
+                        </p>
                     </section>                
                 </c:if>
                 <c:if test="${emailRepetido != null}">
                     <section class="uk-alert-danger" uk-alert>
-                        <a class="uk-alert-close" uk-close></a>
-                        <p><c:out value="${emailRepetido}"/></p>
+                        <a class="uk-alert-close" uk-close>                            
+                        </a>
+                        <p>
+                            <c:out value="${emailRepetido}"/>
+                        </p>
                     </section>                
                 </c:if>
                 <c:if test="${usuarioRegistrado != null}">
                     <section class="uk-alert-success" uk-alert>
-                        <a class="uk-alert-close" uk-close></a>
-                        <p><c:out value="${usuarioRegistrado}"/></p>
+                        <a class="uk-alert-close" uk-close>                            
+                        </a>
+                        <p>
+                            <c:out value="${usuarioRegistrado}"/>
+                        </p>
                     </section>                
                 </c:if>
-
                 <form class="uk-grid-small uk" uk-grid method="POST" action="registro">
                     <section class="uk-width-1-3@s">
                         <span class="uk-inline uk-text-center">
-                            <span class="uk-form-icon" uk-icon="icon: user"></span>
-                            <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                                   placeholder="Nombre" name="nombre" required />
+                            <span class="uk-form-icon" uk-icon="icon: user">                                
+                            </span>
+                            <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text" placeholder="Nombre" name="nombre" required />
                         </span>
                     </section>
                     <section class="uk-width-1-3@s">
                         <span class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: user"></span>
-                            <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                                   placeholder="Primer apellido" name="apellido_a" required />
+                            <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text" placeholder="Primer apellido" name="apellido_a" required />
                         </span>
                     </section>
                     <section class="uk-width-1-3@s">
                         <span class="uk-inline">
-                            <span class="uk-form-icon" uk-icon="icon: user"></span>
+                            <span class="uk-form-icon" uk-icon="icon: user">                                
+                            </span>
                             <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
                                    placeholder="Segundo apellido" name="apellido_b" />
                         </span>
                     </section>
                     <section class="uk-width-1-2@s">
                         <span class="uk-inline">
-                            <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                            <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                                   placeholder="Correo electrónico" name="email" required />
+                            <span class="uk-form-icon" uk-icon="icon: mail">                                
+                            </span>
+                            <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text" placeholder="Correo electrónico" name="email" required />
                         </span>
                     </section>
                     <section class="uk-width-1-2@s">
                         <span class="uk-inline">
-                            <span class="uk-form-icon" uk-icon="icon:  receiver"></span>
-                            <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                                   placeholder="Teléfono" name="telefono" />
+                            <span class="uk-form-icon" uk-icon="icon:  receiver">                                
+                            </span>
+                            <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text" placeholder="Teléfono" name="telefono" />
                         </span>
                     </section>
                     <section class="uk-width-1-2@s">
                         <span class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: user"></span>
-                            <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text"
-                                   placeholder="Usuario" name="usuario" required />
+                            <input class="uk-input form-width-xlarge" id="form-stacked-text" type="text" placeholder="Usuario" name="usuario" required />
                         </span>
                     </section>
                     <section class="uk-width-1-2@s">
                         <span class="uk-inline">
-                            <span class="uk-form-icon" uk-icon="icon:  lock"></span>
-                            <input class="uk-input form-width-xlarge" id="form-stacked-text" type="password"
-                                   placeholder="Contraseña" name="contrasena" required />
+                            <span class="uk-form-icon" uk-icon="icon:  lock">                                
+                            </span>
+                            <input class="uk-input form-width-xlarge" id="form-stacked-text" type="password" placeholder="Contraseña" name="contrasena" required />
                         </span>
                     </section>
                     <span class="uk-align-center uk-padding-small">
@@ -97,11 +103,7 @@
             </section>
             <!-- Fin registro usuario -->
         </main>
-
         <!-- Pie de página -->
         <%@ include file="/jspf/footer.jspf" %> 
-
-
-
     </body>
 </html>
