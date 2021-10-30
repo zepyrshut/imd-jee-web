@@ -30,7 +30,50 @@
                 </c:forEach> 
             </div>
             <p>-COMIENZO TEST PAGINACION </p>
-            
+             <table border="1" cellpadding="5" cellspacing="5">
+        <tr>
+            <th>Nombre act</th>
+            <th>categoriaActividad</th>
+            <th>descripcionActividad</th>
+            <th>idActividad</th>
+        </tr>
+ 
+        <c:forEach var="actividad" items="${listaActividad}">
+            <tr>
+                <td>${actividad.nombreActividad}</td>
+                <td>${actividad.categoriaActividad}</td>
+                <td>${actividad.descripcionActividad}</td>
+                <td>${actividad.idActividad}</td>
+            </tr>
+        </c:forEach>
+    </table>
+ 
+    <%--For displaying Previous link except for the 1st page --%>
+    <c:if test="${currentPage != 1}">
+        <td><a href="actividad.principal?page=${currentPage - 1}">Previous</a></td>
+    </c:if>
+ 
+    <%--For displaying Page numbers.
+    The when condition does not display a link for the current page--%>
+    <table border="1" cellpadding="5" cellspacing="5">
+        <tr>
+            <c:forEach begin="1" end="${noOfPages}" var="i">
+                <c:choose>
+                    <c:when test="${currentPage eq i}">
+                        <td>${i}</td>
+                    </c:when>
+                    <c:otherwise>
+                        <td><a href="actividad.principal?page=${i}">${i}</a></td>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        </tr>
+    </table>
+ 
+    <%--For displaying Next link --%>
+    <c:if test="${currentPage lt noOfPages}">
+        <td><a href="actividad.principal?page=${currentPage + 1}">Next</a></td>
+    </c:if>
             
             
             

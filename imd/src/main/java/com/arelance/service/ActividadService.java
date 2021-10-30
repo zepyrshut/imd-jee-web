@@ -21,6 +21,5 @@ public interface ActividadService {
 
     public void removeActividad(Actividad actividad);
     
-     public List<Actividad> allPaginatedActivities(int offset, int noOfRecords);
-     public int getNoOfRecords();
+
 }

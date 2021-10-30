@@ -13,6 +13,11 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -20,13 +25,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class ActividadDAOImpl implements ActividadDAO {
-      String url = "jdbc:mysql://localhost/imd";
-    String user = "root";
-    String password = "Fullstack.2021";
-    String driverClass = "com.mysql.jdbc.Driver"; 
-    Connection connection;
-    Statement stmt;
-     private int noOfRecords;
+
     @PersistenceContext(unitName = "imdPU")
     EntityManager em;
 
@@ -35,6 +34,7 @@ public class ActividadDAOImpl implements ActividadDAO {
         return em.createNamedQuery("Actividad.findAll").getResultList();
     }
 
+   
     @Override
     public Actividad findActividadById(Actividad actividad) {
         return em.find(Actividad.class, actividad.getIdActividad());
@@ -54,60 +54,6 @@ public class ActividadDAOImpl implements ActividadDAO {
     public void removeActividad(Actividad actividad) {
         em.merge(actividad);
         em.remove(actividad);
-    }
-
-    @Override
-    public List<Actividad> allPaginatedActivities(int offset, int noOfRecords) {
-        String query = "select * from actividad LIMIT "
-                + offset + ", " + noOfRecords;
-        
-        String paginatedQuery = "select * from actividad LIMIT "
-                + offset + ", " + noOfRecords;
-        List<Actividad> list = new ArrayList<>();
-        Actividad actividad = null;
-        try {
-            connection = getConnection();
-            stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            PreparedStatement ps = connection.prepareStatement(paginatedQuery);
-            
-            while (rs.next()) {
-                actividad = new Actividad();
-                actividad.setIdActividad(rs.getInt("id_actividad"));
-                actividad.setNombreActividad(rs.getString("nombre_actividad"));
-                actividad.setDescripcionActividad(rs.getString("descripcion_actividad"));
-                //actividad.setDeptName(rs.getString("dept_name"));
-                list.add(actividad);
-            }
-            rs.close();
-            
-            //rs = stmt.executeQuery("SELECT FOUND_ROWS()");
-            if(rs.next())
-                this.noOfRecords = rs.getInt(1);
-       } catch (SQLException e) {
-            e.printStackTrace();
-        
-        }finally
-        {
-            try {
-                if(stmt != null)
-                    stmt.close();
-                if(connection != null)
-                    connection.close();
-                } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return list;
-    }
-     public int getNoOfRecords() {
-        return noOfRecords;
-    }
-
-    private Connection getConnection() throws SQLException {
-       Connection connection = 
-            DriverManager.getConnection(url, user, password);
-        return connection;
     }
 
 }
