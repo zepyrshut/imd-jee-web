@@ -103,10 +103,7 @@ public class Trainer implements Serializable {
         if (!Objects.equals(this.trainerId, other.trainerId)) {
             return false;
         }
-        if (!Objects.equals(this.trainerHasActivities, other.trainerHasActivities)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.trainerHasActivities, other.trainerHasActivities);
     }
 
 }

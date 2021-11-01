@@ -59,10 +59,7 @@ public class TrainerHasActivityPK implements Serializable {
         if (this.trainerId != other.trainerId) {
             return false;
         }
-        if (this.activityId != other.activityId) {
-            return false;
-        }
-        return true;
+        return this.activityId == other.activityId;
     }
 
 }
