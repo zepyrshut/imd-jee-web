@@ -1,6 +1,6 @@
 package com.arelance.dao.facade;
 
-import com.arelance.dao.facade.local.TrainerFacadeLocal;
+import com.arelance.dao.TrainerFacadeLocal;
 import com.arelance.domain.Trainer;
 import java.io.Serializable;
 import javax.ejb.Stateless;

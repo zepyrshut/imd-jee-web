@@ -1,6 +1,6 @@
 package com.arelance.service;
 
-import com.arelance.dao.facade.local.UserFacadeLocal;
+import com.arelance.dao.UserFacadeLocal;
 import com.arelance.domain.UserImd;
 import javax.inject.Inject;
 import com.arelance.qualifiers.UserCrudQ;

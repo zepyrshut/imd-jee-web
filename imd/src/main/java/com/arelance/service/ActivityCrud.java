@@ -1,6 +1,6 @@
 package com.arelance.service;
 
-import com.arelance.dao.facade.local.ActivityFacadeLocal;
+import com.arelance.dao.ActivityFacadeLocal;
 import com.arelance.domain.Activity;
 import com.arelance.qualifiers.ActivityCrudQ;
 import com.arelance.qualifiers.ActivityFacadeQ;

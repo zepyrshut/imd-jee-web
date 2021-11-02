@@ -1,6 +1,6 @@
 package com.arelance.dao.facade;
 
-import com.arelance.dao.facade.local.UserFacadeLocal;
+import com.arelance.dao.UserFacadeLocal;
 import com.arelance.domain.UserImd;
 import com.arelance.qualifiers.UserFacadeQ;
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package com.arelance.dao.facade.local;
+package com.arelance.dao;
 
 import com.arelance.domain.Trainer;
 import javax.ejb.Local;

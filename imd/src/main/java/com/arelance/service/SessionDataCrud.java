@@ -1,6 +1,6 @@
 package com.arelance.service;
 
-import com.arelance.dao.facade.local.SessionDataFacadeLocal;
+import com.arelance.dao.SessionDataFacadeLocal;
 import com.arelance.domain.SessionData;
 import com.arelance.qualifiers.SessionDataCrudQ;
 import com.arelance.qualifiers.SessionDataFacadeQ;
