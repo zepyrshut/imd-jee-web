@@ -26,7 +26,6 @@ public class PaymentMethod implements ActionsController {
     @Inject
     private UserImd userImd;
     
-    // TODO - Mejorar esto
     private com.arelance.domain.PaymentMethod paymentMethodUser;
 
     @Override
@@ -36,8 +35,6 @@ public class PaymentMethod implements ActionsController {
         String selectedPaymentMethod = request.getParameter("paymentmethod");
         String description = request.getParameter("description");
         
-        // TODO - Mejorar sentencia switch, reemplazando por patrón comando.
-
         switch (selectedPaymentMethod) {
             case "paypal":
                 String email = request.getParameter("email");
@@ -59,7 +56,7 @@ public class PaymentMethod implements ActionsController {
         userImd.getPaymentMethod().add(paymentMethodUser);
         userFactory.buildCrud().updateEntity(userImd);
 
-        return "/preindex";
+        return "/userprofile.jsp";
     }
 
 }
