@@ -16,7 +16,7 @@
         <li>
             <a class="uk-accordion-title" href="#">Añadir PayPal</a>
             <div class="uk-accordion-content">
-                <form method="POST" action="actions?action=paymentmethod&paymentmethod=paypal">
+                <form method="POST" action="actions?action=paymentmethod&paymentmethod=paypal&actionPayment=add">
                     <div class="uk-margin">
                         <input class="uk-input" type="text" placeholder="Descripción" name="description">
                         <input class="uk-input" type="text" placeholder="Correo PayPal" name="email">

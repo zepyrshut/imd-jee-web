@@ -28,9 +28,8 @@
         <a href="paymentmethod.jsp">AÑADIR METODO DE PAGO</a>
      
 
-          <c:forEach items="${user.paymentMethod}" var="paymentMethod">
-              <p>${paymentMethod.paymentId}</p> 
-              <p>${paymentMethod.paymentName}</p> 
+          <c:forEach items="${user.paymentMethod}" var="paymentMethod" varStatus="forLoop">
+              <p>${paymentMethod.paymentName}<a href="actions?action=paymentmethod&actionPayment=delete&index=${forLoop.index}">Eliminar</a></p> 
               
           </c:forEach>
      
@@ -53,7 +52,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="p-3 py-5">
-                        <form action="PostUpdateDescripcionUsuario">
+                        <form action="actions?action=profile" method="POST">
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <label for="html">Nombre</label><input type="text" class="form-control" value="${user.name}" name="name"></div>

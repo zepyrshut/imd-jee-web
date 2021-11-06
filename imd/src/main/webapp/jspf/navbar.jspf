@@ -33,7 +33,7 @@
             <div class="uk-navbar-right padding-right-large">
                 <ul class="uk-navbar-nav">
                 <c:if test="${user == null}"><li><a href="login">Iniciar sesión</a></li></c:if>
-                <c:if test="${user != null}"><li><a href="userprofile.jsp">¡Hola ${user.name}!</a></li></c:if>                    
+                <c:if test="${user != null}"><li><a href="profile">¡Hola ${user.name}!</a></li></c:if>                    
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto</a></li>
                 <c:if test="${user == null}"><li><a href="register">Registrarse</a></li></c:if>

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.arelance.qualifiers.ActivityDetailsQ;
 import com.arelance.qualifiers.PaymentMethodQ;
+import com.arelance.qualifiers.ProfileQ;
 
 /**
  *
@@ -56,6 +57,10 @@ public class ActionsService extends HttpServlet {
     @PaymentMethodQ
     private ActionsController paymentMethod;
     
+    @Inject
+    @ProfileQ
+    private ActionsController profile;
+    
     @Override
     public void init() throws ServletException {
         super.init();
@@ -66,6 +71,7 @@ public class ActionsService extends HttpServlet {
         actions.put("activityinscription", activityInscription);  
         actions.put("activityubsubcription", activityUnsubcription);
         actions.put("paymentmethod", paymentMethod);
+        actions.put("profile", profile);
     }
 
     @Override

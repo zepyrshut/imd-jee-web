@@ -69,9 +69,8 @@ public class LogIn implements ActionsController {
             return "/login.jsp";
         } else {
             UserImd userImd = sessionData.getUserSessionData();
-            userCrudFactory.buildCrud().refreshEntity(userImd);
-            HttpSession sesionUsuario = request.getSession(true);
-            sesionUsuario.setAttribute("user", userImd);
+            HttpSession userSession = request.getSession(true);
+            userSession.setAttribute("user", userImd);
             return "/preindex";
         }
 

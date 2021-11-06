@@ -54,12 +54,12 @@ public class UserImd implements Serializable {
     private List<UserHasActivity> userHasActivity;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userImd")
     private List<PaymentMethod> paymentMethod;
-
+    
     public UserImd() {
+        super();
         this.userHasActivity = new ArrayList<>();
         this.paymentMethod = new ArrayList<>();
     }
-
 
     public Integer getUserId() {
         return userId;
@@ -135,8 +135,16 @@ public class UserImd implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 19 * hash + Objects.hashCode(this.userId);
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.userId);
+        hash = 89 * hash + Objects.hashCode(this.name);
+        hash = 89 * hash + Objects.hashCode(this.surnameA);
+        hash = 89 * hash + Objects.hashCode(this.surnameB);
+        hash = 89 * hash + Objects.hashCode(this.phone);
+        hash = 89 * hash + Objects.hashCode(this.email);
+        hash = 89 * hash + Objects.hashCode(this.sessionData);
+        hash = 89 * hash + Objects.hashCode(this.userHasActivity);
+        hash = 89 * hash + Objects.hashCode(this.paymentMethod);
         return hash;
     }
 

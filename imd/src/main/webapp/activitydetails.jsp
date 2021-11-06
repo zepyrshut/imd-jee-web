@@ -43,7 +43,7 @@
                             Sed harum numquam nam autem quidem, sapiente totam incidunt, repellendus maxime praesentium
                             tempore optio voluptatem voluptate necessitatibus.</p>
                         <p>Apto para todas las edades.</p>
-                        <p>El entrenador de esta actividad es <c:out value="${activity.trainerHasActivity.trainer.name}"/>.</p>
+                        <p>El entrenador de esta actividad es <c:out value="${activity.trainerHasActivity.trainer.nameTrainer}"/>.</p>
                     </div>
                     </div>
                 </article>
