@@ -7,11 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
+    <!-- HTML head -->
+    <%@ include file="/jspf/head.jspf" %>
     <body>
+           <!-- Barra navegación -->
+        <%@ include file="/jspf/navbar.jspf" %>
   <ul uk-accordion>
         <li>
             <a class="uk-accordion-title" href="#">Añadir PayPal</a>
@@ -60,7 +60,8 @@
 
     </ul>
 
-        
+                    <!-- Pie de página -->
+            <%@ include file="/jspf/footer.jspf" %> 
         
     </body>
 </html>

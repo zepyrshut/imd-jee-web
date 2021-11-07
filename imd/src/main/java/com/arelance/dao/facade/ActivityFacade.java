@@ -4,7 +4,7 @@ import com.arelance.dao.ActivityFacadeLocal;
 import com.arelance.domain.Activity;
 import com.arelance.qualifiers.ActivityFacadeQ;
 import java.io.Serializable;
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Pedro
  */
-@Stateless
+@Stateful
 @ActivityFacadeQ
 public class ActivityFacade extends AbstractFacade<Activity> implements Serializable, ActivityFacadeLocal {
 

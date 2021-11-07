@@ -4,7 +4,7 @@ import com.arelance.dao.SessionDataFacadeLocal;
 import com.arelance.domain.SessionData;
 import com.arelance.qualifiers.SessionDataFacadeQ;
 import java.io.Serializable;
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -14,7 +14,7 @@ import javax.persistence.Query;
  *
  * @author Pedro
  */
-@Stateless
+@Stateful
 @SessionDataFacadeQ
 public class SessionDataFacade extends AbstractFacade<SessionData> implements Serializable, SessionDataFacadeLocal {
 

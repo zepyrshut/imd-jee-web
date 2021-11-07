@@ -4,7 +4,7 @@ import com.arelance.dao.UserFacadeLocal;
 import com.arelance.domain.UserImd;
 import com.arelance.qualifiers.UserFacadeQ;
 import java.io.Serializable;
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -14,7 +14,7 @@ import javax.persistence.Query;
  *
  * @author Pedro
  */
-@Stateless
+@Stateful
 @UserFacadeQ
 public class UserFacade extends AbstractFacade<UserImd> implements Serializable, UserFacadeLocal {
 

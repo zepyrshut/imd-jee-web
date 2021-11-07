@@ -3,7 +3,7 @@ package com.arelance.dao.facade;
 import com.arelance.dao.TrainerFacadeLocal;
 import com.arelance.domain.Trainer;
 import java.io.Serializable;
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Pedro
  */
-@Stateless
+@Stateful
 public class TrainerFacade extends AbstractFacade<Trainer> implements Serializable, TrainerFacadeLocal {
 
     private static final long serialVersionUID = 1L;
