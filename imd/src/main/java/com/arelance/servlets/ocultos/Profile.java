@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Profile extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("./userprofile.jsp").forward(request, response);
+        request.getRequestDispatcher("/userprofile.jsp").forward(request, response);
     }
 
     @Override

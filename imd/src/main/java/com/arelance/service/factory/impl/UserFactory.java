@@ -1,4 +1,4 @@
-package com.arelance.service.factoryimpl;
+package com.arelance.service.factory.impl;
 
 import com.arelance.qualifiers.UserCrudQ;
 import com.arelance.service.UserCrud;

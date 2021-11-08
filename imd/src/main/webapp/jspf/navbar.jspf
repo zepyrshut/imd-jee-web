@@ -14,7 +14,7 @@
         <div class="uk-offcanvas-bar uk-flex uk-flex-column">
             <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical ">
                 <c:if test="${user == null}"><li><a href="login">Iniciar sesión</a></li></c:if>
-                <c:if test="${user != null}"><li><a href="userprofile.jsp">¡Hola ${user.name}!</a></li></c:if> 
+                <c:if test="${user != null}"><li><a href="profile">¡Hola ${user.name}!</a></li></c:if> 
                     <li><a href="imd">Inicio</a></li>                
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto</a></li>

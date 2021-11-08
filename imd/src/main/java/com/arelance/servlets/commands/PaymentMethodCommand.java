@@ -25,7 +25,10 @@ public class PaymentMethodCommand implements ActionsController {
     private Factory<UserCrud> userFactory;
 
     @Inject
-    private UserImd userImd;
+    private UserImd userImdSession;
+
+    @Inject
+    private UserImd userImdFromDb;
 
     private PaymentMethod paymentMethodUser;
 
@@ -33,8 +36,8 @@ public class PaymentMethodCommand implements ActionsController {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String addOrDelete = request.getParameter("actionPayment");
-        userImd = (UserImd) request.getSession().getAttribute("user");
-        userImd = userFactory.buildCrud().findById(userImd.getUserId());
+        userImdSession = (UserImd) request.getSession().getAttribute("user");
+        userImdFromDb = userFactory.buildCrud().findById(userImdSession.getUserId());
 
         switch (addOrDelete) {
             case "add":
@@ -58,16 +61,18 @@ public class PaymentMethodCommand implements ActionsController {
                     default:
                 }
 
-                paymentMethodUser.setUserImd(userImd);
-                userImd.getPaymentMethod().add(paymentMethodUser);
-                userFactory.buildCrud().updateEntity(userImd);
-                request.getSession().setAttribute("user", userImd);
+                paymentMethodUser.setUserImd(userImdFromDb);
+                userImdFromDb.addPaymentMethod(paymentMethodUser);
+                userFactory.buildCrud().updateEntity(userImdFromDb);
+                userImdSession = userImdFromDb;
+                request.getSession().setAttribute("user", userImdSession);
                 break;
+
             case "delete":
                 System.out.println("alcanzado");
-                Integer index = Integer.parseInt(request.getParameter("index"));
-                userImd.getPaymentMethod().remove(index);
-                userFactory.buildCrud().updateEntity(userImd);
+//                Integer index = Integer.parseInt(request.getParameter("index"));
+//                userImd.getPaymentMethod().remove(index);
+//                userFactory.buildCrud().updateEntity(userImd);
                 break;
 
             default:

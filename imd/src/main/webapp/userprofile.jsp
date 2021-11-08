@@ -25,13 +25,13 @@
         <p>Datos usuario:</p>
         <p>${user.name}</p>
         
-        <a href="paymentmethod.jsp">AÑADIR METODO DE PAGO</a>
+        <a href="addpayment">AÑADIR METODO DE PAGO</a>
      
 
-          <c:forEach items="${user.paymentMethod}" var="paymentMethod" varStatus="forLoop">
+      <c:forEach items="${user.paymentsMethods}" var="paymentMethod" varStatus="forLoop">
               <p>${paymentMethod.paymentName}<a href="actions?action=paymentmethod&actionPayment=delete&index=${forLoop.index}">Eliminar</a></p> 
               
-          </c:forEach>
+          </c:forEach> 
      
 
             <div class="container rounded bg-white mt-5">

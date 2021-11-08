@@ -52,13 +52,14 @@ public class UserImd implements Serializable {
     private SessionData sessionData;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userImd")
     private List<UserHasActivity> userHasActivity;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userImd")
-    private List<PaymentMethod> paymentMethod;
-    
+    private List<PaymentMethod> paymentsMethods;
+
     public UserImd() {
         super();
         this.userHasActivity = new ArrayList<>();
-        this.paymentMethod = new ArrayList<>();
+        this.paymentsMethods = new ArrayList<>();
     }
 
     public Integer getUserId() {
@@ -125,26 +126,22 @@ public class UserImd implements Serializable {
         this.userHasActivity = userHasActivity;
     }
 
-    public List<PaymentMethod> getPaymentMethod() {
-        return paymentMethod;
+    public List<PaymentMethod> getPaymentsMethods() {
+        return paymentsMethods;
     }
 
-    public void setPaymentMethod(List<PaymentMethod> paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setPaymentsMethods(List<PaymentMethod> paymentsMethods) {
+        this.paymentsMethods = paymentsMethods;
+    }
+
+    public void addPaymentMethod(PaymentMethod paymentMethod) {
+        paymentsMethods.add(paymentMethod);
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.userId);
-        hash = 89 * hash + Objects.hashCode(this.name);
-        hash = 89 * hash + Objects.hashCode(this.surnameA);
-        hash = 89 * hash + Objects.hashCode(this.surnameB);
-        hash = 89 * hash + Objects.hashCode(this.phone);
-        hash = 89 * hash + Objects.hashCode(this.email);
-        hash = 89 * hash + Objects.hashCode(this.sessionData);
-        hash = 89 * hash + Objects.hashCode(this.userHasActivity);
-        hash = 89 * hash + Objects.hashCode(this.paymentMethod);
+        hash = 47 * hash + Objects.hashCode(this.userId);
         return hash;
     }
 
@@ -160,31 +157,10 @@ public class UserImd implements Serializable {
             return false;
         }
         final UserImd other = (UserImd) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.surnameA, other.surnameA)) {
-            return false;
-        }
-        if (!Objects.equals(this.surnameB, other.surnameB)) {
-            return false;
-        }
-        if (!Objects.equals(this.phone, other.phone)) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
         if (!Objects.equals(this.userId, other.userId)) {
             return false;
         }
-        if (!Objects.equals(this.sessionData, other.sessionData)) {
-            return false;
-        }
-        if (!Objects.equals(this.userHasActivity, other.userHasActivity)) {
-            return false;
-        }
-        return Objects.equals(this.paymentMethod, other.paymentMethod);
+        return true;
     }
 
 }

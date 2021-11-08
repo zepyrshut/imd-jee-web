@@ -81,9 +81,11 @@ public class ActionsService extends HttpServlet {
         
         ActionsController action = actions.get(actionKey);
         String page = action.execute(request, response);
+        
+        response.sendRedirect("/imd"+page);
 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
-        dispatcher.forward(request, response);
+        //RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
+        //dispatcher.forward(request, response);
 
     }
 

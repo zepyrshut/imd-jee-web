@@ -35,6 +35,8 @@ public class ActivityInscription implements ActionsController {
 
     @Inject
     private Activity activity;
+    
+    private PaymentMethod paymentMethod;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,15 +44,15 @@ public class ActivityInscription implements ActionsController {
         activity = (Activity) request.getSession().getAttribute("activity");
         userImd = (UserImd) request.getSession().getAttribute("user");
         int index = Integer.parseInt(request.getParameter("paymentMethod"));
-        PaymentMethod metodoPago = userImd.getPaymentMethod().get(index);
+        //paymentMethod = userImd.getPaymentMethod().get(index);
 
         userHasActivityPK.setActivityId(activity.getActivityId());
         userHasActivityPK.setUserId(userImd.getUserId());
-        userHasActivityPK.setPaymentId(metodoPago.getPaymentId());
+        userHasActivityPK.setPaymentId(paymentMethod.getPaymentId());
 
         userHasActivity.setActivity(activity);
         userHasActivity.setUserImd(userImd);
-        userHasActivity.setPaymentMethod(metodoPago);
+        userHasActivity.setPaymentMethod(paymentMethod);
 
         userHasActivity.setUserHasActivityPK(userHasActivityPK);
         userImd.getUserHasActivity().add(userHasActivity);

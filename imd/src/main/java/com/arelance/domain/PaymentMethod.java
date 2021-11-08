@@ -1,9 +1,9 @@
 package com.arelance.domain;
 
 import java.io.Serializable;
-import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,8 +31,8 @@ public abstract class PaymentMethod implements Serializable {
     @Column(name = "name_payment")
     protected String paymentName;
     @ManyToOne
-    @JoinColumn(name = "id_user")
-    protected UserImd userImd;
+    @JoinColumn(name = "user_id")
+    private UserImd userImd;
 
     protected PaymentMethod() {
         super();
@@ -68,9 +68,7 @@ public abstract class PaymentMethod implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 83 * hash + Objects.hashCode(this.paymentId);
-        return hash;
+        return getClass().hashCode();
     }
 
     @Override
@@ -78,20 +76,11 @@ public abstract class PaymentMethod implements Serializable {
         if (this == obj) {
             return true;
         }
-        if (obj == null) {
+        if (!(obj instanceof PaymentMethod)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final PaymentMethod other = (PaymentMethod) obj;
-        if (!Objects.equals(this.paymentName, other.paymentName)) {
-            return false;
-        }
-        if (!Objects.equals(this.paymentId, other.paymentId)) {
-            return false;
-        }
-        return Objects.equals(this.userImd, other.userImd);
+        return paymentId != null && paymentId.equals(((PaymentMethod) obj).getPaymentId());
+
     }
 
 }
