@@ -31,7 +31,14 @@
       <c:forEach items="${user.paymentsMethods}" var="paymentMethod" varStatus="forLoop">
               <p>${paymentMethod.paymentName}<a href="actions?action=paymentmethod&actionPayment=delete&index=${forLoop.index}">Eliminar</a></p> 
               
+                    </c:forEach>      
+              <h2> Actividades inscritas</h2>
+             
+                   <c:forEach items="${user.userHasActivity}" var="userHasActivity" varStatus="forLoop">
+              <p>${userHasActivity.activity.activityName}</p> 
+              
           </c:forEach> 
+               
      
 
             <div class="container rounded bg-white mt-5">

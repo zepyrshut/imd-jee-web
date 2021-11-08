@@ -20,10 +20,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 @ActivityInscriptionQ
 public class ActivityInscription implements ActionsController {
-    
+
     @Inject
     private Factory<UserCrud> userFactory;
 
+    @Inject
+    private UserHasActivity userHasActivityBool;
+    
     @Inject
     private UserHasActivity userHasActivity;
 
@@ -35,7 +38,7 @@ public class ActivityInscription implements ActionsController {
 
     @Inject
     private Activity activity;
-    
+
     private PaymentMethod paymentMethod;
 
     @Override
@@ -43,20 +46,28 @@ public class ActivityInscription implements ActionsController {
 
         activity = (Activity) request.getSession().getAttribute("activity");
         userImd = (UserImd) request.getSession().getAttribute("user");
-        int index = Integer.parseInt(request.getParameter("paymentMethod"));
-        //paymentMethod = userImd.getPaymentMethod().get(index);
+        userHasActivityBool = activity.getUserHasActivity();
 
-        userHasActivityPK.setActivityId(activity.getActivityId());
-        userHasActivityPK.setUserId(userImd.getUserId());
-        userHasActivityPK.setPaymentId(paymentMethod.getPaymentId());
+        if (userImd.getUserHasActivity().contains(userHasActivityBool)) {
+            return "/preindex";
+        } else {
+            int index = Integer.parseInt(request.getParameter("paymentMethod"));
+            paymentMethod = userImd.getPaymentsMethods().get(index);
 
-        userHasActivity.setActivity(activity);
-        userHasActivity.setUserImd(userImd);
-        userHasActivity.setPaymentMethod(paymentMethod);
+            userHasActivityPK.setActivityId(activity.getActivityId());
+            userHasActivityPK.setUserId(userImd.getUserId());
+            userHasActivityPK.setPaymentId(paymentMethod.getPaymentId());
 
-        userHasActivity.setUserHasActivityPK(userHasActivityPK);
-        userImd.getUserHasActivity().add(userHasActivity);
-        userFactory.buildCrud().updateEntity(userImd);
+            userHasActivity.setActivity(activity);
+            userHasActivity.setUserImd(userImd);
+            userHasActivity.setPaymentMethod(paymentMethod);
+
+            userHasActivity.setUserHasActivityPK(userHasActivityPK);
+            userImd.getUserHasActivity().add(userHasActivity);
+            userFactory.buildCrud().updateEntity(userImd);            
+            userFactory.buildCrud().refreshEntity(userImd);
+            
+        }
 
         return "/preindex";
 

@@ -54,35 +54,27 @@
                         <p> Para poder inscribirse en la actividad, debes primero <a href="login">iniciar sesión</a>.</p>
                     </article>
                 </c:if>
+
+                <article class="uk-grid-small uk-child-width-auto padding-top-small" uk-grid>
+                    <p><a class="uk-button uk-button-secondary" href="#">¿Tienes dudas?, escríbenos.</a></p>
+                </article>
+
+
+
                 <c:if test="${user != null}">
-                    <form action="actions?action=activityinscription" method="POST">
-                                        <label for="paymentMethod">Elige método de pago:</label>
-                    <select name="paymentMethod">
-                        <c:forEach items="${user.paymentMethod}" var="paymentMethod" varStatus="forLoop">
-                            <option value=${forLoop.index}>${paymentMethod.paymentName}</option>
-                        </c:forEach>
-                    </select>
-                                        
-                                       <input type="submit" class="uk-button uk-button-primary" value="Inscribirse" />
-                    </form>
-                    
-                    
-                    <article class="uk-grid-small uk-child-width-auto padding-top-small" uk-grid>
-                        <p><a class="uk-button uk-button-primary" href="actions?action=activityinscription">¡Inscribirse!</a></p>
-                        <p><a class="uk-button uk-button-secondary" href="#">¿Tienes dudas?, escríbenos.</a></p>
-                    </article>
                     <aside class="uk-margin">
                         <p class="uk-text-lead">Detalles de pago</p>
                         <p>Seleccione el método de pago deseado para la inscripción de la actividad.</p>
                     </aside>
-
-                    <c:forEach items="${usuario.metodoPago}" var="paymentMethod" varStatus="forLoop">
-                        <p>${paymentMethod.paymentName} ${forLoop.index}</p>
-                    </c:forEach>
-
-
-
-
+                    <form action="actions?action=activityinscription" method="POST">
+                        <label for="paymentMethod">Elige método de pago:</label>
+                        <select name="paymentMethod">
+                            <c:forEach items="${user.paymentsMethods}" var="paymentMethod" varStatus="forLoop">
+                                <option value=${forLoop.index}>${paymentMethod.paymentName}</option>
+                            </c:forEach>
+                        </select>
+                        <p><input type="submit" value="¡Inscribirse!" class="uk-button uk-button-primary"></p>
+                    </form>
                 </c:if>
             </section>
         </main>

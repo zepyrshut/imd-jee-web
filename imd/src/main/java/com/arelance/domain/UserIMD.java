@@ -52,7 +52,6 @@ public class UserImd implements Serializable {
     private SessionData sessionData;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userImd")
     private List<UserHasActivity> userHasActivity;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userImd")
     private List<PaymentMethod> paymentsMethods;
 

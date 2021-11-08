@@ -58,7 +58,6 @@ public class UserHasActivityPK implements Serializable {
         int hash = 7;
         hash = 37 * hash + this.userId;
         hash = 37 * hash + this.activityId;
-        hash = 37 * hash + this.paymentId;
         return hash;
     }
 
@@ -80,7 +79,7 @@ public class UserHasActivityPK implements Serializable {
         if (this.activityId != other.activityId) {
             return false;
         }
-        return this.paymentId == other.paymentId;
+        return true;
     }
 
 }

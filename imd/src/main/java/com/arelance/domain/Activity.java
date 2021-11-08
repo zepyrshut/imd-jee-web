@@ -121,25 +121,10 @@ public class Activity implements Serializable {
             return false;
         }
         final Activity other = (Activity) obj;
-        if (!Objects.equals(this.activityName, other.activityName)) {
-            return false;
-        }
-        if (!Objects.equals(this.activityDescription, other.activityDescription)) {
-            return false;
-        }
-        if (!Objects.equals(this.activityCategory, other.activityCategory)) {
-            return false;
-        }
         if (!Objects.equals(this.activityId, other.activityId)) {
             return false;
         }
-        if (!Objects.equals(this.activityPrice, other.activityPrice)) {
-            return false;
-        }
-        if (!Objects.equals(this.trainerHasActivity, other.trainerHasActivity)) {
-            return false;
-        }
-        return Objects.equals(this.userHasActivity, other.userHasActivity);
+        return true;
     }
 
 }

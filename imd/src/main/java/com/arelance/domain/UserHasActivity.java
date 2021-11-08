@@ -73,9 +73,6 @@ public class UserHasActivity implements Serializable {
     public int hashCode() {
         int hash = 5;
         hash = 17 * hash + Objects.hashCode(this.userHasActivityPK);
-        hash = 17 * hash + Objects.hashCode(this.activity);
-        hash = 17 * hash + Objects.hashCode(this.userImd);
-        hash = 17 * hash + Objects.hashCode(this.paymentMethod);
         return hash;
     }
 
@@ -91,16 +88,7 @@ public class UserHasActivity implements Serializable {
             return false;
         }
         final UserHasActivity other = (UserHasActivity) obj;
-        if (!Objects.equals(this.userHasActivityPK, other.userHasActivityPK)) {
-            return false;
-        }
-        if (!Objects.equals(this.activity, other.activity)) {
-            return false;
-        }
-        if (!Objects.equals(this.userImd, other.userImd)) {
-            return false;
-        }
-        return Objects.equals(this.paymentMethod, other.paymentMethod);
+        return Objects.equals(this.userHasActivityPK, other.userHasActivityPK);
     }
 
 }

@@ -41,46 +41,51 @@ public class PaymentMethodCommand implements ActionsController {
 
         switch (addOrDelete) {
             case "add":
-                String selectedPaymentMethod = request.getParameter("paymentmethod");
-                String description = request.getParameter("description");
-
-                switch (selectedPaymentMethod) {
-                    case "paypal":
-                        String email = request.getParameter("email");
-                        paymentMethodUser = new PayPal(email, description);
-                        break;
-                    case "debit":
-                        String number = request.getParameter("number");
-                        String cvv = request.getParameter("cvv");
-                        paymentMethodUser = new DebitCard(number, cvv, description);
-                        break;
-                    case "bank":
-                        String iban = request.getParameter("iban");
-                        paymentMethodUser = new BankAccount(iban, description);
-                        break;
-                    default:
-                }
-
-                paymentMethodUser.setUserImd(userImdFromDb);
-                userImdFromDb.addPaymentMethod(paymentMethodUser);
-                userFactory.buildCrud().updateEntity(userImdFromDb);
-                userImdSession = userImdFromDb;
-                request.getSession().setAttribute("user", userImdSession);
+                addPayment(request);
                 break;
 
             case "delete":
-                System.out.println("alcanzado");
-//                Integer index = Integer.parseInt(request.getParameter("index"));
-//                userImd.getPaymentMethod().remove(index);
-//                userFactory.buildCrud().updateEntity(userImd);
+                deletePayment(request);
                 break;
-
             default:
 
         }
 
         return "/profile";
+    }
 
+    private void addPayment(HttpServletRequest request) {
+        String selectedPaymentMethod = request.getParameter("paymentmethod");
+        String description = request.getParameter("description");
+
+        switch (selectedPaymentMethod) {
+            case "paypal":
+                String email = request.getParameter("email");
+                paymentMethodUser = new PayPal(email, description);
+                break;
+            case "debit":
+                String number = request.getParameter("number");
+                String cvv = request.getParameter("cvv");
+                paymentMethodUser = new DebitCard(number, cvv, description);
+                break;
+            case "bank":
+                String iban = request.getParameter("iban");
+                paymentMethodUser = new BankAccount(iban, description);
+                break;
+            default:
+        }
+
+        paymentMethodUser.setUserImd(userImdFromDb);
+        userImdFromDb.addPaymentMethod(paymentMethodUser);
+        userFactory.buildCrud().updateEntity(userImdFromDb);
+        userImdSession = userImdFromDb;
+        request.getSession().setAttribute("user", userImdSession);
+    }
+
+    private void deletePayment(HttpServletRequest request) {
+//        Integer index = Integer.parseInt(request.getParameter("index"));
+//        userImd.getPaymentMethod().remove(index);
+//        userFactory.buildCrud().updateEntity(userImd);
     }
 
 }
