@@ -7,6 +7,10 @@ package com.arelance.dao.impl;
 
 import com.arelance.dao.MetodoPagoDAO;
 import com.arelance.domain.MetodoPago;
+import com.arelance.domain.PayPal;
+import com.arelance.domain.Tarjeta;
+import com.arelance.domain.Transferencia;
+import com.arelance.domain.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,19 +29,7 @@ public class MetodoPagoDAOImpl implements MetodoPagoDAO {
 //    @Override
 //    public void addMetodo(MetodoPago metodoPago) {
 //        em.persist(metodoPago);
-//        switch (metodoPago.g) {
-//
-//            case valor1:
-//
-//                break;
-//
-//            case valor2:
-//
-//                break;
-//
-//            default:
-//            // Declaraciones
-//        }
+
 //    }
 
     @Override
@@ -47,7 +39,28 @@ public class MetodoPagoDAOImpl implements MetodoPagoDAO {
 
     @Override
     public void addMetodo(MetodoPago metodoPago) {
+        em.persist(metodoPago);
+    }
+
+    @Override
+    public void addMetodo(PayPal paypal) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addMetodo(Tarjeta tarjeta) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addMetodo(Transferencia transferencia) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<PayPal> findPayPalsByUser(Usuario usuario) {
+        return null;
+        
     }
 
 }

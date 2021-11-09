@@ -29,8 +29,8 @@
      
 
           <c:forEach items="${usuario.metodoPago}" var="metodoPago">
-              <p>${metodoPago.nombrepago}</p>
-              
+              <p>${metodoPago.usuario.nombre}</p>
+   
           </c:forEach>
      
 
@@ -39,7 +39,7 @@
                     <div class="col-md-4 border-right">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                             <span>Metodos de pago disponibles</span>
-                    <%--    <c:out value="Correo de paypal: ${empty usuario.paypal.correo ? 'Añadir paypal(formulario JS)' : usuario.paypal.correo}" />
+                    <%--   <c:out value="Correo de paypal: ${empty usuario.paypal.correo ? 'Añadir paypal(formulario JS)' : usuario.paypal.correo}" />
 
                         <br>
                         <c:out value="numero de tarjeta: ${empty usuario.tarjeta.numero ? 'Añadir tarjeta de credito(formulario JS)' : usuario.tarjeta.numero}" />

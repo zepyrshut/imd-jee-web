@@ -33,7 +33,7 @@
         <li>
             <a class="uk-accordion-title" href="#">Añadir tarjeta</a>
             <div class="uk-accordion-content">
-                <form  method="POST" action="actions?action=paymentmethod?metodopago=tarjeta">
+                <form  method="POST" action="actions?action=paymentmethod&metodopago=tarjeta">
                     <div class="uk-margin">
                         <input class="uk-input" type="text" placeholder="Descripción" name="descripcion">
                         <input class="uk-input" type="text" placeholder="Número tarjeta" name="numerotarjeta">
@@ -48,7 +48,7 @@
         <li>
             <a class="uk-accordion-title" href="#">Añadir cuenta bancaria</a>
             <div class="uk-accordion-content">
-                <form  method="POST" action="actions?action=paymentmethod?metodopago=transferencia">
+                <form  method="POST" action="actions?action=paymentmethod&metodopago=transferencia">
                     <div class="uk-margin">
                         <input class="uk-input" type="text" placeholder="Descripción" name="descripcion">
                         <input class="uk-input" type="text" placeholder="Número IBAN" name="iban">

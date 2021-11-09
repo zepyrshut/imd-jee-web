@@ -5,10 +5,14 @@
  */
 package com.arelance.service;
 
+import com.arelance.domain.MetodoPago;
+import java.util.List;
+
 /**
  *
  * @author jorge
  */
 public interface MetodoPagoService {
-    
+        public List<MetodoPago> listarMetodosPagos();
+     public void addMetodo(MetodoPago metodoPago);
 }
