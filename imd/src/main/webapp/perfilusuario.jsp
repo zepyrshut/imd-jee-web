@@ -24,29 +24,29 @@
 
         <p>Datos usuario:</p>
         <p>${usuario.nombre}</p>
-        
+
         <a href="metodopago.jsp">AÑADIR METODO DE PAGO</a>
-     
 
-          <c:forEach items="${usuario.metodoPago}" var="metodoPago">
-              <p>${metodoPago.usuario.nombre}</p>
-   
-          </c:forEach>
-     
 
-            <div class="container rounded bg-white mt-5">
-                <div class="row">
-                    <div class="col-md-4 border-right">
-                        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                            <span>Metodos de pago disponibles</span>
-                    <%--   <c:out value="Correo de paypal: ${empty usuario.paypal.correo ? 'Añadir paypal(formulario JS)' : usuario.paypal.correo}" />
+        <c:forEach items="${usuario.metodoPago}" var="metodoPago">
+            <c:if test="${metodoPago.idMetodoPago} != null">
+                <p>${metodoPago.correoPayPal}</p>
+            </c:if>
+                
+        </c:forEach>
 
+
+        <div class="container rounded bg-white mt-5">
+            <div class="row">
+                <div class="col-md-4 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <span>Metodos de pago disponibles</span>
+                        <c:forEach items="${usuario.metodoPago}" var="metodoPago">
+                            <c:out value="${ metodoPago.usuario.metodoPago}"/>
+
+                        </c:forEach>
                         <br>
-                        <c:out value="numero de tarjeta: ${empty usuario.tarjeta.numero ? 'Añadir tarjeta de credito(formulario JS)' : usuario.tarjeta.numero}" />
 
-                        <br>
-
-                        <c:out value="numero de iban: ${empty usuario.transferencia.iban ? 'Añadir datos bancarios(formulario JS)' : usuario.transferencia.iban}" /> --%>
 
                         <span class="text-black-50">${usuario.email}</span></div>
                 </div>

@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -12,6 +15,10 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "paypal")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Usuario.findById", query = "SELECT p FROM PayPal p WHERE p.idMetodoPago  = :idMetodoPago"),
+    @NamedQuery(name = "Paypal.findByEmail", query = "SELECT p FROM PayPal p WHERE p.correoPayPal  = :correoPayPal")})
 public class PayPal extends MetodoPago implements Serializable {
 
     private static final long serialVersionUID = 1L;

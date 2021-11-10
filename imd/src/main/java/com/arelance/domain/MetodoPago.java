@@ -93,5 +93,10 @@ public abstract class MetodoPago implements Serializable {
         }
         return Objects.equals(this.usuario, other.usuario);
     }
+
+    @Override
+    public String toString() {
+        return "MetodoPago{" + "idMetodoPago=" + idMetodoPago + ", nombrePago=" + nombrePago + ", usuario=" + usuario + '}';
+    }
     
 }
