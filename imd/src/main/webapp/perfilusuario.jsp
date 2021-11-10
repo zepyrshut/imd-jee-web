@@ -41,13 +41,20 @@
                 <div class="col-md-4 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                         <span>Metodos de pago disponibles</span>
-                        <c:forEach items="${usuario.metodoPago}" var="metodoPago">
-                            <c:out value="${ metodoPago.usuario.metodoPago}"/>
+
+                          <p>---------</p>
+                                                <c:forEach items="${usuario.metodoPago}" var="metodoPago">
+                            <c:out value="${ metodoPago}"/>
 
                         </c:forEach>
                         <br>
+                        <p>---------</p>
+ <span>Actividades de usuario</span>
+ <c:forEach items="${usuario.usuarioTieneActividad}" var="actividad">
+                            <c:out value="${ actividad.actividad.nombreActividad}"/>
 
-
+                        </c:forEach>
+ 
                         <span class="text-black-50">${usuario.email}</span></div>
                 </div>
                 <div class="col-md-8">
