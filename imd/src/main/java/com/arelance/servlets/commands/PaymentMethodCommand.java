@@ -1,21 +1,15 @@
 package com.arelance.servlets.commands;
 
 import com.arelance.domain.MetodoPago;
-import com.arelance.domain.PayPal;
-import com.arelance.domain.Tarjeta;
-import com.arelance.domain.Transferencia;
 import com.arelance.domain.Usuario;
 import com.arelance.enums.PaymentMethodsEnum;
 import com.arelance.service.PaymentMethodService;
-import com.arelance.service.UsuarioService;
 import com.arelance.servlets.commands.paymentstrat.ConcreteAccount;
 import com.arelance.servlets.commands.paymentstrat.ConcreteDebit;
 import com.arelance.servlets.commands.paymentstrat.ConcretePaypal;
 import com.arelance.servlets.commands.paymentstrat.ContextStrategyPayment;
 import com.arelance.servlets.commands.qualifiers.PaymentMethodQ;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

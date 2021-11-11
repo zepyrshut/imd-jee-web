@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Pedro
+ * @author Jorge
  */
 public class UpdateUserDescription implements ActionsController {
 
