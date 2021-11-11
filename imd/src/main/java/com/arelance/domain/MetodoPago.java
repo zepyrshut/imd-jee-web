@@ -36,11 +36,12 @@ public abstract class MetodoPago implements Serializable {
 
     protected MetodoPago() {
         super();
-    }    
+    }
 
-    protected MetodoPago(String nombrePago) {
+    protected MetodoPago(String nombrePago, Usuario usuario) {
         this.nombrePago = nombrePago;
-    }    
+        this.usuario = usuario;
+    }
 
     public Integer getIdMetodoPago() {
         return idMetodoPago;
@@ -93,5 +94,5 @@ public abstract class MetodoPago implements Serializable {
         }
         return Objects.equals(this.usuario, other.usuario);
     }
-    
+
 }

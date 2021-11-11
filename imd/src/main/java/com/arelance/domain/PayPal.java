@@ -20,13 +20,13 @@ public class PayPal extends MetodoPago implements Serializable {
     private String correoPayPal;
 
     public PayPal() {
-       super();
-    }      
+        super();
+    }
 
-    public PayPal(String correoPayPal, String nombrePago) {
-        super(nombrePago);
+    public PayPal(String correoPayPal, String nombrePago, Usuario usuario) {
+        super(nombrePago, usuario);
         this.correoPayPal = correoPayPal;
-    }   
+    }
 
     public String getCorreoPayPal() {
         return correoPayPal;

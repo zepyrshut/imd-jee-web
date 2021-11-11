@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <filter>
+        <filter-name>TranslateToUTF</filter-name>
+        <filter-class>com.arelance.filters.TranslateToUTF</filter-class>
+    </filter>
+    <filter>
+        <filter-name>SelectedPaymentMethod</filter-name>
+        <filter-class>com.arelance.filters.SelectedPaymentMethod</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TranslateToUTF</filter-name>
+        <url-pattern>/actions</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SelectedPaymentMethod</filter-name>
+        <url-pattern>/paymentmethod.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
     <session-config>
         <session-timeout>
             30
@@ -7,7 +27,7 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>
-           preindex
+            preindex
         </welcome-file>
     </welcome-file-list>
 </web-app>

@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Tarjeta extends MetodoPago implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Column(name = "numero")
     private String numero;
 
@@ -23,16 +23,14 @@ public class Tarjeta extends MetodoPago implements Serializable {
     private String cvv;
 
     public Tarjeta() {
-super();
+        super();
     }
-    
-    
 
-    public Tarjeta(String numero, String cvv, String nombrePago) {
-        super(nombrePago);
+    public Tarjeta(String numero, String cvv, String nombrePago, Usuario usuario) {
+        super(nombrePago, usuario);
         this.numero = numero;
         this.cvv = cvv;
-    }   
+    }
 
     public String getNumero() {
         return numero;
