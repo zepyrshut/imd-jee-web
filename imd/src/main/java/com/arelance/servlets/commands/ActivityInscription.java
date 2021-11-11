@@ -72,7 +72,7 @@ public class ActivityInscription implements ActionsController {
         usuarioTieneActividad.setUsuarioTieneActividadPK(usuarioTieneActividadPK);
         usuario.getUsuarioTieneActividad().add(usuarioTieneActividad);
         usuarioService.updateUsuario(usuario);
-
+      
         return "/preindex";
 
     }
