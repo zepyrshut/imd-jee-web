@@ -19,7 +19,7 @@
         <li>
             <a class="uk-accordion-title" href="#">Añadir PayPal</a>
             <div class="uk-accordion-content">
-                <form method="POST" action="actions?action=paymentmethod&metodopago=PAYPAL">
+                <form method="POST" action="addingpaymentmethod?metodopago=PAYPAL">
                     <div class="uk-margin">
                         <input class="uk-input" type="text" placeholder="Descripción" name="descripcion">
                         <input class="uk-input" type="text" placeholder="Correo PayPal" name="correopaypal">
@@ -33,7 +33,7 @@
         <li>
             <a class="uk-accordion-title" href="#">Añadir tarjeta</a>
             <div class="uk-accordion-content">
-                <form method="POST" action="actions?action=paymentmethod&metodopago=DEBIT">
+                <form method="POST" action="addingpaymentmethod?metodopago=DEBIT">
                     <div class="uk-margin">
                         <input class="uk-input" type="text" placeholder="Descripción" name="descripcion">
                         <input class="uk-input" type="text" placeholder="Número tarjeta" name="numerotarjeta">
@@ -48,7 +48,7 @@
         <li>
             <a class="uk-accordion-title" href="#">Añadir cuenta bancaria</a>
             <div class="uk-accordion-content">
-                <form method="POST" action="actions?action=paymentmethod&metodopago=ACCOUNT">
+                <form method="POST" action="addingpaymentmethod?metodopago=ACCOUNT">
                     <div class="uk-margin">
                         <input class="uk-input" type="text" placeholder="Descripción" name="descripcion">
                         <input class="uk-input" type="text" placeholder="Número IBAN" name="iban">

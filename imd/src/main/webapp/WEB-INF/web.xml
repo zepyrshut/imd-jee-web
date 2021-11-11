@@ -16,7 +16,7 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>SelectedPaymentMethod</filter-name>
-        <url-pattern>/paymentmethod.jsp</url-pattern>
+        <url-pattern>/addingpaymentmethod</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>

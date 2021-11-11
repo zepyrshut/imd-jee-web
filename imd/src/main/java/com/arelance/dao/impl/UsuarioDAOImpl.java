@@ -59,6 +59,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
     @Override
     public Usuario refrescar(Usuario usuario) {
+        em.clear();
         em.refresh(em.merge(usuario));
         return usuario;
     }

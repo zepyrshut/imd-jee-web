@@ -43,8 +43,8 @@ public class PaymentMethodCommand implements ActionsController {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         usuario = (Usuario) request.getSession().getAttribute("usuario");
-        PaymentMethodsEnum getMetodoPago = Enum.valueOf(PaymentMethodsEnum.class, request.getParameter("metodopago"));
-        //String getMetodoPago = request.getSession().getAttribute("metodoPago");
+        String selectedPayment = (String) request.getSession().getAttribute("metodopago");
+        PaymentMethodsEnum getMetodoPago = Enum.valueOf(PaymentMethodsEnum.class, selectedPayment);
         String descripcion = request.getParameter("descripcion");
 
         switch (getMetodoPago) {
@@ -66,7 +66,7 @@ public class PaymentMethodCommand implements ActionsController {
         usuario.getMetodoPago().add(metodoPago);
         paymentMethodService.addPaymentMethod(metodoPago);
 
-        return "/perfilusuario.jsp";
+        return "/userprofile";
     }
 
 }
