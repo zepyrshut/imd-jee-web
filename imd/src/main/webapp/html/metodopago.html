@@ -68,58 +68,71 @@
     <!-- Fin barra navegación -->
     <!-- Contenido -->
 
-
-    <ul uk-accordion>
-
-        <li>
-            <a class="uk-accordion-title" href="#">Añadir PayPal</a>
-            <div class="uk-accordion-content">
-                <form method="POST" action="actions?action=paymentmethod">
-                    <div class="uk-margin">
-                        <input class="uk-input" type="text" placeholder="Descripción">
-                        <input class="uk-input" type="text" placeholder="Correo PayPal">
-                        <input class="uk-input" type="text" placeholder="Contraseña PayPal">
-                    </div>
-                    <input type="submit" value="Añadir" class="uk-button uk-button-primary uk-margin-small-top">
-                </form>
-            </div>
-        </li>
-
-
-        <li>
-            <a class="uk-accordion-title" href="#">Añadir tarjeta</a>
-            <div class="uk-accordion-content">
-                <form>
-                    <div class="uk-margin">
-                        <input class="uk-input" type="text" placeholder="Descripción">
-                        <input class="uk-input" type="text" placeholder="Número tarjeta">
-                        <input class="uk-input" type="text" placeholder="Código seguridad">
-                    </div>
-                    <input type="submit" value="Añadir" class="uk-button uk-button-primary uk-margin-small-top">
-                </form>
-            </div>
-        </li>
+    <div class="uk-container uk-container-xsmall uk-padding">
+        <header class="padding-top-medium uk-text-center uk-padding">
+            <h1 class="">Añadir un método de pago</h1>
+        </header>
+        <ul uk-accordion>
+            <li>
+                <a class="uk-accordion-title" href="#">Añadir PayPal</a>
+                <div class="uk-accordion-content">
+                    <form method="POST" action="actions?action=paymentmethod">
+                     
+                        <ul class="uk-list">     
+                              
+                            <li> <input class="uk-input uk-margin-small" type="text"
+                                    placeholder="Descripción"></li>
+                            <li> <input class="uk-input uk-margin-small" type="text"
+                                    placeholder="Correo PayPal"></li>
+                            <li> <input class="uk-input uk-margin-small" type="text"
+                                    placeholder="Contraseña PayPal"> </li>
+                            <li> <input type="submit" value="Añadir" class="uk-button uk-button-primary uk-margin-small-top"></li>
+            
+                        </ul>
+                   
+                    </form>
+                </div>
+            </li>
 
 
-        <li>
-            <a class="uk-accordion-title" href="#">Añadir cuenta bancaria</a>
-            <div class="uk-accordion-content">
-                <form>
-                    <div class="uk-margin">
-                        <input class="uk-input" type="text" placeholder="Descripción">
-                        <input class="uk-input" type="text" placeholder="Número IBAN">
-                    </div>
-                    <input type="submit" value="Añadir" class="uk-button uk-button-primary uk-margin-small-top">
-                </form>
-            </div>
-        </li>
+            <li>
+                <a class="uk-accordion-title" href="#">Añadir tarjeta</a>
+                <div class="uk-accordion-content">
+                    <form>
+                        <ul class="uk-list">
+                            <li> <input class="uk-input uk-margin-small" type="text"
+                                    placeholder="Descripción"></li>
+                            <li> <input class="uk-input uk-margin-small" type="text"
+                                    placeholder="Número tarjeta"></li>
+                            <li> <input class="uk-input uk-margin-small" type="text"
+                                    placeholder="Código seguridad"></li>
+                            <li> <input type="submit" value="Añadir" class="uk-button uk-button-primary"></li>
+                        </ul>
+                    </form>
+                </div>
+            </li>
+
+
+            <li>
+                <a class="uk-accordion-title" href="#">Añadir cuenta bancaria</a>
+                <div class="uk-accordion-content">
+                    <form>
+                       <ul class="uk-list">
+                        <li>    <input class="uk-input uk-margin-small" type="text" placeholder="Descripción"></li>
+                            <li>    <input class="uk-input uk-margin-small" type="text" placeholder="Número IBAN"></li>
+                 
+                                <li>   <input type="submit" value="Añadir" class="uk-button uk-button-primary uk-margin-small-top">
+                        </ul>
+                    </form>
+                </div>
+            </li>
 
 
 
 
-    </ul>
+        </ul>
 
-
+    </div>
 
 
 
