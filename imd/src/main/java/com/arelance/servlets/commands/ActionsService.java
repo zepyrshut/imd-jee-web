@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.arelance.servlets.commands.qualifiers.ActivityDetailsQ;
+import com.arelance.servlets.commands.qualifiers.DeleteUserQ;
 import com.arelance.servlets.commands.qualifiers.PaymentMethodQ;
 
 /**
@@ -40,30 +41,35 @@ public class ActionsService extends HttpServlet {
     @RegisterQ
     private ActionsController register;
     
+//    @Inject
+//    @DeleteUserQ
+//    private ActionsController deleteuser;
+    
     @Inject
     @ActivityDetailsQ
     private ActionsController activityDescription;
-    
+
     @Inject
     @ActivityInscriptionQ
     private ActionsController activityInscription;
-    
+
     @Inject
     @ActivityUnsubcriptionQ
     private ActionsController activityUnsubcription;
-    
+
     @Inject
     @PaymentMethodQ
     private ActionsController paymentMethod;
-    
+
     @Override
     public void init() throws ServletException {
         super.init();
         actions.put("logout", logOut);
         actions.put("login", logIn);
         actions.put("register", register);
+//        actions.put("deleteuser", deleteuser);
         actions.put("activitydescription", activityDescription);
-        actions.put("activityinscription", activityInscription);  
+        actions.put("activityinscription", activityInscription);
         actions.put("activityubsubcription", activityUnsubcription);
         actions.put("paymentmethod", paymentMethod);
     }
@@ -72,7 +78,7 @@ public class ActionsService extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String actionKey = request.getParameter("action");
-        
+
         ActionsController action = actions.get(actionKey);
         String page = action.execute(request, response);
 

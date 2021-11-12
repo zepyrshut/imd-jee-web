@@ -21,7 +21,7 @@
         <!-- Barra navegación -->
         <%@ include file="/jspf/navbar.jspf" %>   
         <h1>Perfil de usuario</h1>
-
+        <p><a href="deletedUser">Borrar usuario</a></p>
         <p>Datos usuario:</p>
         <p>${usuario.nombre}</p>
         
@@ -32,7 +32,10 @@
               <p>${metodoPago.nombrepago}</p>
               
           </c:forEach>
-     
+             <c:forEach items="${usuario.usuarioTieneActividad}" var="actividades">
+              <p>${actividades.actividad.nombreActividad}</p>
+              
+          </c:forEach>
 
             <div class="container rounded bg-white mt-5">
                 <div class="row">
@@ -52,7 +55,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="p-3 py-5">
-                        <form action="PostUpdateDescripcionUsuario">
+                        <form action="updateUserDesc">
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <label for="html">Nombre</label><input type="text" class="form-control" value="${usuario.nombre}" name="name"></div>

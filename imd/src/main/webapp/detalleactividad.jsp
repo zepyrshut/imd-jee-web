@@ -64,11 +64,14 @@
                     </select>
                                         
                                        <input type="submit" class="uk-button uk-button-primary" value="Inscribirse" />
-                    </form>
+                    
                     
                     
                     <article class="uk-grid-small uk-child-width-auto padding-top-small" uk-grid>
-                        <p><a class="uk-button uk-button-primary" href="actions?action=activityinscription">¡Inscribirse!</a></p>
+                       <!-- <p><a class="uk-button uk-button-primary" href="actions?action=activityinscription">¡Inscribirse!</a></p>-->
+                       
+                       <input type="submit" formaction="actions?action=activityubsubcription" value="¡Desuscribirse!">
+                       </form>
                         <p><a class="uk-button uk-button-secondary" href="#">¿Tienes dudas?, escríbenos.</a></p>
                     </article>
                     <aside class="uk-margin">

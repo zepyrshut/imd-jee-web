@@ -50,11 +50,19 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     public void updateUsuario(Usuario usuario) {
         em.merge(usuario);
     }
-
+/**
+ * 
+ * @param usuario 
+ */
     @Override
     public void removeUsuario(Usuario usuario) {
-        em.merge(usuario);
+      
+        if (!em.contains(usuario)) {
+            usuario = em.merge(usuario);
+        }
+        //em.merge(usuario);
         em.remove(usuario);
+        //ATENCION HAY QUE REDIRECICONAR AL BOTON DE CERRAR SESION PARA CERRAR LA SESION DESPUES DE BORRAR EL USUARIO
     }
 
     @Override
