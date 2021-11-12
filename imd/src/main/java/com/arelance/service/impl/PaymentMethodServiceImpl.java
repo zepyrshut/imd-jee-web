@@ -33,5 +33,10 @@ public class PaymentMethodServiceImpl implements PaymentMethodService {
     public MetodoPago refreshPaymentMethod(MetodoPago paymentMethod) {
         return paymentMethodDAO.refreshPaymentMethod(paymentMethod);
     }
+
+    @Override
+    public MetodoPago findMethodByDescription(String description) {
+       return paymentMethodDAO.findMethodByDescription(description);
+    }
     
 }

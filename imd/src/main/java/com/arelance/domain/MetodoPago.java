@@ -11,7 +11,10 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -20,6 +23,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "metodo_pago")
 @Inheritance(strategy = InheritanceType.JOINED)
+@XmlRootElement
+@NamedQueries({
+
+    @NamedQuery(name = "MetodoPago.findByDescription", query = "SELECT m FROM MetodoPago m WHERE m.nombrePago = :nombrePago")})
 public abstract class MetodoPago implements Serializable {
 
     private static final long serialVersionUID = 1L;

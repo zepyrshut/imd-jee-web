@@ -5,7 +5,9 @@
  */
 package com.arelance.servlets.commands;
 
+import com.arelance.domain.MetodoPago;
 import com.arelance.domain.Usuario;
+import com.arelance.service.PaymentMethodService;
 import com.arelance.service.UsuarioService;
 import com.arelance.servlets.commands.qualifiers.DeleteUserQ;
 import java.io.IOException;
@@ -22,30 +24,33 @@ import javax.servlet.http.HttpSession;
  *
  * @author Admin
  */
-@DeleteUserQ
-@WebServlet(name = "deletedUser", urlPatterns = {"/deletedUser"})
-public class DeletedUser extends HttpServlet {
+//@DeleteUserQ
+@WebServlet(name = "deletedPaymentMethod", urlPatterns = {"/deletedPaymentMethod"})
+public class DeletedPaymentMethod extends HttpServlet {
 
     @Inject
     private UsuarioService usuarioService;
-
+    @Inject
+    private PaymentMethodService paymentMethodService;
+    
+    @Inject
+    private MetodoPago metodoPago;
+    
     @Inject
     private Usuario usuario;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
      usuario = (Usuario) request.getSession().getAttribute("usuario");
-//
-//        String name = request.getParameter("name");
-//        String middlename = request.getParameter("profilemiddlename");
-//        String lastname = request.getParameter("profilelastname");
-//        String mail = request.getParameter("profilemail");
-//        String phone = request.getParameter("profilephone");
-//        
-        
-        usuarioService.removeUsuario(usuario);
+     
+     
+
+        String metodoPago1 = request.getParameter("metodoPago");
+       MetodoPago metodofinal = paymentMethodService.findMethodByDescription(metodoPago1); // no vale find descripcion
+       //a menos de que se eviten duplicados, usar ID
+        paymentMethodService.removePaymentMethod(metodofinal); //LLAMADA OBJETO
         // EVITAR DRY, LLAMAR A METODO LogOut.
-         HttpSession sesion = request.getSession();
-            sesion.invalidate();
+        // HttpSession sesion = request.getSession();
+         //   sesion.invalidate();
      // CERRAR SESION  Y MANDAR A INDEX
         response.sendRedirect("./index.jsp");
        

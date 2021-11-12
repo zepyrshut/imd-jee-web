@@ -17,5 +17,6 @@ public interface PaymentMethodDAO {
     public void removePaymentMethod(MetodoPago paymentMethod);
 
     public MetodoPago refreshPaymentMethod(MetodoPago paymentMethod);
+    public MetodoPago findMethodByDescription(String description);
 
 }

@@ -29,7 +29,7 @@
      
 
           <c:forEach items="${usuario.metodoPago}" var="metodoPago">
-              <p>${metodoPago.nombrepago}</p>
+              <p>${metodoPago.nombrepago} | <a href="deletedPaymentMethod?metodoPago=${metodoPago.nombrepago}">Borrar metodo</a></p>
               
           </c:forEach>
              <c:forEach items="${usuario.usuarioTieneActividad}" var="actividades">
