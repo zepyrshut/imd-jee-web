@@ -64,7 +64,7 @@ public class ActionsService extends HttpServlet {
         actions.put("register", register);
         actions.put("activitydescription", activityDescription);
         actions.put("activityinscription", activityInscription);  
-        actions.put("activityubsubcription", activityUnsubcription);
+        actions.put("activityunsubscription", activityUnsubcription);
         actions.put("paymentmethod", paymentMethod);
     }
 

@@ -56,19 +56,22 @@
                 </c:if>
                 <c:if test="${usuario != null}">
                     <form action="actions?action=activityinscription" method="POST">
-                                        <label for="metodoPago">Elige método de pago:</label>
-                    <select name="metodoPago">
-                        <c:forEach items="${usuario.metodoPago}" var="metodoPago" varStatus="forLoop">
-                            <option value=${forLoop.index}>${metodoPago.nombrepago}</option>
-                        </c:forEach>
-                    </select>
-                                        
-                                       <input type="submit" class="uk-button uk-button-primary" value="Inscribirse" />
+                        <label for="metodoPago">Elige método de pago:</label>
+                        <select name="metodoPago">
+                            <c:forEach items="${usuario.metodoPago}" var="metodoPago" varStatus="forLoop">
+                                <option value=${forLoop.index}>${metodoPago.nombrepago}</option>
+                            </c:forEach>
+                        </select>
+
+                        <input type="submit" class="uk-button uk-button-primary" value="Inscribirse" />
                     </form>
-                    
-                    
+                    <form action="actions?action=activityubsubcription" method="POST">
+
+                        <input type="submit" class="uk-button uk-button-primary" value="Desuscribirse" />
+                    </form>
+
                     <article class="uk-grid-small uk-child-width-auto padding-top-small" uk-grid>
-                        <p><a class="uk-button uk-button-primary" href="actions?action=activityinscription">¡Inscribirse!</a></p>
+
                         <p><a class="uk-button uk-button-secondary" href="#">¿Tienes dudas?, escríbenos.</a></p>
                     </article>
                     <aside class="uk-margin">
